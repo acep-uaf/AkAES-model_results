@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Juneau - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // setup
+        google.charts.load('current', {'packages':['corechart','table']});
+        google.charts.setOnLoadCallback(drawCharts);
+    
+        // for the charts
+        function drawCharts() {
+            
+            // set up vars (data/options) for each chart
+            var state_plot = 'plot';
+            var state_chart = 'chart';
+            
+            var year_fmat = new google.visualization.NumberFormat({pattern:'####'});
+            
+            
+                // ################ Start costs ####################
+                // data
+                var costs = google.visualization.arrayToDataTable(
+                    [[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Sheep creek', type: 'number'}, {label: 'Water supply creek (hoonah)', type: 'number'}, {label: 'Turner lake (turner creek)', type: 'number'}, {label: 'Yehring creek', type: 'number'}, {label: 'Tease creek (tease lake)', type: 'number'}, {label: 'Treadwell ditch', type: 'number'}, {label: 'Sawmill creek', type: 'number'}, {label: 'Sweetheart lake -- sweetheart falls creek', type: 'number'}, {label: 'Peterson lake', type: 'number'}, {label: 'Rhine creek', type: 'number'}, {label: 'Davidson creek', type: 'number'}, {label: 'Davies creek', type: 'number'}, {label: 'Funter bay (s funter bay creek; 58.13, 134.52) -- south funter bay creek', type: 'number'}, {label: 'Greens creek (hawk inlet; 58.04, 134.43)', type: 'number'}, {label: 'Bear creek (taku harbor)', type: 'number'}, {label: 'Boundary lake (boundary creek)', type: 'number'}, {label: 'Carlson creek', type: 'number'}, {label: 'Cowee creek', type: 'number'}, {label: 'Lemon creek', type: 'number'}, {label: 'Nugget creek', type: 'number'}], [2021.0, 282348.0, 3372397.0, 1006613.0, 5799983.0, 7523021.0, 25957853.0, 5720694.0, 2681322.0, 13947553.0, 4016652.0, 2390674.0, 418538.0, 4122888.0, 706076.0, 998831.0, 273795.0, 28758425.0, 14087758.0, 887215.0, 7074445.0, 8922717.0], [2022.0, 291116.0, 3300580.0, 985499.0, 5676887.0, 7360197.0, 25406830.0, 5599169.0, 2625180.0, 13606024.0, 3931274.0, 2339699.0, 414664.0, 4035929.0, 701087.0, 988389.0, 274904.0, 28138923.0, 13788531.0, 868957.0, 6924062.0, 8734229.0], [2023.0, 298131.0, 3230931.0, 964975.0, 5557486.0, 7202570.0, 24872439.0, 5481302.0, 2570637.0, 13279136.0, 3848465.0, 2290263.0, 410386.0, 3951521.0, 695235.0, 977174.0, 275268.0, 27538985.0, 13498342.0, 851174.0, 6778220.0, 8551326.0], [2024.0, 303392.0, 3163414.0, 945030.0, 5441714.0, 7050055.0, 24354388.0, 5367029.0, 2517663.0, 12966724.0, 3768178.0, 2242338.0, 405701.0, 3869619.0, 688514.0, 965178.0, 274886.0, 26958286.0, 13217033.0, 833853.0, 6636841.0, 8373909.0], [2025.0, 309530.0, 3097166.0, 925491.0, 5328132.0, 6900222.0, 23846077.0, 5254911.0, 2465748.0, 12657345.0, 3689407.0, 2195315.0, 401446.0, 3789305.0, 682584.0, 954121.0, 274978.0, 26387938.0, 12941009.0, 816909.0, 6498119.0, 8199895.0], [2026.0, 317422.0, 3031874.0, 906293.0, 5216220.0, 6752209.0, 23345125.0, 5144428.0, 2414703.0, 12347084.0, 3611787.0, 2148972.0, 397896.0, 3710244.0, 677994.0, 944569.0, 275947.0, 25824776.0, 12668973.0, 800307.0, 6361400.0, 8028529.0], [2027.0, 324437.0, 2968330.0, 887587.0, 5107293.0, 6608282.0, 22857575.0, 5036897.0, 2364980.0, 12047059.0, 3536239.0, 2103869.0, 394208.0, 3633266.0, 673073.0, 934787.0, 276573.0, 25277067.0, 12404218.0, 784114.0, 6228341.0, 7861700.0], [2028.0, 329698.0, 2906775.0, 869418.0, 5001751.0, 6469146.0, 22385267.0, 4932717.0, 2316714.0, 11760881.0, 3463044.0, 2060176.0, 390099.0, 3558618.0, 667262.0, 924190.0, 276447.0, 24747373.0, 12147746.0, 768347.0, 6099445.0, 7699981.0], [2029.0, 336713.0, 2846072.0, 851559.0, 4897700.0, 6331597.0, 21919522.0, 4829997.0, 2269235.0, 11473362.0, 3390878.0, 2017090.0, 386686.0, 3485098.0, 662775.0, 915074.0, 277194.0, 24223978.0, 11894830.0, 752895.0, 5972336.0, 7540636.0], [2030.0, 341097.0, 2787567.0, 834271.0, 4797377.0, 6199470.0, 21470614.0, 4730975.0, 2223321.0, 11203155.0, 3321306.0, 1975562.0, 382565.0, 3414119.0, 656832.0, 904552.0, 276780.0, 23720886.0, 11651068.0, 737877.0, 5849827.0, 7386886.0], [2031.0, 349866.0, 2729024.0, 817111.0, 4697059.0, 6066440.0, 21021456.0, 4631926.0, 2177661.0, 10920045.0, 3251721.0, 1934010.0, 379974.0, 3343315.0, 653869.0, 897224.0, 278457.0, 23214965.0, 11407150.0, 723080.0, 5727241.0, 7233355.0], [2032.0, 357757.0, 2672064.0, 800394.0, 4599444.0, 5937126.0, 20584436.0, 4535550.0, 2133195.0, 10646448.0, 3184013.0, 1893581.0, 377229.0, 3274394.0, 650550.0, 889627.0, 279784.0, 22723089.0, 11169828.0, 708649.0, 5607969.0, 7083928.0], [2033.0, 365649.0, 2616382.0, 784058.0, 4504019.0, 5810677.0, 20157215.0, 4441336.0, 2089736.0, 10378471.0, 3117825.0, 1854058.0, 374607.0, 3207026.0, 647427.0, 882330.0, 281166.0, 22242139.0, 10937826.0, 694551.0, 5491370.0, 6937864.0], [2034.0, 374418.0, 2561671.0, 768039.0, 4410276.0, 5686246.0, 19737457.0, 4348775.0, 2047102.0, 10112222.0, 3052799.0, 1815226.0, 372386.0, 3140886.0, 645049.0, 875901.0, 283007.0, 21769001.0, 10709873.0, 680752.0, 5376807.0, 6794422.0], [2035.0, 380556.0, 2509003.0, 752546.0, 4319998.0, 5566893.0, 19333360.0, 4259652.0, 2005911.0, 9862610.0, 2990184.0, 1777843.0, 369443.0, 3077100.0, 641191.0, 868030.0, 283681.0, 21314854.0, 10490433.0, 667348.0, 5266523.0, 6656172.0], [2036.0, 389324.0, 2456699.0, 737244.0, 4230385.0, 5447864.0, 18932073.0, 4171166.0, 1965178.0, 9606954.0, 2928022.0, 1740719.0, 367454.0, 3013889.0, 639180.0, 862166.0, 285625.0, 20862312.0, 10272509.0, 654176.0, 5157000.0, 6519069.0], [2037.0, 394585.0, 2406657.0, 722505.0, 4144599.0, 5334569.0, 18548118.0, 4086481.0, 1926003.0, 9371446.0, 2868525.0, 1705200.0, 364458.0, 2953254.0, 635126.0, 854270.0, 285993.0, 20431134.0, 10064010.0, 641410.0, 5052214.0, 6387670.0], [2038.0, 403354.0, 2356649.0, 707887.0, 4058925.0, 5220691.0, 18164445.0, 4001882.0, 1887083.0, 9125892.0, 2809094.0, 1669705.0, 362691.0, 2892836.0, 633465.0, 848944.0, 288036.0, 19998232.0, 9855651.0, 628837.0, 4947498.0, 6256612.0], [2039.0, 410369.0, 2308298.0, 693707.0, 3976068.0, 5110864.0, 17793482.0, 3920076.0, 1849357.0, 8892730.0, 2751622.0, 1635387.0, 360472.0, 2834348.0, 630863.0, 842726.0, 289313.0, 19580521.0, 9654199.0, 616604.0, 4846253.0, 6129793.0], [2040.0, 420014.0, 2260204.0, 679687.0, 3893692.0, 5001118.0, 17424503.0, 3838725.0, 1812005.0, 8653051.0, 2694474.0, 1601252.0, 359196.0, 2776304.0, 630092.0, 838490.0, 291857.0, 19163493.0, 9453813.0, 604576.0, 4745545.0, 6003838.0], [2041.0, 420014.0, 2216193.0, 666577.0, 3818173.0, 4902343.0, 17086786.0, 3764208.0, 1777252.0, 8459371.0, 2642114.0, 1570011.0, 354944.0, 2722743.0, 623375.0, 828165.0, 289971.0, 18786929.0, 9270442.0, 593105.0, 4653387.0, 5887942.0], [2042.0, 420014.0, 2173213.0, 653774.0, 3744424.0, 4805883.0, 16756983.0, 3691437.0, 1743314.0, 8270229.0, 2590982.0, 1539502.0, 350790.0, 2670438.0, 616816.0, 818082.0, 288128.0, 18419191.0, 9091369.0, 581904.0, 4563389.0, 5774762.0], [2043.0, 420014.0, 2131241.0, 641272.0, 3672404.0, 4711684.0, 16434911.0, 3620371.0, 1710171.0, 8085521.0, 2541048.0, 1509708.0, 346735.0, 2619358.0, 610411.0, 808235.0, 286330.0, 18060071.0, 8916492.0, 570965.0, 4475500.0, 5664235.0], [2044.0, 420014.0, 2090253.0, 629062.0, 3602071.0, 4619693.0, 16120387.0, 3550972.0, 1677805.0, 7905142.0, 2492284.0, 1480613.0, 342774.0, 2569475.0, 604155.0, 798619.0, 284573.0, 17709368.0, 8745714.0, 560282.0, 4389671.0, 5556298.0], [2045.0, 420014.0, 2050225.0, 617139.0, 3533387.0, 4529858.0, 15813234.0, 3483198.0, 1646197.0, 7728990.0, 2444663.0, 1452199.0, 338906.0, 2520762.0, 598047.0, 789229.0, 282857.0, 17366885.0, 8578939.0, 549850.0, 4305854.0, 5450892.0], [2046.0, 420014.0, 2011135.0, 605495.0, 3466313.0, 4442129.0, 15513281.0, 3417014.0, 1615330.0, 7556967.0, 2398158.0, 1424452.0, 335129.0, 2473190.0, 592081.0, 780058.0, 281182.0, 17032429.0, 8416073.0, 539662.0, 4224001.0, 5347955.0], [2047.0, 420014.0, 1972962.0, 594124.0, 3400811.0, 4356455.0, 15220358.0, 3352380.0, 1585187.0, 7388976.0, 2352743.0, 1397354.0, 331440.0, 2426733.0, 586255.0, 771103.0, 279546.0, 16705812.0, 8257023.0, 529713.0, 4144066.0, 5247431.0], [2048.0, 420014.0, 1935683.0, 583019.0, 3336844.0, 4272790.0, 14934300.0, 3289261.0, 1555750.0, 7224922.0, 2308393.0, 1370892.0, 327838.0, 2381365.0, 580566.0, 762357.0, 277948.0, 16386850.0, 8101702.0, 519997.0, 4066005.0, 5149264.0], [2049.0, 420014.0, 1899278.0, 572175.0, 3274377.0, 4191085.0, 14654946.0, 3227622.0, 1527004.0, 7064713.0, 2265082.0, 1345050.0, 324320.0, 2337061.0, 575010.0, 753816.0, 276388.0, 16075363.0, 7950021.0, 510509.0, 3989774.0, 5053397.0], [2050.0, 420014.0, 1863726.0, 561585.0, 3213373.0, 4111296.0, 14382140.0, 3167427.0, 1498930.0, 6908259.0, 2222786.0, 1319814.0, 320884.0, 2293795.0, 569584.0, 745476.0, 274864.0, 15771177.0, 7801894.0, 501243.0, 3915329.0, 4959777.0], [2051.0, 420014.0, 1829008.0, 551243.0, 3153799.0, 4033376.0, 14115728.0, 3108644.0, 1471515.0, 6755472.0, 2181481.0, 1295169.0, 317530.0, 2251542.0, 564286.0, 737331.0, 273376.0, 15474120.0, 7657240.0, 492195.0, 3842629.0, 4868351.0], [2052.0, 420014.0, 1795103.0, 541143.0, 3095622.0, 3957283.0, 13855560.0, 3051237.0, 1444743.0, 6606266.0, 2141145.0, 1271101.0, 314253.0, 2210281.0, 559112.0, 729376.0, 271923.0, 15184026.0, 7515976.0, 483358.0, 3771633.0, 4779068.0], [2053.0, 420014.0, 1761993.0, 531281.0, 3038808.0, 3882973.0, 13601489.0, 2995177.0, 1418598.0, 6460557.0, 2101753.0, 1247598.0, 311054.0, 2169986.0, 554059.0, 721609.0, 270504.0, 14900730.0, 7378023.0, 474729.0, 3702301.0, 4691877.0], [2054.0, 420014.0, 1729658.0, 521649.0, 2983325.0, 3810405.0, 13353373.0, 2940430.0, 1393065.0, 6318263.0, 2063286.0, 1224646.0, 307929.0, 2130635.0, 549124.0, 714023.0, 269118.0, 14624075.0, 7243303.0, 466302.0, 3634594.0, 4606730.0], [2055.0, 420014.0, 1698082.0, 512243.0, 2929143.0, 3739538.0, 13111073.0, 2886966.0, 1368131.0, 6179304.0, 2025719.0, 1202231.0, 304878.0, 2092207.0, 544305.0, 706615.0, 267764.0, 14353903.0, 7111740.0, 458072.0, 3568473.0, 4523579.0], [2056.0, 420014.0, 1667246.0, 503058.0, 2876231.0, 3670331.0, 12874451.0, 2834756.0, 1343782.0, 6043601.0, 1989033.0, 1180342.0, 301898.0, 2054680.0, 539599.0, 699381.0, 266443.0, 14090064.0, 6983261.0, 450035.0, 3503903.0, 4442376.0], [2057.0, 420014.0, 1637132.0, 494087.0, 2824559.0, 3602747.0, 12643376.0, 2783769.0, 1320003.0, 5911080.0, 1953207.0, 1158966.0, 298989.0, 2018032.0, 535003.0, 692316.0, 265152.0, 13832408.0, 6857794.0, 442187.0, 3440845.0, 4363077.0], [2058.0, 420014.0, 1607724.0, 485327.0, 2774098.0, 3536747.0, 12417716.0, 2733977.0, 1296782.0, 5781664.0, 1918221.0, 1138091.0, 296147.0, 1982243.0, 530515.0, 685417.0, 263892.0, 13580791.0, 6735266.0, 434523.0, 3379266.0, 4285636.0], [2059.0, 420014.0, 1579006.0, 476773.0, 2724820.0, 3472293.0, 12197345.0, 2685352.0, 1274104.0, 5655281.0, 1884055.0, 1117706.0, 293372.0, 1947293.0, 526132.0, 678679.0, 262661.0, 13335072.0, 6615611.0, 427038.0, 3319130.0, 4210011.0], [2060.0, 420014.0, 1550960.0, 468419.0, 2676696.0, 3409350.0, 11982139.0, 2637867.0, 1251959.0, 5531861.0, 1850689.0, 1097798.0, 290662.0, 1913162.0, 521852.0, 672100.0, 261459.0, 13095111.0, 6498760.0, 419728.0, 3260404.0, 4136158.0], [2061.0, 420014.0, 1523572.0, 460260.0, 2629701.0, 3347883.0, 11771976.0, 2591495.0, 1230332.0, 5411333.0, 1818106.0, 1078356.0, 288015.0, 1879831.0, 517673.0, 665675.0, 260285.0, 12860775.0, 6384648.0, 412590.0, 3203053.0, 4064035.0], [2062.0, 420014.0, 1496826.0, 452293.0, 2583807.0, 3287856.0, 11566740.0, 2546209.0, 1209212.0, 5293630.0, 1786286.0, 1059370.0, 285431.0, 1847281.0, 513591.0, 659400.0, 259139.0, 12631931.0, 6273210.0, 405620.0, 3147047.0, 3993603.0], [2063.0, 420014.0, 1470707.0, 444513.0, 2538988.0, 3229236.0, 11366314.0, 2501985.0, 1188587.0, 5178686.0, 1755212.0, 1040830.0, 282907.0, 1815494.0, 509605.0, 653272.0, 258019.0, 12408450.0, 6164384.0, 398812.0, 3092354.0, 3924822.0], [2064.0, 420014.0, 1445200.0, 436915.0, 2495220.0, 3171989.0, 11170585.0, 2458798.0, 1168446.0, 5066436.0, 1724866.0, 1022723.0, 280442.0, 1784452.0, 505712.0, 647288.0, 256926.0, 12190207.0, 6058109.0, 392164.0, 3038942.0, 3857653.0], [2065.0, 420014.0, 1420290.0, 429495.0, 2452478.0, 3116085.0, 10979443.0, 2416622.0, 1148776.0, 4956816.0, 1695231.0, 1005042.0, 278035.0, 1754137.0, 501910.0, 641444.0, 255858.0, 11977080.0, 5954325.0, 385672.0, 2986783.0, 3792058.0], [2066.0, 420014.0, 1395965.0, 422249.0, 2410738.0, 3061491.0, 10792782.0, 2375436.0, 1129568.0, 4849766.0, 1666291.0, 987774.0, 275684.0, 1724533.0, 498198.0, 635738.0, 254816.0, 11768947.0, 5852973.0, 379332.0, 2935846.0, 3728001.0], [2067.0, 420014.0, 1372209.0, 415173.0, 2369976.0, 3008176.0, 10610495.0, 2335214.0, 1110810.0, 4745225.0, 1638029.0, 970911.0, 273389.0, 1695623.0, 494573.0, 630164.0, 253797.0, 11565692.0, 5753996.0, 373141.0, 2886102.0, 3665445.0], [2068.0, 420014.0, 1349011.0, 408262.0, 2330169.0, 2956111.0, 10432481.0, 2295935.0, 1092491.0, 4643134.0, 1610430.0, 954444.0, 271147.0, 1667391.0, 491032.0, 624722.0, 252803.0, 11367202.0, 5657339.0, 367095.0, 2837525.0, 3604355.0], [2069.0, 420014.0, 1326356.0, 401514.0, 2291295.0, 2905266.0, 10258639.0, 2257577.0, 1074602.0, 4543436.0, 1583478.0, 938362.0, 268958.0, 1639820.0, 487575.0, 619407.0, 251832.0, 11173363.0, 5562948.0, 361190.0, 2790086.0, 3544697.0], [2070.0, 420014.0, 1304232.0, 394924.0, 2253333.0, 2855613.0, 10088871.0, 2220118.0, 1057132.0, 4446074.0, 1557157.0, 922658.0, 266820.0, 1612895.0, 484198.0, 614217.0, 250884.0, 10984068.0, 5470769.0, 355424.0, 2743759.0, 3486437.0]]
+                );
+                year_fmat.format(costs,0);
+                
+                // plot options 
+                vertical_label = {format: '$#,###'}; 
+                
+                width = 1000
+                height = 600
+    
+                var costs_options = {
+                    'title': 'Juneau: Estimated electricity generation costs per year',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var costs_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_costs() {
+                    var costs_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('costs_chart')
+                        );
+                    
+                    costs_plot.draw(costs, costs_options);
+                    return costs_plot;
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = 
+                        new google.visualization.Table(
+                            document.getElementById('costs_chart')
+                        );
+                    costs_table.draw(
+                        costs,
+                        {
+                            'title': 'Estimated Electricity Generation Costs per Year',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = new google.visualization.Table(
+                        document.getElementById('costs_chart')
+                    );
+                    costs_table.draw(
+                        costs, {'title': 'Estimated Electricity Generation Costs per Year','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                costs_button = document.getElementById('costs_button');
+                costs_button.onclick = function() {
+                    if (costs_state == state_plot) {
+                        drawTable_costs();
+                        costs_state = state_chart;
+                    } else {
+                    drawPlot_costs();
+                    costs_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  costs_plot = drawPlot_costs();
+              
+                document.getElementById('costs_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                // ################ Start consumption ####################
+                // data
+                var consumption = google.visualization.arrayToDataTable(
+                    [[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Sheep creek', type: 'number'}, {label: 'Water supply creek (hoonah)', type: 'number'}, {label: 'Turner lake (turner creek)', type: 'number'}, {label: 'Yehring creek', type: 'number'}, {label: 'Tease creek (tease lake)', type: 'number'}, {label: 'Treadwell ditch', type: 'number'}, {label: 'Sawmill creek', type: 'number'}, {label: 'Sweetheart lake -- sweetheart falls creek', type: 'number'}, {label: 'Peterson lake', type: 'number'}, {label: 'Rhine creek', type: 'number'}, {label: 'Davidson creek', type: 'number'}, {label: 'Davies creek', type: 'number'}, {label: 'Funter bay (s funter bay creek; 58.13, 134.52) -- south funter bay creek', type: 'number'}, {label: 'Greens creek (hawk inlet; 58.04, 134.43)', type: 'number'}, {label: 'Bear creek (taku harbor)', type: 'number'}, {label: 'Boundary lake (boundary creek)', type: 'number'}, {label: 'Carlson creek', type: 'number'}, {label: 'Cowee creek', type: 'number'}, {label: 'Lemon creek', type: 'number'}, {label: 'Nugget creek', type: 'number'}], [2021.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2022.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2023.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2024.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2025.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2026.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2027.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2028.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2029.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2030.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2031.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2032.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2033.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2034.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2035.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2036.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2037.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2038.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2039.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2040.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2041.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2042.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2043.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2044.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2045.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2046.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2047.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2048.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2049.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2050.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2051.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2052.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2053.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2054.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2055.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2056.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2057.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2058.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2059.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2060.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2061.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2062.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2063.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2064.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2065.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2066.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2067.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2068.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2069.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2070.0, 87686.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 29453.0, 0.0, 56299.0, 58343.0, 41833.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+                );
+                year_fmat.format(consumption,0);
+                
+                // plot options 
+                vertical_label=  {title: 'gallons'}; 
+                
+                width = 1000
+                height = 600
+    
+                var consumption_options = {
+                    'title': 'Juneau: Diesel consumed for electricity generation ',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var consumption_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_consumption() {
+                    var consumption_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('consumption_chart')
+                        );
+                    
+                    consumption_plot.draw(consumption, consumption_options);
+                    return consumption_plot;
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = 
+                        new google.visualization.Table(
+                            document.getElementById('consumption_chart')
+                        );
+                    consumption_table.draw(
+                        consumption,
+                        {
+                            'title': 'Diesel Consumed for Electricity Generation ',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = new google.visualization.Table(
+                        document.getElementById('consumption_chart')
+                    );
+                    consumption_table.draw(
+                        consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                consumption_button = document.getElementById('consumption_button');
+                consumption_button.onclick = function() {
+                    if (consumption_state == state_plot) {
+                        drawTable_consumption();
+                        consumption_state = state_chart;
+                    } else {
+                    drawPlot_consumption();
+                    consumption_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  consumption_plot = drawPlot_consumption();
+              
+                document.getElementById('consumption_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+      };
+    </script>
+     
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Juneau<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Juneau/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Juneau/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Juneau/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Juneau/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Juneau/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Juneau/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Juneau/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Juneau/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Juneau/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Juneau/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Juneau/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Juneau/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Juneau/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Juneau/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Juneau/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Juneau/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Juneau/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Juneau/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system<small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">See: <a href='./generation.html'>Generation </a> for more details of the current generation systems </p>
+    </div><H3>Sheep creek<small class = "hidy" data-toggle="collapse" data-target="#Sheep_Creek"></small> </H3>
+    <div id="Sheep_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $52,840,914 </p> <p class="stats">Lifetime energy cost savings: $-572,608 </p> <p class="stats">Net lifetime savings: $-53,413,521 </p> <p class="stats">Benefit-cost ratio: -0.0 </p> <p class="stats">Proposed nameplate capacity: 2,400 kW </p> <p class="stats">Expected yearly generation: 9,151,030 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $53,796,396 </p> <p class="stats">Estimated hydro penetration level: 2.16% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div><H3>Water supply creek (hoonah)<small class = "hidy" data-toggle="collapse" data-target="#Water_Supply_Creek_Hoonah"></small> </H3>
+    <div id="Water_Supply_Creek_Hoonah" class="collapse in" >
+     <p class="stats">Present value of capital cost: $15,740,154 </p> <p class="stats">Lifetime energy cost savings: $6,673,843 </p> <p class="stats">Net lifetime savings: $-9,066,311 </p> <p class="stats">Benefit-cost ratio: 0.4 </p> <p class="stats">Proposed nameplate capacity: 600 kW </p> <p class="stats">Expected yearly generation: 1,800,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $16,024,771 </p> <p class="stats">Estimated hydro penetration level: 0.42% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div><H3>Turner lake (turner creek)<small class = "hidy" data-toggle="collapse" data-target="#Turner_Lake_Turner_Creek"></small> </H3>
+    <div id="Turner_Lake_Turner_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $90,670,061 </p> <p class="stats">Lifetime energy cost savings: $-8,485,656 </p> <p class="stats">Net lifetime savings: $-99,155,717 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 4,000 kW </p> <p class="stats">Expected yearly generation: 15,251,716 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $92,309,578 </p> <p class="stats">Estimated hydro penetration level: 3.59% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1982-0131.pdf'> link </a> </p>
+    </div><H3>Yehring creek<small class = "hidy" data-toggle="collapse" data-target="#Yehring_Creek"></small> </H3>
+    <div id="Yehring_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $118,591,763 </p> <p class="stats">Lifetime energy cost savings: $-11,978,303 </p> <p class="stats">Net lifetime savings: $-130,570,065 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 5,000 kW </p> <p class="stats">Expected yearly generation: 26,000,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $120,736,167 </p> <p class="stats">Estimated hydro penetration level: 6.12% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div><H3>Tease creek (tease lake)<small class = "hidy" data-toggle="collapse" data-target="#Tease_Creek_Tease_Lake"></small> </H3>
+    <div id="Tease_Creek_Tease_Lake" class="collapse in" >
+     <p class="stats">Present value of capital cost: $405,473,609 </p> <p class="stats">Lifetime energy cost savings: $-72,839,492 </p> <p class="stats">Net lifetime savings: $-478,313,101 </p> <p class="stats">Benefit-cost ratio: -0.2 </p> <p class="stats">Proposed nameplate capacity: 18,359 kW </p> <p class="stats">Expected yearly generation: 70,000,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $412,805,479 </p> <p class="stats">Estimated hydro penetration level: 16.49% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Treadwell ditch<small class = "hidy" data-toggle="collapse" data-target="#Treadwell_Ditch"></small> </H3>
+    <div id="Treadwell_Ditch" class="collapse in" >
+     <p class="stats">Present value of capital cost: $89,467,754 </p> <p class="stats">Lifetime energy cost savings: $-8,161,263 </p> <p class="stats">Net lifetime savings: $-97,629,017 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 4,000 kW </p> <p class="stats">Expected yearly generation: 15,251,716 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $91,085,531 </p> <p class="stats">Estimated hydro penetration level: 3.59% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Sawmill creek<small class = "hidy" data-toggle="collapse" data-target="#Sawmill_Creek"></small> </H3>
+    <div id="Sawmill_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $41,725,227 </p> <p class="stats">Lifetime energy cost savings: $993,011 </p> <p class="stats">Net lifetime savings: $-40,732,216 </p> <p class="stats">Benefit-cost ratio: 0.0 </p> <p class="stats">Proposed nameplate capacity: 1,400 kW </p> <p class="stats">Expected yearly generation: 5,338,101 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $42,479,712 </p> <p class="stats">Estimated hydro penetration level: 1.26% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Sweetheart lake -- Sweetheart Falls Creek<small class = "hidy" data-toggle="collapse" data-target="#Sweetheart_Lake_--_Sweetheart_Falls_Creek"></small> </H3>
+    <div id="Sweetheart_Lake_--_Sweetheart_Falls_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $232,538,682 </p> <p class="stats">Lifetime energy cost savings: $-5,502,629 </p> <p class="stats">Net lifetime savings: $-238,041,311 </p> <p class="stats">Benefit-cost ratio: -0.0 </p> <p class="stats">Proposed nameplate capacity: 32,783 kW </p> <p class="stats">Expected yearly generation: 125,000,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $236,743,502 </p> <p class="stats">Estimated hydro penetration level: 29.44% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Peterson lake<small class = "hidy" data-toggle="collapse" data-target="#Peterson_Lake"></small> </H3>
+    <div id="Peterson_Lake" class="collapse in" >
+     <p class="stats">Present value of capital cost: $62,864,681 </p> <p class="stats">Lifetime energy cost savings: $-2,703,711 </p> <p class="stats">Net lifetime savings: $-65,568,392 </p> <p class="stats">Benefit-cost ratio: -0.0 </p> <p class="stats">Proposed nameplate capacity: 2,800 kW </p> <p class="stats">Expected yearly generation: 10,676,201 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $64,001,415 </p> <p class="stats">Estimated hydro penetration level: 2.51% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1979-0373.pdf'> link </a> </p>
+    </div><H3>Rhine creek<small class = "hidy" data-toggle="collapse" data-target="#Rhine_Creek"></small> </H3>
+    <div id="Rhine_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $37,508,988 </p> <p class="stats">Lifetime energy cost savings: $2,560,636 </p> <p class="stats">Net lifetime savings: $-34,948,352 </p> <p class="stats">Benefit-cost ratio: 0.1 </p> <p class="stats">Proposed nameplate capacity: 1,700 kW </p> <p class="stats">Expected yearly generation: 6,481,979 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $38,187,234 </p> <p class="stats">Estimated hydro penetration level: 1.53% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Davidson creek<small class = "hidy" data-toggle="collapse" data-target="#Davidson_Creek"></small> </H3>
+    <div id="Davidson_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $5,106,053 </p> <p class="stats">Lifetime energy cost savings: $5,607,451 </p> <p class="stats">Net lifetime savings: $501,398 </p> <p class="stats">Benefit-cost ratio: 1.1 </p> <p class="stats">Proposed nameplate capacity: 127 kW </p> <p class="stats">Expected yearly generation: 484,242 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $5,198,382 </p> <p class="stats">Estimated hydro penetration level: 0.11% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1982-0198.pdf'> link </a> </p>
+    </div><H3>Davies creek<small class = "hidy" data-toggle="collapse" data-target="#Davies_Creek"></small> </H3>
+    <div id="Davies_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $64,306,881 </p> <p class="stats">Lifetime energy cost savings: $-3,472,704 </p> <p class="stats">Net lifetime savings: $-67,779,585 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 2,535 kW </p> <p class="stats">Expected yearly generation: 9,665,775 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $65,469,694 </p> <p class="stats">Estimated hydro penetration level: 2.28% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1982-0198.pdf'> link </a> </p>
+    </div><H3>Funter bay (s funter bay creek; 58.13', 134.52') -- South Funter Bay Creek<small class = "hidy" data-toggle="collapse" data-target="#Funter_Bay_S_Funter_Bay_Creek;_58.13'_134.52'_--_South_Funter_Bay_Creek"></small> </H3>
+    <div id="Funter_Bay_S_Funter_Bay_Creek;_58.13'_134.52'_--_South_Funter_Bay_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $8,064,211 </p> <p class="stats">Lifetime energy cost savings: $1,589,087 </p> <p class="stats">Net lifetime savings: $-6,475,124 </p> <p class="stats">Benefit-cost ratio: 0.2 </p> <p class="stats">Proposed nameplate capacity: 150 kW </p> <p class="stats">Expected yearly generation: 261,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $8,210,030 </p> <p class="stats">Estimated hydro penetration level: 0.06% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Greens creek (hawk inlet; 58.04', 134.43')<small class = "hidy" data-toggle="collapse" data-target="#Greens_Creek_Hawk_Inlet;_58.04'_134.43'"></small> </H3>
+    <div id="Greens_Creek_Hawk_Inlet;_58.04'_134.43'" class="collapse in" >
+     <p class="stats">Present value of capital cost: $12,396,622 </p> <p class="stats">Lifetime energy cost savings: $174,943 </p> <p class="stats">Net lifetime savings: $-12,221,679 </p> <p class="stats">Benefit-cost ratio: 0.0 </p> <p class="stats">Proposed nameplate capacity: 120 kW </p> <p class="stats">Expected yearly generation: 244,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $12,620,780 </p> <p class="stats">Estimated hydro penetration level: 0.06% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Bear creek (taku harbor)<small class = "hidy" data-toggle="collapse" data-target="#Bear_Creek_Taku_Harbor"></small> </H3>
+    <div id="Bear_Creek_Taku_Harbor" class="collapse in" >
+     <p class="stats">Present value of capital cost: $2,264,756 </p> <p class="stats">Lifetime energy cost savings: $4,889,035 </p> <p class="stats">Net lifetime savings: $2,624,278 </p> <p class="stats">Benefit-cost ratio: 2.2 </p> <p class="stats">Proposed nameplate capacity: 100 kW </p> <p class="stats">Expected yearly generation: 381,293 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $2,305,708 </p> <p class="stats">Estimated hydro penetration level: 0.09% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1980-0226.pdf'> link </a> </p>
+    </div><H3>Boundary lake (boundary creek)<small class = "hidy" data-toggle="collapse" data-target="#Boundary_Lake_Boundary_Creek"></small> </H3>
+    <div id="Boundary_Lake_Boundary_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $452,113,889 </p> <p class="stats">Lifetime energy cost savings: $-76,024,570 </p> <p class="stats">Net lifetime savings: $-528,138,459 </p> <p class="stats">Benefit-cost ratio: -0.2 </p> <p class="stats">Proposed nameplate capacity: 20,000 kW </p> <p class="stats">Expected yearly generation: 95,000,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $460,289,119 </p> <p class="stats">Estimated hydro penetration level: 22.38% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1980-0226.pdf'> link </a> </p>
+    </div><H3>Carlson creek<small class = "hidy" data-toggle="collapse" data-target="#Carlson_Creek"></small> </H3>
+    <div id="Carlson_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $220,160,924 </p> <p class="stats">Lifetime energy cost savings: $-34,822,475 </p> <p class="stats">Net lifetime savings: $-254,983,399 </p> <p class="stats">Benefit-cost ratio: -0.2 </p> <p class="stats">Proposed nameplate capacity: 10,000 kW </p> <p class="stats">Expected yearly generation: 38,129,290 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $224,141,926 </p> <p class="stats">Estimated hydro penetration level: 8.98% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1980-0226.pdf'> link </a> </p>
+    </div><H3>Cowee creek<small class = "hidy" data-toggle="collapse" data-target="#Cowee_Creek"></small> </H3>
+    <div id="Cowee_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $13,771,730 </p> <p class="stats">Lifetime energy cost savings: $6,849,323 </p> <p class="stats">Net lifetime savings: $-6,922,407 </p> <p class="stats">Benefit-cost ratio: 0.5 </p> <p class="stats">Proposed nameplate capacity: 224 kW </p> <p class="stats">Expected yearly generation: 854,096 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $14,020,754 </p> <p class="stats">Estimated hydro penetration level: 0.20% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1982-0198.pdf'> link </a> </p>
+    </div><H3>Lemon creek<small class = "hidy" data-toggle="collapse" data-target="#Lemon_Creek"></small> </H3>
+    <div id="Lemon_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $110,647,819 </p> <p class="stats">Lifetime energy cost savings: $-12,406,502 </p> <p class="stats">Net lifetime savings: $-123,054,321 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 5,025 kW </p> <p class="stats">Expected yearly generation: 19,159,968 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $112,648,579 </p> <p class="stats">Estimated hydro penetration level: 4.51% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1983-0372.pdf'> link </a> </p>
+    </div><H3>Nugget creek<small class = "hidy" data-toggle="collapse" data-target="#Nugget_Creek"></small> </H3>
+    <div id="Nugget_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $139,148,169 </p> <p class="stats">Lifetime energy cost savings: $-19,028,419 </p> <p class="stats">Net lifetime savings: $-158,176,588 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 5,770 kW </p> <p class="stats">Expected yearly generation: 22,000,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $141,664,279 </p> <p class="stats">Estimated hydro penetration level: 5.18% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1979-0373.pdf'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential cost savings through changes in the amount of diesel fuel used for electricity generation from the installation of new hydropower infrastructure. Requires that at least a reconnaissance-level hydropower study has been completed for the community.
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Juneau_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Juneau_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 1.0.0, Generated from Model Version 1.0.0 and Data Version 1.0.0 on 2017-06-30</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

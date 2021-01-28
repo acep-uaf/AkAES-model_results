@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Elfin_Cove - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Elfin cove (joe's creek)', type: 'number'}, {label: 'Elfin cove hydroelectric permitting -- crooked creek', type: 'number'}, {label: 'Ernie's creek (elfin cove)', type: 'number'}, {label: 'Crooked creek and jim's lake (elfin cove) -- crooked creek, jim's lake', type: 'number'}, {label: 'Crooked creek (elfin cove)', type: 'number'}, {label: 'Roy's creek (elfin cove)', type: 'number'}, {label: 'Wood (wood lake)', type: 'number'}, {label: 'Elfin cove (margaret creek; 58.07', 136.20')', type: 'number'}], [2020.0, 77587.0, null, null, null, null, null, null, null, null], [2021.0, 80498.0, 134889.0, null, 266109.0, 292339.0, 258964.0, 301600.0, 2744425.0, 539189.0], [2022.0, 82369.0, 135577.0, null, 262703.0, 291623.0, 259596.0, 302105.0, 2742357.0, 538529.0], [2023.0, 83583.0, 136003.0, null, 260399.0, 291111.0, 259984.0, 302409.0, 2740945.0, 538055.0], [2024.0, 84318.0, 136148.0, null, 258497.0, 290553.0, 260100.0, 302462.0, 2739712.0, 537526.0], [2025.0, 85162.0, 136203.0, null, 255822.0, 289671.0, 260118.0, 302395.0, 2737930.0, 536682.0], [2026.0, 86734.0, 136790.0, null, 252998.0, 289087.0, 260658.0, 302830.0, 2736220.0, 536145.0], [2027.0, 87833.0, 137102.0, null, 250580.0, 288462.0, 260931.0, 303019.0, 2734694.0, 535558.0], [2028.0, 88688.0, 137267.0, null, 248357.0, 287807.0, 261064.0, 303078.0, 2733252.0, 534936.0], [2029.0, 89604.0, 137296.0, null, 245315.0, 286782.0, 261050.0, 302969.0, 2731213.0, 533953.0], [2030.0, 89622.0, 136822.0, null, 243135.0, 285722.0, 260552.0, 302418.0, 2729591.0, 532917.0], [2031.0, 91240.0, 137356.0, null, 239916.0, 284968.0, 261034.0, 302785.0, 2727598.0, 532215.0], [2032.0, 92981.0, 138113.0, null, 237260.0, 284553.0, 261743.0, 303388.0, 2726058.0, 531847.0], [2033.0, 94327.0, 138474.0, null, 234209.0, 283743.0, 262057.0, 303597.0, 2724122.0, 531084.0], [2034.0, 96235.0, 139298.0, null, 231280.0, 283279.0, 262829.0, 304253.0, 2722419.0, 530672.0], [2035.0, 97296.0, 139669.0, null, 229263.0, 282830.0, 263167.0, 304517.0, 2721183.0, 530257.0], [2036.0, 98767.0, 140057.0, null, 225898.0, 281929.0, 263502.0, 304737.0, 2719043.0, 529408.0], [2037.0, 99590.0, 140290.0, null, 224083.0, 281460.0, 263707.0, 304878.0, 2717898.0, 528966.0], [2038.0, 101423.0, 141038.0, null, 221079.0, 280920.0, 264403.0, 305459.0, 2716120.0, 528478.0], [2039.0, 103255.0, 141985.0, null, 218955.0, 280812.0, 265307.0, 306268.0, 2714999.0, 528413.0], [2040.0, 105264.0, 142812.0, null, 215687.0, 280233.0, 266077.0, 306911.0, 2713070.0, 527891.0], [2041.0, 105264.0, 142812.0, null, 215687.0, 280233.0, 266077.0, 306911.0, 2713070.0, 527891.0], [2042.0, 105264.0, 142812.0, null, 215687.0, 280233.0, 266077.0, 306911.0, 2713070.0, 527891.0], [2043.0, 104829.0, 142377.0, null, 215252.0, 279799.0, 265642.0, 306476.0, 2712635.0, 527456.0], [2044.0, 104829.0, 142377.0, null, 215252.0, 279799.0, 265642.0, 306476.0, 2712635.0, 527456.0], [2045.0, 105264.0, 142812.0, null, 215687.0, 280233.0, 266077.0, 306911.0, 2713070.0, 527891.0], [2046.0, 105264.0, 142812.0, null, 215687.0, 280233.0, 266077.0, 306911.0, 2713070.0, 527891.0], [2047.0, 105699.0, 143247.0, null, 216122.0, 280668.0, 266512.0, 307346.0, 2713505.0, 528326.0], [2048.0, 105699.0, 143247.0, null, 216122.0, 280668.0, 266512.0, 307346.0, 2713505.0, 528326.0], [2049.0, 106134.0, 143682.0, null, 216557.0, 281103.0, 266947.0, 307781.0, 2713940.0, 528761.0], [2050.0, 106569.0, 144117.0, null, 216992.0, 281538.0, 267382.0, 308216.0, 2714375.0, 529196.0]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: '$#,###'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Elfin Cove: Estimated electricity generation costs per year',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.LineChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Estimated Electricity Generation Costs per Year','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Estimated Electricity Generation Costs per Year','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var consumption = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Elfin cove (joe's creek)', type: 'number'}, {label: 'Elfin cove hydroelectric permitting -- crooked creek', type: 'number'}, {label: 'Ernie's creek (elfin cove)', type: 'number'}, {label: 'Crooked creek and jim's lake (elfin cove) -- crooked creek, jim's lake', type: 'number'}, {label: 'Crooked creek (elfin cove)', type: 'number'}, {label: 'Roy's creek (elfin cove)', type: 'number'}, {label: 'Wood (wood lake)', type: 'number'}, {label: 'Elfin cove (margaret creek; 58.07', 136.20')', type: 'number'}], [2020.0, 23299.0, null, 7629.0, null, null, null, null, null, null], [2021.0, 23132.0, 12128.0, 7462.0, 0.0, 0.0, 11598.0, 10422.0, 0.0, 0.0], [2022.0, 22880.0, 11877.0, 7210.0, -251.0, -251.0, 11347.0, 10170.0, -251.0, -251.0], [2023.0, 22713.0, 11709.0, 7043.0, -419.0, -419.0, 11179.0, 10002.0, -419.0, -419.0], [2024.0, 22545.0, 11541.0, 6875.0, -587.0, -587.0, 11012.0, 9835.0, -587.0, -587.0], [2025.0, 22294.0, 11290.0, 6624.0, -838.0, -838.0, 10760.0, 9583.0, -838.0, -838.0], [2026.0, 22126.0, 11122.0, 6456.0, -1006.0, -1006.0, 10593.0, 9416.0, -1006.0, -1006.0], [2027.0, 21958.0, 10955.0, 6288.0, -1173.0, -1173.0, 10425.0, 9248.0, -1173.0, -1173.0], [2028.0, 21791.0, 10787.0, 6121.0, -1341.0, -1341.0, 10257.0, 9081.0, -1341.0, -1341.0], [2029.0, 21539.0, 10536.0, 5869.0, -1592.0, -1592.0, 10006.0, 8829.0, -1592.0, -1592.0], [2030.0, 21288.0, 10284.0, 5618.0, -1844.0, -1844.0, 9755.0, 8578.0, -1844.0, -1844.0], [2031.0, 21120.0, 10117.0, 5450.0, -2011.0, -2011.0, 9587.0, 8410.0, -2011.0, -2011.0], [2032.0, 21036.0, 10033.0, 5366.0, -2095.0, -2095.0, 9503.0, 8326.0, -2095.0, -2095.0], [2033.0, 20869.0, 9865.0, 5199.0, -2263.0, -2263.0, 9336.0, 8159.0, -2263.0, -2263.0], [2034.0, 20785.0, 9781.0, 5115.0, -2347.0, -2347.0, 9252.0, 8075.0, -2347.0, -2347.0], [2035.0, 20701.0, 9697.0, 5031.0, -2431.0, -2431.0, 9168.0, 7991.0, -2431.0, -2431.0], [2036.0, 20534.0, 9530.0, 4864.0, -2598.0, -2598.0, 9000.0, 7823.0, -2598.0, -2598.0], [2037.0, 20450.0, 9446.0, 4780.0, -2682.0, -2682.0, 8916.0, 7740.0, -2682.0, -2682.0], [2038.0, 20366.0, 9362.0, 4696.0, -2766.0, -2766.0, 8833.0, 7656.0, -2766.0, -2766.0], [2039.0, 20366.0, 9362.0, 4696.0, -2766.0, -2766.0, 8833.0, 7656.0, -2766.0, -2766.0], [2040.0, 20282.0, 9278.0, 4612.0, -2850.0, -2850.0, 8749.0, 7572.0, -2850.0, -2850.0], [2041.0, 20282.0, 9278.0, 4612.0, -2850.0, -2850.0, 8749.0, 7572.0, -2850.0, -2850.0], [2042.0, 20282.0, 9278.0, 4612.0, -2850.0, -2850.0, 8749.0, 7572.0, -2850.0, -2850.0], [2043.0, 20198.0, 9195.0, 4528.0, -2933.0, -2933.0, 8665.0, 7488.0, -2933.0, -2933.0], [2044.0, 20198.0, 9195.0, 4528.0, -2933.0, -2933.0, 8665.0, 7488.0, -2933.0, -2933.0], [2045.0, 20282.0, 9278.0, 4612.0, -2850.0, -2850.0, 8749.0, 7572.0, -2850.0, -2850.0], [2046.0, 20282.0, 9278.0, 4612.0, -2850.0, -2850.0, 8749.0, 7572.0, -2850.0, -2850.0], [2047.0, 20366.0, 9362.0, 4696.0, -2766.0, -2766.0, 8833.0, 7656.0, -2766.0, -2766.0], [2048.0, 20366.0, 9362.0, 4696.0, -2766.0, -2766.0, 8833.0, 7656.0, -2766.0, -2766.0], [2049.0, 20450.0, 9446.0, 4780.0, -2682.0, -2682.0, 8916.0, 7740.0, -2682.0, -2682.0], [2050.0, 20534.0, 9530.0, 4864.0, -2598.0, -2598.0, 9000.0, 7823.0, -2598.0, -2598.0]])
+            year_fmat.format(consumption,0)
+            
+            
+            // plot options
+            
+            dollar=  {title: 'gallons'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var consumption_options = {'title': 'Elfin Cove: Diesel consumed for electricity generation ',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_consumption() {
+                
+                var consumption_plot = new google.visualization.LineChart(document.getElementById('consumption_chart'));
+                
+                
+                consumption_plot.draw(consumption, consumption_options);
+                return consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_consumption() {
+                var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+                consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_consumption() {
+        var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+        consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      consumption_button = document.getElementById('consumption_button')
+      consumption_button.onclick = function() {
+        if (consumption_state == plot) {
+          drawTable_consumption();
+          consumption_state = chart;
+        } else {
+          drawPlot_consumption();
+          consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  consumption_plot = drawPlot_consumption()
+      
+      document.getElementById('consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script> 
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Elfin Cove<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Elfin_Cove/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Elfin_Cove/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Elfin_Cove/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Elfin_Cove/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Elfin_Cove/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Elfin_Cove/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Elfin_Cove/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Elfin_Cove/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Elfin_Cove/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Elfin_Cove/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Elfin_Cove/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Elfin_Cove/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Elfin_Cove/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Elfin_Cove/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Elfin_Cove/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Elfin_Cove/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Elfin_Cove/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Elfin_Cove/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system<small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">Average community load (2013): 32 kW </p> <p class="stats">Average generation (2013): 279,073 kWh/year </p> <p class="stats">Peak load: Unknown </p> <p class="stats">Existing nameplate wind capacity: 0 kW </p> <p class="stats">Existing wind generation (2013): 0 kWh/year </p> <p class="stats">Estimated proposed wind generation: 0 kWh/year </p> <p class="stats">Existing nameplate solar capacity: 0 kW </p> <p class="stats">Existing solar generation (2013): 0 kWh/year </p> <p class="stats">Estimated proposed solar generation: 4,007 kWh/year </p> <p class="stats">Existing nameplate hydro capacity : 0 kW </p> <p class="stats">Existing hydro generation (2013): 0 kWh/year </p> <p class="stats">Estimated proposed hydro generation: 0 kWh/year </p>
+    </div><H3>Elfin cove (joe's creek)<small class = "hidy" data-toggle="collapse" data-target="#Elfin_Cove_Joe's_Creek"></small> </H3>
+    <div id="Elfin_Cove_Joe's_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $1,703,850 </p> <p class="stats">Lifetime savings: $748,347 </p> <p class="stats">Net lifetime savings: $-955,503 </p> <p class="stats">Benefit-cost ratio: 0.4 </p> <p class="stats">Proposed nameplate capacity: 50 kW </p> <p class="stats">Expected yearly generation: 187,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $1,401,476 </p> <p class="stats">Estimated hydro penetration level: 67.01% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-2005-0001.pdf'> link </a> </p>
+    </div><H3>Elfin cove hydroelectric permitting -- Crooked Creek<small class = "hidy" data-toggle="collapse" data-target="#Elfin_Cove_Hydroelectric_Permitting_--_Crooked_Creek"></small> </H3>
+    <div id="Elfin_Cove_Hydroelectric_Permitting_--_Crooked_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $nan </p> <p class="stats">Lifetime savings: $nan </p> <p class="stats">Net lifetime savings: $nan </p> <p class="stats">Benefit-cost ratio: nan </p> <p class="stats">Proposed nameplate capacity: 140 kW </p> <p class="stats">Expected yearly generation: 266,300 kWh/year </p> <p class="stats">Phase: Design </p> <p class="stats">Total capital cost: $nan </p> <p class="stats">Estimated hydro penetration level: 95.42% </p> <p class="stats">source: <a href='nan'> link </a> </p>
+    </div><H3>Ernie's creek (elfin cove)<small class = "hidy" data-toggle="collapse" data-target="#Ernie's_Creek_Elfin_Cove"></small> </H3>
+    <div id="Ernie's_Creek_Elfin_Cove" class="collapse in" >
+     <p class="stats">Capital cost: $6,631,604 </p> <p class="stats">Lifetime savings: $3,635,523 </p> <p class="stats">Net lifetime savings: $-2,996,082 </p> <p class="stats">Benefit-cost ratio: 0.5 </p> <p class="stats">Proposed nameplate capacity: 22,974 kW </p> <p class="stats">Expected yearly generation: 87,600,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $5,454,724 </p> <p class="stats">Estimated hydro penetration level: 31,389.64% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div><H3>Crooked creek and jim's lake (elfin cove) -- Crooked Creek, Jim's Lake<small class = "hidy" data-toggle="collapse" data-target="#Crooked_Creek_and_Jim's_Lake_Elfin_Cove_--_Crooked_Creek_Jim's_Lake"></small> </H3>
+    <div id="Crooked_Creek_and_Jim's_Lake_Elfin_Cove_--_Crooked_Creek_Jim's_Lake" class="collapse in" >
+     <p class="stats">Capital cost: $5,474,849 </p> <p class="stats">Lifetime savings: $1,324,055 </p> <p class="stats">Net lifetime savings: $-4,150,795 </p> <p class="stats">Benefit-cost ratio: 0.2 </p> <p class="stats">Proposed nameplate capacity: 200 kW </p> <p class="stats">Expected yearly generation: 716,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $4,503,253 </p> <p class="stats">Estimated hydro penetration level: 256.56% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div><H3>Crooked creek (elfin cove)<small class = "hidy" data-toggle="collapse" data-target="#Crooked_Creek_Elfin_Cove"></small> </H3>
+    <div id="Crooked_Creek_Elfin_Cove" class="collapse in" >
+     <p class="stats">Capital cost: $4,065,428 </p> <p class="stats">Lifetime savings: $368,207 </p> <p class="stats">Net lifetime savings: $-3,697,221 </p> <p class="stats">Benefit-cost ratio: 0.1 </p> <p class="stats">Proposed nameplate capacity: 120 kW </p> <p class="stats">Expected yearly generation: 196,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $3,343,955 </p> <p class="stats">Estimated hydro penetration level: 70.23% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div><H3>Roy's creek (elfin cove)<small class = "hidy" data-toggle="collapse" data-target="#Roy's_Creek_Elfin_Cove"></small> </H3>
+    <div id="Roy's_Creek_Elfin_Cove" class="collapse in" >
+     <p class="stats">Capital cost: $4,938,680 </p> <p class="stats">Lifetime savings: $322,091 </p> <p class="stats">Net lifetime savings: $-4,616,589 </p> <p class="stats">Benefit-cost ratio: 0.1 </p> <p class="stats">Proposed nameplate capacity: 100 kW </p> <p class="stats">Expected yearly generation: 216,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $4,062,235 </p> <p class="stats">Estimated hydro penetration level: 77.40% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div><H3>Wood (wood lake)<small class = "hidy" data-toggle="collapse" data-target="#Wood_Wood_Lake"></small> </H3>
+    <div id="Wood_Wood_Lake" class="collapse in" >
+     <p class="stats">Capital cost: $52,324,991 </p> <p class="stats">Lifetime savings: $-5,961,529 </p> <p class="stats">Net lifetime savings: $-58,286,520 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 1,300 kW </p> <p class="stats">Expected yearly generation: 4,956,808 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $43,039,116 </p> <p class="stats">Estimated hydro penetration level: 1,776.17% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div><H3>Elfin cove (margaret creek; 58.07', 136.20')<small class = "hidy" data-toggle="collapse" data-target="#Elfin_Cove_Margaret_Creek;_58.07'_136.20'"></small> </H3>
+    <div id="Elfin_Cove_Margaret_Creek;_58.07'_136.20'" class="collapse in" >
+     <p class="stats">Capital cost: $10,073,048 </p> <p class="stats">Lifetime savings: $431,417 </p> <p class="stats">Net lifetime savings: $-9,641,631 </p> <p class="stats">Benefit-cost ratio: 0.0 </p> <p class="stats">Proposed nameplate capacity: 310 kW </p> <p class="stats">Expected yearly generation: 538,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $8,285,430 </p> <p class="stats">Estimated hydro penetration level: 192.78% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential electricity generation from diesel that could be offset by installing new Hydropower generation infrastructure. Requires that at least a reconnaissance-level heat recovery study has been completed for the community to be run. 
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Elfin_Cove_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Elfin_Cove_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 0.27.1, Generated from Model Version 0.27.3 and Data Version 0.27.0 on 2017-06-14</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

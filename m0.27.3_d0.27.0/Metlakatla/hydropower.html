@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Metlakatla - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Melanson lake (melanson creek)', type: 'number'}, {label: 'Myrtle creek (niblack lake)', type: 'number'}, {label: 'Collinson creek (moira sound, unnamed stream)', type: 'number'}, {label: 'Kegan creek', type: 'number'}, {label: 'Triangle lake (annette island)', type: 'number'}, {label: 'Weigle (weigle creek)', type: 'number'}, {label: 'Paul lake (tunnel creek)', type: 'number'}, {label: 'Tamgas lake  (tamgas creek)', type: 'number'}, {label: 'Triangle lake hydroelectric project', type: 'number'}], [2021.0, 0.0, 477329.0, 4152923.0, 802964.0, 3937084.0, 5710338.0, 2537382.0, 1131827.0, 567697.0, null], [2022.0, 0.0, 476945.0, 4149747.0, 802939.0, 3934172.0, 5706520.0, 2535794.0, 1131430.0, 567300.0, null], [2023.0, 0.0, 476722.0, 4147894.0, 802924.0, 3932474.0, 5704293.0, 2534868.0, 1131199.0, 567069.0, null], [2024.0, 0.0, 476498.0, 4146042.0, 802909.0, 3930776.0, 5702066.0, 2533941.0, 1130967.0, 566837.0, null], [2025.0, 0.0, 476274.0, 4144189.0, 802895.0, 3929077.0, 5699839.0, 2533015.0, 1130736.0, 566606.0, null], [2026.0, 0.0, 475986.0, 4141807.0, 802876.0, 3926894.0, 5696976.0, 2531824.0, 1130438.0, 566308.0, null], [2027.0, 0.0, 475730.0, 4139690.0, 802859.0, 3924953.0, 5694431.0, 2530765.0, 1130173.0, 566043.0, null], [2028.0, 0.0, 475506.0, 4137837.0, 802844.0, 3923255.0, 5692204.0, 2529839.0, 1129942.0, 565812.0, null], [2029.0, 0.0, 475218.0, 4135455.0, 802825.0, 3921071.0, 5689340.0, 2528648.0, 1129644.0, 565514.0, null], [2030.0, 0.0, 475059.0, 4134132.0, 802815.0, 3919858.0, 5687750.0, 2527986.0, 1129478.0, 565349.0, null], [2031.0, 0.0, 474739.0, 4131485.0, 802794.0, 3917432.0, 5684568.0, 2526663.0, 1129148.0, 565018.0, null], [2032.0, 0.0, 474451.0, 4129103.0, 802775.0, 3915249.0, 5681705.0, 2525472.0, 1128850.0, 564720.0, null], [2033.0, 0.0, 474131.0, 4126456.0, 802754.0, 3912822.0, 5678523.0, 2524149.0, 1128519.0, 564389.0, null], [2034.0, 0.0, 473811.0, 4123810.0, 802733.0, 3910396.0, 5675342.0, 2522825.0, 1128188.0, 564058.0, null], [2035.0, 0.0, 473587.0, 4121957.0, 802719.0, 3908698.0, 5673115.0, 2521899.0, 1127957.0, 563827.0, null], [2036.0, 0.0, 473236.0, 4119046.0, 802695.0, 3906029.0, 5669615.0, 2520443.0, 1127593.0, 563463.0, null], [2037.0, 0.0, 473044.0, 4117458.0, 802683.0, 3904574.0, 5667707.0, 2519649.0, 1127394.0, 563264.0, null], [2038.0, 0.0, 472692.0, 4114546.0, 802660.0, 3901905.0, 5664207.0, 2518194.0, 1127030.0, 562900.0, null], [2039.0, 0.0, 472436.0, 4112429.0, 802643.0, 3899964.0, 5661662.0, 2517135.0, 1126766.0, 562636.0, null], [2040.0, 0.0, 472084.0, 4109517.0, 802620.0, 3897295.0, 5658162.0, 2515679.0, 1126402.0, 562272.0, null], [2041.0, 0.0, 472084.0, 4109517.0, 802620.0, 3897295.0, 5658162.0, 2515679.0, 1126402.0, 562272.0, null], [2042.0, 0.0, 472084.0, 4109517.0, 802620.0, 3897295.0, 5658162.0, 2515679.0, 1126402.0, 562272.0, null], [2043.0, 0.0, 472084.0, 4109517.0, 802620.0, 3897295.0, 5658162.0, 2515679.0, 1126402.0, 562272.0, null], [2044.0, 0.0, 472084.0, 4109517.0, 802620.0, 3897295.0, 5658162.0, 2515679.0, 1126402.0, 562272.0, null], [2045.0, 0.0, 472084.0, 4109517.0, 802620.0, 3897295.0, 5658162.0, 2515679.0, 1126402.0, 562272.0, null], [2046.0, 0.0, 472084.0, 4109517.0, 802620.0, 3897295.0, 5658162.0, 2515679.0, 1126402.0, 562272.0, null], [2047.0, 0.0, 472084.0, 4109517.0, 802620.0, 3897295.0, 5658162.0, 2515679.0, 1126402.0, 562272.0, null], [2048.0, 0.0, 472084.0, 4109517.0, 802620.0, 3897295.0, 5658162.0, 2515679.0, 1126402.0, 562272.0, null], [2049.0, 0.0, 472084.0, 4109517.0, 802620.0, 3897295.0, 5658162.0, 2515679.0, 1126402.0, 562272.0, null], [2050.0, 0.0, 472084.0, 4109517.0, 802620.0, 3897295.0, 5658162.0, 2515679.0, 1126402.0, 562272.0, null]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: '$#,###'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Metlakatla: Estimated electricity generation costs per year',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.LineChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Estimated Electricity Generation Costs per Year','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Estimated Electricity Generation Costs per Year','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var consumption = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Melanson lake (melanson creek)', type: 'number'}, {label: 'Myrtle creek (niblack lake)', type: 'number'}, {label: 'Collinson creek (moira sound, unnamed stream)', type: 'number'}, {label: 'Kegan creek', type: 'number'}, {label: 'Triangle lake (annette island)', type: 'number'}, {label: 'Weigle (weigle creek)', type: 'number'}, {label: 'Paul lake (tunnel creek)', type: 'number'}, {label: 'Tamgas lake  (tamgas creek)', type: 'number'}, {label: 'Triangle lake hydroelectric project', type: 'number'}], [2021.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2022.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2023.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2024.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2025.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2026.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2027.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2028.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2029.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2030.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2031.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2032.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2033.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2034.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2035.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2036.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2037.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2038.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2039.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2040.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2041.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2042.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2043.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2044.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2045.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2046.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2047.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2048.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2049.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2050.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]])
+            year_fmat.format(consumption,0)
+            
+            
+            // plot options
+            
+            dollar=  {title: 'gallons'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var consumption_options = {'title': 'Metlakatla: Diesel consumed for electricity generation ',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_consumption() {
+                
+                var consumption_plot = new google.visualization.LineChart(document.getElementById('consumption_chart'));
+                
+                
+                consumption_plot.draw(consumption, consumption_options);
+                return consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_consumption() {
+                var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+                consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_consumption() {
+        var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+        consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      consumption_button = document.getElementById('consumption_button')
+      consumption_button.onclick = function() {
+        if (consumption_state == plot) {
+          drawTable_consumption();
+          consumption_state = chart;
+        } else {
+          drawPlot_consumption();
+          consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  consumption_plot = drawPlot_consumption()
+      
+      document.getElementById('consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script> 
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Metlakatla<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Metlakatla/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Metlakatla/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Metlakatla/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Metlakatla/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Metlakatla/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Metlakatla/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Metlakatla/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Metlakatla/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Metlakatla/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Metlakatla/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Metlakatla/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Metlakatla/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Metlakatla/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Metlakatla/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Metlakatla/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Metlakatla/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Metlakatla/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Metlakatla/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system<small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">Average community load (2014): 2,469 kW </p> <p class="stats">Average generation (2014): 21,626,000 kWh/year </p> <p class="stats">Peak load: Unknown </p> <p class="stats">Existing nameplate wind capacity: 0 kW </p> <p class="stats">Existing wind generation (2014): 0 kWh/year </p> <p class="stats">Estimated proposed wind generation: 0 kWh/year </p> <p class="stats">Existing nameplate solar capacity: 0 kW </p> <p class="stats">Existing solar generation (2014): 0 kWh/year </p> <p class="stats">Estimated proposed solar generation: 0 kWh/year </p> <p class="stats">Existing nameplate hydro capacity : 5,000 kW </p> <p class="stats">Existing hydro generation (2014): 21,626,000 kWh/year </p> <p class="stats">Estimated proposed hydro generation: 21,036,690 kWh/year </p>
+    </div><H3>Melanson lake (melanson creek)<small class = "hidy" data-toggle="collapse" data-target="#Melanson_Lake_Melanson_Creek"></small> </H3>
+    <div id="Melanson_Lake_Melanson_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $9,185,659 </p> <p class="stats">Lifetime savings: $-1,330,019 </p> <p class="stats">Net lifetime savings: $-10,515,678 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 290 kW </p> <p class="stats">Expected yearly generation: 1,105,749 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $7,555,523 </p> <p class="stats">Estimated hydro penetration level: 5.11% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Myrtle creek (niblack lake)<small class = "hidy" data-toggle="collapse" data-target="#Myrtle_Creek_Niblack_Lake"></small> </H3>
+    <div id="Myrtle_Creek_Niblack_Lake" class="collapse in" >
+     <p class="stats">Capital cost: $79,821,957 </p> <p class="stats">Lifetime savings: $-11,701,274 </p> <p class="stats">Net lifetime savings: $-91,523,231 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 2,400 kW </p> <p class="stats">Expected yearly generation: 9,151,030 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $65,656,322 </p> <p class="stats">Estimated hydro penetration level: 42.31% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1979-0373.pdf'> link </a> </p>
+    </div><H3>Collinson creek (moira sound, unnamed stream)<small class = "hidy" data-toggle="collapse" data-target="#Collinson_Creek_Moira_Sound_unnamed_stream"></small> </H3>
+    <div id="Collinson_Creek_Moira_Sound_unnamed_stream" class="collapse in" >
+     <p class="stats">Capital cost: $15,085,197 </p> <p class="stats">Lifetime savings: $-2,731,214 </p> <p class="stats">Net lifetime savings: $-17,816,411 </p> <p class="stats">Benefit-cost ratio: -0.2 </p> <p class="stats">Proposed nameplate capacity: 19 kW </p> <p class="stats">Expected yearly generation: 72,446 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $12,408,096 </p> <p class="stats">Estimated hydro penetration level: 0.33% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1980-0226.pdf'> link </a> </p>
+    </div><H3>Kegan creek<small class = "hidy" data-toggle="collapse" data-target="#Kegan_Creek"></small> </H3>
+    <div id="Kegan_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $75,614,476 </p> <p class="stats">Lifetime savings: $-11,172,406 </p> <p class="stats">Net lifetime savings: $-86,786,882 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 2,200 kW </p> <p class="stats">Expected yearly generation: 8,388,444 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $62,195,523 </p> <p class="stats">Estimated hydro penetration level: 38.79% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1983-0372.pdf'> link </a> </p>
+    </div><H3>Triangle lake (annette island)<small class = "hidy" data-toggle="collapse" data-target="#Triangle_Lake_Annette_Island"></small> </H3>
+    <div id="Triangle_Lake_Annette_Island" class="collapse in" >
+     <p class="stats">Capital cost: $109,431,627 </p> <p class="stats">Lifetime savings: $-16,526,714 </p> <p class="stats">Net lifetime savings: $-125,958,341 </p> <p class="stats">Benefit-cost ratio: -0.2 </p> <p class="stats">Proposed nameplate capacity: 2,885 kW </p> <p class="stats">Expected yearly generation: 11,000,000 kWh/year </p> <p class="stats">Phase: Feasibility </p> <p class="stats">Total capital cost: $90,011,300 </p> <p class="stats">Estimated hydro penetration level: 50.86% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1982-0131.pdf'> link </a> </p>
+    </div><H3>Weigle (weigle creek)<small class = "hidy" data-toggle="collapse" data-target="#Weigle_Weigle_Creek"></small> </H3>
+    <div id="Weigle_Weigle_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $48,561,708 </p> <p class="stats">Lifetime savings: $-7,429,908 </p> <p class="stats">Net lifetime savings: $-55,991,616 </p> <p class="stats">Benefit-cost ratio: -0.2 </p> <p class="stats">Proposed nameplate capacity: 1,200 kW </p> <p class="stats">Expected yearly generation: 4,575,515 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $39,943,685 </p> <p class="stats">Estimated hydro penetration level: 21.16% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Paul lake (tunnel creek)<small class = "hidy" data-toggle="collapse" data-target="#Paul_Lake_Tunnel_Creek"></small> </H3>
+    <div id="Paul_Lake_Tunnel_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $21,477,355 </p> <p class="stats">Lifetime savings: $-3,562,020 </p> <p class="stats">Net lifetime savings: $-25,039,375 </p> <p class="stats">Benefit-cost ratio: -0.2 </p> <p class="stats">Proposed nameplate capacity: 300 kW </p> <p class="stats">Expected yearly generation: 1,143,879 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $17,665,868 </p> <p class="stats">Estimated hydro penetration level: 5.29% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1979-0373.pdf'> link </a> </p>
+    </div><H3>Tamgas lake  (tamgas creek)<small class = "hidy" data-toggle="collapse" data-target="#Tamgas_Lake__Tamgas_Creek"></small> </H3>
+    <div id="Tamgas_Lake__Tamgas_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $10,889,552 </p> <p class="stats">Lifetime savings: $-1,629,118 </p> <p class="stats">Net lifetime savings: $-12,518,670 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 300 kW </p> <p class="stats">Expected yearly generation: 1,143,879 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $8,957,033 </p> <p class="stats">Estimated hydro penetration level: 5.29% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Triangle lake hydroelectric project<small class = "hidy" data-toggle="collapse" data-target="#Triangle_Lake_Hydroelectric_Project"></small> </H3>
+    <div id="Triangle_Lake_Hydroelectric_Project" class="collapse in" >
+     <p class="stats">Capital cost: $nan </p> <p class="stats">Lifetime savings: $nan </p> <p class="stats">Net lifetime savings: $nan </p> <p class="stats">Benefit-cost ratio: nan </p> <p class="stats">Proposed nameplate capacity: 5,400 kW </p> <p class="stats">Expected yearly generation: 21,700,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $nan </p> <p class="stats">Estimated hydro penetration level: 100.34% </p> <p class="stats">source: <a href='nan'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential electricity generation from diesel that could be offset by installing new Hydropower generation infrastructure. Requires that at least a reconnaissance-level heat recovery study has been completed for the community to be run. 
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Metlakatla_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Metlakatla_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 0.27.1, Generated from Model Version 0.27.3 and Data Version 0.27.0 on 2017-06-14</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

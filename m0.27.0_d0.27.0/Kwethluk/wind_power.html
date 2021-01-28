@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Kwethluk - Wind Power summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Kwethluk wind feasibility', type: 'number'}, {label: 'Modeled wind power', type: 'number'}], [2019.0, 384936.0, 525447.0, 599729.0], [2020.0, 410137.0, 543852.0, 616682.0], [2021.0, 430017.0, 557800.0, 629164.0], [2022.0, 443883.0, 566595.0, 636480.0], [2023.0, 455304.0, 573339.0, 641761.0], [2024.0, 464229.0, 577977.0, 644952.0], [2025.0, 474668.0, 584054.0, 649626.0], [2026.0, 487814.0, 592603.0, 656829.0], [2027.0, 499689.0, 600266.0, 663159.0], [2028.0, 509557.0, 606151.0, 667733.0], [2029.0, 522396.0, 614614.0, 674948.0], [2030.0, 530919.0, 619450.0, 678527.0], [2031.0, 544264.0, 628556.0, 686447.0], [2032.0, 558057.0, 638176.0, 694911.0], [2033.0, 572316.0, 648327.0, 703936.0], [2034.0, 587564.0, 659375.0, 713897.0], [2035.0, 598071.0, 666367.0, 719788.0], [2036.0, 613557.0, 677775.0, 730164.0], [2037.0, 625735.0, 686557.0, 737899.0], [2038.0, 640246.0, 697263.0, 747616.0]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: '$#,###'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Kwethluk: Estimated electricity generation costs per year',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.LineChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Estimated Electricity Generation Costs per Year','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Estimated Electricity Generation Costs per Year','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var consumption = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Kwethluk wind feasibility', type: 'number'}, {label: 'Modeled wind power', type: 'number'}], [2019.0, 111253.0, 93002.0, 94221.0], [2020.0, 112059.0, 93808.0, 95027.0], [2021.0, 112865.0, 94615.0, 95833.0], [2022.0, 113525.0, 95274.0, 96493.0], [2023.0, 114111.0, 95861.0, 97079.0], [2024.0, 114624.0, 96374.0, 97592.0], [2025.0, 115211.0, 96960.0, 98178.0], [2026.0, 115870.0, 97620.0, 98838.0], [2027.0, 116750.0, 98499.0, 99717.0], [2028.0, 117409.0, 99159.0, 100377.0], [2029.0, 117922.0, 99672.0, 100890.0], [2030.0, 118509.0, 100258.0, 101476.0], [2031.0, 119095.0, 100844.0, 102063.0], [2032.0, 119755.0, 101504.0, 102722.0], [2033.0, 120488.0, 102237.0, 103455.0], [2034.0, 121147.0, 102896.0, 104115.0], [2035.0, 121807.0, 103556.0, 104774.0], [2036.0, 122466.0, 104216.0, 105434.0], [2037.0, 123419.0, 105168.0, 106387.0], [2038.0, 124079.0, 105828.0, 107046.0]])
+            year_fmat.format(consumption,0)
+            
+            
+            // plot options
+            
+            dollar=  {title: 'gallons'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var consumption_options = {'title': 'Kwethluk: Diesel consumed for electricity generation ',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_consumption() {
+                
+                var consumption_plot = new google.visualization.LineChart(document.getElementById('consumption_chart'));
+                
+                
+                consumption_plot.draw(consumption, consumption_options);
+                return consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_consumption() {
+                var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+                consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_consumption() {
+        var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+        consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      consumption_button = document.getElementById('consumption_button')
+      consumption_button.onclick = function() {
+        if (consumption_state == plot) {
+          drawTable_consumption();
+          consumption_state = chart;
+        } else {
+          drawPlot_consumption();
+          consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  consumption_plot = drawPlot_consumption()
+      
+      document.getElementById('consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script> 
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Kwethluk<span class="page-subtitle"> Wind Power</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Kwethluk/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Kwethluk/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Kwethluk/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Kwethluk/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Kwethluk/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Kwethluk/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Kwethluk/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Kwethluk/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Kwethluk/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Kwethluk/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Kwethluk/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Kwethluk/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Kwethluk/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Kwethluk/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Kwethluk/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Kwethluk/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Kwethluk/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Kwethluk/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system<small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">Average community load (2013): 170 kW </p> <p class="stats">Average generation (2013): 1,490,688 kWh/year </p> <p class="stats">Peak load: Unknown </p> <p class="stats">Existing nameplate wind capacity: 0 kW </p> <p class="stats">Existing wind generation (2013): 0 kWh/year </p> <p class="stats">Estimated proposed wind generation: 0 kWh/year </p> <p class="stats">Existing nameplate solar capacity: 0 kW </p> <p class="stats">Existing solar generation (2013): 0 kWh/year </p> <p class="stats">Estimated proposed solar generation: 22,468 kWh/year </p> <p class="stats">Existing nameplate hydro capacity : 0 kW </p> <p class="stats">Existing hydro generation (2013): 0 kWh/year </p> <p class="stats">Estimated proposed hydro generation: 0 kWh/year </p>
+    </div><H3>Modeled wind power<small class = "hidy" data-toggle="collapse" data-target="#Modeled_Wind_Power"></small> </H3>
+    <div id="Modeled_Wind_Power" class="collapse in" >
+     <p class="stats">Capital cost: $2,560,993 </p> <p class="stats">Lifetime savings: $348,880 </p> <p class="stats">Net lifetime savings: $-2,212,113 </p> <p class="stats">Benefit-cost ratio: 0.1 </p> <p class="stats">Proposed mameplate Capacity: 250 kW </p> <p class="stats">Expected Yearly Generation: 2,190,000 kWh/year </p> <p class="stats">Estimated wind lass: 2 </p> <p class="stats">Estimated Capacity Factor: 0.15 </p> <p class="stats">Estimated wind penetration level: 22.04% </p> <p class="stats">Notes: None </p> <p class="stats">source: unknown </p>
+    </div><H3>Kwethluk wind project 0<small class = "hidy" data-toggle="collapse" data-target="#Kwethluk_wind_project_0"></small> </H3>
+    <div id="Kwethluk_wind_project_0" class="collapse in" >
+     <p class="stats">Capital cost: $1,765,969 </p> <p class="stats">Lifetime savings: $407,861 </p> <p class="stats">Net lifetime savings: $-1,358,108 </p> <p class="stats">Benefit-cost ratio: 0.2 </p> <p class="stats">Proposed mameplate Capacity: 150 kW </p> <p class="stats">Expected Yearly Generation: 1,314,000 kWh/year </p> <p class="stats">Estimated wind lass: 2 </p> <p class="stats">Estimated Capacity Factor: 0.15 </p> <p class="stats">Estimated wind penetration level: 23.61% </p> <p class="stats">Notes: nan </p> <p class="stats">source: <a href='nan'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+   This component calculates the potential electricity generation from diesel offset by installing new wind power infrastructure. 
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Kwethluk_Wind_Power_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Kwethluk_Wind_Power_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 0.27.0, Generated from Model Version 0.27.0 and Data Version 0.27.0 on 2017-06-12</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

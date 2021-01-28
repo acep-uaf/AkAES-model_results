@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>King_Cove - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Belkovski, belkofski (unnamed stream, site #7) -- unnamed creek', type: 'number'}, {label: 'King cove (ram creek, north branch)', type: 'number'}, {label: 'King cove (unnamed  creek, sw)', type: 'number'}, {label: 'King cove (unnamed creek, ne)', type: 'number'}, {label: 'Waterfall creek hydroelectric construction project', type: 'number'}], [2018.0, 480635.0, null, null, null, null, 823844.0], [2019.0, 562172.0, null, null, null, null, 885430.0], [2020.0, 602508.0, null, null, null, null, 911874.0], [2021.0, 627307.0, 1079928.0, 723620.0, 904700.0, 1026968.0, 925130.0], [2022.0, 647945.0, 1085025.0, 741251.0, 914256.0, 1020833.0, 935026.0], [2023.0, 661881.0, 1084949.0, 752447.0, 918351.0, 1011891.0, 939326.0], [2024.0, 671492.0, 1081647.0, 759512.0, 919001.0, 1001328.0, 940092.0], [2025.0, 685113.0, 1081768.0, 770496.0, 923122.0, 992747.0, 944423.0], [2026.0, 700344.0, 1083326.0, 783070.0, 928663.0, 984922.0, 950223.0], [2027.0, 713128.0, 1083099.0, 793317.0, 932271.0, 976149.0, 954046.0], [2028.0, 723468.0, 1081084.0, 801238.0, 933946.0, 966425.0, 955894.0], [2029.0, 736076.0, 1081148.0, 811403.0, 937690.0, 958093.0, 959857.0], [2030.0, 744638.0, 1078231.0, 817710.0, 938245.0, 948374.0, 960544.0], [2031.0, 758425.0, 1079497.0, 829073.0, 943108.0, 940625.0, 965677.0], [2032.0, 773124.0, 1081471.0, 841322.0, 948672.0, 932893.0, 971559.0], [2033.0, 787356.0, 1083186.0, 853145.0, 953908.0, 924969.0, 977115.0], [2034.0, 801100.0, 1084619.0, 864523.0, 958793.0, 916828.0, 982322.0], [2035.0, 806707.0, 1079796.0, 868087.0, 957090.0, 905537.0, 980761.0], [2036.0, 822373.0, 1083124.0, 881395.0, 963804.0, 898658.0, 987848.0], [2037.0, 827968.0, 1078675.0, 885026.0, 962347.0, 887865.0, 986536.0], [2038.0, 841212.0, 1080379.0, 896059.0, 967244.0, 880243.0, 991764.0], [2039.0, 851942.0, 1080172.0, 904687.0, 970103.0, 871527.0, 994909.0], [2040.0, 866140.0, 1082769.0, 916677.0, 975839.0, 864152.0, 1001025.0], [2041.0, 860340.0, 1069744.0, 909412.0, 965235.0, 848817.0, 990346.0], [2042.0, 854844.0, 1057195.0, 902486.0, 955048.0, 834010.0, 980087.0], [2043.0, 849349.0, 1044811.0, 895594.0, 944972.0, 819421.0, 969940.0], [2044.0, 844159.0, 1032893.0, 889040.0, 935308.0, 805351.0, 960206.0], [2045.0, 838969.0, 1021133.0, 882518.0, 925749.0, 791489.0, 950580.0], [2046.0, 833473.0, 1009222.0, 875722.0, 915987.0, 777525.0, 940752.0], [2047.0, 828283.0, 997767.0, 869261.0, 906630.0, 764065.0, 931331.0], [2048.0, 823398.0, 986763.0, 863136.0, 897677.0, 751104.0, 922314.0], [2049.0, 818514.0, 975903.0, 857040.0, 888818.0, 738332.0, 913394.0], [2050.0, 813934.0, 965489.0, 851277.0, 880359.0, 726050.0, 904874.0], [2051.0, 813934.0, 959790.0, 850122.0, 876569.0, 718528.0, 901026.0], [2052.0, 813934.0, 954226.0, 848994.0, 872869.0, 711183.0, 897268.0], [2053.0, 813934.0, 948791.0, 847892.0, 869255.0, 704010.0, 893598.0], [2054.0, 813934.0, 943484.0, 846816.0, 865725.0, 697005.0, 890014.0], [2055.0, 813934.0, 938302.0, 845765.0, 862279.0, 690164.0, 886514.0], [2056.0, 813934.0, 933241.0, 844739.0, 858913.0, 683483.0, 883097.0], [2057.0, 813934.0, 928298.0, 843737.0, 855626.0, 676959.0, 879759.0], [2058.0, 813934.0, 923471.0, 842758.0, 852417.0, 670588.0, 876499.0], [2059.0, 813934.0, 918758.0, 841802.0, 849282.0, 664366.0, 873316.0], [2060.0, 813934.0, 914155.0, 840869.0, 846221.0, 658290.0, 870208.0], [2061.0, 813934.0, 909660.0, 839958.0, 843232.0, 652357.0, 867172.0], [2062.0, 813934.0, 905270.0, 839068.0, 840312.0, 646562.0, 864208.0], [2063.0, 813934.0, 900983.0, 838199.0, 837462.0, 640904.0, 861313.0], [2064.0, 813934.0, 896796.0, 837350.0, 834678.0, 635377.0, 858485.0], [2065.0, 813934.0, 892708.0, 836521.0, 831959.0, 629981.0, 855725.0], [2066.0, 813934.0, 888715.0, 835711.0, 829304.0, 624711.0, 853028.0], [2067.0, 813934.0, 884816.0, 834921.0, 826711.0, 619564.0, 850395.0], [2068.0, 813934.0, 881009.0, 834149.0, 824179.0, 614538.0, null], [2069.0, 813934.0, 877291.0, 833395.0, 821706.0, 609630.0, null], [2070.0, 813934.0, 873659.0, 832659.0, 819291.0, 604837.0, null]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: '$#,###'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'King Cove: Estimated electricity generation fuel costs per year',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.LineChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Estimated Electricity Generation Fuel Costs per Year','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Estimated Electricity Generation Fuel Costs per Year','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var consumption = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Belkovski, belkofski (unnamed stream, site #7) -- unnamed creek', type: 'number'}, {label: 'King cove (ram creek, north branch)', type: 'number'}, {label: 'King cove (unnamed  creek, sw)', type: 'number'}, {label: 'King cove (unnamed creek, ne)', type: 'number'}, {label: 'Waterfall creek hydroelectric construction project', type: 'number'}], [2018.0, 215532.0, null, null, null, null, 181382.0], [2019.0, 215391.0, null, null, null, null, 181242.0], [2020.0, 215181.0, null, null, null, null, 181032.0], [2021.0, 214831.0, 168325.0, 206993.0, 175640.0, 84195.0, 180682.0], [2022.0, 214551.0, 168045.0, 206713.0, 175360.0, 83915.0, 180402.0], [2023.0, 214201.0, 167694.0, 206363.0, 175010.0, 83565.0, 180052.0], [2024.0, 213851.0, 167344.0, 206013.0, 174660.0, 83214.0, 179701.0], [2025.0, 213431.0, 166924.0, 205593.0, 174240.0, 82794.0, 179281.0], [2026.0, 212871.0, 166364.0, 205032.0, 173680.0, 82234.0, 178721.0], [2027.0, 212240.0, 165734.0, 204402.0, 173049.0, 81604.0, 178091.0], [2028.0, 211540.0, 165034.0, 203702.0, 172349.0, 80904.0, 177391.0], [2029.0, 210910.0, 164403.0, 203072.0, 171719.0, 80273.0, 176761.0], [2030.0, 210350.0, 163843.0, 202512.0, 171159.0, 79713.0, 176200.0], [2031.0, 209510.0, 163003.0, 201671.0, 170319.0, 78873.0, 175360.0], [2032.0, 208389.0, 161883.0, 200551.0, 169198.0, 77753.0, 174240.0], [2033.0, 207199.0, 160692.0, 199361.0, 168008.0, 76562.0, 173049.0], [2034.0, 205938.0, 159432.0, 198100.0, 166747.0, 75302.0, 171789.0], [2035.0, 204748.0, 158241.0, 196910.0, 165557.0, 74111.0, 170599.0], [2036.0, 203558.0, 157051.0, 195719.0, 164367.0, 72921.0, 169408.0], [2037.0, 202437.0, 155931.0, 194599.0, 163246.0, 71801.0, 168288.0], [2038.0, 201247.0, 154740.0, 193409.0, 162056.0, 70610.0, 167097.0], [2039.0, 199986.0, 153480.0, 192148.0, 160796.0, 69350.0, 165837.0], [2040.0, 198656.0, 152149.0, 190818.0, 159465.0, 68019.0, 164507.0], [2041.0, 197326.0, 150819.0, 189487.0, 158135.0, 66689.0, 163176.0], [2042.0, 196065.0, 149559.0, 188227.0, 156874.0, 65429.0, 161916.0], [2043.0, 194805.0, 148298.0, 186967.0, 155614.0, 64168.0, 160655.0], [2044.0, 193614.0, 147108.0, 185776.0, 154423.0, 62978.0, 159465.0], [2045.0, 192424.0, 145917.0, 184586.0, 153233.0, 61787.0, 158274.0], [2046.0, 191164.0, 144657.0, 183325.0, 151973.0, 60527.0, 157014.0], [2047.0, 189973.0, 143467.0, 182135.0, 150782.0, 59337.0, 155824.0], [2048.0, 188853.0, 142346.0, 181015.0, 149662.0, 58216.0, 154703.0], [2049.0, 187732.0, 141226.0, 179894.0, 148542.0, 57096.0, 153583.0], [2050.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, 152533.0], [2051.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, 152533.0], [2052.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, 152533.0], [2053.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, 152533.0], [2054.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, 152533.0], [2055.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, 152533.0], [2056.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, 152533.0], [2057.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, 152533.0], [2058.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, 152533.0], [2059.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, 152533.0], [2060.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, 152533.0], [2061.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, 152533.0], [2062.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, 152533.0], [2063.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, 152533.0], [2064.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, 152533.0], [2065.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, 152533.0], [2066.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, 152533.0], [2067.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, 152533.0], [2068.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, null], [2069.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, null], [2070.0, 186682.0, 140176.0, 178844.0, 147491.0, 56046.0, null]])
+            year_fmat.format(consumption,0)
+            
+            
+            // plot options
+            
+            dollar=  {title: 'gallons'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var consumption_options = {'title': 'King Cove: Diesel consumed for electricity generation ',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_consumption() {
+                
+                var consumption_plot = new google.visualization.LineChart(document.getElementById('consumption_chart'));
+                
+                
+                consumption_plot.draw(consumption, consumption_options);
+                return consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_consumption() {
+                var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+                consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_consumption() {
+        var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+        consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      consumption_button = document.getElementById('consumption_button')
+      consumption_button.onclick = function() {
+        if (consumption_state == plot) {
+          drawTable_consumption();
+          consumption_state = chart;
+        } else {
+          drawPlot_consumption();
+          consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  consumption_plot = drawPlot_consumption()
+      
+      document.getElementById('consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script> 
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">King Cove<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../King_Cove/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../King_Cove/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../King_Cove/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../King_Cove/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../King_Cove/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../King_Cove/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../King_Cove/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../King_Cove/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../King_Cove/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../King_Cove/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../King_Cove/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../King_Cove/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../King_Cove/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../King_Cove/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../King_Cove/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../King_Cove/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../King_Cove/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../King_Cove/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system <small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">Average Community Load (kW)(2013): 525 </p> <p class="stats">Average kWh/year(2013): 4,596,709 </p> <p class="stats">Peak Load: Unknown </p> <p class="stats">Existing nameplate wind capacity (kW): 0 </p> <p class="stats">Existing wind generation (kWh/year)(2013): 0 </p> <p class="stats">Existing nameplate solar capacity (kW): 0.0 </p> <p class="stats">Existing solar generation (kWh/year)(2013): 0 </p> <p class="stats">Existing nameplate hydro capacity (kW): 800.0 </p> <p class="stats">Existing hydro generation (kWh/year)(2013): 1,997,981 </p>
+    </div><H3>Belkovski, belkofski (unnamed stream, site #7) -- unnamed creek <small class = "hidy" data-toggle="collapse" data-target="#Belkovski_Belkofski_unnamed_stream_site_7_--_Unnamed_Creek"></small> </H3>
+    <div id="Belkovski_Belkofski_unnamed_stream_site_7_--_Unnamed_Creek" class="collapse in" >
+     <p class="stats">Capital Cost ($): $7,263,284 </p> <p class="stats">Lifetime Savings ($): $1,593,467 </p> <p class="stats">Net Lifetime Savings ($): $-5,669,818 </p> <p class="stats">Benefit Cost Ratio: 0.219 </p> <p class="stats">Proposed Nameplate Capacity(kW): 178 </p> <p class="stats">Expected Yearly Generation (kWh/year): 981,599 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $10,179,794 </p> <p class="stats">Estimated Hydro Penetration Level (%): 21.35% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1980-0226.pdf'> link </a> </p>
+    </div><H3>King cove (ram creek, north branch) <small class = "hidy" data-toggle="collapse" data-target="#King_Cove_Ram_Creek_North_Branch"></small> </H3>
+    <div id="King_Cove_Ram_Creek_North_Branch" class="collapse in" >
+     <p class="stats">Capital Cost ($): $1,472,629 </p> <p class="stats">Lifetime Savings ($): $191,268 </p> <p class="stats">Net Lifetime Savings ($): $-1,281,361 </p> <p class="stats">Benefit Cost Ratio: 0.130 </p> <p class="stats">Proposed Nameplate Capacity(kW): 30 </p> <p class="stats">Expected Yearly Generation (kWh/year): 165,438 </p> <p class="stats">Phase: Feasibility </p> <p class="stats">Total Capital Cost: $2,063,951 </p> <p class="stats">Estimated Hydro Penetration Level (%): 3.60% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1983-0372.pdf'> link </a> </p>
+    </div><H3>King cove (unnamed  creek, sw) <small class = "hidy" data-toggle="collapse" data-target="#King_Cove_Unnamed__Creek_SW"></small> </H3>
+    <div id="King_Cove_Unnamed__Creek_SW" class="collapse in" >
+     <p class="stats">Capital Cost ($): $4,830,130 </p> <p class="stats">Lifetime Savings ($): $1,744,278 </p> <p class="stats">Net Lifetime Savings ($): $-3,085,852 </p> <p class="stats">Benefit Cost Ratio: 0.361 </p> <p class="stats">Proposed Nameplate Capacity(kW): 150 </p> <p class="stats">Expected Yearly Generation (kWh/year): 827,190 </p> <p class="stats">Phase: Feasibility </p> <p class="stats">Total Capital Cost: $6,769,628 </p> <p class="stats">Estimated Hydro Penetration Level (%): 18.00% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1983-0372.pdf'> link </a> </p>
+    </div><H3>King cove (unnamed creek, ne) <small class = "hidy" data-toggle="collapse" data-target="#King_Cove_Unnamed_Creek_NE"></small> </H3>
+    <div id="King_Cove_Unnamed_Creek_NE" class="collapse in" >
+     <p class="stats">Capital Cost ($): $9,587,387 </p> <p class="stats">Lifetime Savings ($): $7,840,263 </p> <p class="stats">Net Lifetime Savings ($): $-1,747,125 </p> <p class="stats">Benefit Cost Ratio: 0.818 </p> <p class="stats">Proposed Nameplate Capacity(kW): 500 </p> <p class="stats">Expected Yearly Generation (kWh/year): 2,757,301 </p> <p class="stats">Phase: Feasibility </p> <p class="stats">Total Capital Cost: $13,437,121 </p> <p class="stats">Estimated Hydro Penetration Level (%): 59.98% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1983-0372.pdf'> link </a> </p>
+    </div><H3>Waterfall creek hydroelectric construction project <small class = "hidy" data-toggle="collapse" data-target="#Waterfall_Creek_Hydroelectric_Construction_Project"></small> </H3>
+    <div id="Waterfall_Creek_Hydroelectric_Construction_Project" class="collapse in" >
+     <p class="stats">Capital Cost ($): $5,755,017 </p> <p class="stats">Lifetime Savings ($): $1,304,372 </p> <p class="stats">Net Lifetime Savings ($): $-4,450,645 </p> <p class="stats">Benefit Cost Ratio: 0.227 </p> <p class="stats">Proposed Nameplate Capacity(kW): 400 </p> <p class="stats">Expected Yearly Generation (kWh/year): 720,782 </p> <p class="stats">Phase: Construction </p> <p class="stats">Total Capital Cost: $6,874,498 </p> <p class="stats">Estimated Hydro Penetration Level (%): 15.68% </p> <p class="stats">source: <a href='http://akenergyinventory.org/catalog/entries/8331-king-cove-waterfall-creek-hydroelectric-proje'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential electricity generation from diesel that could be offset by installing new Hydropower generation infrastructure. This component only uses existing proposed projects to base its calculations on, and does not attempt to model values
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/King_Cove_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/King_Cove_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Generated from Model Version 0.24.6 and Data Version 0.24.0 on 2017-01-24</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+      </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Akhiok - Consumption summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+        
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // setup
+        google.charts.load('current', {'packages':['corechart','table']});
+        google.charts.setOnLoadCallback(drawCharts);
+    
+        // for the charts
+        function drawCharts() {
+            
+            // set up vars (data/options) for each chart
+            var state_plot = 'plot';
+            var state_chart = 'chart';
+            
+            var year_fmat = new google.visualization.NumberFormat({pattern:'####'});
+            
+            
+                 
+            
+                // ################ Start rb_consumptions_percents ####################
+                // data
+                var rb_consumptions_percents = google.visualization.arrayToDataTable(
+                    [['name', 'value'], ['Fuel Oil', 80.49322373], ['Electricity', 8.06487447], ['Utility Gas', 3.44367918], ['Propane', 0.48878027], ['Coal', 0.0], ['Wood', 5.6431904], ['Solar', 0.0], ['Other', 1.86625195]]
+                );
+                year_fmat.format(rb_consumptions_percents,0);
+                
+                // plot options 
+                vertical_label = {title: 'pie' }; 
+                
+                width = 1000
+                height = 600
+    
+                var rb_consumptions_percents_options = {
+                    'title': 'Akhiok: Residential building heating fuels consumption',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var rb_consumptions_percents_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_rb_consumptions_percents() {
+                    var rb_consumptions_percents_plot =
+                        new google.visualization.PieChart(
+                            document.getElementById('rb_consumptions_percents_chart')
+                        );
+                    
+                    rb_consumptions_percents_plot.draw(rb_consumptions_percents, rb_consumptions_percents_options);
+                    return rb_consumptions_percents_plot;
+                };
+                
+                // draw table
+                function drawTable_rb_consumptions_percents() {
+                    var rb_consumptions_percents_table = 
+                        new google.visualization.Table(
+                            document.getElementById('rb_consumptions_percents_chart')
+                        );
+                    rb_consumptions_percents_table.draw(
+                        rb_consumptions_percents,
+                        {
+                            'title': 'Residential building heating fuels consumption',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_rb_consumptions_percents() {
+                    var rb_consumptions_percents_table = new google.visualization.Table(
+                        document.getElementById('rb_consumptions_percents_chart')
+                    );
+                    rb_consumptions_percents_table.draw(
+                        rb_consumptions_percents, {'title': 'Residential building heating fuels consumption','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                rb_consumptions_percents_button = document.getElementById('rb_consumptions_percents_button');
+                rb_consumptions_percents_button.onclick = function() {
+                    if (rb_consumptions_percents_state == state_plot) {
+                        drawTable_rb_consumptions_percents();
+                        rb_consumptions_percents_state = state_chart;
+                    } else {
+                    drawPlot_rb_consumptions_percents();
+                    rb_consumptions_percents_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  rb_consumptions_percents_plot = drawPlot_rb_consumptions_percents();
+              
+                document.getElementById('rb_consumptions_percents_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + rb_consumptions_percents_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                // ################ Start non_residential_buildings ####################
+                // data
+                var non_residential_buildings = google.visualization.arrayToDataTable(
+                    [['name', 'value'], ['Office', 8.5582453995836332], ['Warehousing', 5.1459625648706933], ['Education - K - 12', 33.378417096194795], ['Unknown', 16.571757598889224], ['Retail - Other', 1.6689208548097398], ['Other', 11.01934359696126], ['Public Assembly', 13.033044200326231], ['Health Care - Hospitals', 10.624308688364421]]
+                );
+                year_fmat.format(non_residential_buildings,0);
+                
+                // plot options 
+                vertical_label = {title: 'pie' }; 
+                
+                width = 1000
+                height = 600
+    
+                var non_residential_buildings_options = {
+                    'title': 'Akhiok: Non-residential building heating fuels consumption',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var non_residential_buildings_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_non_residential_buildings() {
+                    var non_residential_buildings_plot =
+                        new google.visualization.PieChart(
+                            document.getElementById('non_residential_buildings_chart')
+                        );
+                    
+                    non_residential_buildings_plot.draw(non_residential_buildings, non_residential_buildings_options);
+                    return non_residential_buildings_plot;
+                };
+                
+                // draw table
+                function drawTable_non_residential_buildings() {
+                    var non_residential_buildings_table = 
+                        new google.visualization.Table(
+                            document.getElementById('non_residential_buildings_chart')
+                        );
+                    non_residential_buildings_table.draw(
+                        non_residential_buildings,
+                        {
+                            'title': 'Non-residential building heating fuels consumption',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_non_residential_buildings() {
+                    var non_residential_buildings_table = new google.visualization.Table(
+                        document.getElementById('non_residential_buildings_chart')
+                    );
+                    non_residential_buildings_table.draw(
+                        non_residential_buildings, {'title': 'Non-residential building heating fuels consumption','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                non_residential_buildings_button = document.getElementById('non_residential_buildings_button');
+                non_residential_buildings_button.onclick = function() {
+                    if (non_residential_buildings_state == state_plot) {
+                        drawTable_non_residential_buildings();
+                        non_residential_buildings_state = state_chart;
+                    } else {
+                    drawPlot_non_residential_buildings();
+                    non_residential_buildings_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  non_residential_buildings_plot = drawPlot_non_residential_buildings();
+              
+                document.getElementById('non_residential_buildings_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + non_residential_buildings_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                // ################ Start consumption ####################
+                // data
+                var consumption = google.visualization.arrayToDataTable(
+                    [[{label: 'Year', type: 'number'}, {type: 'string', role: 'annotation'}, {label: 'Total', type: 'number'}, {label: 'Residential', type: 'number'}, {label: 'Non-residential', type: 'number'}, {type: 'string', role: 'annotationText'}], [2003, null, -1248982.0, -1305552.0, 56571.0, null], [2004, null, -476690.0, -533260.0, 56571.0, null], [2005, null, -1924737.0, -1981308.0, 56571.0, null], [2006, null, -1924737.0, -1981308.0, 56571.0, null], [2007, null, -2407420.0, -2463991.0, 56571.0, null], [2008, null, -959372.0, -1015943.0, 56571.0, null], [2009, null, -380153.0, -436724.0, 56571.0, null], [2010, null, 295603.0, 239032.0, 56571.0, null], [2011, null, 36039.0, -20532.0, 56571.0, null], [2012, null, 68891.0, 12321.0, 56571.0, null], [2013, null, 65939.0, 33288.0, 32651.0, null], [2014, null, 111983.0, 61746.0, 50237.0, null], [2015, null, 197225.0, 110401.0, 86824.0, null], [2016, 'start of forecast', 198590.0, 142020.0, 56571.0, 'start of forecast'], [2017, null, 228384.0, 171814.0, 56571.0, null], [2018, null, 264511.0, 207940.0, 56571.0, null], [2019, null, 317129.0, 260559.0, 56571.0, null], [2020, null, 374125.0, 317554.0, 56571.0, null], [2021, null, 415422.0, 358851.0, 56571.0, null], [2022, null, 476760.0, 420190.0, 56571.0, null], [2023, null, 522697.0, 466126.0, 56571.0, null], [2024, null, 578958.0, 522387.0, 56571.0, null], [2025, null, 613080.0, 556510.0, 56571.0, null], [2026, null, 649092.0, 592522.0, 56571.0, null], [2027, null, 690390.0, 633819.0, 56571.0, null], [2028, null, 727898.0, 671327.0, 56571.0, null], [2029, null, 809296.0, 752725.0, 56571.0, null], [2030, null, 878912.0, 822341.0, 56571.0, null], [2031, null, 929547.0, 872977.0, 56571.0, null], [2032, null, 928486.0, 871916.0, 56571.0, null], [2033, null, 929713.0, 873143.0, 56571.0, null], [2034, null, 909239.0, 852668.0, 56571.0, null], [2035, null, 906250.0, 849680.0, 56571.0, null], [2036, null, 916177.0, 859606.0, 56571.0, null], [2037, null, 934519.0, 877948.0, 56571.0, null], [2038, null, 936981.0, 880410.0, 56571.0, null], [2039, null, 926051.0, 869480.0, 56571.0, null], [2040, null, 890286.0, 833715.0, 56571.0, null]]
+                );
+                year_fmat.format(consumption,0);
+                
+                // plot options 
+                vertical_label = {title: 'kWh' }; 
+                
+                width = 1000
+                height = 600
+    
+                var consumption_options = {
+                    'title': 'Akhiok: Electricity consumed',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var consumption_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_consumption() {
+                    var consumption_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('consumption_chart')
+                        );
+                    
+                    consumption_plot.draw(consumption, consumption_options);
+                    return consumption_plot;
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = 
+                        new google.visualization.Table(
+                            document.getElementById('consumption_chart')
+                        );
+                    consumption_table.draw(
+                        consumption,
+                        {
+                            'title': 'Electricity consumed',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = new google.visualization.Table(
+                        document.getElementById('consumption_chart')
+                    );
+                    consumption_table.draw(
+                        consumption, {'title': 'Electricity consumed','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                consumption_button = document.getElementById('consumption_button');
+                consumption_button.onclick = function() {
+                    if (consumption_state == state_plot) {
+                        drawTable_consumption();
+                        consumption_state = state_chart;
+                    } else {
+                    drawPlot_consumption();
+                    consumption_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  consumption_plot = drawPlot_consumption();
+              
+                document.getElementById('consumption_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                // ################ Start diesel_consumption ####################
+                // data
+                var diesel_consumption = google.visualization.arrayToDataTable(
+                    [['name', 'value'], ['Utility Diesel (gallons)', 15706.204611134279], ['Water/Wastewater Heating Oil (gallons)', 5392.055545922302], ['Non-residential Heating Oil (gallons)', 17975.687650820364], ['Residential Heating Oil (gallons)', 19085.577598941934]]
+                );
+                year_fmat.format(diesel_consumption,0);
+                
+                // plot options 
+                vertical_label = {title: 'pie' }; 
+                
+                width = 1000
+                height = 600
+    
+                var diesel_consumption_options = {
+                    'title': 'Akhiok: Energy consumption by sector',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var diesel_consumption_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_diesel_consumption() {
+                    var diesel_consumption_plot =
+                        new google.visualization.PieChart(
+                            document.getElementById('diesel_consumption_chart')
+                        );
+                    
+                    diesel_consumption_plot.draw(diesel_consumption, diesel_consumption_options);
+                    return diesel_consumption_plot;
+                };
+                
+                // draw table
+                function drawTable_diesel_consumption() {
+                    var diesel_consumption_table = 
+                        new google.visualization.Table(
+                            document.getElementById('diesel_consumption_chart')
+                        );
+                    diesel_consumption_table.draw(
+                        diesel_consumption,
+                        {
+                            'title': 'Energy consumption by sector',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_diesel_consumption() {
+                    var diesel_consumption_table = new google.visualization.Table(
+                        document.getElementById('diesel_consumption_chart')
+                    );
+                    diesel_consumption_table.draw(
+                        diesel_consumption, {'title': 'Energy consumption by sector','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                diesel_consumption_button = document.getElementById('diesel_consumption_button');
+                diesel_consumption_button.onclick = function() {
+                    if (diesel_consumption_state == state_plot) {
+                        drawTable_diesel_consumption();
+                        diesel_consumption_state = state_chart;
+                    } else {
+                    drawPlot_diesel_consumption();
+                    diesel_consumption_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  diesel_consumption_plot = drawPlot_diesel_consumption();
+              
+                document.getElementById('diesel_consumption_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + diesel_consumption_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                // ################ Start costs ####################
+                // data
+                var costs = google.visualization.arrayToDataTable(
+                    [['name', 'value'], ['Water/Wastewater Heating Fuel', 17786.840724837883], ['Non-residential Heating Fuel', 59296.624532432856], ['Residential Heating Fuel', 63865.71422241892], ['Water/Wastewater Electricity', -11174.281779225603], ['Non-residential Electricity', -21200.676613807937], ['Residential Electricity', -22212.88490695637]]
+                );
+                year_fmat.format(costs,0);
+                
+                // plot options 
+                vertical_label = {title: 'pie' }; 
+                
+                width = 1000
+                height = 600
+    
+                var costs_options = {
+                    'title': 'Akhiok: Energy costs by sector',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var costs_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_costs() {
+                    var costs_plot =
+                        new google.visualization.PieChart(
+                            document.getElementById('costs_chart')
+                        );
+                    
+                    costs_plot.draw(costs, costs_options);
+                    return costs_plot;
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = 
+                        new google.visualization.Table(
+                            document.getElementById('costs_chart')
+                        );
+                    costs_table.draw(
+                        costs,
+                        {
+                            'title': 'Energy costs by sector',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = new google.visualization.Table(
+                        document.getElementById('costs_chart')
+                    );
+                    costs_table.draw(
+                        costs, {'title': 'Energy costs by sector','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                costs_button = document.getElementById('costs_button');
+                costs_button.onclick = function() {
+                    if (costs_state == state_plot) {
+                        drawTable_costs();
+                        costs_state = state_chart;
+                    } else {
+                    drawPlot_costs();
+                    costs_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  costs_plot = drawPlot_costs();
+              
+                document.getElementById('costs_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+      };
+    </script>
+    
+
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     
+    <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Akhiok<span class="page-subtitle"> Consumption</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Akhiok/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Akhiok/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Akhiok/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Akhiok/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Akhiok/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Akhiok/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Akhiok/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Akhiok/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Akhiok/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Akhiok/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Akhiok/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Akhiok/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Akhiok/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Akhiok/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Akhiok/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Akhiok/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Akhiok/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Akhiok/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+    <div class = 'charts'>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Residential buildings <small class="hidy" data-toggle="collapse" data-target="#residential_buildings"></small> </div>
+                <div id="residential_buildings" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="residential_buildings">
+                    
+                        
+                        <table class="table table-striped table-condensed"  >
+                        <tbody>
+                            <tr>
+                                
+                                    <th>  </th>
+                                
+                                    <th> Number Houses </th>
+                                
+                                    <th> Household Avg. Square Feet </th>
+                                
+                                    <th> Average gallons/sf </th>
+                                
+                                    <th> Average gallons/household </th>
+                                
+                            </tr><tr>
+                                
+                                    <td> BEES </td>  
+                                
+                                    <td> 0 </td>  
+                                
+                                    <td> 0 </td>  
+                                
+                                    <td> 0.00 </td>  
+                                
+                                    <td> 0.00 </td>  
+                                
+                            </tr><tr>
+                                
+                                    <td> Post-Retrofit </td>  
+                                
+                                    <td> 0 </td>  
+                                
+                                    <td> 1,817 </td>  
+                                
+                                    <td> 0.71 </td>  
+                                
+                                    <td> 1,299.11 </td>  
+                                
+                            </tr><tr>
+                                
+                                    <td> Pre-Retrofit </td>  
+                                
+                                    <td> 19 </td>  
+                                
+                                    <td> 1,817 </td>  
+                                
+                                    <td> 0.77 </td>  
+                                
+                                    <td> 1,396.28 </td>  
+                                
+                            </tr>
+                        </tbody>
+                        </table>
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Residential building heating fuels consumption <small class="hidy" data-toggle="collapse" data-target="#residential_building_heating_fuels_consumption"></small> </div>
+                <div id="residential_building_heating_fuels_consumption" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="rb_consumptions_percents">
+                    
+                        
+                            <div style="float:left; width:30%"> <p>Percent of residential heating fuel consumption per type</p></div>
+                            <div style="float:right; width:70%"><div id="rb_consumptions_percents_chart"></div></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='rb_consumptions_percents_button'>Plot/Table</button>
+            <div id='rb_consumptions_percents_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Akhiok_rb_consumptions_percents.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Non-residential building heating fuels consumption <small class="hidy" data-toggle="collapse" data-target="#non-residential_building_heating_fuels_consumption"></small> </div>
+                <div id="non-residential_building_heating_fuels_consumption" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="non_residential_buildings">
+                    
+                        
+                            <div style="float:left; width:30%"> <p>There is a estimated total of 29,650 square feet for the 15 non-residential buildings in this community. <br><br>86.7% of the buildings have been identified. The others are assumed to exist.  <br><br> 67.9% of the assumed square footage is from measured sources. <br><br> The break down of heating fuel consumption by building type is presented in the pie chart</p></div>
+                            <div style="float:right; width:70%"><div id="non_residential_buildings_chart"></div></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='non_residential_buildings_button'>Plot/Table</button>
+            <div id='non_residential_buildings_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Akhiok_non_residential_buildings.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Electricity consumed <small class="hidy" data-toggle="collapse" data-target="#electricity_consumed"></small> </div>
+                <div id="electricity_consumed" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="consumption">
+                    
+                        
+                        <div id="consumption_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+            <div id='consumption_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Akhiok_consumption.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Energy consumption by sector <small class="hidy" data-toggle="collapse" data-target="#energy_consumption_by_sector"></small> </div>
+                <div id="energy_consumption_by_sector" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="diesel_consumption">
+                    
+                        
+                            <div style="float:left; width:30%"> <p></p></div>
+                            <div style="float:right; width:70%"><div id="diesel_consumption_chart"></div></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='diesel_consumption_button'>Plot/Table</button>
+            <div id='diesel_consumption_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Akhiok_diesel_consumption.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Energy costs by sector <small class="hidy" data-toggle="collapse" data-target="#energy_costs_by_sector"></small> </div>
+                <div id="energy_costs_by_sector" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="costs">
+                    
+                        
+                            <div style="float:left; width:30%"> <p></p></div>
+                            <div style="float:right; width:70%"><div id="costs_chart"></div></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+            <div id='costs_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Akhiok_costs.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+    </div>
+
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            
+
+
+          </div>
+          <div class="col-sm-9">
+            
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 1.0.0, Generated from Model Version 1.0.0 and Data Version 1.0.0 on 2017-06-30</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

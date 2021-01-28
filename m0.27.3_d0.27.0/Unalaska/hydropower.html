@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Unalaska - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Pyramid creek hydroelectric project', type: 'number'}, {label: 'Unalaska water treatment plant inline micro turbines', type: 'number'}, {label: 'Unalaska (shaishnikof river)', type: 'number'}], [2021.0, 7810158.0, 7876035.0, 7857543.0, 8686022.0], [2022.0, 8069358.0, 8124328.0, 8115555.0, 8932007.0], [2023.0, 8270910.0, 8317397.0, 8316182.0, 9123280.0], [2024.0, 8414633.0, 8455059.0, 8459244.0, 9259660.0], [2025.0, 8587158.0, 8620314.0, 8630978.0, 9423375.0], [2026.0, 8817492.0, 8840952.0, 8860255.0, 9641961.0], [2027.0, 8989988.0, 9006177.0, 9031959.0, 9805647.0], [2028.0, 9133657.0, 9143786.0, 9174968.0, 9941974.0], [2029.0, 9334730.0, 9336376.0, 9375117.0, 10132768.0], [2030.0, 9478159.0, 9473745.0, 9517885.0, 10268854.0], [2031.0, 9679395.0, 9666498.0, 9718198.0, 10459812.0], [2032.0, 9909203.0, 9886610.0, 9946949.0, 10677873.0], [2033.0, 10139203.0, 10106915.0, 10175893.0, 10896125.0], [2034.0, 10397757.0, 10354563.0, 10433259.0, 11141464.0], [2035.0, 10541075.0, 10491820.0, 10575916.0, 11277439.0], [2036.0, 10799806.0, 10739644.0, 10833459.0, 11522954.0], [2037.0, 10942839.0, 10876618.0, 10975832.0, 11658646.0], [2038.0, 11172477.0, 11096561.0, 11204413.0, 11876536.0], [2039.0, 11373291.0, 11288891.0, 11404303.0, 12067071.0], [2040.0, 11660709.0, 11564190.0, 11690401.0, 12339805.0], [2041.0, 11659938.0, 11563420.0, 11689630.0, 12339035.0], [2042.0, 11659168.0, 11562649.0, 11688860.0, 12338264.0], [2043.0, 11658398.0, 11561879.0, 11688089.0, 12337494.0], [2044.0, 11657627.0, 11561108.0, 11687319.0, 12336723.0], [2045.0, 11656857.0, 11560338.0, 11686549.0, 12335953.0], [2046.0, 11656343.0, 11559824.0, 11686035.0, 12335440.0], [2047.0, 11655573.0, 11559054.0, 11685265.0, 12334669.0], [2048.0, 11655059.0, 11558541.0, 11684751.0, 12334156.0], [2049.0, 11654546.0, 11558027.0, 11684238.0, 12333642.0], [2050.0, 11654032.0, 11557513.0, 11683724.0, 12333128.0]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: '$#,###'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Unalaska: Estimated electricity generation costs per year',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.LineChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Estimated Electricity Generation Costs per Year','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Estimated Electricity Generation Costs per Year','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var consumption = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Pyramid creek hydroelectric project', type: 'number'}, {label: 'Unalaska water treatment plant inline micro turbines', type: 'number'}, {label: 'Unalaska (shaishnikof river)', type: 'number'}], [2021.0, 2881977.0, 2748746.0, 2867462.0, 2720547.0], [2022.0, 2881914.0, 2748683.0, 2867398.0, 2720483.0], [2023.0, 2881850.0, 2748619.0, 2867335.0, 2720420.0], [2024.0, 2881724.0, 2748492.0, 2867208.0, 2720293.0], [2025.0, 2881597.0, 2748366.0, 2867081.0, 2720166.0], [2026.0, 2881533.0, 2748302.0, 2867018.0, 2720103.0], [2027.0, 2881407.0, 2748175.0, 2866891.0, 2719976.0], [2028.0, 2881280.0, 2748048.0, 2866764.0, 2719849.0], [2029.0, 2881089.0, 2747858.0, 2866574.0, 2719659.0], [2030.0, 2880899.0, 2747668.0, 2866384.0, 2719469.0], [2031.0, 2880772.0, 2747541.0, 2866257.0, 2719342.0], [2032.0, 2880582.0, 2747351.0, 2866067.0, 2719152.0], [2033.0, 2880455.0, 2747224.0, 2865940.0, 2719025.0], [2034.0, 2880265.0, 2747034.0, 2865750.0, 2718835.0], [2035.0, 2880075.0, 2746844.0, 2865560.0, 2718644.0], [2036.0, 2879948.0, 2746717.0, 2865433.0, 2718518.0], [2037.0, 2879695.0, 2746463.0, 2865179.0, 2718264.0], [2038.0, 2879504.0, 2746273.0, 2864989.0, 2718074.0], [2039.0, 2879314.0, 2746083.0, 2864799.0, 2717884.0], [2040.0, 2879187.0, 2745956.0, 2864672.0, 2717757.0], [2041.0, 2878997.0, 2745766.0, 2864482.0, 2717567.0], [2042.0, 2878807.0, 2745576.0, 2864292.0, 2717376.0], [2043.0, 2878617.0, 2745386.0, 2864101.0, 2717186.0], [2044.0, 2878427.0, 2745195.0, 2863911.0, 2716996.0], [2045.0, 2878236.0, 2745005.0, 2863721.0, 2716806.0], [2046.0, 2878109.0, 2744878.0, 2863594.0, 2716679.0], [2047.0, 2877919.0, 2744688.0, 2863404.0, 2716489.0], [2048.0, 2877792.0, 2744561.0, 2863277.0, 2716362.0], [2049.0, 2877666.0, 2744434.0, 2863150.0, 2716235.0], [2050.0, 2877539.0, 2744308.0, 2863024.0, 2716108.0]])
+            year_fmat.format(consumption,0)
+            
+            
+            // plot options
+            
+            dollar=  {title: 'gallons'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var consumption_options = {'title': 'Unalaska: Diesel consumed for electricity generation ',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_consumption() {
+                
+                var consumption_plot = new google.visualization.LineChart(document.getElementById('consumption_chart'));
+                
+                
+                consumption_plot.draw(consumption, consumption_options);
+                return consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_consumption() {
+                var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+                consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_consumption() {
+        var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+        consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      consumption_button = document.getElementById('consumption_button')
+      consumption_button.onclick = function() {
+        if (consumption_state == plot) {
+          drawTable_consumption();
+          consumption_state = chart;
+        } else {
+          drawPlot_consumption();
+          consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  consumption_plot = drawPlot_consumption()
+      
+      document.getElementById('consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script> 
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Unalaska<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Unalaska/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Unalaska/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Unalaska/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Unalaska/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Unalaska/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Unalaska/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Unalaska/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Unalaska/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Unalaska/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Unalaska/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Unalaska/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Unalaska/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Unalaska/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Unalaska/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Unalaska/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Unalaska/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Unalaska/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Unalaska/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system<small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">Average community load (2013): 5,298 kW </p> <p class="stats">Average generation (2013): 46,408,269 kWh/year </p> <p class="stats">Peak load: Unknown </p> <p class="stats">Existing nameplate wind capacity: 0 kW </p> <p class="stats">Existing wind generation (2013): 0 kWh/year </p> <p class="stats">Estimated proposed wind generation: 0 kWh/year </p> <p class="stats">Existing nameplate solar capacity: 0 kW </p> <p class="stats">Existing solar generation (2013): 0 kWh/year </p> <p class="stats">Estimated proposed solar generation: 545,023 kWh/year </p> <p class="stats">Existing nameplate hydro capacity : 0 kW </p> <p class="stats">Existing hydro generation (2013): 0 kWh/year </p> <p class="stats">Estimated proposed hydro generation: 0 kWh/year </p>
+    </div><H3>Pyramid creek hydroelectric project<small class = "hidy" data-toggle="collapse" data-target="#Pyramid_Creek_Hydroelectric_Project"></small> </H3>
+    <div id="Pyramid_Creek_Hydroelectric_Project" class="collapse in" >
+     <p class="stats">Capital cost: $8,026,622 </p> <p class="stats">Lifetime savings: $8,990,051 </p> <p class="stats">Net lifetime savings: $963,429 </p> <p class="stats">Benefit-cost ratio: 1.1 </p> <p class="stats">Proposed nameplate capacity: 600 kW </p> <p class="stats">Expected yearly generation: 2,570,033 kWh/year </p> <p class="stats">Phase: Feasibility </p> <p class="stats">Total capital cost: $6,602,174 </p> <p class="stats">Estimated hydro penetration level: 5.54% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1998-0117.pdf'> link </a> </p>
+    </div><H3>Unalaska water treatment plant inline micro turbines<small class = "hidy" data-toggle="collapse" data-target="#Unalaska_Water_Treatment_Plant_Inline_Micro_Turbines"></small> </H3>
+    <div id="Unalaska_Water_Treatment_Plant_Inline_Micro_Turbines" class="collapse in" >
+     <p class="stats">Capital cost: $1,629,111 </p> <p class="stats">Lifetime savings: $841,684 </p> <p class="stats">Net lifetime savings: $-787,427 </p> <p class="stats">Benefit-cost ratio: 0.5 </p> <p class="stats">Proposed nameplate capacity: 64 kW </p> <p class="stats">Expected yearly generation: 280,000 kWh/year </p> <p class="stats">Phase: Feasibility </p> <p class="stats">Total capital cost: $1,340,000 </p> <p class="stats">Estimated hydro penetration level: 0.60% </p> <p class="stats">source: <a href='nan'> link </a> </p>
+    </div><H3>Unalaska (shaishnikof river)<small class = "hidy" data-toggle="collapse" data-target="#Unalaska_Shaishnikof_River"></small> </H3>
+    <div id="Unalaska_Shaishnikof_River" class="collapse in" >
+     <p class="stats">Capital cost: $24,665,973 </p> <p class="stats">Lifetime savings: $8,165,345 </p> <p class="stats">Net lifetime savings: $-16,500,628 </p> <p class="stats">Benefit-cost ratio: 0.3 </p> <p class="stats">Proposed nameplate capacity: 700 kW </p> <p class="stats">Expected yearly generation: 3,114,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $20,288,616 </p> <p class="stats">Estimated hydro penetration level: 6.71% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1982-0131.pdf'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential electricity generation from diesel that could be offset by installing new Hydropower generation infrastructure. Requires that at least a reconnaissance-level heat recovery study has been completed for the community to be run. 
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Unalaska_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Unalaska_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 0.27.1, Generated from Model Version 0.27.3 and Data Version 0.27.0 on 2017-06-14</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

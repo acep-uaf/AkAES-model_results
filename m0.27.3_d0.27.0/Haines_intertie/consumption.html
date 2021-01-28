@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Haines_intertie - Consumption summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+             
+    
+             
+    
+            
+            // data
+            var non_residential_buildings = google.visualization.arrayToDataTable([['name', 'value'], ['Consumption by Office', 1.9439310948881823], ['Consumption by Warehousing', 1.0383058736801054], ['Consumption by Education - K - 12', 3.7981954703559215], ['Consumption by Unknown', 85.126159372258087], ['Consumption by Public Assembly', 0.41083940676910946], ['Consumption by Other', 5.9129164571577624], ['Consumption by Water & Sewer', 0.0], ['Consumption by Health Care - Nursing/Residential Care', 0.0090230664948986027], ['Consumption by Public Safety', 1.2427042814113669], ['Consumption by Health Care - Hospitals', 0.40466786164481267], ['Consumption by Residential - Multi-Family', 0.11325711533980354]])
+            year_fmat.format(non_residential_buildings,0)
+            
+            
+            // plot options
+            
+            dollar = {title: 'pie' }
+            
+            
+
+            width = 1000
+            height = 600
+
+            var non_residential_buildings_options = {'title': 'Haines intertie: Non-residential buildings',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var non_residential_buildings_state = plot;
+        
+            // draw plot 
+            function drawPlot_non_residential_buildings() {
+                
+                var non_residential_buildings_plot = new google.visualization.PieChart(document.getElementById('non_residential_buildings_chart'));
+                
+                
+                non_residential_buildings_plot.draw(non_residential_buildings, non_residential_buildings_options);
+                return non_residential_buildings_plot
+            }   
+            
+            // draw table
+            function drawTable_non_residential_buildings() {
+                var non_residential_buildings_table = new google.visualization.Table(document.getElementById('non_residential_buildings_chart'))
+                non_residential_buildings_table.draw(non_residential_buildings, {'title': 'Non-residential Buildings','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_non_residential_buildings() {
+        var non_residential_buildings_table = new google.visualization.Table(document.getElementById('non_residential_buildings_chart'))
+        non_residential_buildings_table.draw(non_residential_buildings, {'title': 'Non-residential Buildings','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      non_residential_buildings_button = document.getElementById('non_residential_buildings_button')
+      non_residential_buildings_button.onclick = function() {
+        if (non_residential_buildings_state == plot) {
+          drawTable_non_residential_buildings();
+          non_residential_buildings_state = chart;
+        } else {
+          drawPlot_non_residential_buildings();
+          non_residential_buildings_state = plot;
+        }
+      }
+      // initilize with plot
+      var  non_residential_buildings_plot = drawPlot_non_residential_buildings()
+      
+      document.getElementById('non_residential_buildings_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + non_residential_buildings_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var consumption = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {type: 'string', role: 'annotation'}, {label: 'Total', type: 'number'}, {label: 'Residential', type: 'number'}, {label: 'Non-residential', type: 'number'}, {type: 'string', role: 'annotationText'}], [2003, null, 11221545.0, 4547097.0, 6674448.0, null], [2004, null, 11586752.0, 4571321.0, 7015431.0, null], [2005, null, 11768164.0, 4630078.0, 7138086.0, null], [2006, null, 11940799.0, 4835255.0, 7105544.0, null], [2007, null, 12157720.0, 5006183.0, 7151537.0, null], [2008, null, 12521671.0, 5263776.0, 7257895.0, null], [2009, null, 12468665.0, 5435270.0, 7033395.0, null], [2010, null, 12330616.0, 5328783.0, 7001833.0, null], [2011, null, 12769099.0, 5533577.0, 7235522.0, null], [2012, null, 12388928.0, 5520502.0, 6868426.0, null], [2013, null, 12453157.0, 5564235.0, 6888922.0, null], [2014, 'start of forecast', 12508137.0, 5510514.0, 6997623.0, 'start of forecast'], [2015, null, 12506998.0, 5509374.0, 6997623.0, null], [2016, null, 12495719.0, 5498096.0, 6997623.0, null], [2017, null, 12478369.0, 5480746.0, 6997623.0, null], [2018, null, 12459414.0, 5461790.0, 6997623.0, null], [2019, null, 12441861.0, 5444238.0, 6997623.0, null], [2020, null, 12418794.0, 5421171.0, 6997623.0, null], [2021, null, 12389047.0, 5391424.0, 6997623.0, null], [2022, null, 12358697.0, 5361073.0, 6997623.0, null], [2023, null, 12324599.0, 5326975.0, 6997623.0, null], [2024, null, 12288322.0, 5290698.0, 6997623.0, null], [2025, null, 12247922.0, 5250298.0, 6997623.0, null], [2026, null, 12204862.0, 5207238.0, 6997623.0, null], [2027, null, 12157971.0, 5160348.0, 6997623.0, null], [2028, null, 12109803.0, 5112179.0, 6997623.0, null], [2029, null, 12083428.0, 5085805.0, 6997623.0, null], [2030, null, 12052051.0, 5054427.0, 6997623.0, null], [2031, null, 12017997.0, 5020374.0, 6997623.0, null], [2032, null, 11971669.0, 4974046.0, 6997623.0, null], [2033, null, 11924583.0, 4926960.0, 6997623.0, null], [2034, null, 11881252.0, 4883628.0, 6997623.0, null], [2035, null, 11845565.0, 4847942.0, 6997623.0, null], [2036, null, 11819599.0, 4821975.0, 6997623.0, null], [2037, null, 11803041.0, 4805418.0, 6997623.0, null], [2038, null, 11789049.0, 4791425.0, 6997623.0, null], [2039, null, 11778741.0, 4781117.0, 6997623.0, null], [2040, null, 11765991.0, 4768368.0, 6997623.0, null]])
+            year_fmat.format(consumption,0)
+            
+            
+            // plot options
+            
+            dollar = {title: 'kWh' }
+            
+            
+
+            width = 1000
+            height = 600
+
+            var consumption_options = {'title': 'Haines intertie: Electricity consumed',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_consumption() {
+                
+                var consumption_plot = new google.visualization.LineChart(document.getElementById('consumption_chart'));
+                
+                
+                consumption_plot.draw(consumption, consumption_options);
+                return consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_consumption() {
+                var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+                consumption_table.draw(consumption, {'title': 'Electricity Consumed','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_consumption() {
+        var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+        consumption_table.draw(consumption, {'title': 'Electricity Consumed','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      consumption_button = document.getElementById('consumption_button')
+      consumption_button.onclick = function() {
+        if (consumption_state == plot) {
+          drawTable_consumption();
+          consumption_state = chart;
+        } else {
+          drawPlot_consumption();
+          consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  consumption_plot = drawPlot_consumption()
+      
+      document.getElementById('consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var diesel_consumption = google.visualization.arrayToDataTable([['name', 'value'], ['Utility Diesel (gallons)', 55144.68940687718], ['Water/Wastewater Heating Oil (gallons)', 6911.598394119899], ['Non-residential Heating Oil (gallons)', 1112684.1823263976], ['Residential Heating Oil (gallons)', 1278340.9200240695]])
+            year_fmat.format(diesel_consumption,0)
+            
+            
+            // plot options
+            
+            dollar = {title: 'pie' }
+            
+            
+
+            width = 1000
+            height = 600
+
+            var diesel_consumption_options = {'title': 'Haines intertie: Energy consumption by sector',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var diesel_consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_diesel_consumption() {
+                
+                var diesel_consumption_plot = new google.visualization.PieChart(document.getElementById('diesel_consumption_chart'));
+                
+                
+                diesel_consumption_plot.draw(diesel_consumption, diesel_consumption_options);
+                return diesel_consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_diesel_consumption() {
+                var diesel_consumption_table = new google.visualization.Table(document.getElementById('diesel_consumption_chart'))
+                diesel_consumption_table.draw(diesel_consumption, {'title': 'Energy Consumption by sector','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_diesel_consumption() {
+        var diesel_consumption_table = new google.visualization.Table(document.getElementById('diesel_consumption_chart'))
+        diesel_consumption_table.draw(diesel_consumption, {'title': 'Energy Consumption by sector','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      diesel_consumption_button = document.getElementById('diesel_consumption_button')
+      diesel_consumption_button.onclick = function() {
+        if (diesel_consumption_state == plot) {
+          drawTable_diesel_consumption();
+          diesel_consumption_state = chart;
+        } else {
+          drawPlot_diesel_consumption();
+          diesel_consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  diesel_consumption_plot = drawPlot_diesel_consumption()
+      
+      document.getElementById('diesel_consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + diesel_consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([['name', 'value'], ['Water/Wastewater Heating Fuel', 18324.881295821604], ['Non-residential Heating Fuel', 2950318.090703712], ['Residential Heating Fuel', 4689218.073355588], ['Water/Wastewater Electricity', 61124.48291612806], ['Non-residential Electricity', 1803764.85391415], ['Residential Electricity', 1539576.0537332278]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+            
+            dollar = {title: 'pie' }
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Haines intertie: Energy costs by sector',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.PieChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Energy costs by Sector','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Energy costs by Sector','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script>
+
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     
+    <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Haines intertie<span class="page-subtitle"> Consumption</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Haines_intertie/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Haines_intertie/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Haines_intertie/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Haines_intertie/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Haines_intertie/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Haines_intertie/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Haines_intertie/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Haines_intertie/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Haines_intertie/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Haines_intertie/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Haines_intertie/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Haines_intertie/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Haines_intertie/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Haines_intertie/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Haines_intertie/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Haines_intertie/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Haines_intertie/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Haines_intertie/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+    <div class = 'charts'>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Heating degree days  <small class="hidy" data-toggle="collapse" data-target="#heating_degree_days"></small> </div>
+                <div id="heating_degree_days" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="hdd">
+                    
+                        
+                        <table class="table table-striped table-condensed"  >
+                        <tbody>
+                            <tr>
+                                
+                                    <td> Heating Degree Days per year </td>  
+                                
+                                    <td> 8,439 </td>  
+                                
+                            </tr>
+                        </tbody>
+                        </table>
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Residential buildings  <small class="hidy" data-toggle="collapse" data-target="#residential_buildings"></small> </div>
+                <div id="residential_buildings" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="residential_buildings">
+                    
+                        
+                        <table class="table table-striped table-condensed"  >
+                        <tbody>
+                            <tr>
+                                
+                                    <th>  </th>
+                                
+                                    <th> Number Houses </th>
+                                
+                                    <th> Houshold Avg. Square Feet </th>
+                                
+                                    <th> Avg. EUI </th>
+                                
+                            </tr><tr>
+                                
+                                    <td> BEES </td>  
+                                
+                                    <td> 30 </td>  
+                                
+                                    <td> 2,280 </td>  
+                                
+                                    <td> 0.08 </td>  
+                                
+                            </tr><tr>
+                                
+                                    <td> Post-Retrofit </td>  
+                                
+                                    <td> 234 </td>  
+                                
+                                    <td> 1,616 </td>  
+                                
+                                    <td> 0.13 </td>  
+                                
+                            </tr><tr>
+                                
+                                    <td> Pre-Retrofit </td>  
+                                
+                                    <td> 828 </td>  
+                                
+                                    <td> 1,731 </td>  
+                                
+                                    <td> 0.18 </td>  
+                                
+                            </tr>
+                        </tbody>
+                        </table>
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Non-residential buildings  <small class="hidy" data-toggle="collapse" data-target="#non-residential_buildings"></small> </div>
+                <div id="non-residential_buildings" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="non_residential_buildings">
+                    
+                        
+                            <div style="float:left; width:30%"> <p>There is a estimated total of 1,484,965 square feet for the 198 non-residential buildings in this community. 22.7% of the buildings have been identified. The others are assumed to exist. 13.8% of the assumed square footage is from measured sources. The break down of heating fuel consumption by building type is pesented in the pie chart</p></div>
+                            <div style="float:right; width:70%"><div id="non_residential_buildings_chart"></div></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='non_residential_buildings_button'>Plot/Table</button>
+            <div id='non_residential_buildings_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Haines_intertie_non_residential_buildings.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Electricity consumed  <small class="hidy" data-toggle="collapse" data-target="#electricity_consumed"></small> </div>
+                <div id="electricity_consumed" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="consumption">
+                    
+                        
+                        <div id="consumption_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+            <div id='consumption_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Haines_intertie_consumption.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Energy consumption by sector  <small class="hidy" data-toggle="collapse" data-target="#energy_consumption_by_sector"></small> </div>
+                <div id="energy_consumption_by_sector" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="diesel_consumption">
+                    
+                        
+                            <div style="float:left; width:30%"> <p></p></div>
+                            <div style="float:right; width:70%"><div id="diesel_consumption_chart"></div></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='diesel_consumption_button'>Plot/Table</button>
+            <div id='diesel_consumption_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Haines_intertie_diesel_consumption.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Energy costs by sector  <small class="hidy" data-toggle="collapse" data-target="#energy_costs_by_sector"></small> </div>
+                <div id="energy_costs_by_sector" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="costs">
+                    
+                        
+                            <div style="float:left; width:30%"> <p></p></div>
+                            <div style="float:right; width:70%"><div id="costs_chart"></div></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+            <div id='costs_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Haines_intertie_costs.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+    </div>
+
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            
+
+
+          </div>
+          <div class="col-sm-9">
+            
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 0.27.1, Generated from Model Version 0.27.3 and Data Version 0.27.0 on 2017-06-14</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

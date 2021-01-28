@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Larsen_Bay - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Spiridon (spiridon river)', type: 'number'}, {label: 'Larsen bay (unnamed stream, site #1) -- unnamed creek, 1', type: 'number'}, {label: 'Larsen bay (unnamed stream, site #3) -- unnamed creek, 3', type: 'number'}], [2021.0, 36938.0, 15846322.0, 392227.0, 234308.0], [2022.0, 37711.0, 15517954.0, 383379.0, 228960.0], [2023.0, 37592.0, 15200469.0, 374378.0, 223300.0], [2024.0, 37337.0, 14891175.0, 365562.0, 217730.0], [2025.0, 37624.0, 14588395.0, 357328.0, 212689.0], [2026.0, 37677.0, 14289002.0, 348619.0, 207165.0], [2027.0, 37407.0, 13999298.0, 340171.0, 201770.0], [2028.0, 37523.0, 13717654.0, 332414.0, 196978.0], [2029.0, 37799.0, 13440407.0, 324701.0, 192205.0], [2030.0, 37792.0, 13172430.0, 317279.0, 187597.0], [2031.0, 38198.0, 12905530.0, 309732.0, 182904.0], [2032.0, 37934.0, 12645037.0, 301804.0, 177749.0], [2033.0, 37703.0, 12389325.0, 293918.0, 172595.0], [2034.0, 37417.0, 12139267.0, 286121.0, 167472.0], [2035.0, 36776.0, 11898795.0, 278663.0, 162547.0], [2036.0, 37000.0, 11660260.0, 271653.0, 158098.0], [2037.0, 36290.0, 11430475.0, 264396.0, 153264.0], [2038.0, 35892.0, 11200730.0, 256891.0, 148233.0], [2039.0, 35876.0, 10979712.0, 250310.0, 144011.0], [2040.0, 35383.0, 10759889.0, 242962.0, 139034.0], [2041.0, 33417.0, 10556535.0, 235923.0, 134065.0], [2042.0, 32106.0, 10358557.0, 229658.0, 129823.0], [2043.0, 31450.0, 10165843.0, 224164.0, 126305.0], [2044.0, 30139.0, 9976975.0, 218128.0, 122198.0], [2045.0, 28828.0, 9792503.0, 212203.0, 118157.0], [2046.0, 27517.0, 9612324.0, 206387.0, 114180.0], [2047.0, 26206.0, 9436337.0, 200675.0, 110265.0], [2048.0, 24895.0, 9264444.0, 195067.0, 106412.0], [2049.0, 24240.0, 9097205.0, 190215.0, 103273.0], [2050.0, 22929.0, 8933214.0, 184806.0, 99537.0]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: '$#,###'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Larsen Bay: Estimated electricity generation costs per year',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.LineChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Estimated Electricity Generation Costs per Year','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Estimated Electricity Generation Costs per Year','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var consumption = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Spiridon (spiridon river)', type: 'number'}, {label: 'Larsen bay (unnamed stream, site #1) -- unnamed creek, 1', type: 'number'}, {label: 'Larsen bay (unnamed stream, site #3) -- unnamed creek, 3', type: 'number'}], [2021.0, 10232.0, 0.0, 0.0, 0.0], [2022.0, 10110.0, -122.0, -122.0, -122.0], [2023.0, 9867.0, -366.0, -366.0, -366.0], [2024.0, 9623.0, -609.0, -609.0, -609.0], [2025.0, 9501.0, -731.0, -731.0, -731.0], [2026.0, 9257.0, -975.0, -975.0, -975.0], [2027.0, 9014.0, -1218.0, -1218.0, -1218.0], [2028.0, 8892.0, -1340.0, -1340.0, -1340.0], [2029.0, 8770.0, -1462.0, -1462.0, -1462.0], [2030.0, 8648.0, -1584.0, -1584.0, -1584.0], [2031.0, 8526.0, -1706.0, -1706.0, -1706.0], [2032.0, 8283.0, -1949.0, -1949.0, -1949.0], [2033.0, 8039.0, -2193.0, -2193.0, -2193.0], [2034.0, 7795.0, -2437.0, -2437.0, -2437.0], [2035.0, 7552.0, -2680.0, -2680.0, -2680.0], [2036.0, 7430.0, -2802.0, -2802.0, -2802.0], [2037.0, 7186.0, -3046.0, -3046.0, -3046.0], [2038.0, 6942.0, -3290.0, -3290.0, -3290.0], [2039.0, 6821.0, -3412.0, -3412.0, -3412.0], [2040.0, 6577.0, -3655.0, -3655.0, -3655.0], [2041.0, 6211.0, -4021.0, -4021.0, -4021.0], [2042.0, 5968.0, -4264.0, -4264.0, -4264.0], [2043.0, 5846.0, -4386.0, -4386.0, -4386.0], [2044.0, 5602.0, -4630.0, -4630.0, -4630.0], [2045.0, 5358.0, -4874.0, -4874.0, -4874.0], [2046.0, 5115.0, -5117.0, -5117.0, -5117.0], [2047.0, 4871.0, -5361.0, -5361.0, -5361.0], [2048.0, 4627.0, -5605.0, -5605.0, -5605.0], [2049.0, 4506.0, -5727.0, -5727.0, -5727.0], [2050.0, 4262.0, -5970.0, -5970.0, -5970.0]])
+            year_fmat.format(consumption,0)
+            
+            
+            // plot options
+            
+            dollar=  {title: 'gallons'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var consumption_options = {'title': 'Larsen Bay: Diesel consumed for electricity generation ',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_consumption() {
+                
+                var consumption_plot = new google.visualization.LineChart(document.getElementById('consumption_chart'));
+                
+                
+                consumption_plot.draw(consumption, consumption_options);
+                return consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_consumption() {
+                var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+                consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_consumption() {
+        var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+        consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      consumption_button = document.getElementById('consumption_button')
+      consumption_button.onclick = function() {
+        if (consumption_state == plot) {
+          drawTable_consumption();
+          consumption_state = chart;
+        } else {
+          drawPlot_consumption();
+          consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  consumption_plot = drawPlot_consumption()
+      
+      document.getElementById('consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script> 
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Larsen Bay<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Larsen_Bay/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Larsen_Bay/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Larsen_Bay/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Larsen_Bay/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Larsen_Bay/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Larsen_Bay/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Larsen_Bay/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Larsen_Bay/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Larsen_Bay/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Larsen_Bay/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Larsen_Bay/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Larsen_Bay/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Larsen_Bay/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Larsen_Bay/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Larsen_Bay/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Larsen_Bay/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Larsen_Bay/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Larsen_Bay/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system<small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">Average community load (2013): 94 kW </p> <p class="stats">Average generation (2013): 825,446 kWh/year </p> <p class="stats">Peak load: Unknown </p> <p class="stats">Existing nameplate wind capacity: 0 kW </p> <p class="stats">Existing wind generation (2013): 0 kWh/year </p> <p class="stats">Estimated proposed wind generation: 0 kWh/year </p> <p class="stats">Existing nameplate solar capacity: 0 kW </p> <p class="stats">Existing solar generation (2013): 0 kWh/year </p> <p class="stats">Estimated proposed solar generation: 1,373 kWh/year </p> <p class="stats">Existing nameplate hydro capacity : 475 kW </p> <p class="stats">Existing hydro generation (2013): 773,021 kWh/year </p> <p class="stats">Estimated proposed hydro generation: 773,021 kWh/year </p>
+    </div><H3>Spiridon (spiridon river)<small class = "hidy" data-toggle="collapse" data-target="#Spiridon_Spiridon_River"></small> </H3>
+    <div id="Spiridon_Spiridon_River" class="collapse in" >
+     <p class="stats">Capital cost: $202,496,807 </p> <p class="stats">Lifetime savings: $-48,721,166 </p> <p class="stats">Net lifetime savings: $-251,217,973 </p> <p class="stats">Benefit-cost ratio: -0.2 </p> <p class="stats">Proposed nameplate capacity: 10,000 kW </p> <p class="stats">Expected yearly generation: 37,142,857 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $283,807,670 </p> <p class="stats">Estimated hydro penetration level: 4,499.73% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Larsen bay (unnamed stream, site #1) -- Unnamed Creek, 1<small class = "hidy" data-toggle="collapse" data-target="#Larsen_Bay_unnamed_stream_site_1_--_Unnamed_Creek_1"></small> </H3>
+    <div id="Larsen_Bay_unnamed_stream_site_1_--_Unnamed_Creek_1" class="collapse in" >
+     <p class="stats">Capital cost: $5,101,022 </p> <p class="stats">Lifetime savings: $19,266 </p> <p class="stats">Net lifetime savings: $-5,081,757 </p> <p class="stats">Benefit-cost ratio: 0.0 </p> <p class="stats">Proposed nameplate capacity: 364 kW </p> <p class="stats">Expected yearly generation: 1,352,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $7,149,294 </p> <p class="stats">Estimated hydro penetration level: 163.79% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1983-0372.pdf'> link </a> </p>
+    </div><H3>Larsen bay (unnamed stream, site #3) -- Unnamed Creek, 3<small class = "hidy" data-toggle="collapse" data-target="#Larsen_Bay_unnamed_stream_site_3_--_Unnamed_Creek_3"></small> </H3>
+    <div id="Larsen_Bay_unnamed_stream_site_3_--_Unnamed_Creek_3" class="collapse in" >
+     <p class="stats">Capital cost: $3,018,314 </p> <p class="stats">Lifetime savings: $391,159 </p> <p class="stats">Net lifetime savings: $-2,627,155 </p> <p class="stats">Benefit-cost ratio: 0.1 </p> <p class="stats">Proposed nameplate capacity: 154 kW </p> <p class="stats">Expected yearly generation: 572,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $4,230,293 </p> <p class="stats">Estimated hydro penetration level: 69.30% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1983-0372.pdf'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential electricity generation from diesel that could be offset by installing new Hydropower generation infrastructure. Requires that at least a reconnaissance-level heat recovery study has been completed for the community to be run. 
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Larsen_Bay_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Larsen_Bay_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 0.27.0, Generated from Model Version 0.27.0 and Data Version 0.27.0 on 2017-06-12</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

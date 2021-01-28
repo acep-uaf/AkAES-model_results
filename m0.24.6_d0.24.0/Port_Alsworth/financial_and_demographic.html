@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Port_Alsworth - Financial and Demographic summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+            
+            // data
+            var population = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {label: 'Population', type: 'number'}], [2003.0, 107.0], [2004.0, 118.0], [2005.0, 111.0], [2006.0, 119.0], [2007.0, 123.0], [2008.0, 134.0], [2009.0, 129.0], [2010.0, 159.0], [2011.0, 164.0], [2012.0, 164.0], [2013.0, 164.0], [2014.0, 164.0], [2015.0, 164.0], [2016.0, 164.0], [2017.0, 164.0], [2018.0, 164.0], [2019.0, 165.0], [2020.0, 165.0], [2021.0, 166.0], [2022.0, 165.0], [2023.0, 165.0], [2024.0, 165.0], [2025.0, 165.0], [2026.0, 166.0], [2027.0, 166.0], [2028.0, 166.0], [2029.0, 168.0], [2030.0, 170.0], [2031.0, 171.0], [2032.0, 171.0], [2033.0, 171.0], [2034.0, 170.0], [2035.0, 170.0], [2036.0, 171.0], [2037.0, 172.0], [2038.0, 173.0], [2039.0, 174.0], [2040.0, 175.0]])
+            year_fmat.format(population,0)
+            
+            
+            // plot options
+            
+            dollar = {title: 'people' }
+            
+            
+
+            width = 1000
+            height = 600
+
+            var population_options = {'title': 'Port Alsworth: Population forecast',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var population_state = plot;
+        
+            // draw plot 
+            function drawPlot_population() {
+                
+                var population_plot = new google.visualization.LineChart(document.getElementById('population_chart'));
+                
+                
+                population_plot.draw(population, population_options);
+                return population_plot
+            }   
+            
+            // draw table
+            function drawTable_population() {
+                var population_table = new google.visualization.Table(document.getElementById('population_chart'))
+                population_table.draw(population, {'title': 'Population Forecast','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_population() {
+        var population_table = new google.visualization.Table(document.getElementById('population_chart'))
+        population_table.draw(population, {'title': 'Population Forecast','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      population_button = document.getElementById('population_button')
+      population_button.onclick = function() {
+        if (population_state == plot) {
+          drawTable_population();
+          population_state = chart;
+        } else {
+          drawPlot_population();
+          population_state = plot;
+        }
+      }
+      // initilize with plot
+      var  population_plot = drawPlot_population()
+      
+      document.getElementById('population_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + population_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var e_price = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {type: 'string', role: 'annotation'}, {label: 'Electricity price ($/kwh)', type: 'number'}, {type: 'string', role: 'annotationText'}], [2002.0, null, 0.41, null], [2003.0, null, 0.42, null], [2004.0, null, 0.45, null], [2005.0, null, 0.47, null], [2006.0, null, 0.56, null], [2007.0, null, 0.61, null], [2008.0, null, 0.68, null], [2009.0, null, 0.65, null], [2010.0, null, 0.64, null], [2011.0, null, 0.68, null], [2012.0, null, 0.69, null], [2013.0, null, 0.69, null], [2016.0, null, 0.51, null], [2017.0, null, 0.56, null], [2018.0, null, 0.59, null], [2019.0, null, 0.63, null], [2020.0, null, 0.64, null], [2021.0, null, 0.66, null], [2022.0, null, 0.67, null], [2023.0, null, 0.67, null], [2024.0, null, 0.68, null], [2025.0, null, 0.68, null], [2026.0, null, 0.69, null], [2027.0, null, 0.7, null], [2028.0, null, 0.7, null], [2029.0, null, 0.71, null], [2030.0, null, 0.71, null], [2031.0, null, 0.72, null], [2032.0, null, 0.73, null], [2033.0, null, 0.74, null], [2034.0, null, 0.74, null], [2035.0, null, 0.75, null], [2036.0, null, 0.76, null], [2037.0, null, 0.76, null], [2038.0, null, 0.77, null], [2039.0, null, 0.78, null], [2040.0, null, 0.78, null]])
+            year_fmat.format(e_price,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: 'currency'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var e_price_options = {'title': 'Port Alsworth: Electricity price ($/kwh)',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var e_price_state = plot;
+        
+            // draw plot 
+            function drawPlot_e_price() {
+                
+                var e_price_plot = new google.visualization.LineChart(document.getElementById('e_price_chart'));
+                
+                
+                e_price_plot.draw(e_price, e_price_options);
+                return e_price_plot
+            }   
+            
+            // draw table
+            function drawTable_e_price() {
+                var e_price_table = new google.visualization.Table(document.getElementById('e_price_chart'))
+                e_price_table.draw(e_price, {'title': 'Electricity Price ($/kWh)','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_e_price() {
+        var e_price_table = new google.visualization.Table(document.getElementById('e_price_chart'))
+        e_price_table.draw(e_price, {'title': 'Electricity Price ($/kWh)','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      e_price_button = document.getElementById('e_price_button')
+      e_price_button.onclick = function() {
+        if (e_price_state == plot) {
+          drawTable_e_price();
+          e_price_state = chart;
+        } else {
+          drawPlot_e_price();
+          e_price_state = plot;
+        }
+      }
+      // initilize with plot
+      var  e_price_plot = drawPlot_e_price()
+      
+      document.getElementById('e_price_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + e_price_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var d_price = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {type: 'string', role: 'annotation'}, {label: 'Diesel price ($/gal)', type: 'number'}, {label: 'Heating fuel ($/gal)', type: 'number'}, {type: 'string', role: 'annotationText'}], [2014.0, null, null, 0.0, null], [2016.0, null, 3.56, 4.84, null], [2017.0, null, 4.07, 5.35, null], [2018.0, null, 4.42, 5.7, null], [2019.0, null, 4.9, 6.18, null], [2020.0, null, 5.12, 6.4, null], [2021.0, null, 5.27, 6.55, null], [2022.0, null, 5.38, 6.66, null], [2023.0, null, 5.46, 6.74, null], [2024.0, null, 5.52, 6.8, null], [2025.0, null, 5.59, 6.87, null], [2026.0, null, 5.68, 6.96, null], [2027.0, null, 5.76, 7.04, null], [2028.0, null, 5.82, 7.1, null], [2029.0, null, 5.91, 7.19, null], [2030.0, null, 5.96, 7.24, null], [2031.0, null, 6.05, 7.33, null], [2032.0, null, 6.14, 7.42, null], [2033.0, null, 6.23, 7.51, null], [2034.0, null, 6.32, 7.6, null], [2035.0, null, 6.38, 7.66, null], [2036.0, null, 6.48, 7.76, null], [2037.0, null, 6.54, 7.82, null], [2038.0, null, 6.63, 7.91, null], [2039.0, null, 6.7, 7.98, null], [2040.0, null, 6.81, 8.09, null]])
+            year_fmat.format(d_price,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: 'currency'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var d_price_options = {'title': 'Port Alsworth: Fuel price',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var d_price_state = plot;
+        
+            // draw plot 
+            function drawPlot_d_price() {
+                
+                var d_price_plot = new google.visualization.LineChart(document.getElementById('d_price_chart'));
+                
+                
+                d_price_plot.draw(d_price, d_price_options);
+                return d_price_plot
+            }   
+            
+            // draw table
+            function drawTable_d_price() {
+                var d_price_table = new google.visualization.Table(document.getElementById('d_price_chart'))
+                d_price_table.draw(d_price, {'title': 'Fuel Price','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_d_price() {
+        var d_price_table = new google.visualization.Table(document.getElementById('d_price_chart'))
+        d_price_table.draw(d_price, {'title': 'Fuel Price','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      d_price_button = document.getElementById('d_price_button')
+      d_price_button.onclick = function() {
+        if (d_price_state == plot) {
+          drawTable_d_price();
+          d_price_state = chart;
+        } else {
+          drawPlot_d_price();
+          d_price_state = plot;
+        }
+      }
+      // initilize with plot
+      var  d_price_plot = drawPlot_d_price()
+      
+      document.getElementById('d_price_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + d_price_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {label: 'Water/wastewater heating fuel', type: 'number'}, {label: 'Non-residential heating fuel', type: 'number'}, {label: 'Residential heating fuel', type: 'number'}, {label: 'Water/wastewater electricity', type: 'number'}, {label: 'Non-residential electricity', type: 'number'}, {label: 'Residential electricity', type: 'number'}], [2017.0, 0.0, 148138.55, 254525.93, 0.0, 214163.16, 150298.25], [2018.0, 0.0, 157838.1, 269445.97, 0.0, 225357.25, 158154.18], [2019.0, 0.0, 171140.34, 297212.41, 0.0, 240709.14, 172682.0], [2020.0, 0.0, 177237.2, 306827.02, 0.0, 247745.43, 177729.75], [2021.0, 0.0, 181394.15, 313382.44, 0.0, 252542.9, 181171.4], [2022.0, 0.0, 184442.58, 318189.75, 0.0, 256061.04, 183695.27], [2023.0, 0.0, 186659.62, 321685.97, 0.0, 258619.69, 185530.82], [2024.0, 0.0, 188322.4, 324308.14, 0.0, 260538.68, 186907.48], [2025.0, 0.0, 190262.31, 327367.33, 0.0, 262777.5, 188513.58], [2026.0, 0.0, 192756.48, 331300.58, 0.0, 265655.98, 190578.57], [2027.0, 0.0, 194973.52, 334796.81, 0.0, 268214.63, 192414.12], [2028.0, 0.0, 196636.3, 337418.97, 0.0, 270133.61, 193790.78], [2029.0, 0.0, 199130.47, 349741.72, 0.0, 273012.09, 200113.5], [2030.0, 0.0, 200516.12, 351980.57, 0.0, 274611.25, 201285.65], [2031.0, 0.0, 203010.29, 356010.49, 0.0, 277489.73, 203395.53], [2032.0, 0.0, 205504.46, 360040.41, 0.0, 280368.21, 205505.42], [2033.0, 0.0, 207998.63, 364070.33, 0.0, 283246.69, 207615.3], [2034.0, 0.0, 210492.8, 368100.24, 0.0, 286125.17, 209725.18], [2035.0, 0.0, 212155.58, 370786.86, 0.0, 288044.16, 211131.76], [2036.0, 0.0, 214926.88, 375264.55, 0.0, 291242.47, 213476.07], [2037.0, 0.0, 216589.66, 387017.34, 0.0, 293161.46, 219454.63], [2038.0, 0.0, 219083.83, 391143.93, 0.0, 296039.94, 221609.4], [2039.0, 0.0, 221023.74, 394353.49, 0.0, 298278.76, 223285.34], [2040.0, 0.0, 224072.17, 399397.1, 0.0, 301796.9, 225918.95]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+             
+            dollar = {format: 'percent'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Port Alsworth: Costs by sector',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                             isStacked: 'relative', 
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.AreaChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Costs by Sector','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Costs by Sector','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script>
+
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     
+    <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Port Alsworth<span class="page-subtitle"> Financial and Demographic</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Port_Alsworth/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Port_Alsworth/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Port_Alsworth/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Port_Alsworth/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Port_Alsworth/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Port_Alsworth/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Port_Alsworth/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Port_Alsworth/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Port_Alsworth/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Port_Alsworth/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Port_Alsworth/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Port_Alsworth/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Port_Alsworth/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Port_Alsworth/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Port_Alsworth/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Port_Alsworth/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Port_Alsworth/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Port_Alsworth/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+    <div class = 'charts'>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Population forecast  <small class="hidy" data-toggle="collapse" data-target="#population_forecast"></small> </div>
+                <div id="population_forecast" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="population">
+                    
+                        
+                        <div id="population_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='population_button'>Plot/Table</button>
+            <div id='population_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Port_Alsworth_population.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Electricity price ($/kwh)  <small class="hidy" data-toggle="collapse" data-target="#electricity_price_kwh"></small> </div>
+                <div id="electricity_price_kwh" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="e_price">
+                    
+                        
+                        <div id="e_price_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='e_price_button'>Plot/Table</button>
+            <div id='e_price_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Port_Alsworth_e_price.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Fuel price  <small class="hidy" data-toggle="collapse" data-target="#fuel_price"></small> </div>
+                <div id="fuel_price" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="d_price">
+                    
+                        
+                        <div id="d_price_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='d_price_button'>Plot/Table</button>
+            <div id='d_price_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Port_Alsworth_d_price.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Costs by sector  <small class="hidy" data-toggle="collapse" data-target="#costs_by_sector"></small> </div>
+                <div id="costs_by_sector" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="costs">
+                    
+                        
+                        <div id="costs_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+            <div id='costs_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Port_Alsworth_costs.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+    </div>
+
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            
+
+
+          </div>
+          <div class="col-sm-9">
+            
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Generated from Model Version 0.24.6 and Data Version 0.24.0 on 2017-01-24</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+      </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

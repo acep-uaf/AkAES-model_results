@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Bethel_intertie - Wind Power summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // setup
+        google.charts.load('current', {'packages':['corechart','table']});
+        google.charts.setOnLoadCallback(drawCharts);
+    
+        // for the charts
+        function drawCharts() {
+            
+            // set up vars (data/options) for each chart
+            var state_plot = 'plot';
+            var state_chart = 'chart';
+            
+            var year_fmat = new google.visualization.NumberFormat({pattern:'####'});
+            
+            
+                // ################ Start costs ####################
+                // data
+                var costs = google.visualization.arrayToDataTable(
+                    [[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Modeled wind power', type: 'number'}, {label: 'Bethel renewable energy project', type: 'number'}, {label: 'Bethel wind power project times 4', type: 'number'}, {label: 'Bethel wind farm construction (bnc land)', type: 'number'}], [2017.0, 9679620.0, null, 9768093.0, 9922059.0, 10235373.0], [2018.0, 10818491.0, null, 10842052.0, 11036924.0, 11038866.0], [2019.0, 12398949.0, 12553532.0, 12336628.0, 12587180.0, 12178242.0], [2020.0, 13166041.0, 13077054.0, 13057470.0, 13336083.0, 12704542.0], [2021.0, 13678820.0, 13408873.0, 13536353.0, 13834486.0, 13039074.0], [2022.0, 14065125.0, 13646194.0, 13895049.0, 14208403.0, 13279043.0], [2023.0, 14356212.0, 13812588.0, 14163294.0, 14488630.0, 13448024.0], [2024.0, 14584785.0, 13933079.0, 14372272.0, 14707412.0, 13571041.0], [2025.0, 14845518.0, 14079358.0, 14612105.0, 14958054.0, 13719786.0], [2026.0, 15170085.0, 14275417.0, 14912947.0, 15271771.0, 13918254.0], [2027.0, 15467295.0, 14452987.0, 15188147.0, 15558733.0, 14098177.0], [2028.0, 15696984.0, 14579529.0, 15399054.0, 15779228.0, 14227017.0], [2029.0, 15991333.0, 14756592.0, 15671782.0, 16063615.0, 14406323.0], [2030.0, 16190967.0, 14863027.0, 15854528.0, 16254789.0, 14514949.0], [2031.0, 16517643.0, 15067009.0, 16158437.0, 16571318.0, 14721071.0], [2032.0, 16876032.0, 15296137.0, 16492723.0, 16919236.0, 14952288.0], [2033.0, 17201508.0, 15501058.0, 16795785.0, 17234824.0, 15159250.0], [2034.0, 17559040.0, 15731419.0, 17129559.0, 17582139.0, 15391603.0], [2035.0, 17792275.0, 15869092.0, 17345262.0, 17807099.0, 15531223.0], [2036.0, 18153779.0, 16105417.0, 17683335.0, 18158626.0, 15769447.0], [2037.0, 18389328.0, 16247350.0, null, null, null], [2038.0, 18754252.0, 16488996.0, null, null, null]]
+                );
+                year_fmat.format(costs,0);
+                
+                // plot options 
+                vertical_label = {format: '$#,###'}; 
+                
+                width = 1000
+                height = 600
+    
+                var costs_options = {
+                    'title': 'Bethel intertie: Estimated electricity generation costs per year',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var costs_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_costs() {
+                    var costs_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('costs_chart')
+                        );
+                    
+                    costs_plot.draw(costs, costs_options);
+                    return costs_plot;
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = 
+                        new google.visualization.Table(
+                            document.getElementById('costs_chart')
+                        );
+                    costs_table.draw(
+                        costs,
+                        {
+                            'title': 'Estimated Electricity Generation Costs per Year',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = new google.visualization.Table(
+                        document.getElementById('costs_chart')
+                    );
+                    costs_table.draw(
+                        costs, {'title': 'Estimated Electricity Generation Costs per Year','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                costs_button = document.getElementById('costs_button');
+                costs_button.onclick = function() {
+                    if (costs_state == state_plot) {
+                        drawTable_costs();
+                        costs_state = state_chart;
+                    } else {
+                    drawPlot_costs();
+                    costs_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  costs_plot = drawPlot_costs();
+              
+                document.getElementById('costs_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                // ################ Start consumption ####################
+                // data
+                var consumption = google.visualization.arrayToDataTable(
+                    [[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Modeled wind power', type: 'number'}, {label: 'Bethel renewable energy project', type: 'number'}, {label: 'Bethel wind power project times 4', type: 'number'}, {label: 'Bethel wind farm construction (bnc land)', type: 'number'}], [2017.0, 3142734.0, null, 2964915.0, 3089296.0, 2244891.0], [2018.0, 3144910.0, null, 2967092.0, 3091472.0, 2247067.0], [2019.0, 3146941.0, 2249098.0, 2969123.0, 3093503.0, 2249098.0], [2020.0, 3149771.0, 2251927.0, 2971952.0, 3096333.0, 2251927.0], [2021.0, 3151802.0, 2253959.0, 2973983.0, 3098364.0, 2253959.0], [2022.0, 3153615.0, 2255772.0, 2975797.0, 3100177.0, 2255772.0], [2023.0, 3155211.0, 2257368.0, 2977393.0, 3101773.0, 2257368.0], [2024.0, 3156880.0, 2259037.0, 2979061.0, 3103442.0, 2259037.0], [2025.0, 3158621.0, 2260778.0, 2980802.0, 3105183.0, 2260778.0], [2026.0, 3160434.0, 2262591.0, 2982616.0, 3106997.0, 2262591.0], [2027.0, 3163046.0, 2265203.0, 2985227.0, 3109608.0, 2265203.0], [2028.0, 3164715.0, 2266871.0, 2986896.0, 3111277.0, 2266871.0], [2029.0, 3166601.0, 2268758.0, 2988782.0, 3113163.0, 2268758.0], [2030.0, 3168487.0, 2270644.0, 2990668.0, 3115049.0, 2270644.0], [2031.0, 3170373.0, 2272530.0, 2992554.0, 3116935.0, 2272530.0], [2032.0, 3172186.0, 2274343.0, 2994368.0, 3118749.0, 2274343.0], [2033.0, 3173710.0, 2275867.0, 2995891.0, 3120272.0, 2275867.0], [2034.0, 3175233.0, 2277390.0, 2997415.0, 3121795.0, 2277390.0], [2035.0, 3177192.0, 2279349.0, 2999373.0, 3123754.0, 2279349.0], [2036.0, 3179296.0, 2281453.0, 3001477.0, 3125858.0, 2281453.0], [2037.0, 3181545.0, 2283701.0, null, null, null], [2038.0, 3184084.0, 2286240.0, null, null, null]]
+                );
+                year_fmat.format(consumption,0);
+                
+                // plot options 
+                vertical_label=  {title: 'gallons'}; 
+                
+                width = 1000
+                height = 600
+    
+                var consumption_options = {
+                    'title': 'Bethel intertie: Diesel consumed for electricity generation ',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var consumption_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_consumption() {
+                    var consumption_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('consumption_chart')
+                        );
+                    
+                    consumption_plot.draw(consumption, consumption_options);
+                    return consumption_plot;
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = 
+                        new google.visualization.Table(
+                            document.getElementById('consumption_chart')
+                        );
+                    consumption_table.draw(
+                        consumption,
+                        {
+                            'title': 'Diesel Consumed for Electricity Generation ',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = new google.visualization.Table(
+                        document.getElementById('consumption_chart')
+                    );
+                    consumption_table.draw(
+                        consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                consumption_button = document.getElementById('consumption_button');
+                consumption_button.onclick = function() {
+                    if (consumption_state == state_plot) {
+                        drawTable_consumption();
+                        consumption_state = state_chart;
+                    } else {
+                    drawPlot_consumption();
+                    consumption_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  consumption_plot = drawPlot_consumption();
+              
+                document.getElementById('consumption_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+      };
+    </script>
+     
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Bethel intertie<span class="page-subtitle"> Wind Power</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Bethel_intertie/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Bethel_intertie/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Bethel_intertie/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Bethel_intertie/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Bethel_intertie/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Bethel_intertie/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Bethel_intertie/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Bethel_intertie/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Bethel_intertie/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Bethel_intertie/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Bethel_intertie/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Bethel_intertie/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Bethel_intertie/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Bethel_intertie/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Bethel_intertie/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Bethel_intertie/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Bethel_intertie/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Bethel_intertie/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system<small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">See: <a href='./generation.html'>Generation </a> for more details of the current generation systems </p>
+    </div><H3>Modeled wind power<small class = "hidy" data-toggle="collapse" data-target="#Modeled_Wind_Power"></small> </H3>
+    <div id="Modeled_Wind_Power" class="collapse in" >
+     <p class="stats">Capital cost (total): $32,317,222 </p> <p class="stats">Capital cost (cost per kW): $4,236/kW </p> <p class="stats">Lifetime energy cost savings: $48,214,708 </p> <p class="stats">Net lifetime savings: $15,897,486 </p> <p class="stats">Benefit-cost ratio: 1.5 </p> <p class="stats">Proposed nameplate capacity: 7,325 kW </p> <p class="stats">Expected yearly generation: 15,400,080 kWh/year </p> <p class="stats">Estimated wind class: 4 </p> <p class="stats">Estimated capacity factor: 0.24 </p> <p class="stats">Estimated wind penetration level: 36.25% </p> <p class="stats">Notes: None </p> <p class="stats">source: unknown </p>
+    </div><H3>Bethel intertie wind project 1<small class = "hidy" data-toggle="collapse" data-target="#Bethel_intertie_wind_project_1"></small> </H3>
+    <div id="Bethel_intertie_wind_project_1" class="collapse in" >
+     <p class="stats">Capital cost (total): $5,586,556 </p> <p class="stats">Capital cost (cost per kW): Value not determined as capital cost of project was known </p> <p class="stats">Lifetime energy cost savings: $9,025,505 </p> <p class="stats">Net lifetime savings: $3,438,949 </p> <p class="stats">Benefit-cost ratio: 1.6 </p> <p class="stats">Proposed nameplate capacity: 1,000 kW </p> <p class="stats">Expected yearly generation: 2,102,400 kWh/year </p> <p class="stats">Estimated wind class: 4 </p> <p class="stats">Estimated capacity factor: 0.24 </p> <p class="stats">Estimated wind penetration level: 7.18% </p> <p class="stats">Notes: nan </p> <p class="stats">source: <a href='http://akenergyinventory.org/catalog/entries/8338-bethel-wind-power-project-phase-1-deliverable'> link </a> </p>
+    </div><H3>Bethel intertie wind project 0<small class = "hidy" data-toggle="collapse" data-target="#Bethel_intertie_wind_project_0"></small> </H3>
+    <div id="Bethel_intertie_wind_project_0" class="collapse in" >
+     <p class="stats">Capital cost (total): $4,103,669 </p> <p class="stats">Capital cost (cost per kW): Value not determined as capital cost of project was known </p> <p class="stats">Lifetime energy cost savings: $2,345,809 </p> <p class="stats">Net lifetime savings: $-1,757,860 </p> <p class="stats">Benefit-cost ratio: 0.6 </p> <p class="stats">Proposed nameplate capacity: 100 kW </p> <p class="stats">Expected yearly generation: 210,240 kWh/year </p> <p class="stats">Estimated wind class: 4 </p> <p class="stats">Estimated capacity factor: 0.24 </p> <p class="stats">Estimated wind penetration level: 2.16% </p> <p class="stats">Notes: Several concurrent grants, no CDR to be found. No cost breakdowns to individual tasks </p> <p class="stats">source: <a href='http://www.akenergyauthority.org/Content/Programs/AEEE/Wind/WindResourceAssessment/Bethel_Wind-data-report.pdf'> link </a> </p>
+    </div><H3>Bethel intertie wind project 2<small class = "hidy" data-toggle="collapse" data-target="#Bethel_intertie_wind_project_2"></small> </H3>
+    <div id="Bethel_intertie_wind_project_2" class="collapse in" >
+     <p class="stats">Capital cost (total): $32,317,222 </p> <p class="stats">Capital cost (cost per kW): $4,236/kW </p> <p class="stats">Lifetime energy cost savings: $48,885,398 </p> <p class="stats">Net lifetime savings: $16,568,176 </p> <p class="stats">Benefit-cost ratio: 1.5 </p> <p class="stats">Proposed nameplate capacity: 7,325 kW </p> <p class="stats">Expected yearly generation: 15,400,080 kWh/year </p> <p class="stats">Estimated wind class: 4 </p> <p class="stats">Estimated capacity factor: 0.24 </p> <p class="stats">Estimated wind penetration level: 36.25% </p> <p class="stats">Notes: nan </p> <p class="stats">source: <a href='nan'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential cost savings from changes in the amount of diesel fuel used for electricity generation from the installation of new wind power infrastructure. 
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Bethel_intertie_Wind_Power_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Bethel_intertie_Wind_Power_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 1.0.0, Generated from Model Version 1.0.0 and Data Version 1.0.0 on 2017-06-30</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

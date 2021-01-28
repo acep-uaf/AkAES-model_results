@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Chenega_Bay - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // setup
+        google.charts.load('current', {'packages':['corechart','table']});
+        google.charts.setOnLoadCallback(drawCharts);
+    
+        // for the charts
+        function drawCharts() {
+            
+            // set up vars (data/options) for each chart
+            var state_plot = 'plot';
+            var state_chart = 'chart';
+            
+            var year_fmat = new google.visualization.NumberFormat({pattern:'####'});
+            
+            
+                // ################ Start costs ####################
+                // data
+                var costs = google.visualization.arrayToDataTable(
+                    [[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Chenega bay hydroelectric construction -- anderson creek', type: 'number'}, {label: 'South lake creek (chenega bay)', type: 'number'}, {label: 'Chenega bay -- anderson creek', type: 'number'}, {label: 'Thumb bay (unnamed creek)', type: 'number'}, {label: 'New chenega (crab bay, chenega bay) -- unnamed creek, near crab bay', type: 'number'}, {label: 'Hayden lake', type: 'number'}], [2018.0, 66037.0, 177273.0, null, null, null, null, null], [2019.0, 77453.0, 182526.0, null, null, null, null, null], [2020.0, 82515.0, 183357.0, null, null, null, null, null], [2021.0, 86307.0, 183461.0, 319181.0, 143704.0, 506432.0, 147281.0, 276660.0], [2022.0, 89206.0, 183010.0, 313220.0, 142573.0, 498273.0, 146893.0, 274716.0], [2023.0, 91213.0, 182001.0, 307321.0, 141154.0, 489962.0, 146056.0, 272181.0], [2024.0, 92774.0, 180741.0, 301524.0, 139616.0, 481680.0, 145017.0, 269398.0], [2025.0, 94781.0, 179842.0, 295907.0, 138299.0, 473793.0, 144270.0, 267053.0], [2026.0, 97234.0, 179305.0, 290469.0, 137200.0, 466296.0, 143815.0, 265143.0], [2027.0, 99242.0, 178513.0, 285121.0, 135979.0, 458813.0, 143155.0, 262978.0], [2028.0, 101026.0, 177618.0, 279882.0, 134720.0, 451433.0, 142412.0, 260728.0], [2029.0, 102868.0, 176692.0, 274424.0, 133288.0, 444040.0, 141570.0, 258518.0], [2030.0, 104201.0, 175582.0, 269389.0, 131943.0, 436844.0, 140654.0, 256087.0], [2031.0, 106645.0, 175285.0, 264574.0, 131063.0, 430291.0, 140393.0, 254593.0], [2032.0, 109089.0, 175034.0, 259878.0, 130225.0, 423914.0, 140170.0, 253178.0], [2033.0, 111755.0, 174982.0, 255317.0, 129513.0, 417803.0, 140107.0, 252011.0], [2034.0, 114421.0, 174973.0, 250869.0, 128841.0, 411861.0, 140080.0, 250919.0], [2035.0, 115976.0, 174244.0, 246430.0, 127787.0, 405624.0, 139473.0, 249046.0], [2036.0, 118864.0, 174474.0, 242219.0, 127278.0, 400100.0, 139638.0, 248272.0], [2037.0, 120420.0, 173827.0, 237992.0, 126300.0, 394182.0, 139099.0, 246541.0], [2038.0, 123086.0, 173986.0, 233968.0, 125781.0, 388877.0, 139208.0, 245734.0], [2039.0, 125307.0, 173878.0, 230004.0, 125129.0, 383539.0, 139103.0, 244652.0], [2040.0, 127712.0, 173783.0, 225714.0, 124281.0, 378140.0, 138915.0, 243665.0], [2041.0, 127712.0, 172222.0, 221743.0, 122855.0, 372172.0, 137641.0, 241001.0], [2042.0, 127712.0, 170697.0, 217864.0, 121463.0, 366344.0, 136397.0, 238400.0], [2043.0, 127712.0, 169208.0, 214077.0, 120103.0, 360652.0, 135182.0, 235860.0], [2044.0, 127712.0, 167754.0, 210378.0, 118775.0, 355094.0, 133995.0, 233379.0], [2045.0, 127712.0, 166334.0, 206766.0, 117479.0, 349666.0, 132837.0, 230956.0], [2046.0, 127712.0, 164947.0, 203239.0, 116212.0, 344366.0, 131705.0, 228591.0], [2047.0, 127712.0, 163593.0, 199795.0, 114976.0, 339189.0, 130600.0, 226280.0], [2048.0, 127712.0, 162270.0, 196431.0, 113768.0, 334134.0, 129521.0, 224024.0], [2049.0, 127712.0, 160979.0, 193146.0, 112589.0, 329198.0, 128468.0, 221821.0], [2050.0, 127712.0, 159718.0, 189938.0, 111437.0, 324377.0, 127439.0, 219669.0], [2051.0, 127712.0, 158486.0, 186805.0, 110312.0, 319669.0, 126434.0, 217568.0], [2052.0, 127712.0, 157283.0, 183745.0, 109214.0, 315071.0, 125452.0, 215516.0], [2053.0, 127712.0, 156109.0, 180758.0, 108141.0, 310582.0, 124494.0, 213512.0], [2054.0, 127712.0, 154962.0, 177840.0, 107094.0, 306197.0, 123558.0, 211555.0], [2055.0, 127712.0, 153841.0, 174991.0, 106071.0, 301915.0, 122644.0, 209644.0], [2056.0, 127712.0, 152747.0, 172208.0, 105072.0, 297734.0, 121752.0, 207777.0], [2057.0, 127712.0, 151679.0, 169491.0, 104096.0, 293650.0, 120880.0, 205955.0], [2058.0, 127712.0, 150636.0, 166837.0, 103144.0, 289663.0, 120029.0, 204175.0], [2059.0, 127712.0, 149617.0, 164246.0, 102213.0, 285768.0, 119198.0, 202437.0], [2060.0, 127712.0, 148622.0, 161715.0, 101305.0, 281965.0, 118386.0, 200739.0], [2061.0, 127712.0, 147650.0, 159244.0, 100417.0, 278252.0, 117593.0, 199082.0], [2062.0, 127712.0, 146702.0, 156830.0, 99551.0, 274625.0, 116819.0, 197463.0], [2063.0, 127712.0, 145775.0, 154473.0, 98705.0, 271083.0, 116063.0, 195882.0], [2064.0, 127712.0, 144870.0, 152172.0, 97878.0, 267624.0, 115325.0, 194339.0], [2065.0, 127712.0, 143986.0, 149924.0, 97072.0, 264246.0, 114604.0, 192831.0], [2066.0, 127712.0, 143123.0, 147729.0, 96283.0, 260948.0, 113899.0, 191359.0], [2067.0, 127712.0, 142281.0, 145585.0, 95514.0, 257727.0, 113212.0, 189921.0], [2068.0, 127712.0, 142281.0, 143492.0, 94762.0, 254581.0, 112540.0, 188517.0], [2069.0, 127712.0, 142281.0, 141448.0, 94028.0, 251509.0, 111885.0, 187146.0], [2070.0, 127712.0, 142281.0, 139451.0, 93312.0, 248509.0, 111244.0, 185807.0]]
+                );
+                year_fmat.format(costs,0);
+                
+                // plot options 
+                vertical_label = {format: '$#,###'}; 
+                
+                width = 1000
+                height = 600
+    
+                var costs_options = {
+                    'title': 'Chenega Bay: Estimated electricity generation costs per year',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var costs_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_costs() {
+                    var costs_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('costs_chart')
+                        );
+                    
+                    costs_plot.draw(costs, costs_options);
+                    return costs_plot;
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = 
+                        new google.visualization.Table(
+                            document.getElementById('costs_chart')
+                        );
+                    costs_table.draw(
+                        costs,
+                        {
+                            'title': 'Estimated Electricity Generation Costs per Year',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = new google.visualization.Table(
+                        document.getElementById('costs_chart')
+                    );
+                    costs_table.draw(
+                        costs, {'title': 'Estimated Electricity Generation Costs per Year','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                costs_button = document.getElementById('costs_button');
+                costs_button.onclick = function() {
+                    if (costs_state == state_plot) {
+                        drawTable_costs();
+                        costs_state = state_chart;
+                    } else {
+                    drawPlot_costs();
+                    costs_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  costs_plot = drawPlot_costs();
+              
+                document.getElementById('costs_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                // ################ Start consumption ####################
+                // data
+                var consumption = google.visualization.arrayToDataTable(
+                    [[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Chenega bay hydroelectric construction -- anderson creek', type: 'number'}, {label: 'South lake creek (chenega bay)', type: 'number'}, {label: 'Chenega bay -- anderson creek', type: 'number'}, {label: 'Thumb bay (unnamed creek)', type: 'number'}, {label: 'New chenega (crab bay, chenega bay) -- unnamed creek, near crab bay', type: 'number'}, {label: 'Hayden lake', type: 'number'}], [2018.0, 22385.0, 14647.0, null, null, null, null, null], [2019.0, 22385.0, 14647.0, null, null, null, null, null], [2020.0, 22301.0, 14563.0, null, null, null, null, null], [2021.0, 22301.0, 14563.0, 0.0, 6898.0, 7753.0, 11229.0, 16596.0], [2022.0, 22301.0, 14563.0, 0.0, 6898.0, 7753.0, 11229.0, 16596.0], [2023.0, 22301.0, 14563.0, 0.0, 6898.0, 7753.0, 11229.0, 16596.0], [2024.0, 22301.0, 14563.0, 0.0, 6898.0, 7753.0, 11229.0, 16596.0], [2025.0, 22301.0, 14563.0, 0.0, 6898.0, 7753.0, 11229.0, 16596.0], [2026.0, 22301.0, 14563.0, 0.0, 6898.0, 7753.0, 11229.0, 16596.0], [2027.0, 22301.0, 14563.0, 0.0, 6898.0, 7753.0, 11229.0, 16596.0], [2028.0, 22301.0, 14563.0, 0.0, 6898.0, 7753.0, 11229.0, 16596.0], [2029.0, 22218.0, 14479.0, 0.0, 6814.0, 7670.0, 11145.0, 16512.0], [2030.0, 22218.0, 14479.0, 0.0, 6814.0, 7670.0, 11145.0, 16512.0], [2031.0, 22218.0, 14479.0, 0.0, 6814.0, 7670.0, 11145.0, 16512.0], [2032.0, 22218.0, 14479.0, 0.0, 6814.0, 7670.0, 11145.0, 16512.0], [2033.0, 22218.0, 14479.0, 0.0, 6814.0, 7670.0, 11145.0, 16512.0], [2034.0, 22218.0, 14479.0, 0.0, 6814.0, 7670.0, 11145.0, 16512.0], [2035.0, 22218.0, 14479.0, 0.0, 6814.0, 7670.0, 11145.0, 16512.0], [2036.0, 22218.0, 14479.0, 0.0, 6814.0, 7670.0, 11145.0, 16512.0], [2037.0, 22218.0, 14479.0, 0.0, 6814.0, 7670.0, 11145.0, 16512.0], [2038.0, 22218.0, 14479.0, 0.0, 6814.0, 7670.0, 11145.0, 16512.0], [2039.0, 22218.0, 14479.0, 0.0, 6814.0, 7670.0, 11145.0, 16512.0], [2040.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2041.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2042.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2043.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2044.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2045.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2046.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2047.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2048.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2049.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2050.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2051.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2052.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2053.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2054.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2055.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2056.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2057.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2058.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2059.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2060.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2061.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2062.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2063.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2064.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2065.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2066.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2067.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2068.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2069.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0], [2070.0, 22134.0, 14396.0, 0.0, 6730.0, 7586.0, 11061.0, 16429.0]]
+                );
+                year_fmat.format(consumption,0);
+                
+                // plot options 
+                vertical_label=  {title: 'gallons'}; 
+                
+                width = 1000
+                height = 600
+    
+                var consumption_options = {
+                    'title': 'Chenega Bay: Diesel consumed for electricity generation ',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var consumption_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_consumption() {
+                    var consumption_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('consumption_chart')
+                        );
+                    
+                    consumption_plot.draw(consumption, consumption_options);
+                    return consumption_plot;
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = 
+                        new google.visualization.Table(
+                            document.getElementById('consumption_chart')
+                        );
+                    consumption_table.draw(
+                        consumption,
+                        {
+                            'title': 'Diesel Consumed for Electricity Generation ',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = new google.visualization.Table(
+                        document.getElementById('consumption_chart')
+                    );
+                    consumption_table.draw(
+                        consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                consumption_button = document.getElementById('consumption_button');
+                consumption_button.onclick = function() {
+                    if (consumption_state == state_plot) {
+                        drawTable_consumption();
+                        consumption_state = state_chart;
+                    } else {
+                    drawPlot_consumption();
+                    consumption_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  consumption_plot = drawPlot_consumption();
+              
+                document.getElementById('consumption_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+      };
+    </script>
+     
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Chenega Bay<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Chenega_Bay/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Chenega_Bay/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Chenega_Bay/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Chenega_Bay/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Chenega_Bay/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Chenega_Bay/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Chenega_Bay/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Chenega_Bay/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Chenega_Bay/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Chenega_Bay/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Chenega_Bay/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Chenega_Bay/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Chenega_Bay/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Chenega_Bay/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Chenega_Bay/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Chenega_Bay/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Chenega_Bay/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Chenega_Bay/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system<small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">See: <a href='./generation.html'>Generation </a> for more details of the current generation systems </p>
+    </div><H3>Chenega bay hydroelectric construction -- Anderson Creek<small class = "hidy" data-toggle="collapse" data-target="#Chenega_Bay_Hydroelectric_Construction_--_Anderson_Creek"></small> </H3>
+    <div id="Chenega_Bay_Hydroelectric_Construction_--_Anderson_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $2,012,819 </p> <p class="stats">Lifetime energy cost savings: $391,743 </p> <p class="stats">Net lifetime savings: $-1,621,076 </p> <p class="stats">Benefit-cost ratio: 0.2 </p> <p class="stats">Proposed nameplate capacity: 64 kW </p> <p class="stats">Expected yearly generation: 123,000 kWh/year </p> <p class="stats">Phase: Construction </p> <p class="stats">Upfront capital cost: $2,049,215 </p> <p class="stats">Estimated hydro penetration level: 49.61% </p> <p class="stats">source: <a href='http://akenergyinventory.org/catalog/entries/8317-chenega-hydroelectric-project-reconnaissance-re'> link </a> </p>
+    </div><H3>South lake creek (chenega bay)<small class = "hidy" data-toggle="collapse" data-target="#South_Lake_Creek_Chenega_Bay"></small> </H3>
+    <div id="South_Lake_Creek_Chenega_Bay" class="collapse in" >
+     <p class="stats">Present value of capital cost: $4,768,114 </p> <p class="stats">Lifetime energy cost savings: $1,561,081 </p> <p class="stats">Net lifetime savings: $-3,207,033 </p> <p class="stats">Benefit-cost ratio: 0.3 </p> <p class="stats">Proposed nameplate capacity: 98 kW </p> <p class="stats">Expected yearly generation: 444,354 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $4,854,332 </p> <p class="stats">Estimated hydro penetration level: 179.23% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div><H3>Chenega bay -- Anderson Creek<small class = "hidy" data-toggle="collapse" data-target="#Chenega_Bay_--_Anderson_Creek"></small> </H3>
+    <div id="Chenega_Bay_--_Anderson_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $1,711,822 </p> <p class="stats">Lifetime energy cost savings: $1,476,496 </p> <p class="stats">Net lifetime savings: $-235,327 </p> <p class="stats">Benefit-cost ratio: 0.9 </p> <p class="stats">Proposed nameplate capacity: 54 kW </p> <p class="stats">Expected yearly generation: 244,848 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $1,742,776 </p> <p class="stats">Estimated hydro penetration level: 98.76% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div><H3>Thumb bay (unnamed creek)<small class = "hidy" data-toggle="collapse" data-target="#Thumb_Bay_unnamed_creek"></small> </H3>
+    <div id="Thumb_Bay_unnamed_creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $7,165,285 </p> <p class="stats">Lifetime energy cost savings: $-102,582 </p> <p class="stats">Net lifetime savings: $-7,267,868 </p> <p class="stats">Benefit-cost ratio: -0.0 </p> <p class="stats">Proposed nameplate capacity: 51 kW </p> <p class="stats">Expected yearly generation: 231,245 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $7,294,850 </p> <p class="stats">Estimated hydro penetration level: 93.27% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>New chenega (crab bay, chenega bay) -- unnamed creek, near Crab Bay<small class = "hidy" data-toggle="collapse" data-target="#New_Chenega_Crab_Bay_Chenega_Bay_--_unnamed_creek_near_Crab_Bay"></small> </H3>
+    <div id="New_Chenega_Crab_Bay_Chenega_Bay_--_unnamed_creek_near_Crab_Bay" class="collapse in" >
+     <p class="stats">Present value of capital cost: $1,529,460 </p> <p class="stats">Lifetime energy cost savings: $980,658 </p> <p class="stats">Net lifetime savings: $-548,802 </p> <p class="stats">Benefit-cost ratio: 0.6 </p> <p class="stats">Proposed nameplate capacity: 39 kW </p> <p class="stats">Expected yearly generation: 176,000 kWh/year </p> <p class="stats">Phase: Feasibility </p> <p class="stats">Upfront capital cost: $1,557,116 </p> <p class="stats">Estimated hydro penetration level: 70.99% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1979-0373.pdf'> link </a> </p>
+    </div><H3>Hayden lake<small class = "hidy" data-toggle="collapse" data-target="#Hayden_Lake"></small> </H3>
+    <div id="Hayden_Lake" class="collapse in" >
+     <p class="stats">Present value of capital cost: $3,198,080 </p> <p class="stats">Lifetime energy cost savings: $-144,958 </p> <p class="stats">Net lifetime savings: $-3,343,039 </p> <p class="stats">Benefit-cost ratio: -0.0 </p> <p class="stats">Proposed nameplate capacity: 20 kW </p> <p class="stats">Expected yearly generation: 90,684 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $3,255,909 </p> <p class="stats">Estimated hydro penetration level: 36.58% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential cost savings through changes in the amount of diesel fuel used for electricity generation from the installation of new hydropower infrastructure. Requires that at least a reconnaissance-level hydropower study has been completed for the community.
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Chenega_Bay_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Chenega_Bay_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 1.0.0, Generated from Model Version 1.0.0 and Data Version 1.0.0 on 2017-06-30</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

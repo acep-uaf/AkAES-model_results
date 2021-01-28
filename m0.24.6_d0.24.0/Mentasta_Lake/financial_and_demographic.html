@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Mentasta_Lake - Financial and Demographic summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+            
+            // data
+            var population = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {label: 'Population', type: 'number'}], [2003.0, 143.0], [2004.0, 130.0], [2005.0, 116.0], [2006.0, 118.0], [2007.0, 112.0], [2008.0, 122.0], [2009.0, 112.0], [2010.0, 126.0], [2011.0, 117.0], [2012.0, 116.0], [2013.0, 115.0], [2014.0, 113.0], [2015.0, 112.0], [2016.0, 111.0], [2017.0, 110.0], [2018.0, 109.0], [2019.0, 107.0], [2020.0, 106.0], [2021.0, 105.0], [2022.0, 103.0], [2023.0, 102.0], [2024.0, 100.0], [2025.0, 99.0], [2026.0, 98.0], [2027.0, 97.0], [2028.0, 96.0], [2029.0, 94.0], [2030.0, 93.0], [2031.0, 92.0], [2032.0, 91.0], [2033.0, 90.0], [2034.0, 90.0], [2035.0, 89.0], [2036.0, 88.0], [2037.0, 87.0], [2038.0, 86.0], [2039.0, 85.0], [2040.0, 84.0]])
+            year_fmat.format(population,0)
+            
+            
+            // plot options
+            
+            dollar = {title: 'people' }
+            
+            
+
+            width = 1000
+            height = 600
+
+            var population_options = {'title': 'Mentasta Lake: Population forecast',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var population_state = plot;
+        
+            // draw plot 
+            function drawPlot_population() {
+                
+                var population_plot = new google.visualization.LineChart(document.getElementById('population_chart'));
+                
+                
+                population_plot.draw(population, population_options);
+                return population_plot
+            }   
+            
+            // draw table
+            function drawTable_population() {
+                var population_table = new google.visualization.Table(document.getElementById('population_chart'))
+                population_table.draw(population, {'title': 'Population Forecast','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_population() {
+        var population_table = new google.visualization.Table(document.getElementById('population_chart'))
+        population_table.draw(population, {'title': 'Population Forecast','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      population_button = document.getElementById('population_button')
+      population_button.onclick = function() {
+        if (population_state == plot) {
+          drawTable_population();
+          population_state = chart;
+        } else {
+          drawPlot_population();
+          population_state = plot;
+        }
+      }
+      // initilize with plot
+      var  population_plot = drawPlot_population()
+      
+      document.getElementById('population_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + population_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var e_price = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {type: 'string', role: 'annotation'}, {label: 'Electricity price ($/kwh)', type: 'number'}, {type: 'string', role: 'annotationText'}], [2002.0, null, 0.44, null], [2003.0, null, 0.4, null], [2004.0, null, 0.43, null], [2005.0, null, 0.5, null], [2006.0, null, 0.58, null], [2007.0, null, 0.54, null], [2008.0, null, 0.74, null], [2009.0, null, 0.52, null], [2010.0, null, 0.62, null], [2011.0, null, 0.67, null], [2012.0, null, 0.7, null], [2013.0, null, 0.71, null], [2016.0, null, 0.49, null], [2017.0, null, 0.52, null], [2018.0, null, 0.55, null], [2019.0, null, 0.58, null], [2020.0, null, 0.59, null], [2021.0, null, 0.61, null], [2022.0, null, 0.61, null], [2023.0, null, 0.62, null], [2024.0, null, 0.62, null], [2025.0, null, 0.63, null], [2026.0, null, 0.64, null], [2027.0, null, 0.64, null], [2028.0, null, 0.65, null], [2029.0, null, 0.65, null], [2030.0, null, 0.66, null], [2031.0, null, 0.67, null], [2032.0, null, 0.67, null], [2033.0, null, 0.68, null], [2034.0, null, 0.69, null], [2035.0, null, 0.69, null], [2036.0, null, 0.7, null], [2037.0, null, 0.7, null], [2038.0, null, 0.71, null], [2039.0, null, 0.72, null], [2040.0, null, 0.73, null]])
+            year_fmat.format(e_price,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: 'currency'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var e_price_options = {'title': 'Mentasta Lake: Electricity price ($/kwh)',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var e_price_state = plot;
+        
+            // draw plot 
+            function drawPlot_e_price() {
+                
+                var e_price_plot = new google.visualization.LineChart(document.getElementById('e_price_chart'));
+                
+                
+                e_price_plot.draw(e_price, e_price_options);
+                return e_price_plot
+            }   
+            
+            // draw table
+            function drawTable_e_price() {
+                var e_price_table = new google.visualization.Table(document.getElementById('e_price_chart'))
+                e_price_table.draw(e_price, {'title': 'Electricity Price ($/kWh)','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_e_price() {
+        var e_price_table = new google.visualization.Table(document.getElementById('e_price_chart'))
+        e_price_table.draw(e_price, {'title': 'Electricity Price ($/kWh)','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      e_price_button = document.getElementById('e_price_button')
+      e_price_button.onclick = function() {
+        if (e_price_state == plot) {
+          drawTable_e_price();
+          e_price_state = chart;
+        } else {
+          drawPlot_e_price();
+          e_price_state = plot;
+        }
+      }
+      // initilize with plot
+      var  e_price_plot = drawPlot_e_price()
+      
+      document.getElementById('e_price_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + e_price_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var d_price = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {type: 'string', role: 'annotation'}, {label: 'Diesel price ($/gal)', type: 'number'}, {label: 'Heating fuel ($/gal)', type: 'number'}, {type: 'string', role: 'annotationText'}], [2006.0, null, 2.35, 2.72, null], [2008.0, null, 3.42, 4.29, null], [2009.0, null, 2.33, 4.75, null], [2010.0, null, 2.93, 4.75, null], [2011.0, null, 3.7, 4.75, null], [2012.0, null, 3.82, 4.11, null], [2013.0, null, 3.73, 4.38, null], [2014.0, null, null, 4.18, null], [2016.0, null, 1.62, 2.57, null], [2017.0, null, 1.99, 2.94, null], [2018.0, null, 2.27, 3.22, null], [2019.0, null, 2.66, 3.61, null], [2020.0, null, 2.84, 3.79, null], [2021.0, null, 2.97, 3.92, null], [2022.0, null, 3.07, 4.02, null], [2023.0, null, 3.14, 4.09, null], [2024.0, null, 3.2, 4.15, null], [2025.0, null, 3.27, 4.22, null], [2026.0, null, 3.35, 4.3, null], [2027.0, null, 3.42, 4.37, null], [2028.0, null, 3.48, 4.43, null], [2029.0, null, 3.55, 4.5, null], [2030.0, null, 3.6, 4.55, null], [2031.0, null, 3.69, 4.64, null], [2032.0, null, 3.77, 4.72, null], [2033.0, null, 3.86, 4.81, null], [2034.0, null, 3.95, 4.9, null], [2035.0, null, 4.01, 4.96, null], [2036.0, null, 4.11, 5.06, null], [2037.0, null, 4.16, 5.11, null], [2038.0, null, 4.26, 5.21, null], [2039.0, null, 4.33, 5.28, null], [2040.0, null, 4.43, 5.38, null]])
+            year_fmat.format(d_price,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: 'currency'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var d_price_options = {'title': 'Mentasta Lake: Fuel price',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var d_price_state = plot;
+        
+            // draw plot 
+            function drawPlot_d_price() {
+                
+                var d_price_plot = new google.visualization.LineChart(document.getElementById('d_price_chart'));
+                
+                
+                d_price_plot.draw(d_price, d_price_options);
+                return d_price_plot
+            }   
+            
+            // draw table
+            function drawTable_d_price() {
+                var d_price_table = new google.visualization.Table(document.getElementById('d_price_chart'))
+                d_price_table.draw(d_price, {'title': 'Fuel Price','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_d_price() {
+        var d_price_table = new google.visualization.Table(document.getElementById('d_price_chart'))
+        d_price_table.draw(d_price, {'title': 'Fuel Price','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      d_price_button = document.getElementById('d_price_button')
+      d_price_button.onclick = function() {
+        if (d_price_state == plot) {
+          drawTable_d_price();
+          d_price_state = chart;
+        } else {
+          drawPlot_d_price();
+          d_price_state = plot;
+        }
+      }
+      // initilize with plot
+      var  d_price_plot = drawPlot_d_price()
+      
+      document.getElementById('d_price_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + d_price_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {label: 'Water/wastewater heating fuel', type: 'number'}, {label: 'Non-residential heating fuel', type: 'number'}, {label: 'Residential heating fuel', type: 'number'}, {label: 'Water/wastewater electricity', type: 'number'}, {label: 'Non-residential electricity', type: 'number'}, {label: 'Residential electricity', type: 'number'}], [2017.0, 0.0, 135022.48, 224265.99, 0.0, 142558.84, 125956.19], [2018.0, 0.0, 147681.69, 240043.02, 0.0, 148834.12, 131500.64], [2019.0, 0.0, 165314.15, 253798.39, 0.0, 157574.69, 135742.69], [2020.0, 0.0, 173452.21, 263622.59, 0.0, 161608.8, 139217.87], [2021.0, 0.0, 179329.7, 261950.09, 0.0, 164522.33, 138093.68], [2022.0, 0.0, 183850.84, 267231.21, 0.0, 166763.5, 139974.84], [2023.0, 0.0, 187015.64, 261859.74, 0.0, 168332.32, 137573.44], [2024.0, 0.0, 189728.33, 264922.35, 0.0, 169677.02, 138672.43], [2025.0, 0.0, 192893.13, 259197.35, 0.0, 171245.84, 136172.03], [2026.0, 0.0, 196510.04, 263139.43, 0.0, 173038.78, 137597.75], [2027.0, 0.0, 199674.84, 257025.54, 0.0, 174607.6, 134988.44], [2028.0, 0.0, 202387.53, 259876.04, 0.0, 175952.3, 136028.02], [2029.0, 0.0, 205552.33, 253408.62, 0.0, 177521.13, 133319.7], [2030.0, 0.0, 207812.9, 255695.65, 0.0, 178641.71, 134161.27], [2031.0, 0.0, 211881.93, 249771.84, 0.0, 180658.77, 131685.62], [2032.0, 0.0, 215498.85, 253289.68, 0.0, 182451.7, 132992.53], [2033.0, 0.0, 219567.88, 257247.25, 0.0, 184468.76, 134462.8], [2034.0, 0.0, 223636.91, 261204.82, 0.0, 186485.81, 135933.07], [2035.0, 0.0, 226349.6, 253237.08, 0.0, 187830.52, 132764.36], [2036.0, 0.0, 230870.74, 257457.62, 0.0, 190071.69, 134348.49], [2037.0, 0.0, 233131.31, 259567.88, 0.0, 191192.27, 135140.55], [2038.0, 0.0, 237652.46, 252740.39, 0.0, 193433.45, 132452.04], [2039.0, 0.0, 240817.26, 255571.03, 0.0, 195002.27, 133526.27], [2040.0, 0.0, 245338.4, 259614.8, 0.0, 197243.44, 135060.9]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+             
+            dollar = {format: 'percent'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Mentasta Lake: Costs by sector',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                             isStacked: 'relative', 
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.AreaChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Costs by Sector','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Costs by Sector','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script>
+
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     
+    <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Mentasta Lake<span class="page-subtitle"> Financial and Demographic</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Mentasta_Lake/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Mentasta_Lake/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Mentasta_Lake/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Mentasta_Lake/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Mentasta_Lake/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Mentasta_Lake/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Mentasta_Lake/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Mentasta_Lake/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Mentasta_Lake/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Mentasta_Lake/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Mentasta_Lake/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Mentasta_Lake/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Mentasta_Lake/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Mentasta_Lake/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Mentasta_Lake/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Mentasta_Lake/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Mentasta_Lake/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Mentasta_Lake/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+    <div class = 'charts'>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Population forecast  <small class="hidy" data-toggle="collapse" data-target="#population_forecast"></small> </div>
+                <div id="population_forecast" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="population">
+                    
+                        
+                        <div id="population_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='population_button'>Plot/Table</button>
+            <div id='population_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Mentasta_Lake_population.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Electricity price ($/kwh)  <small class="hidy" data-toggle="collapse" data-target="#electricity_price_kwh"></small> </div>
+                <div id="electricity_price_kwh" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="e_price">
+                    
+                        
+                        <div id="e_price_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='e_price_button'>Plot/Table</button>
+            <div id='e_price_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Mentasta_Lake_e_price.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Fuel price  <small class="hidy" data-toggle="collapse" data-target="#fuel_price"></small> </div>
+                <div id="fuel_price" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="d_price">
+                    
+                        
+                        <div id="d_price_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='d_price_button'>Plot/Table</button>
+            <div id='d_price_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Mentasta_Lake_d_price.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Costs by sector  <small class="hidy" data-toggle="collapse" data-target="#costs_by_sector"></small> </div>
+                <div id="costs_by_sector" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="costs">
+                    
+                        
+                        <div id="costs_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+            <div id='costs_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Mentasta_Lake_costs.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+    </div>
+
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            
+
+
+          </div>
+          <div class="col-sm-9">
+            
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Generated from Model Version 0.24.6 and Data Version 0.24.0 on 2017-01-24</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+      </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

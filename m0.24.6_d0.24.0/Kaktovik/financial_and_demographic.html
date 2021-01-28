@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Kaktovik - Financial and Demographic summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+            
+            // data
+            var population = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {label: 'Population', type: 'number'}], [2003.0, 280.0], [2004.0, 265.0], [2005.0, 252.0], [2006.0, 259.0], [2007.0, 252.0], [2008.0, 237.0], [2009.0, 245.0], [2010.0, 239.0], [2011.0, 239.0], [2012.0, 241.0], [2013.0, 243.0], [2014.0, 245.0], [2015.0, 248.0], [2016.0, 250.0], [2017.0, 253.0], [2018.0, 255.0], [2019.0, 258.0], [2020.0, 260.0], [2021.0, 262.0], [2022.0, 265.0], [2023.0, 267.0], [2024.0, 269.0], [2025.0, 271.0], [2026.0, 273.0], [2027.0, 275.0], [2028.0, 277.0], [2029.0, 278.0], [2030.0, 280.0], [2031.0, 281.0], [2032.0, 283.0], [2033.0, 285.0], [2034.0, 287.0], [2035.0, 289.0], [2036.0, 291.0], [2037.0, 293.0], [2038.0, 295.0], [2039.0, 297.0], [2040.0, 299.0]])
+            year_fmat.format(population,0)
+            
+            
+            // plot options
+            
+            dollar = {title: 'people' }
+            
+            
+
+            width = 1000
+            height = 600
+
+            var population_options = {'title': 'Kaktovik: Population forecast',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var population_state = plot;
+        
+            // draw plot 
+            function drawPlot_population() {
+                
+                var population_plot = new google.visualization.LineChart(document.getElementById('population_chart'));
+                
+                
+                population_plot.draw(population, population_options);
+                return population_plot
+            }   
+            
+            // draw table
+            function drawTable_population() {
+                var population_table = new google.visualization.Table(document.getElementById('population_chart'))
+                population_table.draw(population, {'title': 'Population Forecast','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_population() {
+        var population_table = new google.visualization.Table(document.getElementById('population_chart'))
+        population_table.draw(population, {'title': 'Population Forecast','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      population_button = document.getElementById('population_button')
+      population_button.onclick = function() {
+        if (population_state == plot) {
+          drawTable_population();
+          population_state = chart;
+        } else {
+          drawPlot_population();
+          population_state = plot;
+        }
+      }
+      // initilize with plot
+      var  population_plot = drawPlot_population()
+      
+      document.getElementById('population_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + population_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var e_price = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {type: 'string', role: 'annotation'}, {label: 'Electricity price ($/kwh)', type: 'number'}, {type: 'string', role: 'annotationText'}], [2002.0, null, 0.15, null], [2003.0, null, 0.15, null], [2004.0, null, 0.15, null], [2005.0, null, 0.15, null], [2006.0, null, 0.15, null], [2009.0, null, 0.17, null], [2010.0, null, 0.15, null], [2011.0, null, 0.15, null], [2012.0, null, 0.15, null], [2013.0, null, 0.15, null], [2016.0, null, 0.15, null], [2017.0, null, 0.15, null], [2018.0, null, 0.15, null], [2019.0, null, 0.15, null], [2020.0, null, 0.15, null], [2021.0, null, 0.15, null], [2022.0, null, 0.15, null], [2023.0, null, 0.15, null], [2024.0, null, 0.15, null], [2025.0, null, 0.15, null], [2026.0, null, 0.15, null], [2027.0, null, 0.15, null], [2028.0, null, 0.15, null], [2029.0, null, 0.15, null], [2030.0, null, 0.15, null], [2031.0, null, 0.15, null], [2032.0, null, 0.15, null], [2033.0, null, 0.15, null], [2034.0, null, 0.15, null], [2035.0, null, 0.15, null], [2036.0, null, 0.15, null], [2037.0, null, 0.15, null], [2038.0, null, 0.15, null], [2039.0, null, 0.15, null], [2040.0, null, 0.15, null]])
+            year_fmat.format(e_price,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: 'currency'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var e_price_options = {'title': 'Kaktovik: Electricity price ($/kwh)',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var e_price_state = plot;
+        
+            // draw plot 
+            function drawPlot_e_price() {
+                
+                var e_price_plot = new google.visualization.LineChart(document.getElementById('e_price_chart'));
+                
+                
+                e_price_plot.draw(e_price, e_price_options);
+                return e_price_plot
+            }   
+            
+            // draw table
+            function drawTable_e_price() {
+                var e_price_table = new google.visualization.Table(document.getElementById('e_price_chart'))
+                e_price_table.draw(e_price, {'title': 'Electricity Price ($/kWh)','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_e_price() {
+        var e_price_table = new google.visualization.Table(document.getElementById('e_price_chart'))
+        e_price_table.draw(e_price, {'title': 'Electricity Price ($/kWh)','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      e_price_button = document.getElementById('e_price_button')
+      e_price_button.onclick = function() {
+        if (e_price_state == plot) {
+          drawTable_e_price();
+          e_price_state = chart;
+        } else {
+          drawPlot_e_price();
+          e_price_state = plot;
+        }
+      }
+      // initilize with plot
+      var  e_price_plot = drawPlot_e_price()
+      
+      document.getElementById('e_price_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + e_price_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var d_price = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {type: 'string', role: 'annotation'}, {label: 'Diesel price ($/gal)', type: 'number'}, {label: 'Heating fuel ($/gal)', type: 'number'}, {type: 'string', role: 'annotationText'}], [2000.0, null, null, 1.4, null], [2001.0, null, null, 1.5, null], [2004.0, null, 1.47, 1.5, null], [2005.0, null, 1.81, 1.6, null], [2006.0, null, 1.93, 1.5, null], [2008.0, null, null, 1.68, null], [2009.0, null, 2.92, 2.0, null], [2010.0, null, 3.83, 2.41, null], [2011.0, null, 4.43, 2.6, null], [2012.0, null, 3.96, 3.1, null], [2013.0, null, 4.44, 5.5, null], [2014.0, null, null, 5.25, null], [2016.0, null, 2.18, 2.18, null], [2017.0, null, 2.6, 2.6, null], [2018.0, null, 2.9, 2.9, null], [2019.0, null, 3.33, 3.33, null], [2020.0, null, 3.52, 3.52, null], [2021.0, null, 3.66, 3.66, null], [2022.0, null, 3.76, 3.76, null], [2023.0, null, 3.83, 3.83, null], [2024.0, null, 3.89, 3.89, null], [2025.0, null, 3.96, 3.96, null], [2026.0, null, 4.05, 4.05, null], [2027.0, null, 4.12, 4.12, null], [2028.0, null, 4.18, 4.18, null], [2029.0, null, 4.26, 4.26, null], [2030.0, null, 4.31, 4.31, null], [2031.0, null, 4.4, 4.4, null], [2032.0, null, 4.48, 4.48, null], [2033.0, null, 4.57, 4.57, null], [2034.0, null, 4.66, 4.66, null], [2035.0, null, 4.72, 4.72, null], [2036.0, null, 4.82, 4.82, null], [2037.0, null, 4.87, 4.87, null], [2038.0, null, 4.97, 4.97, null], [2039.0, null, 5.04, 5.04, null], [2040.0, null, 5.14, 5.14, null]])
+            year_fmat.format(d_price,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: 'currency'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var d_price_options = {'title': 'Kaktovik: Fuel price',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var d_price_state = plot;
+        
+            // draw plot 
+            function drawPlot_d_price() {
+                
+                var d_price_plot = new google.visualization.LineChart(document.getElementById('d_price_chart'));
+                
+                
+                d_price_plot.draw(d_price, d_price_options);
+                return d_price_plot
+            }   
+            
+            // draw table
+            function drawTable_d_price() {
+                var d_price_table = new google.visualization.Table(document.getElementById('d_price_chart'))
+                d_price_table.draw(d_price, {'title': 'Fuel Price','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_d_price() {
+        var d_price_table = new google.visualization.Table(document.getElementById('d_price_chart'))
+        d_price_table.draw(d_price, {'title': 'Fuel Price','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      d_price_button = document.getElementById('d_price_button')
+      d_price_button.onclick = function() {
+        if (d_price_state == plot) {
+          drawTable_d_price();
+          d_price_state = chart;
+        } else {
+          drawPlot_d_price();
+          d_price_state = plot;
+        }
+      }
+      // initilize with plot
+      var  d_price_plot = drawPlot_d_price()
+      
+      document.getElementById('d_price_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + d_price_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {label: 'Water/wastewater heating fuel', type: 'number'}, {label: 'Non-residential heating fuel', type: 'number'}, {label: 'Residential heating fuel', type: 'number'}, {label: 'Water/wastewater electricity', type: 'number'}, {label: 'Non-residential electricity', type: 'number'}, {label: 'Residential electricity', type: 'number'}], [2017.0, 32655.21, 445861.05, 203371.93, 79875.74, 428987.62, 96844.9], [2018.0, 36432.68, 497306.56, 230929.47, 79887.66, 428987.62, 98119.18], [2019.0, 41845.44, 571045.12, 269868.97, 79899.23, 428987.62, 99393.45], [2020.0, 44244.11, 603627.27, 285266.89, 79910.63, 428987.62, 99393.45], [2021.0, 46015.62, 627635.18, 301776.56, 79922.27, 428987.62, 100667.73], [2022.0, 47283.82, 644783.68, 315326.73, 79932.79, 428987.62, 101942.0], [2023.0, 48174.99, 656787.63, 321197.17, 79943.06, 428987.62, 101942.0], [2024.0, 48939.91, 667076.73, 331717.3, 79952.56, 428987.62, 103216.28], [2025.0, 49830.87, 679080.68, 343273.6, 79961.96, 428987.62, 104490.55], [2026.0, 50974.01, 694514.34, 351075.27, 79971.43, 428987.62, 104490.55], [2027.0, 51865.78, 706518.29, 362956.06, 79980.85, 428987.62, 105764.83], [2028.0, 52632.02, 716807.39, 368241.83, 79990.28, 428987.62, 105764.83], [2029.0, 53647.77, 730526.19, 381299.87, 79997.44, 428987.62, 107039.1], [2030.0, 54286.4, 739100.44, 385775.22, 80004.96, 428987.62, 107039.1], [2031.0, 55429.8, 754534.09, 400038.72, 80013.02, 428987.62, 108313.38], [2032.0, 56449.28, 768252.89, 407312.15, 80022.42, 428987.62, 108313.38], [2033.0, 57595.72, 783686.55, 421942.49, 80032.24, 428987.62, 109587.65], [2034.0, 58742.67, 799120.2, 436826.78, 80042.08, 428987.62, 110861.93], [2035.0, 59511.45, 809409.3, 442451.16, 80051.6, 428987.62, 110861.93], [2036.0, 60784.66, 826557.8, 458625.56, 80060.88, 428987.62, 112136.2], [2037.0, 61427.16, 835132.05, 463383.09, 80069.74, 428987.62, 112136.2], [2038.0, 62701.12, 852280.55, 479910.22, 80078.93, 428987.62, 113410.48], [2039.0, 63598.27, 864284.51, 486669.52, 80088.99, 428987.62, 113410.48], [2040.0, 64875.36, 881433.01, 503577.58, 80099.69, 428987.62, 114684.75]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+             
+            dollar = {format: 'percent'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Kaktovik: Costs by sector',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                             isStacked: 'relative', 
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.AreaChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Costs by Sector','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Costs by Sector','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script>
+
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     
+    <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Kaktovik<span class="page-subtitle"> Financial and Demographic</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Kaktovik/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Kaktovik/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Kaktovik/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Kaktovik/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Kaktovik/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Kaktovik/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Kaktovik/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Kaktovik/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Kaktovik/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Kaktovik/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Kaktovik/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Kaktovik/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Kaktovik/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Kaktovik/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Kaktovik/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Kaktovik/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Kaktovik/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Kaktovik/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+    <div class = 'charts'>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Population forecast  <small class="hidy" data-toggle="collapse" data-target="#population_forecast"></small> </div>
+                <div id="population_forecast" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="population">
+                    
+                        
+                        <div id="population_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='population_button'>Plot/Table</button>
+            <div id='population_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Kaktovik_population.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Electricity price ($/kwh)  <small class="hidy" data-toggle="collapse" data-target="#electricity_price_kwh"></small> </div>
+                <div id="electricity_price_kwh" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="e_price">
+                    
+                        
+                        <div id="e_price_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='e_price_button'>Plot/Table</button>
+            <div id='e_price_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Kaktovik_e_price.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Fuel price  <small class="hidy" data-toggle="collapse" data-target="#fuel_price"></small> </div>
+                <div id="fuel_price" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="d_price">
+                    
+                        
+                        <div id="d_price_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='d_price_button'>Plot/Table</button>
+            <div id='d_price_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Kaktovik_d_price.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Costs by sector  <small class="hidy" data-toggle="collapse" data-target="#costs_by_sector"></small> </div>
+                <div id="costs_by_sector" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="costs">
+                    
+                        
+                        <div id="costs_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+            <div id='costs_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Kaktovik_costs.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+    </div>
+
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            
+
+
+          </div>
+          <div class="col-sm-9">
+            
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Generated from Model Version 0.24.6 and Data Version 0.24.0 on 2017-01-24</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+      </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

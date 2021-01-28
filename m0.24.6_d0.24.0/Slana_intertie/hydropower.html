@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Slana_intertie - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Mentasta lake (right tributary of slana river) -- slana river, tributary', type: 'number'}, {label: 'Carlson creek', type: 'number'}], [2021.0, 258767.0, 886205.0, 1453398.0], [2022.0, 260895.0, 873681.0, 1419842.0], [2023.0, 258553.0, 857463.0, 1384815.0], [2024.0, 255573.0, 841061.0, 1350569.0], [2025.0, 253339.0, 825543.0, 1316910.0], [2026.0, 251245.0, 810295.0, 1283218.0], [2027.0, 248594.0, 794924.0, 1250345.0], [2028.0, 244916.0, 778954.0, 1217806.0], [2029.0, 239884.0, 761741.0, 1183698.0], [2030.0, 234055.0, 744303.0, 1150909.0], [2031.0, 230773.0, 729042.0, 1118082.0], [2032.0, 228000.0, 714694.0, 1087073.0], [2033.0, 225799.0, 701004.0, 1056370.0], [2034.0, 223568.0, 687521.0, 1026139.0], [2035.0, 219355.0, 672753.0, 996762.0], [2036.0, 216008.0, 658455.0, 965606.0], [2037.0, 210742.0, 643236.0, 936907.0], [2038.0, 208075.0, 630052.0, 907357.0], [2039.0, 203992.0, 616129.0, 879182.0], [2040.0, 201759.0, 603794.0, 850948.0], [2041.0, 195545.0, 589237.0, 826976.0], [2042.0, 189697.0, 575241.0, 803786.0], [2043.0, 183849.0, 561437.0, 781002.0], [2044.0, 177635.0, 547453.0, 758249.0], [2045.0, 172518.0, 534747.0, 736981.0], [2046.0, 167401.0, 522220.0, 716091.0], [2047.0, 163381.0, 510963.0, 696667.0], [2048.0, 159360.0, 499875.0, 677604.0], [2049.0, 155340.0, 488953.0, 658894.0], [2050.0, 152415.0, 479290.0, 641625.0], [2051.0, 152415.0, 472708.0, 627616.0], [2052.0, 152415.0, 466280.0, 613935.0], [2053.0, 152415.0, 460004.0, 600575.0], [2054.0, 152415.0, 453874.0, 587528.0], [2055.0, 152415.0, 447888.0, 574787.0], [2056.0, 152415.0, 442042.0, 562344.0], [2057.0, 152415.0, 436334.0, 550193.0], [2058.0, 152415.0, 430759.0, 538327.0], [2059.0, 152415.0, 425314.0, 526739.0], [2060.0, 152415.0, 419998.0, 515422.0], [2061.0, 152415.0, 414806.0, 504371.0], [2062.0, 152415.0, 409735.0, 493579.0], [2063.0, 152415.0, 404784.0, 483040.0], [2064.0, 152415.0, 399948.0, 472747.0], [2065.0, 152415.0, 395226.0, 462696.0], [2066.0, 152415.0, 390615.0, 452881.0], [2067.0, 152415.0, 386111.0, 443296.0], [2068.0, 152415.0, 381714.0, 433935.0], [2069.0, 152415.0, 377419.0, 424793.0], [2070.0, 152415.0, 373225.0, 415866.0]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: '$#,###'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Slana intertie: Estimated electricity generation fuel costs per year',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.LineChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Estimated Electricity Generation Fuel Costs per Year','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Estimated Electricity Generation Fuel Costs per Year','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var consumption = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Mentasta lake (right tributary of slana river) -- slana river, tributary', type: 'number'}, {label: 'Carlson creek', type: 'number'}], [2021.0, 87127.0, 69732.0, 0.0], [2022.0, 84982.0, 67587.0, -2145.0], [2023.0, 82342.0, 64946.0, -4785.0], [2024.0, 79867.0, 62471.0, -7261.0], [2025.0, 77474.0, 60078.0, -9653.0], [2026.0, 74999.0, 57603.0, -12128.0], [2027.0, 72688.0, 55293.0, -14439.0], [2028.0, 70378.0, 52983.0, -16749.0], [2029.0, 67573.0, 50178.0, -19554.0], [2030.0, 65015.0, 47620.0, -22112.0], [2031.0, 62540.0, 45145.0, -24587.0], [2032.0, 60477.0, 43082.0, -26650.0], [2033.0, 58497.0, 41102.0, -28630.0], [2034.0, 56600.0, 39204.0, -30527.0], [2035.0, 54702.0, 37307.0, -32425.0], [2036.0, 52557.0, 35161.0, -34570.0], [2037.0, 50659.0, 33264.0, -36468.0], [2038.0, 48844.0, 31449.0, -38283.0], [2039.0, 47111.0, 29716.0, -40016.0], [2040.0, 45544.0, 28148.0, -41583.0], [2041.0, 44141.0, 26746.0, -42986.0], [2042.0, 42821.0, 25426.0, -44306.0], [2043.0, 41501.0, 24106.0, -45626.0], [2044.0, 40098.0, 22703.0, -47029.0], [2045.0, 38943.0, 21548.0, -48184.0], [2046.0, 37788.0, 20393.0, -49339.0], [2047.0, 36881.0, 19485.0, -50247.0], [2048.0, 35973.0, 18578.0, -51154.0], [2049.0, 35065.0, 17670.0, -52062.0], [2050.0, 34405.0, 17010.0, -52722.0], [2051.0, 34405.0, 17010.0, -52722.0], [2052.0, 34405.0, 17010.0, -52722.0], [2053.0, 34405.0, 17010.0, -52722.0], [2054.0, 34405.0, 17010.0, -52722.0], [2055.0, 34405.0, 17010.0, -52722.0], [2056.0, 34405.0, 17010.0, -52722.0], [2057.0, 34405.0, 17010.0, -52722.0], [2058.0, 34405.0, 17010.0, -52722.0], [2059.0, 34405.0, 17010.0, -52722.0], [2060.0, 34405.0, 17010.0, -52722.0], [2061.0, 34405.0, 17010.0, -52722.0], [2062.0, 34405.0, 17010.0, -52722.0], [2063.0, 34405.0, 17010.0, -52722.0], [2064.0, 34405.0, 17010.0, -52722.0], [2065.0, 34405.0, 17010.0, -52722.0], [2066.0, 34405.0, 17010.0, -52722.0], [2067.0, 34405.0, 17010.0, -52722.0], [2068.0, 34405.0, 17010.0, -52722.0], [2069.0, 34405.0, 17010.0, -52722.0], [2070.0, 34405.0, 17010.0, -52722.0]])
+            year_fmat.format(consumption,0)
+            
+            
+            // plot options
+            
+            dollar=  {title: 'gallons'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var consumption_options = {'title': 'Slana intertie: Diesel consumed for electricity generation ',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_consumption() {
+                
+                var consumption_plot = new google.visualization.LineChart(document.getElementById('consumption_chart'));
+                
+                
+                consumption_plot.draw(consumption, consumption_options);
+                return consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_consumption() {
+                var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+                consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_consumption() {
+        var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+        consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      consumption_button = document.getElementById('consumption_button')
+      consumption_button.onclick = function() {
+        if (consumption_state == plot) {
+          drawTable_consumption();
+          consumption_state = chart;
+        } else {
+          drawPlot_consumption();
+          consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  consumption_plot = drawPlot_consumption()
+      
+      document.getElementById('consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script> 
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Slana intertie<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Slana_intertie/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Slana_intertie/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Slana_intertie/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Slana_intertie/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Slana_intertie/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Slana_intertie/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Slana_intertie/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Slana_intertie/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Slana_intertie/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Slana_intertie/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Slana_intertie/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Slana_intertie/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Slana_intertie/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Slana_intertie/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Slana_intertie/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Slana_intertie/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Slana_intertie/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Slana_intertie/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system <small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">Average Community Load (kW)(2013): 154 </p> <p class="stats">Average kWh/year(2013): 1,349,438 </p> <p class="stats">Peak Load: Unknown </p> <p class="stats">Existing nameplate wind capacity (kW): 0 </p> <p class="stats">Existing wind generation (kWh/year)(2013): 0 </p> <p class="stats">Existing nameplate solar capacity (kW): 0.0 </p> <p class="stats">Existing solar generation (kWh/year)(2013): 0 </p> <p class="stats">Existing nameplate hydro capacity (kW): 0.0 </p> <p class="stats">Existing hydro generation (kWh/year)(2013): 0 </p>
+    </div><H3>Mentasta lake (right tributary of slana river) -- slana river, tributary <small class = "hidy" data-toggle="collapse" data-target="#Mentasta_Lake_right_tributary_of_Slana_River_--_Slana_River_Tributary"></small> </H3>
+    <div id="Mentasta_Lake_right_tributary_of_Slana_River_--_Slana_River_Tributary" class="collapse in" >
+     <p class="stats">Capital Cost ($): $8,389,247 </p> <p class="stats">Lifetime Savings ($): $-1,186,620 </p> <p class="stats">Net Lifetime Savings ($): $-9,575,867 </p> <p class="stats">Benefit Cost Ratio: -0.141 </p> <p class="stats">Proposed Nameplate Capacity(kW): 84 </p> <p class="stats">Expected Yearly Generation (kWh/year): 287,000 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $11,757,878 </p> <p class="stats">Estimated Hydro Penetration Level (%): 21.27% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Carlson creek <small class = "hidy" data-toggle="collapse" data-target="#Carlson_Creek"></small> </H3>
+    <div id="Carlson_Creek" class="collapse in" >
+     <p class="stats">Capital Cost ($): $17,856,448 </p> <p class="stats">Lifetime Savings ($): $1,583,703 </p> <p class="stats">Net Lifetime Savings ($): $-16,272,745 </p> <p class="stats">Benefit Cost Ratio: 0.089 </p> <p class="stats">Proposed Nameplate Capacity(kW): 325 </p> <p class="stats">Expected Yearly Generation (kWh/year): 1,473,622 </p> <p class="stats">Phase: Feasibility </p> <p class="stats">Total Capital Cost: $25,026,552 </p> <p class="stats">Estimated Hydro Penetration Level (%): 109.20% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-2005-0001.pdf'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential electricity generation from diesel that could be offset by installing new Hydropower generation infrastructure. This component only uses existing proposed projects to base its calculations on, and does not attempt to model values
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Slana_intertie_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Slana_intertie_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Generated from Model Version 0.24.6 and Data Version 0.24.0 on 2017-01-24</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+      </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

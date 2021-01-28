@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Oscarville - Consumption summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+             
+    
+             
+    
+            
+            // data
+            var non_residential_buildings = google.visualization.arrayToDataTable([['name', 'value'], ['Consumption by Education - K - 12', 85.910708726776775], ['Consumption by Other', 4.6782247482440518], ['Consumption by Health Care - Hospitals', 1.6751388306534123], ['Consumption by Office', 1.9380067702328714], ['Consumption by Warehousing', 5.7979209240928986]])
+            year_fmat.format(non_residential_buildings,0)
+            
+            
+            // plot options
+            
+            dollar = {title: 'pie' }
+            
+            
+
+            width = 1000
+            height = 600
+
+            var non_residential_buildings_options = {'title': 'Oscarville: Non-residential buildings',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var non_residential_buildings_state = plot;
+        
+            // draw plot 
+            function drawPlot_non_residential_buildings() {
+                
+                var non_residential_buildings_plot = new google.visualization.PieChart(document.getElementById('non_residential_buildings_chart'));
+                
+                
+                non_residential_buildings_plot.draw(non_residential_buildings, non_residential_buildings_options);
+                return non_residential_buildings_plot
+            }   
+            
+            // draw table
+            function drawTable_non_residential_buildings() {
+                var non_residential_buildings_table = new google.visualization.Table(document.getElementById('non_residential_buildings_chart'))
+                non_residential_buildings_table.draw(non_residential_buildings, {'title': 'Non-residential Buildings','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_non_residential_buildings() {
+        var non_residential_buildings_table = new google.visualization.Table(document.getElementById('non_residential_buildings_chart'))
+        non_residential_buildings_table.draw(non_residential_buildings, {'title': 'Non-residential Buildings','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      non_residential_buildings_button = document.getElementById('non_residential_buildings_button')
+      non_residential_buildings_button.onclick = function() {
+        if (non_residential_buildings_state == plot) {
+          drawTable_non_residential_buildings();
+          non_residential_buildings_state = chart;
+        } else {
+          drawPlot_non_residential_buildings();
+          non_residential_buildings_state = plot;
+        }
+      }
+      // initilize with plot
+      var  non_residential_buildings_plot = drawPlot_non_residential_buildings()
+      
+      document.getElementById('non_residential_buildings_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + non_residential_buildings_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var consumption = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {type: 'string', role: 'annotation'}, {label: 'Total', type: 'number'}, {label: 'Residential', type: 'number'}, {label: 'Non-residential', type: 'number'}, {type: 'string', role: 'annotationText'}], [2003, null, 40647424.0, 10487544.0, 30159880.0, null], [2004, null, 41085276.0, 10605224.0, 30480052.0, null], [2005, null, 40762126.0, 10606265.0, 30155861.0, null], [2006, null, 39646287.0, 10207676.0, 29438611.0, null], [2007, null, 40017709.0, 10394450.0, 29623259.0, null], [2008, null, 40114157.0, 10489137.0, 29625020.0, null], [2009, null, 39279525.0, 10324324.0, 28955201.0, null], [2010, null, 39957651.0, 10515736.0, 29441915.0, null], [2011, null, 40080530.0, 10604661.0, 29475869.0, null], [2012, null, 42327023.0, 11101026.0, 31225997.0, null], [2013, null, 40985806.0, 10404921.0, 30580885.0, null], [2014, 'start of forecast', 40940174.0, 10512590.0, 30427584.0, 'start of forecast'], [2015, null, 40939894.0, 10512310.0, 30427584.0, null], [2016, null, 40939219.0, 10511635.0, 30427584.0, null], [2017, null, 40938706.0, 10511122.0, 30427584.0, null], [2018, null, 40938164.0, 10510580.0, 30427584.0, null], [2019, null, 40937695.0, 10510112.0, 30427584.0, null], [2020, null, 40937156.0, 10509573.0, 30427584.0, null], [2021, null, 40936601.0, 10509017.0, 30427584.0, null], [2022, null, 40936151.0, 10508567.0, 30427584.0, null], [2023, null, 40935767.0, 10508183.0, 30427584.0, null], [2024, null, 40935279.0, 10507696.0, 30427584.0, null], [2025, null, 40934918.0, 10507335.0, 30427584.0, null], [2026, null, 40934489.0, 10506905.0, 30427584.0, null], [2027, null, 40934218.0, 10506635.0, 30427584.0, null], [2028, null, 40933728.0, 10506144.0, 30427584.0, null], [2029, null, 40933300.0, 10505716.0, 30427584.0, null], [2030, null, 40932861.0, 10505277.0, 30427584.0, null], [2031, null, 40932176.0, 10504592.0, 30427584.0, null], [2032, null, 40931817.0, 10504234.0, 30427584.0, null], [2033, null, 40931484.0, 10503901.0, 30427584.0, null], [2034, null, 40930604.0, 10503020.0, 30427584.0, null], [2035, null, 40930521.0, 10502937.0, 30427584.0, null], [2036, null, 40930005.0, 10502421.0, 30427584.0, null], [2037, null, 40929833.0, 10502249.0, 30427584.0, null], [2038, null, 40929204.0, 10501620.0, 30427584.0, null], [2039, null, 40929104.0, 10501520.0, 30427584.0, null], [2040, null, 40928991.0, 10501407.0, 30427584.0, null]])
+            year_fmat.format(consumption,0)
+            
+            
+            // plot options
+            
+            dollar = {title: 'kWh' }
+            
+            
+
+            width = 1000
+            height = 600
+
+            var consumption_options = {'title': 'Oscarville: Electricity consumed',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_consumption() {
+                
+                var consumption_plot = new google.visualization.LineChart(document.getElementById('consumption_chart'));
+                
+                
+                consumption_plot.draw(consumption, consumption_options);
+                return consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_consumption() {
+                var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+                consumption_table.draw(consumption, {'title': 'Electricity Consumed','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_consumption() {
+        var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+        consumption_table.draw(consumption, {'title': 'Electricity Consumed','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      consumption_button = document.getElementById('consumption_button')
+      consumption_button.onclick = function() {
+        if (consumption_state == plot) {
+          drawTable_consumption();
+          consumption_state = chart;
+        } else {
+          drawPlot_consumption();
+          consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  consumption_plot = drawPlot_consumption()
+      
+      document.getElementById('consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var diesel_consumption = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {label: 'Utility diesel(gallons)', type: 'number'}, {label: 'Water/wastewater heating oil(gallons)', type: 'number'}, {label: 'Non-residential heating oil(gallons)', type: 'number'}, {label: 'Residential heating oil(gallons)', type: 'number'}], [2017.0, 3140905.25, 7745.61, 38802.75, 7880.7], [2018.0, 3140832.71, 7743.19, 38802.75, 7880.7], [2019.0, 3140760.16, 7741.09, 38802.75, 7880.7], [2020.0, 3140760.16, 7738.69, 38802.75, 7880.7], [2021.0, 3140687.62, 7736.21, 38802.75, 7880.7], [2022.0, 3140687.62, 7734.2, 38802.75, 7880.7], [2023.0, 3140615.08, 7732.49, 38802.75, 7880.7], [2024.0, 3140615.08, 7730.31, 38802.75, 7880.7], [2025.0, 3140615.08, 7728.7, 38802.75, 7880.7], [2026.0, 3140542.53, 7726.78, 38802.75, 8713.0], [2027.0, 3140542.53, 7725.57, 38802.75, 8713.0], [2028.0, 3140469.99, 7723.38, 38802.75, 8713.0], [2029.0, 3140469.99, 7721.47, 38802.75, 8713.0], [2030.0, 3140397.45, 7719.51, 38802.75, 8713.0], [2031.0, 3140397.45, 7716.45, 38802.75, 8713.0], [2032.0, 3140324.9, 7714.85, 38802.75, 8713.0], [2033.0, 3140324.9, 7713.36, 38802.75, 8713.0], [2034.0, 3140252.36, 7709.43, 38802.75, 8713.0], [2035.0, 3140252.36, 7709.06, 38802.75, 8713.0], [2036.0, 3140179.82, 7706.76, 38802.75, 8713.0], [2037.0, 3140179.82, 7705.99, 38802.75, 8713.0], [2038.0, 3140107.27, 7703.18, 38802.75, 8713.0], [2039.0, 3140107.27, 7702.73, 38802.75, 8713.0], [2040.0, 3140107.27, 7702.23, 38802.75, 8713.0]])
+            year_fmat.format(diesel_consumption,0)
+            
+            
+            // plot options
+             
+            dollar = {format: 'percent'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var diesel_consumption_options = {'title': 'Oscarville: Energy consumption',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                             isStacked: 'relative', 
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var diesel_consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_diesel_consumption() {
+                
+                var diesel_consumption_plot = new google.visualization.AreaChart(document.getElementById('diesel_consumption_chart'));
+                
+                
+                diesel_consumption_plot.draw(diesel_consumption, diesel_consumption_options);
+                return diesel_consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_diesel_consumption() {
+                var diesel_consumption_table = new google.visualization.Table(document.getElementById('diesel_consumption_chart'))
+                diesel_consumption_table.draw(diesel_consumption, {'title': 'Energy Consumption','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_diesel_consumption() {
+        var diesel_consumption_table = new google.visualization.Table(document.getElementById('diesel_consumption_chart'))
+        diesel_consumption_table.draw(diesel_consumption, {'title': 'Energy Consumption','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      diesel_consumption_button = document.getElementById('diesel_consumption_button')
+      diesel_consumption_button.onclick = function() {
+        if (diesel_consumption_state == plot) {
+          drawTable_diesel_consumption();
+          diesel_consumption_state = chart;
+        } else {
+          drawPlot_diesel_consumption();
+          diesel_consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  diesel_consumption_plot = drawPlot_diesel_consumption()
+      
+      document.getElementById('diesel_consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + diesel_consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script>
+
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     
+    <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Oscarville<span class="page-subtitle"> Consumption</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Oscarville/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Oscarville/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Oscarville/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Oscarville/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Oscarville/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Oscarville/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Oscarville/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Oscarville/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Oscarville/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Oscarville/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Oscarville/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Oscarville/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Oscarville/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Oscarville/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Oscarville/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Oscarville/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Oscarville/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Oscarville/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+    <div class = 'charts'>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Heating degree days  <small class="hidy" data-toggle="collapse" data-target="#heating_degree_days"></small> </div>
+                <div id="heating_degree_days" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="hdd">
+                    
+                        <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                
+                                    <td> Heating Degree Days per year </td>  
+                                
+                                    <td> 12,525 </td>  
+                                
+                            </tr>
+                        </tbody>
+                        </table>
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Residential buildings  <small class="hidy" data-toggle="collapse" data-target="#residential_buildings"></small> </div>
+                <div id="residential_buildings" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="residential_buildings">
+                    
+                        <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                
+                                    <th>  </th> 
+                                
+                                    <th> Number Houses </th> 
+                                
+                                    <th> Avg. Sqft. </th> 
+                                
+                                    <th> Avg. EUI </th> 
+                                
+                            </tr><tr>
+                                
+                                    <td> BEES </td>  
+                                
+                                    <td> 0 </td>  
+                                
+                                    <td> 0 </td>  
+                                
+                                    <td> 0.0000 </td>  
+                                
+                            </tr><tr>
+                                
+                                    <td> Post-Retrofit </td>  
+                                
+                                    <td> 12 </td>  
+                                
+                                    <td> 926 </td>  
+                                
+                                    <td> 0.0955 </td>  
+                                
+                            </tr><tr>
+                                
+                                    <td> Pre-Retrofit </td>  
+                                
+                                    <td> 4 </td>  
+                                
+                                    <td> 951 </td>  
+                                
+                                    <td> 0.1411 </td>  
+                                
+                            </tr>
+                        </tbody>
+                        </table>
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Non-residential buildings  <small class="hidy" data-toggle="collapse" data-target="#non-residential_buildings"></small> </div>
+                <div id="non-residential_buildings" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="non_residential_buildings">
+                    
+                        
+                            <div style="float:left; width:30%"> <p>There is a estimated total of 43,426 square feet for the 8 non-residential buildings in this community. 100.00% of the buildings have been identified. The others are assumed to exist. 15.45% of the assumed square footage is from measured sources. The break down of heating fuel consumption by building type is pesented in the pie chart</p></div>
+                            <div style="float:right; width:70%"><div id="non_residential_buildings_chart"></div></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='non_residential_buildings_button'>Plot/Table</button>
+            <div id='non_residential_buildings_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Oscarville_non_residential_buildings.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Electricity consumed  <small class="hidy" data-toggle="collapse" data-target="#electricity_consumed"></small> </div>
+                <div id="electricity_consumed" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="consumption">
+                    
+                        
+                        <div id="consumption_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+            <div id='consumption_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Oscarville_consumption.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Energy consumption  <small class="hidy" data-toggle="collapse" data-target="#energy_consumption"></small> </div>
+                <div id="energy_consumption" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="diesel_consumption">
+                    
+                        
+                        <div id="diesel_consumption_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='diesel_consumption_button'>Plot/Table</button>
+            <div id='diesel_consumption_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Oscarville_diesel_consumption.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+    </div>
+
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            
+
+
+          </div>
+          <div class="col-sm-9">
+            
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Generated from Model Version 0.24.6 and Data Version 0.24.0 on 2017-01-24</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+      </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

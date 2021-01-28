@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Akhiok - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Suryan lake (chip creek)', type: 'number'}, {label: 'Akhiok (unnamed stream, site #2) -- unnamed creek, 2', type: 'number'}, {label: 'Akhiok (unnamed stream, site #1) -- unnamed creek, 1', type: 'number'}, {label: 'Fraser lake (dog salmon creek)', type: 'number'}, {label: 'Akhiok (kempff bay creek)', type: 'number'}], [2021.0, 64609.0, 289853.0, 423581.0, 602261.0, 11145920.0, 367834.0], [2022.0, 67210.0, 284616.0, 415448.0, 590470.0, 10913569.0, 360965.0], [2023.0, 68850.0, 278974.0, 407007.0, 578476.0, 10687755.0, 353741.0], [2024.0, 70079.0, 273476.0, 398806.0, 566825.0, 10468908.0, 346709.0], [2025.0, 71514.0, 268100.0, 390770.0, 555408.0, 10254137.0, 339827.0], [2026.0, 73358.0, 262836.0, 382874.0, 544185.0, 10042400.0, 333079.0], [2027.0, 74792.0, 257706.0, 375203.0, 533286.0, 9837278.0, 326512.0], [2028.0, 76022.0, 252702.0, 367731.0, 522671.0, 9637737.0, 320109.0], [2029.0, 77866.0, 247795.0, 360363.0, 512198.0, 9439971.0, 313816.0], [2030.0, 79559.0, 243696.0, 353922.0, 502767.0, 9251008.0, 308388.0], [2031.0, 81419.0, 239030.0, 346901.0, 492781.0, 9062034.0, 302397.0], [2032.0, 83279.0, 234472.0, 340040.0, 483023.0, 8877295.0, 296544.0], [2033.0, 85138.0, 230020.0, 333335.0, 473486.0, 8696691.0, 290825.0], [2034.0, 87205.0, 225667.0, 326762.0, 464135.0, 8519203.0, 285227.0], [2035.0, 88651.0, 221429.0, 320401.0, 455090.0, 8348425.0, 279792.0], [2036.0, 90718.0, 217275.0, 314122.0, 446157.0, 8178733.0, 274448.0], [2037.0, 91958.0, 213236.0, 308071.0, 437553.0, 8016489.0, 269271.0], [2038.0, 94024.0, 209272.0, 302073.0, 429019.0, 7854230.0, 264170.0], [2039.0, 95677.0, 205410.0, 296254.0, 420741.0, 7697403.0, 259208.0], [2040.0, 97950.0, 201624.0, 290503.0, 412555.0, 7541312.0, 254326.0], [2041.0, 97950.0, 197975.0, 285115.0, 404905.0, 7398784.0, 249680.0], [2042.0, 97127.0, 193589.0, 279030.0, 396611.0, 7258773.0, 244319.0], [2043.0, 97127.0, 190109.0, 273891.0, 389315.0, 7122848.0, 239888.0], [2044.0, 97127.0, 186712.0, 268873.0, 382190.0, 6990108.0, 235560.0], [2045.0, 97127.0, 183393.0, 263973.0, 375232.0, 6860480.0, 231334.0], [2046.0, 97127.0, 180153.0, 259187.0, 368437.0, 6733889.0, 227208.0], [2047.0, 97127.0, 176988.0, 254514.0, 361801.0, 6610266.0, 223177.0], [2048.0, 97127.0, 173898.0, 249950.0, 355321.0, 6489540.0, 219242.0], [2049.0, 96304.0, 170057.0, 244670.0, 348170.0, 6370821.0, 214575.0], [2050.0, 96304.0, 167109.0, 240318.0, 341990.0, 6255687.0, 210822.0]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: '$#,###'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Akhiok: Estimated electricity generation costs per year',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.LineChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Estimated Electricity Generation Costs per Year','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Estimated Electricity Generation Costs per Year','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var consumption = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Suryan lake (chip creek)', type: 'number'}, {label: 'Akhiok (unnamed stream, site #2) -- unnamed creek, 2', type: 'number'}, {label: 'Akhiok (unnamed stream, site #1) -- unnamed creek, 1', type: 'number'}, {label: 'Fraser lake (dog salmon creek)', type: 'number'}, {label: 'Akhiok (kempff bay creek)', type: 'number'}], [2021.0, 20317.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2022.0, 20491.0, 174.0, 174.0, 174.0, 174.0, 174.0], [2023.0, 20491.0, 174.0, 174.0, 174.0, 174.0, 174.0], [2024.0, 20491.0, 174.0, 174.0, 174.0, 174.0, 174.0], [2025.0, 20491.0, 174.0, 174.0, 174.0, 174.0, 174.0], [2026.0, 20491.0, 174.0, 174.0, 174.0, 174.0, 174.0], [2027.0, 20491.0, 174.0, 174.0, 174.0, 174.0, 174.0], [2028.0, 20491.0, 174.0, 174.0, 174.0, 174.0, 174.0], [2029.0, 20491.0, 174.0, 174.0, 174.0, 174.0, 174.0], [2030.0, 20665.0, 347.0, 347.0, 347.0, 347.0, 347.0], [2031.0, 20665.0, 347.0, 347.0, 347.0, 347.0, 347.0], [2032.0, 20665.0, 347.0, 347.0, 347.0, 347.0, 347.0], [2033.0, 20665.0, 347.0, 347.0, 347.0, 347.0, 347.0], [2034.0, 20665.0, 347.0, 347.0, 347.0, 347.0, 347.0], [2035.0, 20665.0, 347.0, 347.0, 347.0, 347.0, 347.0], [2036.0, 20665.0, 347.0, 347.0, 347.0, 347.0, 347.0], [2037.0, 20665.0, 347.0, 347.0, 347.0, 347.0, 347.0], [2038.0, 20665.0, 347.0, 347.0, 347.0, 347.0, 347.0], [2039.0, 20665.0, 347.0, 347.0, 347.0, 347.0, 347.0], [2040.0, 20665.0, 347.0, 347.0, 347.0, 347.0, 347.0], [2041.0, 20665.0, 347.0, 347.0, 347.0, 347.0, 347.0], [2042.0, 20491.0, 174.0, 174.0, 174.0, 174.0, 174.0], [2043.0, 20491.0, 174.0, 174.0, 174.0, 174.0, 174.0], [2044.0, 20491.0, 174.0, 174.0, 174.0, 174.0, 174.0], [2045.0, 20491.0, 174.0, 174.0, 174.0, 174.0, 174.0], [2046.0, 20491.0, 174.0, 174.0, 174.0, 174.0, 174.0], [2047.0, 20491.0, 174.0, 174.0, 174.0, 174.0, 174.0], [2048.0, 20491.0, 174.0, 174.0, 174.0, 174.0, 174.0], [2049.0, 20317.0, 0.0, 0.0, 0.0, 0.0, 0.0], [2050.0, 20317.0, 0.0, 0.0, 0.0, 0.0, 0.0]])
+            year_fmat.format(consumption,0)
+            
+            
+            // plot options
+            
+            dollar=  {title: 'gallons'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var consumption_options = {'title': 'Akhiok: Diesel consumed for electricity generation ',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_consumption() {
+                
+                var consumption_plot = new google.visualization.LineChart(document.getElementById('consumption_chart'));
+                
+                
+                consumption_plot.draw(consumption, consumption_options);
+                return consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_consumption() {
+                var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+                consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_consumption() {
+        var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+        consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      consumption_button = document.getElementById('consumption_button')
+      consumption_button.onclick = function() {
+        if (consumption_state == plot) {
+          drawTable_consumption();
+          consumption_state = chart;
+        } else {
+          drawPlot_consumption();
+          consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  consumption_plot = drawPlot_consumption()
+      
+      document.getElementById('consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script> 
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Akhiok<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Akhiok/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Akhiok/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Akhiok/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Akhiok/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Akhiok/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Akhiok/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Akhiok/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Akhiok/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Akhiok/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Akhiok/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Akhiok/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Akhiok/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Akhiok/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Akhiok/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Akhiok/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Akhiok/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Akhiok/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Akhiok/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system<small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">Average community load (2013): 8 kW </p> <p class="stats">Average generation (2013): 70,370 kWh/year </p> <p class="stats">Peak load: Unknown </p> <p class="stats">Existing nameplate wind capacity: 0 kW </p> <p class="stats">Existing wind generation (2013): 0 kWh/year </p> <p class="stats">Estimated proposed wind generation: 0 kWh/year </p> <p class="stats">Existing nameplate solar capacity: 0 kW </p> <p class="stats">Existing solar generation (2013): 0 kWh/year </p> <p class="stats">Estimated proposed solar generation: 1,746 kWh/year </p> <p class="stats">Existing nameplate hydro capacity : 0 kW </p> <p class="stats">Existing hydro generation (2013): 0 kWh/year </p> <p class="stats">Estimated proposed hydro generation: 0 kWh/year </p>
+    </div><H3>Suryan lake (chip creek)<small class = "hidy" data-toggle="collapse" data-target="#Suryan_Lake_Chip_Creek"></small> </H3>
+    <div id="Suryan_Lake_Chip_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $3,668,591 </p> <p class="stats">Lifetime savings: $914,307 </p> <p class="stats">Net lifetime savings: $-2,754,284 </p> <p class="stats">Benefit-cost ratio: 0.2 </p> <p class="stats">Proposed nameplate capacity: 75 kW </p> <p class="stats">Expected yearly generation: 278,571 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $5,141,682 </p> <p class="stats">Estimated hydro penetration level: 395.87% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Akhiok (unnamed stream, site #2) -- Unnamed Creek, 2<small class = "hidy" data-toggle="collapse" data-target="#Akhiok_unnamed_stream_site_2_--_Unnamed_Creek_2"></small> </H3>
+    <div id="Akhiok_unnamed_stream_site_2_--_Unnamed_Creek_2" class="collapse in" >
+     <p class="stats">Capital cost: $5,417,699 </p> <p class="stats">Lifetime savings: $570,050 </p> <p class="stats">Net lifetime savings: $-4,847,649 </p> <p class="stats">Benefit-cost ratio: 0.1 </p> <p class="stats">Proposed nameplate capacity: 230 kW </p> <p class="stats">Expected yearly generation: 854,286 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $7,593,130 </p> <p class="stats">Estimated hydro penetration level: 1,213.99% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-2013-0004.pdf'> link </a> </p>
+    </div><H3>Akhiok (unnamed stream, site #1) -- Unnamed Creek, 1<small class = "hidy" data-toggle="collapse" data-target="#Akhiok_unnamed_stream_site_1_--_Unnamed_Creek_1"></small> </H3>
+    <div id="Akhiok_unnamed_stream_site_1_--_Unnamed_Creek_1" class="collapse in" >
+     <p class="stats">Capital cost: $7,692,540 </p> <p class="stats">Lifetime savings: $-8,654 </p> <p class="stats">Net lifetime savings: $-7,701,194 </p> <p class="stats">Benefit-cost ratio: -0.0 </p> <p class="stats">Proposed nameplate capacity: 330 kW </p> <p class="stats">Expected yearly generation: 1,225,714 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $10,781,414 </p> <p class="stats">Estimated hydro penetration level: 1,741.81% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-2013-0004.pdf'> link </a> </p>
+    </div><H3>Fraser lake (dog salmon creek)<small class = "hidy" data-toggle="collapse" data-target="#Fraser_Lake_Dog_Salmon_Creek"></small> </H3>
+    <div id="Fraser_Lake_Dog_Salmon_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $143,313,059 </p> <p class="stats">Lifetime savings: $-31,513,860 </p> <p class="stats">Net lifetime savings: $-174,826,919 </p> <p class="stats">Benefit-cost ratio: -0.2 </p> <p class="stats">Proposed nameplate capacity: 7,000 kW </p> <p class="stats">Expected yearly generation: 32,000,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $200,859,193 </p> <p class="stats">Estimated hydro penetration level: 45,473.92% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Akhiok (kempff bay creek)<small class = "hidy" data-toggle="collapse" data-target="#Akhiok_Kempff_Bay_Creek"></small> </H3>
+    <div id="Akhiok_Kempff_Bay_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $4,672,069 </p> <p class="stats">Lifetime savings: $682,091 </p> <p class="stats">Net lifetime savings: $-3,989,978 </p> <p class="stats">Benefit-cost ratio: 0.1 </p> <p class="stats">Proposed nameplate capacity: 137 kW </p> <p class="stats">Expected yearly generation: 508,857 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $6,548,098 </p> <p class="stats">Estimated hydro penetration level: 723.12% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1983-0372.pdf'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential electricity generation from diesel that could be offset by installing new Hydropower generation infrastructure. Requires that at least a reconnaissance-level heat recovery study has been completed for the community to be run. 
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Akhiok_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Akhiok_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 0.27.0, Generated from Model Version 0.27.0 and Data Version 0.27.0 on 2017-06-12</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

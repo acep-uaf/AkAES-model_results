@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Nome - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Nome (penny river)', type: 'number'}, {label: 'Nome (osborn creek)', type: 'number'}, {label: 'Nome (buster creek)', type: 'number'}, {label: 'Nome (buster) -- buster creek', type: 'number'}, {label: 'Nome (sulphur creek) -- sulphur creek, aka alfield creek', type: 'number'}, {label: 'Nome (david creek)', type: 'number'}, {label: 'Nome (nome river)', type: 'number'}], [2021.0, 6121562.0, 7113178.0, 7175492.0, 6762878.0, 7497043.0, 7997337.0, 8290020.0, 8595931.0], [2022.0, 6304622.0, 7293420.0, 7352336.0, 6945291.0, 7673168.0, 8178612.0, 8469647.0, 8772674.0], [2023.0, 6423201.0, 7410238.0, 7467031.0, 7063466.0, 7787413.0, 8296075.0, 8586080.0, 8887306.0], [2024.0, 6541955.0, 7527231.0, 7581900.0, 7181816.0, 7901833.0, 8413713.0, 8702689.0, 9002112.0], [2025.0, 6660875.0, 7644389.0, 7696935.0, 7300331.0, 8016418.0, 8531517.0, 8819463.0, 9117083.0], [2026.0, 6823602.0, 7804650.0, 7854224.0, 7462492.0, 8173078.0, 8692682.0, 8979186.0, 9274284.0], [2027.0, 6942895.0, 7922182.0, 7969632.0, 7581381.0, 8288036.0, 8810859.0, 9096334.0, 9389629.0], [2028.0, 7062325.0, 8039850.0, 8085177.0, 7700407.0, 8403132.0, 8929174.0, 9213618.0, 9505111.0], [2029.0, 7206113.0, 8181525.0, 8224303.0, 7843709.0, 8541719.0, 9071623.0, 9354831.0, 9644162.0], [2030.0, 7306217.0, 8280220.0, 8321299.0, 7943490.0, 8638356.0, 9170834.0, 9453219.0, 9741107.0], [2031.0, 7471332.0, 8442869.0, 8480975.0, 8108039.0, 8797403.0, 9334387.0, 9615330.0, 9900695.0], [2032.0, 7613101.0, 8582524.0, 8618082.0, 8249322.0, 8933970.0, 9474816.0, 9754524.0, 10037726.0], [2033.0, 7776122.0, 8743079.0, 8775665.0, 8411778.0, 9090924.0, 9636276.0, 9914541.0, 10195221.0], [2034.0, 7939736.0, 8904227.0, 8933840.0, 8574826.0, 9248470.0, 9798327.0, 10075151.0, 10353308.0], [2035.0, 8060133.0, 9022863.0, 9050353.0, 8694819.0, 9364533.0, 9917609.0, 10193403.0, 10469757.0], [2036.0, 8225822.0, 9186086.0, 9210603.0, 8859941.0, 9524154.0, 10081735.0, 10356088.0, 10629919.0], [2037.0, 8348692.0, 9307194.0, 9329588.0, 8982407.0, 9642690.0, 10203489.0, 10476812.0, 10748841.0], [2038.0, 8515901.0, 9471938.0, 9491358.0, 9149051.0, 9803831.0, 10369137.0, 10641018.0, 10910524.0], [2039.0, 8637847.0, 9592122.0, 9609419.0, 9270592.0, 9921442.0, 10489966.0, 10760818.0, 11028521.0], [2040.0, 8825409.0, 9776866.0, 9790765.0, 9457507.0, 10102070.0, 10675743.0, 10944947.0, 11209767.0], [2041.0, 8835784.0, 9787241.0, 9801141.0, 9467882.0, 10112445.0, 10686118.0, 10955322.0, 11220142.0], [2042.0, 8846160.0, 9797617.0, 9811517.0, 9478258.0, 10122821.0, 10696494.0, 10965698.0, 11230518.0], [2043.0, 8857500.0, 9808958.0, 9822857.0, 9489599.0, 10134162.0, 10707835.0, 10977039.0, 11241858.0], [2044.0, 8869082.0, 9820539.0, 9834439.0, 9501181.0, 10145744.0, 10719417.0, 10988621.0, 11253440.0], [2045.0, 8879940.0, 9831398.0, 9845297.0, 9512039.0, 10156602.0, 10730275.0, 10999479.0, 11264298.0], [2046.0, 8890075.0, 9841532.0, 9855432.0, 9522173.0, 10166736.0, 10740409.0, 11009613.0, 11274433.0], [2047.0, 8899726.0, 9851183.0, 9865083.0, 9531825.0, 10176388.0, 10750061.0, 11019265.0, 11284084.0], [2048.0, 8909378.0, 9860835.0, 9874735.0, 9541476.0, 10186039.0, 10759712.0, 11028916.0, 11293736.0], [2049.0, 8919030.0, 9870487.0, 9884386.0, 9551128.0, 10195691.0, 10769364.0, 11038568.0, 11303388.0], [2050.0, 8928681.0, 9880138.0, 9894038.0, 9560780.0, 10205342.0, 10779016.0, 11048220.0, 11313039.0]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: '$#,###'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Nome: Estimated electricity generation costs per year',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.LineChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Estimated Electricity Generation Costs per Year','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Estimated Electricity Generation Costs per Year','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var consumption = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Nome (penny river)', type: 'number'}, {label: 'Nome (osborn creek)', type: 'number'}, {label: 'Nome (buster creek)', type: 'number'}, {label: 'Nome (buster) -- buster creek', type: 'number'}, {label: 'Nome (sulphur creek) -- sulphur creek, aka alfield creek', type: 'number'}, {label: 'Nome (david creek)', type: 'number'}, {label: 'Nome (nome river)', type: 'number'}], [2021.0, 2155480.0, 2116869.0, 2070321.0, 2146618.0, 2060469.0, 2131020.0, 2108446.0, 2068939.0], [2022.0, 2159117.0, 2120506.0, 2073958.0, 2150255.0, 2064107.0, 2134657.0, 2112084.0, 2072576.0], [2023.0, 2162694.0, 2124083.0, 2077535.0, 2153832.0, 2067684.0, 2138234.0, 2115661.0, 2076153.0], [2024.0, 2166210.0, 2127599.0, 2081051.0, 2157349.0, 2071200.0, 2141751.0, 2119177.0, 2079669.0], [2025.0, 2169666.0, 2131055.0, 2084507.0, 2160804.0, 2074656.0, 2145206.0, 2122633.0, 2083125.0], [2026.0, 2173122.0, 2134511.0, 2087963.0, 2164260.0, 2078112.0, 2148662.0, 2126088.0, 2086581.0], [2027.0, 2176456.0, 2137845.0, 2091297.0, 2167594.0, 2081446.0, 2151996.0, 2129423.0, 2089915.0], [2028.0, 2179730.0, 2141119.0, 2094571.0, 2170868.0, 2084720.0, 2155270.0, 2132696.0, 2093189.0], [2029.0, 2183671.0, 2145060.0, 2098512.0, 2174809.0, 2088660.0, 2159211.0, 2136637.0, 2097130.0], [2030.0, 2187490.0, 2148879.0, 2102331.0, 2178628.0, 2092480.0, 2163030.0, 2140457.0, 2100949.0], [2031.0, 2191006.0, 2152395.0, 2105847.0, 2182145.0, 2095996.0, 2166547.0, 2143973.0, 2104465.0], [2032.0, 2193977.0, 2155366.0, 2108818.0, 2185115.0, 2098967.0, 2169517.0, 2146944.0, 2107436.0], [2033.0, 2196645.0, 2158034.0, 2111486.0, 2187783.0, 2101634.0, 2172185.0, 2149611.0, 2110104.0], [2034.0, 2199373.0, 2160762.0, 2114214.0, 2190511.0, 2104363.0, 2174913.0, 2152339.0, 2112832.0], [2035.0, 2202222.0, 2163611.0, 2117063.0, 2193360.0, 2107212.0, 2177762.0, 2155189.0, 2115681.0], [2036.0, 2205314.0, 2166703.0, 2120155.0, 2196452.0, 2110304.0, 2180854.0, 2158281.0, 2118773.0], [2037.0, 2208649.0, 2170038.0, 2123490.0, 2199787.0, 2113638.0, 2184189.0, 2161615.0, 2122108.0], [2038.0, 2211922.0, 2173311.0, 2126763.0, 2203060.0, 2116912.0, 2187463.0, 2164889.0, 2125381.0], [2039.0, 2214832.0, 2176221.0, 2129673.0, 2205971.0, 2119822.0, 2190373.0, 2167799.0, 2128291.0], [2040.0, 2217439.0, 2178828.0, 2132280.0, 2208577.0, 2122429.0, 2192979.0, 2170406.0, 2130898.0], [2041.0, 2220046.0, 2181435.0, 2134887.0, 2211184.0, 2125036.0, 2195586.0, 2173013.0, 2133505.0], [2042.0, 2222653.0, 2184042.0, 2137494.0, 2213791.0, 2127643.0, 2198193.0, 2175620.0, 2136112.0], [2043.0, 2225503.0, 2186892.0, 2140344.0, 2216641.0, 2130492.0, 2201043.0, 2178469.0, 2138962.0], [2044.0, 2228413.0, 2189802.0, 2143254.0, 2219551.0, 2133402.0, 2203953.0, 2181379.0, 2141872.0], [2045.0, 2231141.0, 2192530.0, 2145982.0, 2222279.0, 2136131.0, 2206681.0, 2184107.0, 2144600.0], [2046.0, 2233687.0, 2195076.0, 2148528.0, 2224825.0, 2138677.0, 2209227.0, 2186654.0, 2147146.0], [2047.0, 2236112.0, 2197501.0, 2150953.0, 2227250.0, 2141102.0, 2211652.0, 2189079.0, 2149571.0], [2048.0, 2238537.0, 2199926.0, 2153378.0, 2229675.0, 2143527.0, 2214077.0, 2191504.0, 2151996.0], [2049.0, 2240962.0, 2202351.0, 2155803.0, 2232100.0, 2145952.0, 2216502.0, 2193929.0, 2154421.0], [2050.0, 2243387.0, 2204776.0, 2158228.0, 2234525.0, 2148377.0, 2218927.0, 2196354.0, 2156846.0]])
+            year_fmat.format(consumption,0)
+            
+            
+            // plot options
+            
+            dollar=  {title: 'gallons'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var consumption_options = {'title': 'Nome: Diesel consumed for electricity generation ',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_consumption() {
+                
+                var consumption_plot = new google.visualization.LineChart(document.getElementById('consumption_chart'));
+                
+                
+                consumption_plot.draw(consumption, consumption_options);
+                return consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_consumption() {
+                var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+                consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_consumption() {
+        var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+        consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      consumption_button = document.getElementById('consumption_button')
+      consumption_button.onclick = function() {
+        if (consumption_state == plot) {
+          drawTable_consumption();
+          consumption_state = chart;
+        } else {
+          drawPlot_consumption();
+          consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  consumption_plot = drawPlot_consumption()
+      
+      document.getElementById('consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script> 
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Nome<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Nome/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Nome/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Nome/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Nome/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Nome/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Nome/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Nome/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Nome/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Nome/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Nome/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Nome/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Nome/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Nome/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Nome/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Nome/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Nome/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Nome/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Nome/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system<small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">Average community load (2013): 4,012 kW </p> <p class="stats">Average generation (2013): 35,148,499 kWh/year </p> <p class="stats">Peak load: Unknown </p> <p class="stats">Existing nameplate wind capacity: 2,970 kW </p> <p class="stats">Existing wind generation (2013): 1,172,492 kWh/year </p> <p class="stats">Estimated proposed wind generation: 5,960,707 kWh/year </p> <p class="stats">Existing nameplate solar capacity: 17 kW </p> <p class="stats">Existing solar generation (2013): 0 kWh/year </p> <p class="stats">Estimated proposed solar generation: 0 kWh/year </p> <p class="stats">Existing nameplate hydro capacity : 0 kW </p> <p class="stats">Existing hydro generation (2013): 0 kWh/year </p> <p class="stats">Estimated proposed hydro generation: 0 kWh/year </p>
+    </div><H3>Nome (penny river)<small class = "hidy" data-toggle="collapse" data-target="#Nome_Penny_River"></small> </H3>
+    <div id="Nome_Penny_River" class="collapse in" >
+     <p class="stats">Capital cost: $20,571,569 </p> <p class="stats">Lifetime savings: $-834,843 </p> <p class="stats">Net lifetime savings: $-21,406,412 </p> <p class="stats">Benefit-cost ratio: -0.0 </p> <p class="stats">Proposed nameplate capacity: 219 kW </p> <p class="stats">Expected yearly generation: 827,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $16,920,828 </p> <p class="stats">Estimated hydro penetration level: 2.35% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1979-0373.pdf'> link </a> </p>
+    </div><H3>Nome (osborn creek)<small class = "hidy" data-toggle="collapse" data-target="#Nome_Osborn_Creek"></small> </H3>
+    <div id="Nome_Osborn_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $24,104,655 </p> <p class="stats">Lifetime savings: $2,041,230 </p> <p class="stats">Net lifetime savings: $-22,063,424 </p> <p class="stats">Benefit-cost ratio: 0.1 </p> <p class="stats">Proposed nameplate capacity: 479 kW </p> <p class="stats">Expected yearly generation: 1,824,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $19,826,912 </p> <p class="stats">Estimated hydro penetration level: 5.19% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1979-0373.pdf'> link </a> </p>
+    </div><H3>Nome (buster creek)<small class = "hidy" data-toggle="collapse" data-target="#Nome_Buster_Creek"></small> </H3>
+    <div id="Nome_Buster_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $12,486,429 </p> <p class="stats">Lifetime savings: $-1,609,165 </p> <p class="stats">Net lifetime savings: $-14,095,594 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 55 kW </p> <p class="stats">Expected yearly generation: 189,811 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $10,270,520 </p> <p class="stats">Estimated hydro penetration level: 0.54% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1979-0373.pdf'> link </a> </p>
+    </div><H3>Nome (buster) -- Buster Creek<small class = "hidy" data-toggle="collapse" data-target="#Nome_Buster_--_Buster_Creek"></small> </H3>
+    <div id="Nome_Buster_--_Buster_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $30,639,846 </p> <p class="stats">Lifetime savings: $1,593,352 </p> <p class="stats">Net lifetime savings: $-29,046,494 </p> <p class="stats">Benefit-cost ratio: 0.1 </p> <p class="stats">Proposed nameplate capacity: 534 kW </p> <p class="stats">Expected yearly generation: 2,035,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $25,202,334 </p> <p class="stats">Estimated hydro penetration level: 5.79% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1979-0373.pdf'> link </a> </p>
+    </div><H3>Nome (sulphur creek) -- Sulphur Creek, aka Alfield Creek<small class = "hidy" data-toggle="collapse" data-target="#Nome_Sulphur_Creek_--_Sulphur_Creek_aka_Alfield_Creek"></small> </H3>
+    <div id="Nome_Sulphur_Creek_--_Sulphur_Creek_aka_Alfield_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $36,447,246 </p> <p class="stats">Lifetime savings: $-4,803,542 </p> <p class="stats">Net lifetime savings: $-41,250,788 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 130 kW </p> <p class="stats">Expected yearly generation: 523,900 kWh/year </p> <p class="stats">Phase: Feasibility </p> <p class="stats">Total capital cost: $29,979,121 </p> <p class="stats">Estimated hydro penetration level: 1.49% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-2005-0001.pdf'> link </a> </p>
+    </div><H3>Nome (david creek)<small class = "hidy" data-toggle="collapse" data-target="#Nome_David_Creek"></small> </H3>
+    <div id="Nome_David_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $43,086,641 </p> <p class="stats">Lifetime savings: $-4,308,065 </p> <p class="stats">Net lifetime savings: $-47,394,706 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 250 kW </p> <p class="stats">Expected yearly generation: 1,007,400 kWh/year </p> <p class="stats">Phase: Feasibility </p> <p class="stats">Total capital cost: $35,440,253 </p> <p class="stats">Estimated hydro penetration level: 2.87% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-2005-0001.pdf'> link </a> </p>
+    </div><H3>Nome (nome river)<small class = "hidy" data-toggle="collapse" data-target="#Nome_Nome_River"></small> </H3>
+    <div id="Nome_Nome_River" class="collapse in" >
+     <p class="stats">Capital cost: $50,834,155 </p> <p class="stats">Lifetime savings: $-2,733,950 </p> <p class="stats">Net lifetime savings: $-53,568,105 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 460 kW </p> <p class="stats">Expected yearly generation: 1,853,600 kWh/year </p> <p class="stats">Phase: Feasibility </p> <p class="stats">Total capital cost: $41,812,851 </p> <p class="stats">Estimated hydro penetration level: 5.27% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-2005-0001.pdf'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential electricity generation from diesel that could be offset by installing new Hydropower generation infrastructure. Requires that at least a reconnaissance-level heat recovery study has been completed for the community to be run. 
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Nome_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Nome_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 0.27.1, Generated from Model Version 0.27.3 and Data Version 0.27.0 on 2017-06-14</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

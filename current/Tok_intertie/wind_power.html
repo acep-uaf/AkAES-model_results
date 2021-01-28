@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Tok_intertie - Wind Power summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // setup
+        google.charts.load('current', {'packages':['corechart','table']});
+        google.charts.setOnLoadCallback(drawCharts);
+    
+        // for the charts
+        function drawCharts() {
+            
+            // set up vars (data/options) for each chart
+            var state_plot = 'plot';
+            var state_chart = 'chart';
+            
+            var year_fmat = new google.visualization.NumberFormat({pattern:'####'});
+            
+            
+                // ################ Start costs ####################
+                // data
+                var costs = google.visualization.arrayToDataTable(
+                    [[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Tok wind construction_vwp', type: 'number'}, {label: 'Chisana mountain wind feasibility project', type: 'number'}, {label: 'Modeled wind power', type: 'number'}], [2019.0, 1790529.0, 2336058.0, 2336058.0, 2336058.0], [2020.0, 1913344.0, 2412025.0, 2412025.0, 2412025.0], [2021.0, 2001762.0, 2461785.0, 2461785.0, 2461785.0], [2022.0, 2069652.0, 2496098.0, 2496098.0, 2496098.0], [2023.0, 2117027.0, 2514965.0, 2514965.0, 2514965.0], [2024.0, 2150949.0, 2523893.0, 2523893.0, 2523893.0], [2025.0, 2198292.0, 2543547.0, 2543547.0, 2543547.0], [2026.0, 2252674.0, 2569087.0, 2569087.0, 2569087.0], [2027.0, 2299980.0, 2589485.0, 2589485.0, 2589485.0], [2028.0, 2333862.0, 2599933.0, 2599933.0, 2599933.0], [2029.0, 2388456.0, 2626814.0, 2626814.0, 2626814.0], [2030.0, 2422577.0, 2638228.0, 2638228.0, 2638228.0], [2031.0, 2476913.0, 2665561.0, 2665561.0, 2665561.0], [2032.0, 2537797.0, 2698235.0, 2698235.0, 2698235.0], [2033.0, 2591834.0, 2725947.0, 2725947.0, 2725947.0], [2034.0, 2652669.0, 2759233.0, 2759233.0, 2759233.0], [2035.0, 2693024.0, 2777005.0, 2777005.0, 2777005.0], [2036.0, 2754098.0, 2811161.0, 2811161.0, 2811161.0], [2037.0, 2795000.0, 2830096.0, 2830096.0, 2830096.0], [2038.0, 2856057.0, 2864836.0, 2864836.0, 2864836.0]]
+                );
+                year_fmat.format(costs,0);
+                
+                // plot options 
+                vertical_label = {format: '$#,###'}; 
+                
+                width = 1000
+                height = 600
+    
+                var costs_options = {
+                    'title': 'Tok intertie: Estimated electricity generation costs per year',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var costs_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_costs() {
+                    var costs_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('costs_chart')
+                        );
+                    
+                    costs_plot.draw(costs, costs_options);
+                    return costs_plot;
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = 
+                        new google.visualization.Table(
+                            document.getElementById('costs_chart')
+                        );
+                    costs_table.draw(
+                        costs,
+                        {
+                            'title': 'Estimated Electricity Generation Costs per Year',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = new google.visualization.Table(
+                        document.getElementById('costs_chart')
+                    );
+                    costs_table.draw(
+                        costs, {'title': 'Estimated Electricity Generation Costs per Year','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                costs_button = document.getElementById('costs_button');
+                costs_button.onclick = function() {
+                    if (costs_state == state_plot) {
+                        drawTable_costs();
+                        costs_state = state_chart;
+                    } else {
+                    drawPlot_costs();
+                    costs_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  costs_plot = drawPlot_costs();
+              
+                document.getElementById('costs_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                // ################ Start consumption ####################
+                // data
+                var consumption = google.visualization.arrayToDataTable(
+                    [[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Tok wind construction_vwp', type: 'number'}, {label: 'Chisana mountain wind feasibility project', type: 'number'}, {label: 'Modeled wind power', type: 'number'}], [2019.0, 683408.0, 501892.0, 501892.0, 501892.0], [2020.0, 683337.0, 501821.0, 501821.0, 501821.0], [2021.0, 683195.0, 501680.0, 501680.0, 501680.0], [2022.0, 683054.0, 501538.0, 501538.0, 501538.0], [2023.0, 682912.0, 501396.0, 501396.0, 501396.0], [2024.0, 682841.0, 501325.0, 501325.0, 501325.0], [2025.0, 682699.0, 501184.0, 501184.0, 501184.0], [2026.0, 682628.0, 501113.0, 501113.0, 501113.0], [2027.0, 682487.0, 500971.0, 500971.0, 500971.0], [2028.0, 682416.0, 500900.0, 500900.0, 500900.0], [2029.0, 682416.0, 500900.0, 500900.0, 500900.0], [2030.0, 682416.0, 500900.0, 500900.0, 500900.0], [2031.0, 682345.0, 500829.0, 500829.0, 500829.0], [2032.0, 682203.0, 500688.0, 500688.0, 500688.0], [2033.0, 682062.0, 500546.0, 500546.0, 500546.0], [2034.0, 681920.0, 500404.0, 500404.0, 500404.0], [2035.0, 681778.0, 500263.0, 500263.0, 500263.0], [2036.0, 681707.0, 500192.0, 500192.0, 500192.0], [2037.0, 681707.0, 500192.0, 500192.0, 500192.0], [2038.0, 681637.0, 500121.0, 500121.0, 500121.0]]
+                );
+                year_fmat.format(consumption,0);
+                
+                // plot options 
+                vertical_label=  {title: 'gallons'}; 
+                
+                width = 1000
+                height = 600
+    
+                var consumption_options = {
+                    'title': 'Tok intertie: Diesel consumed for electricity generation ',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var consumption_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_consumption() {
+                    var consumption_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('consumption_chart')
+                        );
+                    
+                    consumption_plot.draw(consumption, consumption_options);
+                    return consumption_plot;
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = 
+                        new google.visualization.Table(
+                            document.getElementById('consumption_chart')
+                        );
+                    consumption_table.draw(
+                        consumption,
+                        {
+                            'title': 'Diesel Consumed for Electricity Generation ',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = new google.visualization.Table(
+                        document.getElementById('consumption_chart')
+                    );
+                    consumption_table.draw(
+                        consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                consumption_button = document.getElementById('consumption_button');
+                consumption_button.onclick = function() {
+                    if (consumption_state == state_plot) {
+                        drawTable_consumption();
+                        consumption_state = state_chart;
+                    } else {
+                    drawPlot_consumption();
+                    consumption_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  consumption_plot = drawPlot_consumption();
+              
+                document.getElementById('consumption_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+      };
+    </script>
+     
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Tok intertie<span class="page-subtitle"> Wind Power</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Tok_intertie/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Tok_intertie/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Tok_intertie/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Tok_intertie/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Tok_intertie/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Tok_intertie/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Tok_intertie/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Tok_intertie/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Tok_intertie/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Tok_intertie/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Tok_intertie/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Tok_intertie/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Tok_intertie/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Tok_intertie/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Tok_intertie/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Tok_intertie/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Tok_intertie/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Tok_intertie/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system<small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">See: <a href='./generation.html'>Generation </a> for more details of the current generation systems </p>
+    </div><H3>Modeled wind power<small class = "hidy" data-toggle="collapse" data-target="#Modeled_Wind_Power"></small> </H3>
+    <div id="Modeled_Wind_Power" class="collapse in" >
+     <p class="stats">Capital cost (total): $10,223,579 </p> <p class="stats">Capital cost (cost per kW): $5,676/kW </p> <p class="stats">Lifetime energy cost savings: $5,871,613 </p> <p class="stats">Net lifetime savings: $-4,351,965 </p> <p class="stats">Benefit-cost ratio: 0.6 </p> <p class="stats">Proposed nameplate capacity: 1,627 kW </p> <p class="stats">Expected yearly generation: 3,420,605 kWh/year </p> <p class="stats">Estimated wind class: 4 </p> <p class="stats">Estimated capacity factor: 0.24 </p> <p class="stats">Estimated wind penetration level: 36.95% </p> <p class="stats">Notes: None </p> <p class="stats">source: unknown </p>
+    </div><H3>Tok intertie wind project 0<small class = "hidy" data-toggle="collapse" data-target="#Tok_intertie_wind_project_0"></small> </H3>
+    <div id="Tok_intertie_wind_project_0" class="collapse in" >
+     <p class="stats">Capital cost (total): $10,223,579 </p> <p class="stats">Capital cost (cost per kW): $5,676/kW </p> <p class="stats">Lifetime energy cost savings: $5,871,613 </p> <p class="stats">Net lifetime savings: $-4,351,965 </p> <p class="stats">Benefit-cost ratio: 0.6 </p> <p class="stats">Proposed nameplate capacity: 1,627 kW </p> <p class="stats">Expected yearly generation: 3,420,605 kWh/year </p> <p class="stats">Estimated wind class: 4 </p> <p class="stats">Estimated capacity factor: 0.24 </p> <p class="stats">Estimated wind penetration level: 36.95% </p> <p class="stats">Notes: Construction not proceeding due to long transmission distance requirements and siting uncertainty </p> <p class="stats">source: <a href='http://www.akenergyauthority.org/Content/Programs/AEEE/Wind/CDRsForWebPage/APTC%20Tok%20Met%20Tower%20Wind%20Resource%20Report,%20DRAFT.pdf'> link </a> </p>
+    </div><H3>Tok intertie wind project 1<small class = "hidy" data-toggle="collapse" data-target="#Tok_intertie_wind_project_1"></small> </H3>
+    <div id="Tok_intertie_wind_project_1" class="collapse in" >
+     <p class="stats">Capital cost (total): $10,223,579 </p> <p class="stats">Capital cost (cost per kW): $5,676/kW </p> <p class="stats">Lifetime energy cost savings: $5,871,613 </p> <p class="stats">Net lifetime savings: $-4,351,965 </p> <p class="stats">Benefit-cost ratio: 0.6 </p> <p class="stats">Proposed nameplate capacity: 1,627 kW </p> <p class="stats">Expected yearly generation: 3,420,605 kWh/year </p> <p class="stats">Estimated wind class: 4 </p> <p class="stats">Estimated capacity factor: 0.24 </p> <p class="stats">Estimated wind penetration level: 36.95% </p> <p class="stats">Notes: nan </p> <p class="stats">source: <a href='nan'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential cost savings from changes in the amount of diesel fuel used for electricity generation from the installation of new wind power infrastructure. 
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Tok_intertie_Wind_Power_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Tok_intertie_Wind_Power_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 1.0.0, Generated from Model Version 1.0.0 and Data Version 1.0.0 on 2017-06-30</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

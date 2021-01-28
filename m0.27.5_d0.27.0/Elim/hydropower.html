@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Elim - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // setup
+        google.charts.load('current', {'packages':['corechart','table']});
+        google.charts.setOnLoadCallback(drawCharts);
+    
+        // for the charts
+        function drawCharts() {
+            
+            // set up vars (data/options) for each chart
+            var state_plot = 'plot';
+            var state_chart = 'chart';
+            
+            var year_fmat = new google.visualization.NumberFormat({pattern:'####'});
+            
+            
+                // ################ Start costs ####################
+                // data
+                var costs = google.visualization.arrayToDataTable(
+                    [[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Elim (quiktalik creek)', type: 'number'}, {label: 'Elim (creek at elim) -- unnamed creek', type: 'number'}, {label: 'Elim (peterson creek)', type: 'number'}, {label: 'Golovin (kwiniuk river, west tributary)', type: 'number'}], [2021.0, 269190.0, 769468.0, 770152.0, 1682394.0, 1461485.0], [2022.0, 277846.0, 777291.0, 778303.0, 1687941.0, 1467673.0], [2023.0, 284496.0, 783317.0, 784576.0, 1692260.0, 1472473.0], [2024.0, 290264.0, 788564.0, 790029.0, 1696085.0, 1476698.0], [2025.0, 296302.0, 794082.0, 795752.0, 1700179.0, 1481194.0], [2026.0, 304017.0, 801069.0, 803027.0, 1705175.0, 1486750.0], [2027.0, 311088.0, 807515.0, 809720.0, 1709914.0, 1491970.0], [2028.0, 317268.0, 813174.0, 815584.0, 1714150.0, 1496607.0], [2029.0, 324440.0, 819722.0, 822379.0, 1718991.0, 1501929.0], [2030.0, 329759.0, 824625.0, 827446.0, 1722756.0, 1506014.0], [2031.0, 337985.0, 832123.0, 835232.0, 1728262.0, 1512081.0], [2032.0, 346009.0, 839418.0, 842815.0, 1733566.0, 1517946.0], [2033.0, 354084.0, 846765.0, 850449.0, 1738921.0, 1523862.0], [2034.0, 362211.0, 854164.0, 858135.0, 1744327.0, 1529830.0], [2035.0, 368723.0, 860155.0, 864332.0, 1748896.0, 1534799.0], [2036.0, 377927.0, 868527.0, 873032.0, 1754991.0, 1541536.0], [2037.0, 383556.0, 873739.0, 878409.0, 1759066.0, 1545931.0], [2038.0, 392868.0, 882219.0, 887218.0, 1765269.0, 1552776.0], [2039.0, 400263.0, 888990.0, 894235.0, 1770332.0, 1558319.0], [2040.0, 409686.0, 897580.0, 903154.0, 1776646.0, 1565274.0], [2041.0, 410899.0, 898793.0, 904367.0, 1777859.0, 1566487.0], [2042.0, 412415.0, 900309.0, 905883.0, 1779376.0, 1568004.0], [2043.0, 413931.0, 901825.0, 907399.0, 1780892.0, 1569520.0], [2044.0, 415144.0, 903038.0, 908612.0, 1782105.0, 1570733.0], [2045.0, 416660.0, 904554.0, 910128.0, 1783621.0, 1572249.0], [2046.0, 417873.0, 905767.0, 911341.0, 1784834.0, 1573462.0], [2047.0, 419086.0, 906980.0, 912554.0, 1786047.0, 1574675.0], [2048.0, 420299.0, 908193.0, 913767.0, 1787260.0, 1575888.0], [2049.0, 421512.0, 909406.0, 914980.0, 1788473.0, 1577101.0], [2050.0, 422725.0, 910619.0, 916193.0, 1789686.0, 1578314.0]]
+                );
+                year_fmat.format(costs,0);
+                
+                // plot options 
+                vertical_label = {format: '$#,###'}; 
+                
+                width = 1000
+                height = 600
+    
+                var costs_options = {
+                    'title': 'Elim: Estimated electricity generation costs per year',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var costs_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_costs() {
+                    var costs_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('costs_chart')
+                        );
+                    
+                    costs_plot.draw(costs, costs_options);
+                    return costs_plot;
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = 
+                        new google.visualization.Table(
+                            document.getElementById('costs_chart')
+                        );
+                    costs_table.draw(
+                        costs,
+                        {
+                            'title': 'Estimated Electricity Generation Costs per Year',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = new google.visualization.Table(
+                        document.getElementById('costs_chart')
+                    );
+                    costs_table.draw(
+                        costs, {'title': 'Estimated Electricity Generation Costs per Year','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                costs_button = document.getElementById('costs_button');
+                costs_button.onclick = function() {
+                    if (costs_state == state_plot) {
+                        drawTable_costs();
+                        costs_state = state_chart;
+                    } else {
+                    drawPlot_costs();
+                    costs_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  costs_plot = drawPlot_costs();
+              
+                document.getElementById('costs_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                // ################ Start consumption ####################
+                // data
+                var consumption = google.visualization.arrayToDataTable(
+                    [[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Elim (quiktalik creek)', type: 'number'}, {label: 'Elim (creek at elim) -- unnamed creek', type: 'number'}, {label: 'Elim (peterson creek)', type: 'number'}, {label: 'Golovin (kwiniuk river, west tributary)', type: 'number'}], [2021.0, 91561.0, 80018.0, 84576.0, 48455.0, 57345.0], [2022.0, 92002.0, 80458.0, 85017.0, 48895.0, 57786.0], [2023.0, 92369.0, 80826.0, 85384.0, 49262.0, 58153.0], [2024.0, 92736.0, 81193.0, 85751.0, 49630.0, 58520.0], [2025.0, 93177.0, 81633.0, 86191.0, 50070.0, 58961.0], [2026.0, 93544.0, 82000.0, 86558.0, 50437.0, 59328.0], [2027.0, 93984.0, 82441.0, 86999.0, 50878.0, 59768.0], [2028.0, 94425.0, 82881.0, 87440.0, 51318.0, 60209.0], [2029.0, 94865.0, 83322.0, 87880.0, 51759.0, 60649.0], [2030.0, 95306.0, 83763.0, 88321.0, 52199.0, 61090.0], [2031.0, 95747.0, 84203.0, 88761.0, 52640.0, 61531.0], [2032.0, 96114.0, 84570.0, 89128.0, 53007.0, 61898.0], [2033.0, 96481.0, 84937.0, 89496.0, 53374.0, 62265.0], [2034.0, 96848.0, 85304.0, 89863.0, 53741.0, 62632.0], [2035.0, 97288.0, 85745.0, 90303.0, 54182.0, 63072.0], [2036.0, 97656.0, 86112.0, 90670.0, 54549.0, 63440.0], [2037.0, 98096.0, 86553.0, 91111.0, 54990.0, 63880.0], [2038.0, 98463.0, 86920.0, 91478.0, 55357.0, 64247.0], [2039.0, 98830.0, 87287.0, 91845.0, 55724.0, 64614.0], [2040.0, 99198.0, 87654.0, 92212.0, 56091.0, 64981.0], [2041.0, 99491.0, 87948.0, 92506.0, 56385.0, 65275.0], [2042.0, 99858.0, 88315.0, 92873.0, 56752.0, 65642.0], [2043.0, 100225.0, 88682.0, 93240.0, 57119.0, 66009.0], [2044.0, 100519.0, 88976.0, 93534.0, 57413.0, 66303.0], [2045.0, 100886.0, 89343.0, 93901.0, 57780.0, 66670.0], [2046.0, 101180.0, 89637.0, 94195.0, 58074.0, 66964.0], [2047.0, 101474.0, 89930.0, 94488.0, 58367.0, 67258.0], [2048.0, 101767.0, 90224.0, 94782.0, 58661.0, 67551.0], [2049.0, 102061.0, 90518.0, 95076.0, 58955.0, 67845.0], [2050.0, 102355.0, 90811.0, 95370.0, 59248.0, 68139.0]]
+                );
+                year_fmat.format(consumption,0);
+                
+                // plot options 
+                vertical_label=  {title: 'gallons'}; 
+                
+                width = 1000
+                height = 600
+    
+                var consumption_options = {
+                    'title': 'Elim: Diesel consumed for electricity generation ',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var consumption_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_consumption() {
+                    var consumption_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('consumption_chart')
+                        );
+                    
+                    consumption_plot.draw(consumption, consumption_options);
+                    return consumption_plot;
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = 
+                        new google.visualization.Table(
+                            document.getElementById('consumption_chart')
+                        );
+                    consumption_table.draw(
+                        consumption,
+                        {
+                            'title': 'Diesel Consumed for Electricity Generation ',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = new google.visualization.Table(
+                        document.getElementById('consumption_chart')
+                    );
+                    consumption_table.draw(
+                        consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                consumption_button = document.getElementById('consumption_button');
+                consumption_button.onclick = function() {
+                    if (consumption_state == state_plot) {
+                        drawTable_consumption();
+                        consumption_state = state_chart;
+                    } else {
+                    drawPlot_consumption();
+                    consumption_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  consumption_plot = drawPlot_consumption();
+              
+                document.getElementById('consumption_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+      };
+    </script>
+     
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Elim<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Elim/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Elim/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Elim/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Elim/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Elim/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Elim/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Elim/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Elim/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Elim/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Elim/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Elim/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Elim/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Elim/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Elim/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Elim/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Elim/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Elim/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Elim/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system<small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">See: <a href='./generation.html'>Generation </a> for more details of the current generation systems </p>
+    </div><H3>Elim (quiktalik creek)<small class = "hidy" data-toggle="collapse" data-target="#Elim_Quiktalik_Creek"></small> </H3>
+    <div id="Elim_Quiktalik_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $9,970,129 </p> <p class="stats">Lifetime energy cost savings: $-947,789 </p> <p class="stats">Net lifetime savings: $-10,917,917 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 69 kW </p> <p class="stats">Expected yearly generation: 195,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $8,200,776 </p> <p class="stats">Estimated hydro penetration level: 16.16% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1982-0198.pdf'> link </a> </p>
+    </div><H3>Elim (creek at elim) -- Unnamed Creek<small class = "hidy" data-toggle="collapse" data-target="#Elim_Creek_at_Elim_--_Unnamed_Creek"></small> </H3>
+    <div id="Elim_Creek_at_Elim_--_Unnamed_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $9,753,655 </p> <p class="stats">Lifetime energy cost savings: $-1,252,736 </p> <p class="stats">Net lifetime savings: $-11,006,391 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 28 kW </p> <p class="stats">Expected yearly generation: 118,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $8,022,719 </p> <p class="stats">Estimated hydro penetration level: 9.78% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1982-0198.pdf'> link </a> </p>
+    </div><H3>Elim (peterson creek)<small class = "hidy" data-toggle="collapse" data-target="#Elim_Peterson_Creek"></small> </H3>
+    <div id="Elim_Peterson_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $28,692,158 </p> <p class="stats">Lifetime energy cost savings: $-1,980,423 </p> <p class="stats">Net lifetime savings: $-30,672,581 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 211 kW </p> <p class="stats">Expected yearly generation: 728,184 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $23,600,293 </p> <p class="stats">Estimated hydro penetration level: 60.35% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-2005-0001.pdf'> link </a> </p>
+    </div><H3>Golovin (kwiniuk river, west tributary)<small class = "hidy" data-toggle="collapse" data-target="#Golovin_Kwiniuk_River_West_Tributary"></small> </H3>
+    <div id="Golovin_Kwiniuk_River_West_Tributary" class="collapse in" >
+     <p class="stats">Present value of capital cost: $24,098,786 </p> <p class="stats">Lifetime energy cost savings: $-1,813,721 </p> <p class="stats">Net lifetime savings: $-25,912,507 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 204 kW </p> <p class="stats">Expected yearly generation: 578,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $19,822,085 </p> <p class="stats">Estimated hydro penetration level: 47.90% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential electricity generation from diesel that could be offset by installing new Hydropower generation infrastructure. Requires that at least a reconnaissance-level hydropower study has been completed for the community to be run. 
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Elim_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Elim_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 0.27.3, Generated from Model Version 0.27.5 and Data Version 0.27.0 on 2017-06-26</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

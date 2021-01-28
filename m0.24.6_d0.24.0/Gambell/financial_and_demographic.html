@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Gambell - Financial and Demographic summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+            
+            // data
+            var population = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {label: 'Population', type: 'number'}], [2003.0, 651.0], [2004.0, 657.0], [2005.0, 667.0], [2006.0, 653.0], [2007.0, 671.0], [2008.0, 683.0], [2009.0, 680.0], [2010.0, 681.0], [2011.0, 673.0], [2012.0, 685.0], [2013.0, 697.0], [2014.0, 708.0], [2015.0, 720.0], [2016.0, 732.0], [2017.0, 744.0], [2018.0, 756.0], [2019.0, 768.0], [2020.0, 780.0], [2021.0, 792.0], [2022.0, 804.0], [2023.0, 816.0], [2024.0, 828.0], [2025.0, 840.0], [2026.0, 852.0], [2027.0, 863.0], [2028.0, 875.0], [2029.0, 888.0], [2030.0, 900.0], [2031.0, 912.0], [2032.0, 923.0], [2033.0, 932.0], [2034.0, 942.0], [2035.0, 952.0], [2036.0, 963.0], [2037.0, 974.0], [2038.0, 984.0], [2039.0, 994.0], [2040.0, 1003.0]])
+            year_fmat.format(population,0)
+            
+            
+            // plot options
+            
+            dollar = {title: 'people' }
+            
+            
+
+            width = 1000
+            height = 600
+
+            var population_options = {'title': 'Gambell: Population forecast',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var population_state = plot;
+        
+            // draw plot 
+            function drawPlot_population() {
+                
+                var population_plot = new google.visualization.LineChart(document.getElementById('population_chart'));
+                
+                
+                population_plot.draw(population, population_options);
+                return population_plot
+            }   
+            
+            // draw table
+            function drawTable_population() {
+                var population_table = new google.visualization.Table(document.getElementById('population_chart'))
+                population_table.draw(population, {'title': 'Population Forecast','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_population() {
+        var population_table = new google.visualization.Table(document.getElementById('population_chart'))
+        population_table.draw(population, {'title': 'Population Forecast','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      population_button = document.getElementById('population_button')
+      population_button.onclick = function() {
+        if (population_state == plot) {
+          drawTable_population();
+          population_state = chart;
+        } else {
+          drawPlot_population();
+          population_state = plot;
+        }
+      }
+      // initilize with plot
+      var  population_plot = drawPlot_population()
+      
+      document.getElementById('population_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + population_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var e_price = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {type: 'string', role: 'annotation'}, {label: 'Electricity price ($/kwh)', type: 'number'}, {type: 'string', role: 'annotationText'}], [2002.0, null, 0.36, null], [2003.0, null, 0.39, null], [2004.0, null, 0.42, null], [2005.0, null, 0.44, null], [2006.0, null, 0.48, null], [2007.0, null, 0.44, null], [2008.0, null, 0.53, null], [2009.0, null, 0.61, null], [2010.0, null, 0.53, null], [2011.0, null, 0.52, null], [2012.0, null, 0.56, null], [2013.0, null, 0.54, null], [2016.0, null, 0.42, null], [2017.0, null, 0.44, null], [2018.0, null, 0.46, null], [2019.0, null, 0.48, null], [2020.0, null, 0.49, null], [2021.0, null, 0.5, null], [2022.0, null, 0.5, null], [2023.0, null, 0.51, null], [2024.0, null, 0.51, null], [2025.0, null, 0.51, null], [2026.0, null, 0.52, null], [2027.0, null, 0.52, null], [2028.0, null, 0.52, null], [2029.0, null, 0.53, null], [2030.0, null, 0.53, null], [2031.0, null, 0.53, null], [2032.0, null, 0.54, null], [2033.0, null, 0.54, null], [2034.0, null, 0.55, null], [2035.0, null, 0.55, null], [2036.0, null, 0.55, null], [2037.0, null, 0.56, null], [2038.0, null, 0.56, null], [2039.0, null, 0.56, null], [2040.0, null, 0.57, null]])
+            year_fmat.format(e_price,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: 'currency'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var e_price_options = {'title': 'Gambell: Electricity price ($/kwh)',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var e_price_state = plot;
+        
+            // draw plot 
+            function drawPlot_e_price() {
+                
+                var e_price_plot = new google.visualization.LineChart(document.getElementById('e_price_chart'));
+                
+                
+                e_price_plot.draw(e_price, e_price_options);
+                return e_price_plot
+            }   
+            
+            // draw table
+            function drawTable_e_price() {
+                var e_price_table = new google.visualization.Table(document.getElementById('e_price_chart'))
+                e_price_table.draw(e_price, {'title': 'Electricity Price ($/kWh)','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_e_price() {
+        var e_price_table = new google.visualization.Table(document.getElementById('e_price_chart'))
+        e_price_table.draw(e_price, {'title': 'Electricity Price ($/kWh)','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      e_price_button = document.getElementById('e_price_button')
+      e_price_button.onclick = function() {
+        if (e_price_state == plot) {
+          drawTable_e_price();
+          e_price_state = chart;
+        } else {
+          drawPlot_e_price();
+          e_price_state = plot;
+        }
+      }
+      // initilize with plot
+      var  e_price_plot = drawPlot_e_price()
+      
+      document.getElementById('e_price_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + e_price_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var d_price = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {type: 'string', role: 'annotation'}, {label: 'Diesel price ($/gal)', type: 'number'}, {label: 'Heating fuel ($/gal)', type: 'number'}, {type: 'string', role: 'annotationText'}], [2000.0, null, null, 2.28, null], [2001.0, null, null, 2.1, null], [2004.0, null, 1.44, 3.18, null], [2005.0, null, 1.83, 3.45, null], [2008.0, null, 3.06, 5.84, null], [2009.0, null, 3.9, 7.65, null], [2010.0, null, 3.0, 6.67, null], [2011.0, null, 3.08, 8.5, null], [2012.0, null, 3.5, 6.95, null], [2013.0, null, 3.55, 6.66, null], [2014.0, null, null, 6.44, null], [2016.0, null, 1.88, 4.34, null], [2017.0, null, 2.24, 4.7, null], [2018.0, null, 2.51, 4.97, null], [2019.0, null, 2.87, 5.33, null], [2020.0, null, 3.04, 5.5, null], [2021.0, null, 3.16, 5.62, null], [2022.0, null, 3.25, 5.71, null], [2023.0, null, 3.31, 5.77, null], [2024.0, null, 3.36, 5.82, null], [2025.0, null, 3.42, 5.88, null], [2026.0, null, 3.49, 5.95, null], [2027.0, null, 3.56, 6.02, null], [2028.0, null, 3.61, 6.07, null], [2029.0, null, 3.68, 6.14, null], [2030.0, null, 3.72, 6.18, null], [2031.0, null, 3.79, 6.25, null], [2032.0, null, 3.87, 6.33, null], [2033.0, null, 3.94, 6.4, null], [2034.0, null, 4.02, 6.48, null], [2035.0, null, 4.07, 6.53, null], [2036.0, null, 4.16, 6.62, null], [2037.0, null, 4.2, 6.66, null], [2038.0, null, 4.29, 6.75, null], [2039.0, null, 4.35, 6.81, null], [2040.0, null, 4.44, 6.9, null]])
+            year_fmat.format(d_price,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: 'currency'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var d_price_options = {'title': 'Gambell: Fuel price',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var d_price_state = plot;
+        
+            // draw plot 
+            function drawPlot_d_price() {
+                
+                var d_price_plot = new google.visualization.LineChart(document.getElementById('d_price_chart'));
+                
+                
+                d_price_plot.draw(d_price, d_price_options);
+                return d_price_plot
+            }   
+            
+            // draw table
+            function drawTable_d_price() {
+                var d_price_table = new google.visualization.Table(document.getElementById('d_price_chart'))
+                d_price_table.draw(d_price, {'title': 'Fuel Price','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_d_price() {
+        var d_price_table = new google.visualization.Table(document.getElementById('d_price_chart'))
+        d_price_table.draw(d_price, {'title': 'Fuel Price','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      d_price_button = document.getElementById('d_price_button')
+      d_price_button.onclick = function() {
+        if (d_price_state == plot) {
+          drawTable_d_price();
+          d_price_state = chart;
+        } else {
+          drawPlot_d_price();
+          d_price_state = plot;
+        }
+      }
+      // initilize with plot
+      var  d_price_plot = drawPlot_d_price()
+      
+      document.getElementById('d_price_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + d_price_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {label: 'Water/wastewater heating fuel', type: 'number'}, {label: 'Non-residential heating fuel', type: 'number'}, {label: 'Residential heating fuel', type: 'number'}, {label: 'Water/wastewater electricity', type: 'number'}, {label: 'Non-residential electricity', type: 'number'}, {label: 'Residential electricity', type: 'number'}], [2017.0, 77028.6, 581464.07, 962577.99, 48579.65, 422535.96, 476362.27], [2018.0, 81533.68, 614870.44, 1035043.88, 50457.82, 437330.63, 501304.88], [2019.0, 87527.5, 659412.28, 1127951.75, 52923.4, 457056.85, 532552.71], [2020.0, 90409.61, 680445.92, 1183929.56, 54195.46, 466372.01, 552218.53], [2021.0, 92472.58, 695293.2, 1230563.66, 55151.64, 472947.41, 568940.53], [2022.0, 94044.9, 706428.66, 1271613.91, 55920.05, 477878.97, 583902.45], [2023.0, 95124.48, 713852.29, 1306744.81, 56497.31, 481166.67, 597011.11], [2024.0, 96041.64, 720038.66, 1332635.55, 57014.15, 483906.42, 606506.02], [2025.0, 97125.22, 727462.3, 1368549.26, 57597.21, 487194.13, 619832.1], [2026.0, 98375.73, 736123.21, 1407206.47, 58247.23, 491029.78, 633989.9], [2027.0, 99626.53, 744784.12, 1446385.56, 58896.3, 494865.43, 648292.66], [2028.0, 100546.6, 750970.49, 1481345.05, 59414.26, 497605.19, 661283.98], [2029.0, 101812.12, 759631.4, 1521493.33, 60091.02, 501440.84, 675855.92], [2030.0, 102578.46, 764580.49, 1554827.62, 60566.04, 503632.64, 688326.13], [2031.0, 103839.51, 773241.4, 1595907.81, 61230.76, 507468.3, 703156.9], [2032.0, 105256.81, 783139.59, 1631942.59, 61939.78, 511851.9, 715678.46], [2033.0, 106505.18, 791800.5, 1674016.83, 62575.76, 515687.56, 730785.32], [2034.0, 107921.24, 801698.69, 1710921.39, 63279.52, 520071.16, 743548.46], [2035.0, 108841.48, 807885.05, 1740440.4, 63789.98, 522810.91, 754051.09], [2036.0, 110434.6, 819020.51, 1789132.36, 64579.02, 527742.47, 771135.46], [2037.0, 111199.39, 823969.6, 1825150.57, 65043.39, 529934.27, 784351.11], [2038.0, 112798.05, 835105.06, 1866389.11, 65840.8, 534865.82, 798387.71], [2039.0, 113890.05, 842528.7, 1899919.02, 66423.95, 538153.53, 810074.09], [2040.0, 115479.76, 853664.16, 1950773.03, 67200.79, 543085.08, 827758.95]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+             
+            dollar = {format: 'percent'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Gambell: Costs by sector',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                             isStacked: 'relative', 
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.AreaChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Costs by Sector','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Costs by Sector','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script>
+
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     
+    <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Gambell<span class="page-subtitle"> Financial and Demographic</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Gambell/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Gambell/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Gambell/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Gambell/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Gambell/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Gambell/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Gambell/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Gambell/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Gambell/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Gambell/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Gambell/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Gambell/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Gambell/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Gambell/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Gambell/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Gambell/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Gambell/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Gambell/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+    <div class = 'charts'>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Population forecast  <small class="hidy" data-toggle="collapse" data-target="#population_forecast"></small> </div>
+                <div id="population_forecast" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="population">
+                    
+                        
+                        <div id="population_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='population_button'>Plot/Table</button>
+            <div id='population_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Gambell_population.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Electricity price ($/kwh)  <small class="hidy" data-toggle="collapse" data-target="#electricity_price_kwh"></small> </div>
+                <div id="electricity_price_kwh" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="e_price">
+                    
+                        
+                        <div id="e_price_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='e_price_button'>Plot/Table</button>
+            <div id='e_price_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Gambell_e_price.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Fuel price  <small class="hidy" data-toggle="collapse" data-target="#fuel_price"></small> </div>
+                <div id="fuel_price" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="d_price">
+                    
+                        
+                        <div id="d_price_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='d_price_button'>Plot/Table</button>
+            <div id='d_price_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Gambell_d_price.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Costs by sector  <small class="hidy" data-toggle="collapse" data-target="#costs_by_sector"></small> </div>
+                <div id="costs_by_sector" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="costs">
+                    
+                        
+                        <div id="costs_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+            <div id='costs_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Gambell_costs.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+    </div>
+
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            
+
+
+          </div>
+          <div class="col-sm-9">
+            
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Generated from Model Version 0.24.6 and Data Version 0.24.0 on 2017-01-24</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+      </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

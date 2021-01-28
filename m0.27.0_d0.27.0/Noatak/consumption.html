@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Noatak - Consumption summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+             
+    
+             
+    
+            
+            // data
+            var non_residential_buildings = google.visualization.arrayToDataTable([['name', 'value'], ['Consumption by Office', 1.4019382988045854], ['Consumption by Warehousing', 2.1535820837411812], ['Consumption by Education - K - 12', 59.237596613710039], ['Consumption by Public Safety', 1.3961803225906677], ['Consumption by Retail - Other', 5.117453185958154], ['Consumption by Other', 1.637988325665682], ['Consumption by Public Assembly', 2.436651951354833], ['Consumption by Unknown', 24.06774458005787], ['Consumption by Health Care - Hospitals', 2.5508646381169746]])
+            year_fmat.format(non_residential_buildings,0)
+            
+            
+            // plot options
+            
+            dollar = {title: 'pie' }
+            
+            
+
+            width = 1000
+            height = 600
+
+            var non_residential_buildings_options = {'title': 'Noatak: Non-residential buildings',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var non_residential_buildings_state = plot;
+        
+            // draw plot 
+            function drawPlot_non_residential_buildings() {
+                
+                var non_residential_buildings_plot = new google.visualization.PieChart(document.getElementById('non_residential_buildings_chart'));
+                
+                
+                non_residential_buildings_plot.draw(non_residential_buildings, non_residential_buildings_options);
+                return non_residential_buildings_plot
+            }   
+            
+            // draw table
+            function drawTable_non_residential_buildings() {
+                var non_residential_buildings_table = new google.visualization.Table(document.getElementById('non_residential_buildings_chart'))
+                non_residential_buildings_table.draw(non_residential_buildings, {'title': 'Non-residential Buildings','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_non_residential_buildings() {
+        var non_residential_buildings_table = new google.visualization.Table(document.getElementById('non_residential_buildings_chart'))
+        non_residential_buildings_table.draw(non_residential_buildings, {'title': 'Non-residential Buildings','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      non_residential_buildings_button = document.getElementById('non_residential_buildings_button')
+      non_residential_buildings_button.onclick = function() {
+        if (non_residential_buildings_state == plot) {
+          drawTable_non_residential_buildings();
+          non_residential_buildings_state = chart;
+        } else {
+          drawPlot_non_residential_buildings();
+          non_residential_buildings_state = plot;
+        }
+      }
+      // initilize with plot
+      var  non_residential_buildings_plot = drawPlot_non_residential_buildings()
+      
+      document.getElementById('non_residential_buildings_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + non_residential_buildings_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var consumption = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {type: 'string', role: 'annotation'}, {label: 'Total', type: 'number'}, {label: 'Residential', type: 'number'}, {label: 'Non-residential', type: 'number'}, {type: 'string', role: 'annotationText'}], [2003, null, 1385511.0, 633886.0, 751625.0, null], [2004, null, 1438675.0, 663184.0, 775491.0, null], [2005, null, 1398140.0, 674447.0, 723693.0, null], [2006, null, 1409543.0, 704700.0, 704843.0, null], [2007, null, 1469349.0, 688418.0, 780931.0, null], [2008, null, 1906586.0, 704644.0, 1201942.0, null], [2009, null, 1777401.0, 752615.0, 1024786.0, null], [2010, null, 1751561.0, 763781.0, 987780.0, null], [2011, null, 1745853.0, 803402.0, 942451.0, null], [2012, null, 1781229.0, 839998.0, 941231.0, null], [2013, null, 1785037.0, 838701.0, 946336.0, null], [2014, 'start of forecast', 1782809.0, 839469.0, 943339.0, 'start of forecast'], [2015, null, 1784204.0, 840865.0, 943339.0, null], [2016, null, 1782624.0, 839285.0, 943339.0, null], [2017, null, 1780697.0, 837357.0, 943339.0, null], [2018, null, 1777360.0, 834021.0, 943339.0, null], [2019, null, 1775289.0, 831950.0, 943339.0, null], [2020, null, 1773519.0, 830180.0, 943339.0, null], [2021, null, 1774448.0, 831108.0, 943339.0, null], [2022, null, 1777450.0, 834111.0, 943339.0, null], [2023, null, 1784349.0, 841010.0, 943339.0, null], [2024, null, 1785070.0, 841731.0, 943339.0, null], [2025, null, 1786132.0, 842793.0, 943339.0, null], [2026, null, 1784528.0, 841189.0, 943339.0, null], [2027, null, 1783572.0, 840233.0, 943339.0, null], [2028, null, 1781010.0, 837671.0, 943339.0, null], [2029, null, 1778187.0, 834848.0, 943339.0, null], [2030, null, 1778959.0, 835620.0, 943339.0, null], [2031, null, 1777593.0, 834253.0, 943339.0, null], [2032, null, 1774073.0, 830734.0, 943339.0, null], [2033, null, 1771920.0, 828581.0, 943339.0, null], [2034, null, 1769184.0, 825844.0, 943339.0, null], [2035, null, 1768407.0, 825067.0, 943339.0, null], [2036, null, 1765947.0, 822608.0, 943339.0, null], [2037, null, 1767041.0, 823701.0, 943339.0, null], [2038, null, 1767364.0, 824025.0, 943339.0, null], [2039, null, 1764897.0, 821557.0, 943339.0, null], [2040, null, 1761309.0, 817969.0, 943339.0, null]])
+            year_fmat.format(consumption,0)
+            
+            
+            // plot options
+            
+            dollar = {title: 'kWh' }
+            
+            
+
+            width = 1000
+            height = 600
+
+            var consumption_options = {'title': 'Noatak: Electricity consumed',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_consumption() {
+                
+                var consumption_plot = new google.visualization.LineChart(document.getElementById('consumption_chart'));
+                
+                
+                consumption_plot.draw(consumption, consumption_options);
+                return consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_consumption() {
+                var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+                consumption_table.draw(consumption, {'title': 'Electricity Consumed','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_consumption() {
+        var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+        consumption_table.draw(consumption, {'title': 'Electricity Consumed','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      consumption_button = document.getElementById('consumption_button')
+      consumption_button.onclick = function() {
+        if (consumption_state == plot) {
+          drawTable_consumption();
+          consumption_state = chart;
+        } else {
+          drawPlot_consumption();
+          consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  consumption_plot = drawPlot_consumption()
+      
+      document.getElementById('consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var diesel_consumption = google.visualization.arrayToDataTable([['name', 'value'], ['Utility Diesel (gallons)', 134723.78038629875], ['Water/Wastewater Heating Oil (gallons)', 10628.116807648767], ['Non-residential Heating Oil (gallons)', 156809.57508402964], ['Residential Heating Oil (gallons)', 78937.5213673496]])
+            year_fmat.format(diesel_consumption,0)
+            
+            
+            // plot options
+            
+            dollar = {title: 'pie' }
+            
+            
+
+            width = 1000
+            height = 600
+
+            var diesel_consumption_options = {'title': 'Noatak: Energy consumption by sector',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var diesel_consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_diesel_consumption() {
+                
+                var diesel_consumption_plot = new google.visualization.PieChart(document.getElementById('diesel_consumption_chart'));
+                
+                
+                diesel_consumption_plot.draw(diesel_consumption, diesel_consumption_options);
+                return diesel_consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_diesel_consumption() {
+                var diesel_consumption_table = new google.visualization.Table(document.getElementById('diesel_consumption_chart'))
+                diesel_consumption_table.draw(diesel_consumption, {'title': 'Energy Consumption by sector','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_diesel_consumption() {
+        var diesel_consumption_table = new google.visualization.Table(document.getElementById('diesel_consumption_chart'))
+        diesel_consumption_table.draw(diesel_consumption, {'title': 'Energy Consumption by sector','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      diesel_consumption_button = document.getElementById('diesel_consumption_button')
+      diesel_consumption_button.onclick = function() {
+        if (diesel_consumption_state == plot) {
+          drawTable_diesel_consumption();
+          diesel_consumption_state = chart;
+        } else {
+          drawPlot_diesel_consumption();
+          diesel_consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  diesel_consumption_plot = drawPlot_diesel_consumption()
+      
+      document.getElementById('diesel_consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + diesel_consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([['name', 'value'], ['Water/Wastewater Heating Fuel', 89219.87013837743], ['Non-residential Heating Fuel', 1316369.6051385761], ['Residential Heating Fuel', 691723.8993356614], ['Water/Wastewater Electricity', 120687.80094977174], ['Non-residential Electricity', 927464.452741894], ['Residential Electricity', 667122.6033877484]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+            
+            dollar = {title: 'pie' }
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Noatak: Energy costs by sector',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.PieChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Energy costs by Sector','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Energy costs by Sector','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script>
+
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     
+    <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Noatak<span class="page-subtitle"> Consumption</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Noatak/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Noatak/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Noatak/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Noatak/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Noatak/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Noatak/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Noatak/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Noatak/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Noatak/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Noatak/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Noatak/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Noatak/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Noatak/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Noatak/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Noatak/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Noatak/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Noatak/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Noatak/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+    <div class = 'charts'>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Heating degree days  <small class="hidy" data-toggle="collapse" data-target="#heating_degree_days"></small> </div>
+                <div id="heating_degree_days" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="hdd">
+                    
+                        
+                        <table class="table table-striped table-condensed"  >
+                        <tbody>
+                            <tr>
+                                
+                                    <td> Heating Degree Days per year </td>  
+                                
+                                    <td> 15,725 </td>  
+                                
+                            </tr>
+                        </tbody>
+                        </table>
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Residential buildings  <small class="hidy" data-toggle="collapse" data-target="#residential_buildings"></small> </div>
+                <div id="residential_buildings" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="residential_buildings">
+                    
+                        
+                        <table class="table table-striped table-condensed"  >
+                        <tbody>
+                            <tr>
+                                
+                                    <th>  </th>
+                                
+                                    <th> Number Houses </th>
+                                
+                                    <th> Houshold Avg. Square Feet </th>
+                                
+                                    <th> Avg. EUI </th>
+                                
+                            </tr><tr>
+                                
+                                    <td> BEES </td>  
+                                
+                                    <td> 0 </td>  
+                                
+                                    <td> 0 </td>  
+                                
+                                    <td> 0.00 </td>  
+                                
+                            </tr><tr>
+                                
+                                    <td> Post-Retrofit </td>  
+                                
+                                    <td> 71 </td>  
+                                
+                                    <td> 844 </td>  
+                                
+                                    <td> 0.11 </td>  
+                                
+                            </tr><tr>
+                                
+                                    <td> Pre-Retrofit </td>  
+                                
+                                    <td> 50 </td>  
+                                
+                                    <td> 840 </td>  
+                                
+                                    <td> 0.21 </td>  
+                                
+                            </tr>
+                        </tbody>
+                        </table>
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Non-residential buildings  <small class="hidy" data-toggle="collapse" data-target="#non-residential_buildings"></small> </div>
+                <div id="non-residential_buildings" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="non_residential_buildings">
+                    
+                        
+                            <div style="float:left; width:30%"> <p>There is a estimated total of 124,928 square feet for the 23 non-residential buildings in this community. 60.9% of the buildings have been identified. The others are assumed to exist. 71.9% of the assumed square footage is from measured sources. The break down of heating fuel consumption by building type is pesented in the pie chart</p></div>
+                            <div style="float:right; width:70%"><div id="non_residential_buildings_chart"></div></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='non_residential_buildings_button'>Plot/Table</button>
+            <div id='non_residential_buildings_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Noatak_non_residential_buildings.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Electricity consumed  <small class="hidy" data-toggle="collapse" data-target="#electricity_consumed"></small> </div>
+                <div id="electricity_consumed" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="consumption">
+                    
+                        
+                        <div id="consumption_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+            <div id='consumption_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Noatak_consumption.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Energy consumption by sector  <small class="hidy" data-toggle="collapse" data-target="#energy_consumption_by_sector"></small> </div>
+                <div id="energy_consumption_by_sector" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="diesel_consumption">
+                    
+                        
+                            <div style="float:left; width:30%"> <p></p></div>
+                            <div style="float:right; width:70%"><div id="diesel_consumption_chart"></div></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='diesel_consumption_button'>Plot/Table</button>
+            <div id='diesel_consumption_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Noatak_diesel_consumption.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Energy costs by sector  <small class="hidy" data-toggle="collapse" data-target="#energy_costs_by_sector"></small> </div>
+                <div id="energy_costs_by_sector" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="costs">
+                    
+                        
+                            <div style="float:left; width:30%"> <p></p></div>
+                            <div style="float:right; width:70%"><div id="costs_chart"></div></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+            <div id='costs_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Noatak_costs.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+    </div>
+
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            
+
+
+          </div>
+          <div class="col-sm-9">
+            
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 0.27.0, Generated from Model Version 0.27.0 and Data Version 0.27.0 on 2017-06-12</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

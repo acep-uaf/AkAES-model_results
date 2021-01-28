@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Pedro_Bay - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Pedro bay (knutson creek)', type: 'number'}, {label: 'Knutson creek', type: 'number'}, {label: 'Knutson creek hydroelectric project design and permitting', type: 'number'}, {label: 'Pedro bay (canyon creek)', type: 'number'}], [2021.0, 97113.0, 717134.0, 737199.0, null, 977399.0], [2022.0, 99280.0, 702830.0, 721780.0, null, 958055.0], [2023.0, 100659.0, 688916.0, 706895.0, null, 939220.0], [2024.0, 101841.0, 675340.0, 692398.0, null, 920839.0], [2025.0, 103220.0, 662066.0, 678188.0, null, 902872.0], [2026.0, 104796.0, 649086.0, 664257.0, null, 885308.0], [2027.0, 106175.0, 636422.0, 650690.0, null, 868169.0], [2028.0, 107356.0, 624067.0, 637480.0, null, 851443.0], [2029.0, 108932.0, 611970.0, 624481.0, null, 835078.0], [2030.0, 109917.0, 600198.0, 611916.0, null, 819137.0], [2031.0, 111493.0, 588657.0, 599501.0, null, 803525.0], [2032.0, 113266.0, 577368.0, 587323.0, null, 788260.0], [2033.0, 114842.0, 566355.0, 575466.0, null, 773366.0], [2034.0, 116615.0, 555583.0, 563832.0, null, 758802.0], [2035.0, 117797.0, 545104.0, 552600.0, null, 744622.0], [2036.0, 119570.0, 534825.0, 541486.0, null, 730727.0], [2037.0, 120554.0, 524843.0, 530808.0, null, 717214.0], [2038.0, 122327.0, 515034.0, 520189.0, null, 703957.0], [2039.0, 123706.0, 505481.0, 509903.0, null, 691036.0], [2040.0, 125479.0, 496120.0, 499757.0, null, 678387.0], [2041.0, 124870.0, 486499.0, 489646.0, null, 665555.0], [2042.0, 124870.0, 477698.0, 480368.0, null, 653618.0], [2043.0, 125479.0, 469713.0, 471916.0, null, 642571.0], [2044.0, 125479.0, 461320.0, 463067.0, null, 631187.0], [2045.0, 125479.0, 453124.0, 454426.0, null, 620070.0], [2046.0, 125479.0, 445119.0, 445987.0, null, 609214.0], [2047.0, 125479.0, 437303.0, 437746.0, null, 598612.0], [2048.0, 125479.0, 429669.0, 429699.0, null, 588258.0], [2049.0, 125479.0, 422215.0, 421839.0, null, 578148.0], [2050.0, 125479.0, 414935.0, 414165.0, null, 568274.0], [2051.0, 125479.0, 407826.0, 406669.0, null, 558631.0], [2052.0, 125479.0, 400884.0, 399350.0, null, 549215.0], [2053.0, 125479.0, 394104.0, 392202.0, null, 540019.0], [2054.0, 125479.0, 387483.0, 385222.0, null, 531039.0], [2055.0, 125479.0, 381017.0, 378405.0, null, 522270.0], [2056.0, 125479.0, 374703.0, 371748.0, null, 513705.0], [2057.0, 125479.0, 368537.0, 365247.0, null, 505342.0], [2058.0, 125479.0, 362515.0, 358898.0, null, 497175.0], [2059.0, 125479.0, 356634.0, 352699.0, null, 489199.0], [2060.0, 125479.0, 350892.0, 346644.0, null, 481410.0], [2061.0, 125479.0, 345284.0, 340732.0, null, 473803.0], [2062.0, 125479.0, 339807.0, 334958.0, null, 466375.0], [2063.0, 125479.0, 334459.0, 329319.0, null, 459121.0], [2064.0, 125479.0, 329236.0, 323812.0, null, 452037.0], [2065.0, 125479.0, 324135.0, 318435.0, null, 445119.0], [2066.0, 125479.0, 319154.0, 313183.0, null, 438363.0], [2067.0, 125479.0, 314290.0, 308055.0, null, 431765.0], [2068.0, 125479.0, 309539.0, 303047.0, null, 425322.0], [2069.0, 125479.0, 304901.0, 298156.0, null, 419030.0], [2070.0, 125479.0, 300370.0, 293380.0, null, 412886.0]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: '$#,###'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Pedro Bay: Estimated electricity generation fuel costs per year',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.LineChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Estimated Electricity Generation Fuel Costs per Year','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Estimated Electricity Generation Fuel Costs per Year','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var consumption = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Pedro bay (knutson creek)', type: 'number'}, {label: 'Knutson creek', type: 'number'}, {label: 'Knutson creek hydroelectric project design and permitting', type: 'number'}, {label: 'Pedro bay (canyon creek)', type: 'number'}], [2021.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2022.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2023.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2024.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2025.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2026.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2027.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2028.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2029.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2030.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2031.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2032.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2033.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2034.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2035.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2036.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2037.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2038.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2039.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2040.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2041.0, 19603.0, -96.0, -96.0, -96.0, -96.0], [2042.0, 19603.0, -96.0, -96.0, -96.0, -96.0], [2043.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2044.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2045.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2046.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2047.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2048.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2049.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2050.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2051.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2052.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2053.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2054.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2055.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2056.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2057.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2058.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2059.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2060.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2061.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2062.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2063.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2064.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2065.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2066.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2067.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2068.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2069.0, 19698.0, 0.0, 0.0, 0.0, 0.0], [2070.0, 19698.0, 0.0, 0.0, 0.0, 0.0]])
+            year_fmat.format(consumption,0)
+            
+            
+            // plot options
+            
+            dollar=  {title: 'gallons'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var consumption_options = {'title': 'Pedro Bay: Diesel consumed for electricity generation ',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_consumption() {
+                
+                var consumption_plot = new google.visualization.LineChart(document.getElementById('consumption_chart'));
+                
+                
+                consumption_plot.draw(consumption, consumption_options);
+                return consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_consumption() {
+                var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+                consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_consumption() {
+        var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+        consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      consumption_button = document.getElementById('consumption_button')
+      consumption_button.onclick = function() {
+        if (consumption_state == plot) {
+          drawTable_consumption();
+          consumption_state = chart;
+        } else {
+          drawPlot_consumption();
+          consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  consumption_plot = drawPlot_consumption()
+      
+      document.getElementById('consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script> 
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Pedro Bay<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Pedro_Bay/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Pedro_Bay/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Pedro_Bay/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Pedro_Bay/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Pedro_Bay/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Pedro_Bay/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Pedro_Bay/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Pedro_Bay/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Pedro_Bay/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Pedro_Bay/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Pedro_Bay/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Pedro_Bay/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Pedro_Bay/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Pedro_Bay/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Pedro_Bay/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Pedro_Bay/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Pedro_Bay/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Pedro_Bay/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system <small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">Average Community Load (kW)(2013): 21 </p> <p class="stats">Average kWh/year(2013): 183,417 </p> <p class="stats">Peak Load: Unknown </p> <p class="stats">Existing nameplate wind capacity (kW): 0 </p> <p class="stats">Existing wind generation (kWh/year)(2013): 0 </p> <p class="stats">Existing nameplate solar capacity (kW): 0.0 </p> <p class="stats">Existing solar generation (kWh/year)(2013): 0 </p> <p class="stats">Existing nameplate hydro capacity (kW): 0.0 </p> <p class="stats">Existing hydro generation (kWh/year)(2013): 0 </p>
+    </div><H3>Pedro bay (knutson creek) <small class = "hidy" data-toggle="collapse" data-target="#Pedro_Bay_Knutson_Creek"></small> </H3>
+    <div id="Pedro_Bay_Knutson_Creek" class="collapse in" >
+     <p class="stats">Capital Cost ($): $9,061,555 </p> <p class="stats">Lifetime Savings ($): $91,790 </p> <p class="stats">Net Lifetime Savings ($): $-8,969,765 </p> <p class="stats">Benefit Cost Ratio: 0.010 </p> <p class="stats">Proposed Nameplate Capacity(kW): 100 </p> <p class="stats">Expected Yearly Generation (kWh/year): 530,986 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $12,700,144 </p> <p class="stats">Estimated Hydro Penetration Level (%): 289.50% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1979-0373.pdf'> link </a> </p>
+    </div><H3>Knutson creek <small class = "hidy" data-toggle="collapse" data-target="#Knutson_Creek"></small> </H3>
+    <div id="Knutson_Creek" class="collapse in" >
+     <p class="stats">Capital Cost ($): $9,553,497 </p> <p class="stats">Lifetime Savings ($): $442,177 </p> <p class="stats">Net Lifetime Savings ($): $-9,111,320 </p> <p class="stats">Benefit Cost Ratio: 0.046 </p> <p class="stats">Proposed Nameplate Capacity(kW): 200 </p> <p class="stats">Expected Yearly Generation (kWh/year): 1,668,000 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $13,389,622 </p> <p class="stats">Estimated Hydro Penetration Level (%): 909.40% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-2005-0001.pdf'> link </a> </p>
+    </div><H3>Knutson creek hydroelectric project design and permitting <small class = "hidy" data-toggle="collapse" data-target="#Knutson_Creek_Hydroelectric_Project_Design_and_Permitting"></small> </H3>
+    <div id="Knutson_Creek_Hydroelectric_Project_Design_and_Permitting" class="collapse in" >
+     <p class="stats">Capital Cost ($): $nan </p> <p class="stats">Lifetime Savings ($): $nan </p> <p class="stats">Net Lifetime Savings ($): $nan </p> <p class="stats">Benefit Cost Ratio: nan </p> <p class="stats">Proposed Nameplate Capacity(kW): 200 </p> <p class="stats">Expected Yearly Generation (kWh/year): 1,503,700 </p> <p class="stats">Phase: Feasibility </p> <p class="stats">Total Capital Cost: $nan </p> <p class="stats">Estimated Hydro Penetration Level (%): 819.83% </p> <p class="stats">source: <a href='http://akenergyinventory.org/catalog/entries/8332-knutson-creek-hydroelectric-feasibility-study'> link </a> </p>
+    </div><H3>Pedro bay (canyon creek) <small class = "hidy" data-toggle="collapse" data-target="#Pedro_Bay_Canyon_Creek"></small> </H3>
+    <div id="Pedro_Bay_Canyon_Creek" class="collapse in" >
+     <p class="stats">Capital Cost ($): $12,290,476 </p> <p class="stats">Lifetime Savings ($): $-912,625 </p> <p class="stats">Net Lifetime Savings ($): $-13,203,102 </p> <p class="stats">Benefit Cost Ratio: -0.074 </p> <p class="stats">Proposed Nameplate Capacity(kW): 100 </p> <p class="stats">Expected Yearly Generation (kWh/year): 530,986 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $17,225,612 </p> <p class="stats">Estimated Hydro Penetration Level (%): 289.50% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1979-0373.pdf'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential electricity generation from diesel that could be offset by installing new Hydropower generation infrastructure. This component only uses existing proposed projects to base its calculations on, and does not attempt to model values
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Pedro_Bay_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Pedro_Bay_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Generated from Model Version 0.24.6 and Data Version 0.24.0 on 2017-01-24</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+      </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

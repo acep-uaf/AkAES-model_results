@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Tenakee_Springs - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // setup
+        google.charts.load('current', {'packages':['corechart','table']});
+        google.charts.setOnLoadCallback(drawCharts);
+    
+        // for the charts
+        function drawCharts() {
+            
+            // set up vars (data/options) for each chart
+            var state_plot = 'plot';
+            var state_chart = 'chart';
+            
+            var year_fmat = new google.visualization.NumberFormat({pattern:'####'});
+            
+            
+                // ################ Start costs ####################
+                // data
+                var costs = google.visualization.arrayToDataTable(
+                    [[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Sitkoh creek', type: 'number'}, {label: 'Kathleen creek (lake kathleen) -- kethleen creek', type: 'number'}, {label: 'Lake florence (florence creek)', type: 'number'}, {label: 'Kook lake (kook creek)', type: 'number'}, {label: 'Harley creek (tenakee springs)', type: 'number'}, {label: 'Indian river hydroelectric project - construction', type: 'number'}], [2018.0, 100124.0, null, null, null, null, null, null], [2019.0, 113092.0, null, null, null, null, null, null], [2020.0, 119246.0, null, null, null, null, null, null], [2021.0, 123445.0, 1501470.0, 14954261.0, 3605184.0, 1333686.0, 421071.0, null], [2022.0, 126342.0, 1500401.0, 14950463.0, 3602568.0, 1332643.0, 420484.0, null], [2023.0, 128586.0, 1499471.0, 14947351.0, 3600401.0, 1331734.0, 419941.0, null], [2024.0, 130180.0, 1498686.0, 14944928.0, 3598687.0, 1330964.0, 419445.0, null], [2025.0, 132083.0, 1497812.0, 14942144.0, 3596730.0, 1330109.0, 418908.0, null], [2026.0, 134276.0, 1496435.0, 14938311.0, 3593961.0, 1328755.0, 417965.0, null], [2027.0, 136150.0, 1495532.0, 14935498.0, 3591975.0, 1327871.0, 417400.0, null], [2028.0, 137698.0, 1494700.0, 14933029.0, 3590215.0, 1327055.0, 416858.0, null], [2029.0, 140178.0, 1493610.0, 14929484.0, 3587733.0, 1325988.0, 416202.0, null], [2030.0, 141392.0, 1492841.0, 14927350.0, 3586191.0, 1325233.0, 415674.0, null], [2031.0, 143847.0, 1491726.0, 14923780.0, 3583683.0, 1324141.0, 414993.0, null], [2032.0, 146288.0, 1490597.0, 14920194.0, 3581162.0, 1323035.0, 414298.0, null], [2033.0, 148715.0, 1489453.0, 14916595.0, 3578626.0, 1321915.0, 413589.0, null], [2034.0, 151819.0, 1488591.0, 14913005.0, 3576217.0, 1321080.0, 413209.0, null], [2035.0, 153295.0, 1487687.0, 14910463.0, 3574385.0, 1320191.0, 412595.0, null], [2036.0, 155997.0, 1486422.0, 14906470.0, 3571573.0, 1318953.0, 411812.0, null], [2037.0, 157850.0, 1485896.0, 14904306.0, 3570119.0, 1318442.0, 411575.0, null], [2038.0, 160532.0, 1484611.0, 14900293.0, 3567287.0, 1317183.0, 410772.0, null], [2039.0, 162997.0, 1483902.0, 14897401.0, 3565341.0, 1316495.0, 410450.0, null], [2040.0, 166386.0, 1482928.0, 14893426.0, 3562665.0, 1315550.0, 410007.0, null], [2041.0, 166386.0, 1482928.0, 14893426.0, 3562665.0, 1315550.0, 410007.0, null], [2042.0, 166386.0, 1482928.0, 14893426.0, 3562665.0, 1315550.0, 410007.0, null], [2043.0, 166386.0, 1482928.0, 14893426.0, 3562665.0, 1315550.0, 410007.0, null], [2044.0, 166386.0, 1482928.0, 14893426.0, 3562665.0, 1315550.0, 410007.0, null], [2045.0, 166386.0, 1482928.0, 14893426.0, 3562665.0, 1315550.0, 410007.0, null], [2046.0, 166386.0, 1482928.0, 14893426.0, 3562665.0, 1315550.0, 410007.0, null], [2047.0, 166809.0, 1483351.0, 14893848.0, 3563087.0, 1315973.0, 410429.0, null], [2048.0, 166809.0, 1483351.0, 14893848.0, 3563087.0, 1315973.0, 410429.0, null], [2049.0, 167231.0, 1483773.0, 14894270.0, 3563510.0, 1316395.0, 410851.0, null], [2050.0, 167653.0, 1484195.0, 14894693.0, 3563932.0, 1316817.0, 411274.0, null]]
+                );
+                year_fmat.format(costs,0);
+                
+                // plot options 
+                vertical_label = {format: '$#,###'}; 
+                
+                width = 1000
+                height = 600
+    
+                var costs_options = {
+                    'title': 'Tenakee Springs: Estimated electricity generation costs per year',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var costs_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_costs() {
+                    var costs_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('costs_chart')
+                        );
+                    
+                    costs_plot.draw(costs, costs_options);
+                    return costs_plot;
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = 
+                        new google.visualization.Table(
+                            document.getElementById('costs_chart')
+                        );
+                    costs_table.draw(
+                        costs,
+                        {
+                            'title': 'Estimated Electricity Generation Costs per Year',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = new google.visualization.Table(
+                        document.getElementById('costs_chart')
+                    );
+                    costs_table.draw(
+                        costs, {'title': 'Estimated Electricity Generation Costs per Year','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                costs_button = document.getElementById('costs_button');
+                costs_button.onclick = function() {
+                    if (costs_state == state_plot) {
+                        drawTable_costs();
+                        costs_state = state_chart;
+                    } else {
+                    drawPlot_costs();
+                    costs_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  costs_plot = drawPlot_costs();
+              
+                document.getElementById('costs_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                // ################ Start consumption ####################
+                // data
+                var consumption = google.visualization.arrayToDataTable(
+                    [[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Sitkoh creek', type: 'number'}, {label: 'Kathleen creek (lake kathleen) -- kethleen creek', type: 'number'}, {label: 'Lake florence (florence creek)', type: 'number'}, {label: 'Kook lake (kook creek)', type: 'number'}, {label: 'Harley creek (tenakee springs)', type: 'number'}, {label: 'Indian river hydroelectric project - construction', type: 'number'}], [2018.0, 32298.0, null, null, null, null, null, 12357.0], [2019.0, 32220.0, null, null, null, null, null, 12279.0], [2020.0, 32142.0, null, null, null, null, null, 12201.0], [2021.0, 32064.0, 0.0, 0.0, 0.0, 0.0, 0.0, 12123.0], [2022.0, 31985.0, 0.0, 0.0, 0.0, 0.0, 0.0, 12044.0], [2023.0, 31907.0, 0.0, 0.0, 0.0, 0.0, 0.0, 11966.0], [2024.0, 31829.0, 0.0, 0.0, 0.0, 0.0, 0.0, 11888.0], [2025.0, 31751.0, 0.0, 0.0, 0.0, 0.0, 0.0, 11810.0], [2026.0, 31594.0, 0.0, 0.0, 0.0, 0.0, 0.0, 11653.0], [2027.0, 31516.0, 0.0, 0.0, 0.0, 0.0, 0.0, 11575.0], [2028.0, 31438.0, 0.0, 0.0, 0.0, 0.0, 0.0, 11497.0], [2029.0, 31360.0, 0.0, 0.0, 0.0, 0.0, 0.0, 11419.0], [2030.0, 31281.0, 0.0, 0.0, 0.0, 0.0, 0.0, 11340.0], [2031.0, 31203.0, 0.0, 0.0, 0.0, 0.0, 0.0, 11262.0], [2032.0, 31125.0, 0.0, 0.0, 0.0, 0.0, 0.0, 11184.0], [2033.0, 31047.0, 0.0, 0.0, 0.0, 0.0, 0.0, 11106.0], [2034.0, 31047.0, 0.0, 0.0, 0.0, 0.0, 0.0, 11106.0], [2035.0, 30969.0, 0.0, 0.0, 0.0, 0.0, 0.0, 11028.0], [2036.0, 30890.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10949.0], [2037.0, 30890.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10949.0], [2038.0, 30812.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10871.0], [2039.0, 30812.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10871.0], [2040.0, 30812.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10871.0], [2041.0, 30812.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10871.0], [2042.0, 30812.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10871.0], [2043.0, 30812.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10871.0], [2044.0, 30812.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10871.0], [2045.0, 30812.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10871.0], [2046.0, 30812.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10871.0], [2047.0, 30890.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10949.0], [2048.0, 30890.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10949.0], [2049.0, 30969.0, 0.0, 0.0, 0.0, 0.0, 0.0, 11028.0], [2050.0, 31047.0, 0.0, 0.0, 0.0, 0.0, 0.0, 11106.0]]
+                );
+                year_fmat.format(consumption,0);
+                
+                // plot options 
+                vertical_label=  {title: 'gallons'}; 
+                
+                width = 1000
+                height = 600
+    
+                var consumption_options = {
+                    'title': 'Tenakee Springs: Diesel consumed for electricity generation ',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var consumption_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_consumption() {
+                    var consumption_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('consumption_chart')
+                        );
+                    
+                    consumption_plot.draw(consumption, consumption_options);
+                    return consumption_plot;
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = 
+                        new google.visualization.Table(
+                            document.getElementById('consumption_chart')
+                        );
+                    consumption_table.draw(
+                        consumption,
+                        {
+                            'title': 'Diesel Consumed for Electricity Generation ',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = new google.visualization.Table(
+                        document.getElementById('consumption_chart')
+                    );
+                    consumption_table.draw(
+                        consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                consumption_button = document.getElementById('consumption_button');
+                consumption_button.onclick = function() {
+                    if (consumption_state == state_plot) {
+                        drawTable_consumption();
+                        consumption_state = state_chart;
+                    } else {
+                    drawPlot_consumption();
+                    consumption_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  consumption_plot = drawPlot_consumption();
+              
+                document.getElementById('consumption_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+      };
+    </script>
+     
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Tenakee Springs<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Tenakee_Springs/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Tenakee_Springs/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Tenakee_Springs/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Tenakee_Springs/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Tenakee_Springs/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Tenakee_Springs/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Tenakee_Springs/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Tenakee_Springs/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Tenakee_Springs/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Tenakee_Springs/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Tenakee_Springs/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Tenakee_Springs/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Tenakee_Springs/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Tenakee_Springs/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Tenakee_Springs/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Tenakee_Springs/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Tenakee_Springs/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Tenakee_Springs/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system<small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">See: <a href='./generation.html'>Generation </a> for more details of the current generation systems </p>
+    </div><H3>Sitkoh creek<small class = "hidy" data-toggle="collapse" data-target="#Sitkoh_Creek"></small> </H3>
+    <div id="Sitkoh_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $28,946,453 </p> <p class="stats">Lifetime energy cost savings: $-720,154 </p> <p class="stats">Net lifetime savings: $-29,666,606 </p> <p class="stats">Benefit-cost ratio: -0.0 </p> <p class="stats">Proposed nameplate capacity: 725 kW </p> <p class="stats">Expected yearly generation: 2,764,374 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $23,809,459 </p> <p class="stats">Estimated hydro penetration level: 679.15% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Kathleen creek (lake kathleen) -- Kethleen Creek<small class = "hidy" data-toggle="collapse" data-target="#Kathleen_Creek_Lake_Kathleen_--_Kethleen_Creek"></small> </H3>
+    <div id="Kathleen_Creek_Lake_Kathleen_--_Kethleen_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $283,631,168 </p> <p class="stats">Lifetime energy cost savings: $-43,984,697 </p> <p class="stats">Net lifetime savings: $-327,615,865 </p> <p class="stats">Benefit-cost ratio: -0.2 </p> <p class="stats">Proposed nameplate capacity: 10,000 kW </p> <p class="stats">Expected yearly generation: 48,000,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $233,296,449 </p> <p class="stats">Estimated hydro penetration level: 11,792.66% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1983-0372.pdf'> link </a> </p>
+    </div><H3>Lake florence (florence creek)<small class = "hidy" data-toggle="collapse" data-target="#Lake_Florence_Florence_Creek"></small> </H3>
+    <div id="Lake_Florence_Florence_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $69,675,637 </p> <p class="stats">Lifetime energy cost savings: $-6,324,198 </p> <p class="stats">Net lifetime savings: $-75,999,835 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 2,200 kW </p> <p class="stats">Expected yearly generation: 8,388,444 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $57,310,622 </p> <p class="stats">Estimated hydro penetration level: 2,060.88% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1983-0372.pdf'> link </a> </p>
+    </div><H3>Kook lake (kook creek)<small class = "hidy" data-toggle="collapse" data-target="#Kook_Lake_Kook_Creek"></small> </H3>
+    <div id="Kook_Lake_Kook_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $25,776,294 </p> <p class="stats">Lifetime energy cost savings: $-172,453 </p> <p class="stats">Net lifetime savings: $-25,948,747 </p> <p class="stats">Benefit-cost ratio: -0.0 </p> <p class="stats">Proposed nameplate capacity: 700 kW </p> <p class="stats">Expected yearly generation: 2,669,050 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $21,201,893 </p> <p class="stats">Estimated hydro penetration level: 655.73% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1983-0372.pdf'> link </a> </p>
+    </div><H3>Harley creek (tenakee springs)<small class = "hidy" data-toggle="collapse" data-target="#Harley_Creek_Tenakee_Springs"></small> </H3>
+    <div id="Harley_Creek_Tenakee_Springs" class="collapse in" >
+     <p class="stats">Present value of capital cost: $8,280,562 </p> <p class="stats">Lifetime energy cost savings: $2,481,433 </p> <p class="stats">Net lifetime savings: $-5,799,129 </p> <p class="stats">Benefit-cost ratio: 0.3 </p> <p class="stats">Proposed nameplate capacity: 265 kW </p> <p class="stats">Expected yearly generation: 1,010,426 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $6,811,049 </p> <p class="stats">Estimated hydro penetration level: 248.24% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Indian river hydroelectric project - construction<small class = "hidy" data-toggle="collapse" data-target="#Indian_River_Hydroelectric_Project_-_Construction"></small> </H3>
+    <div id="Indian_River_Hydroelectric_Project_-_Construction" class="collapse in" >
+     <p class="stats">Present value of capital cost: $nan </p> <p class="stats">Lifetime energy cost savings: $nan </p> <p class="stats">Net lifetime savings: $nan </p> <p class="stats">Benefit-cost ratio: nan </p> <p class="stats">Proposed nameplate capacity: 180 kW </p> <p class="stats">Expected yearly generation: 350,492 kWh/year </p> <p class="stats">Phase: Construction </p> <p class="stats">Upfront capital cost: $nan </p> <p class="stats">Estimated hydro penetration level: 86.11% </p> <p class="stats">source: <a href='http://akenergyinventory.org/catalog/entries/8328-indian-river-hydroelectric-project-cdp'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential electricity generation from diesel that could be offset by installing new Hydropower generation infrastructure. Requires that at least a reconnaissance-level hydropower study has been completed for the community to be run. 
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Tenakee_Springs_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Tenakee_Springs_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 0.27.3, Generated from Model Version 0.27.5 and Data Version 0.27.0 on 2017-06-26</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

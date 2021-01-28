@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Chignik_Lake - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // setup
+        google.charts.load('current', {'packages':['corechart','table']});
+        google.charts.setOnLoadCallback(drawCharts);
+    
+        // for the charts
+        function drawCharts() {
+            
+            // set up vars (data/options) for each chart
+            var state_plot = 'plot';
+            var state_chart = 'chart';
+            
+            var year_fmat = new google.visualization.NumberFormat({pattern:'####'});
+            
+            
+                // ################ Start costs ####################
+                // data
+                var costs = google.visualization.arrayToDataTable(
+                    [[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Chignik lake -- unnamed creek 1', type: 'number'}, {label: 'Chignik lake (cucumber creek)', type: 'number'}, {label: 'Chignik lake (unnamed stream, site #6) -- unnamed creek 2', type: 'number'}], [2021.0, 108612.0, 464756.0, 1274195.0, 488152.0], [2022.0, 111812.0, 454924.0, 1245342.0, 478255.0], [2023.0, 114039.0, 445323.0, 1217569.0, 468537.0], [2024.0, 115618.0, 435946.0, 1190711.0, 459010.0], [2025.0, 117819.0, 426745.0, 1164125.0, 449705.0], [2026.0, 120320.0, 417722.0, 1137951.0, 440604.0], [2027.0, 122840.0, 409248.0, 1112842.0, 432037.0], [2028.0, 124689.0, 400626.0, 1088096.0, 423310.0], [2029.0, 127516.0, 392519.0, 1063923.0, 415141.0], [2030.0, 129454.0, 385020.0, 1041293.0, 407509.0], [2031.0, 132227.0, 376901.0, 1017645.0, 399360.0], [2032.0, 134982.0, 368943.0, 994487.0, 391377.0], [2033.0, 137719.0, 361141.0, 971807.0, 383555.0], [2034.0, 140439.0, 353491.0, 949594.0, 375891.0], [2035.0, 142209.0, 346042.0, 928329.0, 368372.0], [2036.0, 145624.0, 339089.0, 907273.0, 361435.0], [2037.0, 147062.0, 331956.0, 887063.0, 354223.0], [2038.0, 150468.0, 325307.0, 866888.0, 347598.0], [2039.0, 152945.0, 318863.0, 847639.0, 341124.0], [2040.0, 156207.0, 312042.0, 827698.0, 334356.0], [2041.0, 156207.0, 306034.0, 810599.0, 328169.0], [2042.0, 155754.0, 299714.0, 793448.0, 321674.0], [2043.0, 155754.0, 293985.0, 777142.0, 315774.0], [2044.0, 155754.0, 288389.0, 761217.0, 310012.0], [2045.0, 155754.0, 282925.0, 745666.0, 304384.0], [2046.0, 155754.0, 277589.0, 730479.0, 298889.0], [2047.0, 155754.0, 272378.0, 715649.0, 293523.0], [2048.0, 155301.0, 266836.0, 700713.0, 287829.0], [2049.0, 155301.0, 261867.0, 686569.0, 282711.0], [2050.0, 155301.0, 257013.0, 672757.0, 277713.0], [2051.0, 155301.0, 252274.0, 659268.0, 272833.0], [2052.0, 155301.0, 247646.0, 646096.0, 268066.0], [2053.0, 155301.0, 243126.0, 633232.0, 263412.0], [2054.0, 155301.0, 238712.0, 620670.0, 258866.0], [2055.0, 155301.0, 234401.0, 608402.0, 254427.0], [2056.0, 155301.0, 230192.0, 596422.0, 250092.0], [2057.0, 155301.0, 226081.0, 584722.0, 245859.0], [2058.0, 155301.0, 222067.0, 573297.0, 241724.0], [2059.0, 155301.0, 218146.0, 562140.0, 237687.0], [2060.0, 155301.0, 214318.0, 551244.0, 233744.0], [2061.0, 155301.0, 210579.0, 540603.0, 229894.0], [2062.0, 155301.0, 206928.0, 530212.0, 226134.0], [2063.0, 155301.0, 203362.0, 520064.0, 222462.0], [2064.0, 155301.0, 199880.0, 510155.0, 218876.0], [2065.0, 155301.0, 196480.0, 500477.0, 215375.0], [2066.0, 155301.0, 193159.0, 491026.0, 211955.0], [2067.0, 155301.0, 189916.0, 481797.0, 208615.0], [2068.0, 155301.0, 186749.0, 472784.0, 205354.0], [2069.0, 155301.0, 183657.0, 463983.0, 202169.0], [2070.0, 155301.0, 180637.0, 455387.0, 199059.0]]
+                );
+                year_fmat.format(costs,0);
+                
+                // plot options 
+                vertical_label = {format: '$#,###'}; 
+                
+                width = 1000
+                height = 600
+    
+                var costs_options = {
+                    'title': 'Chignik Lake: Estimated electricity generation costs per year',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var costs_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_costs() {
+                    var costs_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('costs_chart')
+                        );
+                    
+                    costs_plot.draw(costs, costs_options);
+                    return costs_plot;
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = 
+                        new google.visualization.Table(
+                            document.getElementById('costs_chart')
+                        );
+                    costs_table.draw(
+                        costs,
+                        {
+                            'title': 'Estimated Electricity Generation Costs per Year',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = new google.visualization.Table(
+                        document.getElementById('costs_chart')
+                    );
+                    costs_table.draw(
+                        costs, {'title': 'Estimated Electricity Generation Costs per Year','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                costs_button = document.getElementById('costs_button');
+                costs_button.onclick = function() {
+                    if (costs_state == state_plot) {
+                        drawTable_costs();
+                        costs_state = state_chart;
+                    } else {
+                    drawPlot_costs();
+                    costs_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  costs_plot = drawPlot_costs();
+              
+                document.getElementById('costs_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                // ################ Start consumption ####################
+                // data
+                var consumption = google.visualization.arrayToDataTable(
+                    [[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Chignik lake -- unnamed creek 1', type: 'number'}, {label: 'Chignik lake (cucumber creek)', type: 'number'}, {label: 'Chignik lake (unnamed stream, site #6) -- unnamed creek 2', type: 'number'}], [2021.0, 31945.0, 0.0, 0.0, 0.0], [2022.0, 31855.0, 0.0, 0.0, 0.0], [2023.0, 31766.0, 0.0, 0.0, 0.0], [2024.0, 31676.0, 0.0, 0.0, 0.0], [2025.0, 31587.0, 0.0, 0.0, 0.0], [2026.0, 31497.0, 0.0, 0.0, 0.0], [2027.0, 31497.0, 0.0, 0.0, 0.0], [2028.0, 31408.0, 0.0, 0.0, 0.0], [2029.0, 31408.0, 0.0, 0.0, 0.0], [2030.0, 31497.0, 0.0, 0.0, 0.0], [2031.0, 31408.0, 0.0, 0.0, 0.0], [2032.0, 31318.0, 0.0, 0.0, 0.0], [2033.0, 31229.0, 0.0, 0.0, 0.0], [2034.0, 31139.0, 0.0, 0.0, 0.0], [2035.0, 31050.0, 0.0, 0.0, 0.0], [2036.0, 31050.0, 0.0, 0.0, 0.0], [2037.0, 30960.0, 0.0, 0.0, 0.0], [2038.0, 30960.0, 0.0, 0.0, 0.0], [2039.0, 30960.0, 0.0, 0.0, 0.0], [2040.0, 30871.0, 0.0, 0.0, 0.0], [2041.0, 30871.0, 0.0, 0.0, 0.0], [2042.0, 30781.0, 0.0, 0.0, 0.0], [2043.0, 30781.0, 0.0, 0.0, 0.0], [2044.0, 30781.0, 0.0, 0.0, 0.0], [2045.0, 30781.0, 0.0, 0.0, 0.0], [2046.0, 30781.0, 0.0, 0.0, 0.0], [2047.0, 30781.0, 0.0, 0.0, 0.0], [2048.0, 30692.0, 0.0, 0.0, 0.0], [2049.0, 30692.0, 0.0, 0.0, 0.0], [2050.0, 30692.0, 0.0, 0.0, 0.0], [2051.0, 30692.0, 0.0, 0.0, 0.0], [2052.0, 30692.0, 0.0, 0.0, 0.0], [2053.0, 30692.0, 0.0, 0.0, 0.0], [2054.0, 30692.0, 0.0, 0.0, 0.0], [2055.0, 30692.0, 0.0, 0.0, 0.0], [2056.0, 30692.0, 0.0, 0.0, 0.0], [2057.0, 30692.0, 0.0, 0.0, 0.0], [2058.0, 30692.0, 0.0, 0.0, 0.0], [2059.0, 30692.0, 0.0, 0.0, 0.0], [2060.0, 30692.0, 0.0, 0.0, 0.0], [2061.0, 30692.0, 0.0, 0.0, 0.0], [2062.0, 30692.0, 0.0, 0.0, 0.0], [2063.0, 30692.0, 0.0, 0.0, 0.0], [2064.0, 30692.0, 0.0, 0.0, 0.0], [2065.0, 30692.0, 0.0, 0.0, 0.0], [2066.0, 30692.0, 0.0, 0.0, 0.0], [2067.0, 30692.0, 0.0, 0.0, 0.0], [2068.0, 30692.0, 0.0, 0.0, 0.0], [2069.0, 30692.0, 0.0, 0.0, 0.0], [2070.0, 30692.0, 0.0, 0.0, 0.0]]
+                );
+                year_fmat.format(consumption,0);
+                
+                // plot options 
+                vertical_label=  {title: 'gallons'}; 
+                
+                width = 1000
+                height = 600
+    
+                var consumption_options = {
+                    'title': 'Chignik Lake: Diesel consumed for electricity generation ',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var consumption_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_consumption() {
+                    var consumption_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('consumption_chart')
+                        );
+                    
+                    consumption_plot.draw(consumption, consumption_options);
+                    return consumption_plot;
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = 
+                        new google.visualization.Table(
+                            document.getElementById('consumption_chart')
+                        );
+                    consumption_table.draw(
+                        consumption,
+                        {
+                            'title': 'Diesel Consumed for Electricity Generation ',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = new google.visualization.Table(
+                        document.getElementById('consumption_chart')
+                    );
+                    consumption_table.draw(
+                        consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                consumption_button = document.getElementById('consumption_button');
+                consumption_button.onclick = function() {
+                    if (consumption_state == state_plot) {
+                        drawTable_consumption();
+                        consumption_state = state_chart;
+                    } else {
+                    drawPlot_consumption();
+                    consumption_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  consumption_plot = drawPlot_consumption();
+              
+                document.getElementById('consumption_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+      };
+    </script>
+     
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Chignik Lake<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Chignik_Lake/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Chignik_Lake/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Chignik_Lake/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Chignik_Lake/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Chignik_Lake/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Chignik_Lake/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Chignik_Lake/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Chignik_Lake/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Chignik_Lake/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Chignik_Lake/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Chignik_Lake/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Chignik_Lake/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Chignik_Lake/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Chignik_Lake/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Chignik_Lake/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Chignik_Lake/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Chignik_Lake/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Chignik_Lake/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system<small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">See: <a href='./generation.html'>Generation </a> for more details of the current generation systems </p>
+    </div><H3>Chignik lake -- Unnamed Creek 1<small class = "hidy" data-toggle="collapse" data-target="#Chignik_Lake_--_Unnamed_Creek_1"></small> </H3>
+    <div id="Chignik_Lake_--_Unnamed_Creek_1" class="collapse in" >
+     <p class="stats">Present value of capital cost: $7,213,329 </p> <p class="stats">Lifetime energy cost savings: $2,191,412 </p> <p class="stats">Net lifetime savings: $-5,021,917 </p> <p class="stats">Benefit-cost ratio: 0.3 </p> <p class="stats">Proposed nameplate capacity: 370 kW </p> <p class="stats">Expected yearly generation: 1,964,649 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $7,343,762 </p> <p class="stats">Estimated hydro penetration level: 530.08% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1980-0226.pdf'> link </a> </p>
+    </div><H3>Chignik lake (cucumber creek)<small class = "hidy" data-toggle="collapse" data-target="#Chignik_Lake_Cucumber_Creek"></small> </H3>
+    <div id="Chignik_Lake_Cucumber_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $20,529,243 </p> <p class="stats">Lifetime energy cost savings: $854,623 </p> <p class="stats">Net lifetime savings: $-19,674,620 </p> <p class="stats">Benefit-cost ratio: 0.0 </p> <p class="stats">Proposed nameplate capacity: 1,340 kW </p> <p class="stats">Expected yearly generation: 7,115,215 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $20,900,457 </p> <p class="stats">Estimated hydro penetration level: 1,919.73% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1980-0226.pdf'> link </a> </p>
+    </div><H3>Chignik lake (unnamed stream, site #6) -- Unnamed Creek 2<small class = "hidy" data-toggle="collapse" data-target="#Chignik_Lake_unnamed_stream_site_6_--_Unnamed_Creek_2"></small> </H3>
+    <div id="Chignik_Lake_unnamed_stream_site_6_--_Unnamed_Creek_2" class="collapse in" >
+     <p class="stats">Present value of capital cost: $7,428,436 </p> <p class="stats">Lifetime energy cost savings: $1,831,029 </p> <p class="stats">Net lifetime savings: $-5,597,407 </p> <p class="stats">Benefit-cost ratio: 0.2 </p> <p class="stats">Proposed nameplate capacity: 240 kW </p> <p class="stats">Expected yearly generation: 1,274,367 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $7,562,759 </p> <p class="stats">Estimated hydro penetration level: 343.83% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1980-0226.pdf'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential cost savings through changes in the amount of diesel fuel used for electricity generation from the installation of new hydropower infrastructure. Requires that at least a reconnaissance-level hydropower study has been completed for the community.
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Chignik_Lake_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Chignik_Lake_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 1.0.0, Generated from Model Version 1.0.0 and Data Version 1.0.0 on 2017-06-30</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

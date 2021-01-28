@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Adak - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Adak hydroelectric project -- mount reed creek', type: 'number'}, {label: 'Adak hydroelectric project -- mount moffet creek', type: 'number'}, {label: 'Adak hydroelectric project -- heart lake', type: 'number'}, {label: 'Adak hydroelectric project -- lake betty', type: 'number'}, {label: 'Adak hydroelectric project -- lake bonnie rose', type: 'number'}, {label: 'Adak hydroelectric project -- lake demarie', type: 'number'}, {label: 'Adak (unnamed stream, site #2) -- unnamed creek, 2', type: 'number'}, {label: 'Adak (unnamed stream, site #1) -- unnamed creek, 1', type: 'number'}, {label: 'Adak hydroelectric feasibility study \xe2\x80\x93 phase ii--option 1', type: 'number'}], [2021.0, 1074089.0, 1100422.0, 1096222.0, 1086629.0, 1117007.0, 498788.0, 1205315.0, 1215712.0, 1237476.0, 533590.0], [2022.0, 1108942.0, 1103845.0, 1091996.0, 1104920.0, 1132993.0, 494792.0, 1230756.0, 1221798.0, 1251902.0, 529069.0], [2023.0, 1134634.0, 1103441.0, 1085272.0, 1116865.0, 1142941.0, 489979.0, 1248279.0, 1223267.0, 1260212.0, 523719.0], [2024.0, 1155750.0, 1101268.0, 1077476.0, 1125715.0, 1149963.0, 484853.0, 1261904.0, 1222576.0, 1265580.0, 518060.0], [2025.0, 1179181.0, 1100430.0, 1070765.0, 1136361.0, 1158740.0, 480190.0, 1277681.0, 1223426.0, 1272779.0, 512884.0], [2026.0, 1209528.0, 1103000.0, 1066581.0, 1152073.0, 1172399.0, 476513.0, 1299648.0, 1228291.0, 1284999.0, 508724.0], [2027.0, 1235297.0, 1103781.0, 1061300.0, 1164677.0, 1183117.0, 472509.0, 1317708.0, 1230974.0, 1294260.0, 504239.0], [2028.0, 1256484.0, 1102759.0, 1054907.0, 1174165.0, 1190886.0, 468169.0, 1331854.0, 1231462.0, 1300549.0, 499419.0], [2029.0, 1286894.0, 1106176.0, 1051753.0, 1190351.0, 1205098.0, 465074.0, 1354210.0, 1237194.0, 1313450.0, 495880.0], [2030.0, 1303510.0, 1103607.0, 1044561.0, 1196863.0, 1210082.0, 460570.0, 1364554.0, 1235749.0, 1316973.0, 490909.0], [2031.0, 1334473.0, 1108069.0, 1042565.0, 1213861.0, 1225155.0, 458353.0, 1387667.0, 1242539.0, 1330814.0, 488272.0], [2032.0, 1367265.0, 1113336.0, 1041116.0, 1232146.0, 1241469.0, 456084.0, 1412427.0, 1250339.0, 1345967.0, 485601.0], [2033.0, 1399544.0, 1118322.0, 1039440.0, 1250041.0, 1257417.0, 453455.0, 1436771.0, 1257865.0, 1360790.0, 482582.0], [2034.0, 1432922.0, 1124633.0, 1039141.0, 1269154.0, 1274604.0, 452075.0, 1462308.0, 1266721.0, 1376889.0, 480823.0], [2035.0, 1454246.0, 1125412.0, 1034936.0, 1279654.0, 1283551.0, 448974.0, 1477283.0, 1269053.0, 1384627.0, 477322.0], [2036.0, 1489442.0, 1132717.0, 1035419.0, 1300148.0, 1302094.0, 447663.0, 1504539.0, 1279115.0, 1402185.0, 475660.0], [2037.0, 1510803.0, 1133959.0, 1031777.0, 1310909.0, 1311346.0, 444880.0, 1519728.0, 1281922.0, 1410296.0, 472500.0], [2038.0, 1546046.0, 1141728.0, 1032821.0, 1331670.0, 1330197.0, 443893.0, 1547205.0, 1292459.0, 1428230.0, 471181.0], [2039.0, 1571467.0, 1144916.0, 1030590.0, 1345375.0, 1342293.0, 441365.0, 1566063.0, 1297621.0, 1439314.0, 468308.0], [2040.0, 1611370.0, 1155222.0, 1033634.0, 1369674.0, 1364583.0, 441226.0, 1597805.0, 1311105.0, 1460813.0, 467869.0], [2041.0, 1611986.0, 1147855.0, 1024403.0, 1366094.0, 1360202.0, 436559.0, 1595101.0, 1303527.0, 1455137.0, 462809.0], [2042.0, 1612603.0, 1140674.0, 1015403.0, 1362612.0, 1355938.0, 432015.0, 1592474.0, 1296142.0, 1449609.0, 457882.0], [2043.0, 1613219.0, 1133677.0, 1006629.0, 1359225.0, 1351789.0, 427592.0, 1589923.0, 1288944.0, 1444225.0, 453084.0], [2044.0, 1613219.0, 1126241.0, 997458.0, 1355317.0, 1347134.0, 422671.0, 1586830.0, 1281313.0, 1438365.0, 447798.0], [2045.0, 1613836.0, 1119596.0, 989119.0, 1352116.0, 1343206.0, 418482.0, 1584426.0, 1274477.0, 1433258.0, 443251.0], [2046.0, 1613836.0, 1112505.0, 980373.0, 1348388.0, 1338767.0, 413789.0, 1581476.0, 1267200.0, 1427670.0, 438209.0], [2047.0, 1614452.0, 1106196.0, 972449.0, 1345364.0, 1335049.0, 409822.0, 1579212.0, 1260709.0, 1422828.0, 433902.0], [2048.0, 1614452.0, 1099433.0, 964108.0, 1341809.0, 1330816.0, 405346.0, 1576399.0, 1253769.0, 1417499.0, 429093.0], [2049.0, 1614452.0, 1092829.0, 955963.0, 1338337.0, 1326682.0, 400975.0, 1573651.0, 1246991.0, 1412294.0, 424398.0], [2050.0, 1615068.0, 1086996.0, 948625.0, 1335564.0, 1323262.0, 397323.0, 1571585.0, 1240988.0, 1407827.0, 420428.0], [2051.0, 1615068.0, 1080698.0, 940857.0, 1332253.0, 1319320.0, 393155.0, 1568965.0, 1234525.0, 1402864.0, 415950.0], [2052.0, 1615068.0, 1074547.0, 933271.0, 1329019.0, 1315470.0, 389084.0, 1566407.0, 1228212.0, 1398016.0, 411577.0], [2053.0, 1615068.0, 1068541.0, 925863.0, 1325862.0, 1311710.0, 385109.0, 1563908.0, 1222048.0, 1393283.0, 407306.0], [2054.0, 1615068.0, 1062675.0, 918629.0, 1322778.0, 1308039.0, 381227.0, 1561468.0, 1216028.0, 1388660.0, 403136.0], [2055.0, 1615068.0, 1056947.0, 911564.0, 1319767.0, 1304454.0, 377436.0, 1559085.0, 1210149.0, 1384145.0, 399063.0], [2056.0, 1615068.0, 1051353.0, 904665.0, 1316827.0, 1300952.0, 373734.0, 1556758.0, 1204408.0, 1379737.0, 395086.0], [2057.0, 1615068.0, 1045890.0, 897927.0, 1313955.0, 1297533.0, 370118.0, 1554486.0, 1198802.0, 1375431.0, 391201.0], [2058.0, 1615068.0, 1040555.0, 891347.0, 1311150.0, 1294194.0, 366588.0, 1552267.0, 1193327.0, 1371227.0, 387408.0], [2059.0, 1615068.0, 1035345.0, 884922.0, 1308412.0, 1290933.0, 363140.0, 1550100.0, 1187980.0, 1367121.0, 383704.0], [2060.0, 1615068.0, 1030257.0, 878647.0, 1305737.0, 1287748.0, 359773.0, 1547983.0, 1182759.0, 1363111.0, 380087.0], [2061.0, 1615068.0, 1025289.0, 872519.0, 1303125.0, 1284638.0, 356484.0, 1545917.0, 1177660.0, 1359196.0, 376554.0], [2062.0, 1615068.0, 1020437.0, 866535.0, 1300575.0, 1281601.0, 353273.0, 1543898.0, 1172680.0, 1355372.0, 373104.0], [2063.0, 1615068.0, 1015699.0, 860691.0, 1298084.0, 1278636.0, 350137.0, 1541927.0, 1167818.0, 1351637.0, 369735.0], [2064.0, 1615068.0, 1011071.0, 854984.0, 1295652.0, 1275739.0, 347075.0, 1540002.0, 1163069.0, 1347991.0, 366445.0], [2065.0, 1615068.0, 1006553.0, 849411.0, 1293276.0, 1272911.0, 344084.0, 1538123.0, 1158431.0, 1344429.0, 363232.0], [2066.0, 1615068.0, 1002140.0, 843969.0, 1290956.0, 1270149.0, 341164.0, 1536287.0, 1153902.0, 1340952.0, 360095.0], [2067.0, 1615068.0, 997830.0, 838654.0, 1288691.0, 1267451.0, 338312.0, 1534494.0, 1149480.0, 1337555.0, 357030.0], [2068.0, 1615068.0, 993622.0, 833463.0, 1286479.0, 1264817.0, 335526.0, 1532744.0, 1145161.0, 1334238.0, 354038.0], [2069.0, 1615068.0, 989512.0, 828394.0, 1284318.0, 1262245.0, 332807.0, 1531034.0, 1140943.0, 1331000.0, 351116.0], [2070.0, 1615068.0, 985499.0, 823444.0, 1282208.0, 1259733.0, 330150.0, 1529365.0, 1136824.0, 1327836.0, 348262.0]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: '$#,###'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Adak: Estimated electricity generation fuel costs per year',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.LineChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Estimated Electricity Generation Fuel Costs per Year','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Estimated Electricity Generation Fuel Costs per Year','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var consumption = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Adak hydroelectric project -- mount reed creek', type: 'number'}, {label: 'Adak hydroelectric project -- mount moffet creek', type: 'number'}, {label: 'Adak hydroelectric project -- heart lake', type: 'number'}, {label: 'Adak hydroelectric project -- lake betty', type: 'number'}, {label: 'Adak hydroelectric project -- lake bonnie rose', type: 'number'}, {label: 'Adak hydroelectric project -- lake demarie', type: 'number'}, {label: 'Adak (unnamed stream, site #2) -- unnamed creek, 2', type: 'number'}, {label: 'Adak (unnamed stream, site #1) -- unnamed creek, 1', type: 'number'}, {label: 'Adak hydroelectric feasibility study \xe2\x80\x93 phase ii--option 1', type: 'number'}], [2021.0, 229506.0, 108664.0, 78454.0, 165729.0, 159015.0, 34145.0, 202652.0, 127798.0, 162036.0, 34724.0], [2022.0, 229595.0, 108753.0, 78542.0, 165817.0, 159104.0, 34234.0, 202741.0, 127886.0, 162125.0, 34812.0], [2023.0, 229683.0, 108841.0, 78631.0, 165905.0, 159192.0, 34322.0, 202829.0, 127975.0, 162213.0, 34900.0], [2024.0, 229771.0, 108930.0, 78719.0, 165994.0, 159280.0, 34411.0, 202918.0, 128063.0, 162302.0, 34989.0], [2025.0, 229860.0, 109018.0, 78808.0, 166082.0, 159369.0, 34499.0, 203006.0, 128151.0, 162390.0, 35077.0], [2026.0, 229948.0, 109107.0, 78896.0, 166171.0, 159457.0, 34588.0, 203095.0, 128240.0, 162478.0, 35166.0], [2027.0, 230037.0, 109195.0, 78985.0, 166259.0, 159546.0, 34676.0, 203183.0, 128328.0, 162567.0, 35254.0], [2028.0, 230125.0, 109284.0, 79073.0, 166348.0, 159634.0, 34765.0, 203271.0, 128417.0, 162655.0, 35343.0], [2029.0, 230214.0, 109372.0, 79162.0, 166436.0, 159723.0, 34853.0, 203360.0, 128505.0, 162744.0, 35431.0], [2030.0, 230302.0, 109460.0, 79250.0, 166525.0, 159811.0, 34941.0, 203448.0, 128594.0, 162832.0, 35520.0], [2031.0, 230479.0, 109637.0, 79427.0, 166701.0, 159988.0, 35118.0, 203625.0, 128771.0, 163009.0, 35696.0], [2032.0, 230567.0, 109726.0, 79515.0, 166790.0, 160076.0, 35207.0, 203714.0, 128859.0, 163097.0, 35785.0], [2033.0, 230567.0, 109726.0, 79515.0, 166790.0, 160076.0, 35207.0, 203714.0, 128859.0, 163097.0, 35785.0], [2034.0, 230744.0, 109903.0, 79692.0, 166967.0, 160253.0, 35384.0, 203891.0, 129036.0, 163274.0, 35962.0], [2035.0, 230833.0, 109991.0, 79781.0, 167055.0, 160342.0, 35472.0, 203979.0, 129124.0, 163363.0, 36050.0], [2036.0, 230921.0, 110080.0, 79869.0, 167144.0, 160430.0, 35560.0, 204067.0, 129213.0, 163451.0, 36139.0], [2037.0, 231010.0, 110168.0, 79958.0, 167232.0, 160519.0, 35649.0, 204156.0, 129301.0, 163540.0, 36227.0], [2038.0, 231098.0, 110256.0, 80046.0, 167321.0, 160607.0, 35737.0, 204244.0, 129390.0, 163628.0, 36316.0], [2039.0, 231098.0, 110256.0, 80046.0, 167321.0, 160607.0, 35737.0, 204244.0, 129390.0, 163628.0, 36316.0], [2040.0, 231186.0, 110345.0, 80134.0, 167409.0, 160696.0, 35826.0, 204333.0, 129478.0, 163717.0, 36404.0], [2041.0, 231275.0, 110433.0, 80223.0, 167497.0, 160784.0, 35914.0, 204421.0, 129567.0, 163805.0, 36492.0], [2042.0, 231363.0, 110522.0, 80311.0, 167586.0, 160872.0, 36003.0, 204510.0, 129655.0, 163893.0, 36581.0], [2043.0, 231452.0, 110610.0, 80400.0, 167674.0, 160961.0, 36091.0, 204598.0, 129743.0, 163982.0, 36669.0], [2044.0, 231452.0, 110610.0, 80400.0, 167674.0, 160961.0, 36091.0, 204598.0, 129743.0, 163982.0, 36669.0], [2045.0, 231540.0, 110699.0, 80488.0, 167763.0, 161049.0, 36180.0, 204687.0, 129832.0, 164070.0, 36758.0], [2046.0, 231540.0, 110699.0, 80488.0, 167763.0, 161049.0, 36180.0, 204687.0, 129832.0, 164070.0, 36758.0], [2047.0, 231629.0, 110787.0, 80577.0, 167851.0, 161138.0, 36268.0, 204775.0, 129920.0, 164159.0, 36846.0], [2048.0, 231629.0, 110787.0, 80577.0, 167851.0, 161138.0, 36268.0, 204775.0, 129920.0, 164159.0, 36846.0], [2049.0, 231629.0, 110787.0, 80577.0, 167851.0, 161138.0, 36268.0, 204775.0, 129920.0, 164159.0, 36846.0], [2050.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0], [2051.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0], [2052.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0], [2053.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0], [2054.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0], [2055.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0], [2056.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0], [2057.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0], [2058.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0], [2059.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0], [2060.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0], [2061.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0], [2062.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0], [2063.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0], [2064.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0], [2065.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0], [2066.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0], [2067.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0], [2068.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0], [2069.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0], [2070.0, 231717.0, 110876.0, 80665.0, 167940.0, 161226.0, 36356.0, 204863.0, 130009.0, 164247.0, 36935.0]])
+            year_fmat.format(consumption,0)
+            
+            
+            // plot options
+            
+            dollar=  {title: 'gallons'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var consumption_options = {'title': 'Adak: Diesel consumed for electricity generation ',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_consumption() {
+                
+                var consumption_plot = new google.visualization.LineChart(document.getElementById('consumption_chart'));
+                
+                
+                consumption_plot.draw(consumption, consumption_options);
+                return consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_consumption() {
+                var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+                consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_consumption() {
+        var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+        consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      consumption_button = document.getElementById('consumption_button')
+      consumption_button.onclick = function() {
+        if (consumption_state == plot) {
+          drawTable_consumption();
+          consumption_state = chart;
+        } else {
+          drawPlot_consumption();
+          consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  consumption_plot = drawPlot_consumption()
+      
+      document.getElementById('consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script> 
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Adak<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Adak/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Adak/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Adak/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Adak/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Adak/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Adak/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Adak/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Adak/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Adak/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Adak/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Adak/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Adak/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Adak/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Adak/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Adak/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Adak/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Adak/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Adak/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system <small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">Average Community Load (kW)(2013): 306 </p> <p class="stats">Average kWh/year(2013): 2,681,948 </p> <p class="stats">Peak Load: Unknown </p> <p class="stats">Existing nameplate wind capacity (kW): 0 </p> <p class="stats">Existing wind generation (kWh/year)(2013): 0 </p> <p class="stats">Existing nameplate solar capacity (kW): 0.0 </p> <p class="stats">Existing solar generation (kWh/year)(2013): 0 </p> <p class="stats">Existing nameplate hydro capacity (kW): 0.0 </p> <p class="stats">Existing hydro generation (kWh/year)(2013): 0 </p>
+    </div><H3>Adak hydroelectric project -- mount reed creek <small class = "hidy" data-toggle="collapse" data-target="#Adak_Hydroelectric_Project_--_Mount_Reed_Creek"></small> </H3>
+    <div id="Adak_Hydroelectric_Project_--_Mount_Reed_Creek" class="collapse in" >
+     <p class="stats">Capital Cost ($): $8,027,992 </p> <p class="stats">Lifetime Savings ($): $15,582,631 </p> <p class="stats">Net Lifetime Savings ($): $7,554,639 </p> <p class="stats">Benefit Cost Ratio: 1.941 </p> <p class="stats">Proposed Nameplate Capacity(kW): 360 </p> <p class="stats">Expected Yearly Generation (kWh/year): 1,985,257 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $11,251,564 </p> <p class="stats">Estimated Hydro Penetration Level (%): 74.02% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-2005-0001.pdf'> link </a> </p>
+    </div><H3>Adak hydroelectric project -- mount moffet creek <small class = "hidy" data-toggle="collapse" data-target="#Adak_Hydroelectric_Project_--_Mount_Moffet_Creek"></small> </H3>
+    <div id="Adak_Hydroelectric_Project_--_Mount_Moffet_Creek" class="collapse in" >
+     <p class="stats">Capital Cost ($): $9,901,209 </p> <p class="stats">Lifetime Savings ($): $19,519,904 </p> <p class="stats">Net Lifetime Savings ($): $9,618,695 </p> <p class="stats">Benefit Cost Ratio: 1.971 </p> <p class="stats">Proposed Nameplate Capacity(kW): 450 </p> <p class="stats">Expected Yearly Generation (kWh/year): 2,481,571 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $13,876,955 </p> <p class="stats">Estimated Hydro Penetration Level (%): 92.53% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-2005-0001.pdf'> link </a> </p>
+    </div><H3>Adak hydroelectric project -- heart lake <small class = "hidy" data-toggle="collapse" data-target="#Adak_Hydroelectric_Project_--_Heart_Lake"></small> </H3>
+    <div id="Adak_Hydroelectric_Project_--_Heart_Lake" class="collapse in" >
+     <p class="stats">Capital Cost ($): $4,220,149 </p> <p class="stats">Lifetime Savings ($): $8,229,407 </p> <p class="stats">Net Lifetime Savings ($): $4,009,258 </p> <p class="stats">Benefit Cost Ratio: 1.950 </p> <p class="stats">Proposed Nameplate Capacity(kW): 190 </p> <p class="stats">Expected Yearly Generation (kWh/year): 1,047,774 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $5,914,714 </p> <p class="stats">Estimated Hydro Penetration Level (%): 39.07% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-2005-0001.pdf'> link </a> </p>
+    </div><H3>Adak hydroelectric project -- lake betty <small class = "hidy" data-toggle="collapse" data-target="#Adak_Hydroelectric_Project_--_Lake_Betty"></small> </H3>
+    <div id="Adak_Hydroelectric_Project_--_Lake_Betty" class="collapse in" >
+     <p class="stats">Capital Cost ($): $5,024,881 </p> <p class="stats">Lifetime Savings ($): $8,983,519 </p> <p class="stats">Net Lifetime Savings ($): $3,958,638 </p> <p class="stats">Benefit Cost Ratio: 1.788 </p> <p class="stats">Proposed Nameplate Capacity(kW): 210 </p> <p class="stats">Expected Yearly Generation (kWh/year): 1,158,066 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $7,042,579 </p> <p class="stats">Estimated Hydro Penetration Level (%): 43.18% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-2005-0001.pdf'> link </a> </p>
+    </div><H3>Adak hydroelectric project -- lake bonnie rose <small class = "hidy" data-toggle="collapse" data-target="#Adak_Hydroelectric_Project_--_Lake_Bonnie_Rose"></small> </H3>
+    <div id="Adak_Hydroelectric_Project_--_Lake_Bonnie_Rose" class="collapse in" >
+     <p class="stats">Capital Cost ($): $5,313,086 </p> <p class="stats">Lifetime Savings ($): $27,576,420 </p> <p class="stats">Net Lifetime Savings ($): $22,263,334 </p> <p class="stats">Benefit Cost Ratio: 5.190 </p> <p class="stats">Proposed Nameplate Capacity(kW): 450 </p> <p class="stats">Expected Yearly Generation (kWh/year): 3,209,499 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $7,446,510 </p> <p class="stats">Estimated Hydro Penetration Level (%): 119.67% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div><H3>Adak hydroelectric project -- lake demarie <small class = "hidy" data-toggle="collapse" data-target="#Adak_Hydroelectric_Project_--_Lake_DeMarie"></small> </H3>
+    <div id="Adak_Hydroelectric_Project_--_Lake_DeMarie" class="collapse in" >
+     <p class="stats">Capital Cost ($): $3,339,429 </p> <p class="stats">Lifetime Savings ($): $2,978,962 </p> <p class="stats">Net Lifetime Savings ($): $-360,467 </p> <p class="stats">Benefit Cost Ratio: 0.892 </p> <p class="stats">Proposed Nameplate Capacity(kW): 80 </p> <p class="stats">Expected Yearly Generation (kWh/year): 441,168 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $4,680,348 </p> <p class="stats">Estimated Hydro Penetration Level (%): 16.45% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-2013-0004.pdf'> link </a> </p>
+    </div><H3>Adak (unnamed stream, site #2) -- unnamed creek, 2 <small class = "hidy" data-toggle="collapse" data-target="#Adak_unnamed_stream_site_2_--_Unnamed_Creek_2"></small> </H3>
+    <div id="Adak_unnamed_stream_site_2_--_Unnamed_Creek_2" class="collapse in" >
+     <p class="stats">Capital Cost ($): $8,238,936 </p> <p class="stats">Lifetime Savings ($): $12,654,365 </p> <p class="stats">Net Lifetime Savings ($): $4,415,429 </p> <p class="stats">Benefit Cost Ratio: 1.536 </p> <p class="stats">Proposed Nameplate Capacity(kW): 303 </p> <p class="stats">Expected Yearly Generation (kWh/year): 1,670,924 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $11,547,211 </p> <p class="stats">Estimated Hydro Penetration Level (%): 62.30% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1980-0226.pdf'> link </a> </p>
+    </div><H3>Adak (unnamed stream, site #1) -- unnamed creek, 1 <small class = "hidy" data-toggle="collapse" data-target="#Adak_unnamed_stream_site_1_--_Unnamed_Creek_1"></small> </H3>
+    <div id="Adak_unnamed_stream_site_1_--_Unnamed_Creek_1" class="collapse in" >
+     <p class="stats">Capital Cost ($): $6,326,915 </p> <p class="stats">Lifetime Savings ($): $8,126,500 </p> <p class="stats">Net Lifetime Savings ($): $1,799,585 </p> <p class="stats">Benefit Cost Ratio: 1.284 </p> <p class="stats">Proposed Nameplate Capacity(kW): 201 </p> <p class="stats">Expected Yearly Generation (kWh/year): 1,108,435 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $8,867,433 </p> <p class="stats">Estimated Hydro Penetration Level (%): 41.33% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1980-0226.pdf'> link </a> </p>
+    </div><H3>Adak hydroelectric feasibility study  phase ii--option 1 <small class = "hidy" data-toggle="collapse" data-target="#Adak_Hydroelectric_Feasibility_Study__Phase_II--Option_1"></small> </H3>
+    <div id="Adak_Hydroelectric_Feasibility_Study__Phase_II--Option_1" class="collapse in" >
+     <p class="stats">Capital Cost ($): $5,708,001 </p> <p class="stats">Lifetime Savings ($): $27,367,066 </p> <p class="stats">Net Lifetime Savings ($): $21,659,065 </p> <p class="stats">Benefit Cost Ratio: 4.795 </p> <p class="stats">Proposed Nameplate Capacity(kW): 440 </p> <p class="stats">Expected Yearly Generation (kWh/year): 3,200,000 </p> <p class="stats">Phase: Feasibility </p> <p class="stats">Total Capital Cost: $8,000,000 </p> <p class="stats">Estimated Hydro Penetration Level (%): 119.32% </p> <p class="stats">source: <a href='http://akenergyinventory.org/catalog/entries/8314-city-of-adak-hydroelectric-feasibility-study'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential electricity generation from diesel that could be offset by installing new Hydropower generation infrastructure. This component only uses existing proposed projects to base its calculations on, and does not attempt to model values
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Adak_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Adak_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Generated from Model Version 0.24.6 and Data Version 0.24.0 on 2017-01-24</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+      </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

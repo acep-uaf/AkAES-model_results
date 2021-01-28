@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Gulkana - Financial and Demographic summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+            
+            // data
+            var population = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {label: 'Population', type: 'number'}], [2003.0, 107.0], [2004.0, 97.0], [2005.0, 85.0], [2006.0, 113.0], [2007.0, 108.0], [2008.0, 119.0], [2009.0, 119.0], [2010.0, 134.0], [2011.0, 122.0], [2012.0, 122.0], [2013.0, 122.0], [2014.0, 122.0], [2015.0, 123.0], [2016.0, 123.0], [2017.0, 123.0], [2018.0, 124.0], [2019.0, 124.0], [2020.0, 124.0], [2021.0, 124.0], [2022.0, 124.0], [2023.0, 124.0], [2024.0, 124.0], [2025.0, 124.0], [2026.0, 124.0], [2027.0, 124.0], [2028.0, 124.0], [2029.0, 124.0], [2030.0, 123.0], [2031.0, 123.0], [2032.0, 123.0], [2033.0, 123.0], [2034.0, 123.0], [2035.0, 124.0], [2036.0, 123.0], [2037.0, 123.0], [2038.0, 123.0], [2039.0, 123.0], [2040.0, 123.0]])
+            year_fmat.format(population,0)
+            
+            
+            // plot options
+            
+            dollar = {title: 'people' }
+            
+            
+
+            width = 1000
+            height = 600
+
+            var population_options = {'title': 'Gulkana: Population forecast',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var population_state = plot;
+        
+            // draw plot 
+            function drawPlot_population() {
+                
+                var population_plot = new google.visualization.LineChart(document.getElementById('population_chart'));
+                
+                
+                population_plot.draw(population, population_options);
+                return population_plot
+            }   
+            
+            // draw table
+            function drawTable_population() {
+                var population_table = new google.visualization.Table(document.getElementById('population_chart'))
+                population_table.draw(population, {'title': 'Population Forecast','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_population() {
+        var population_table = new google.visualization.Table(document.getElementById('population_chart'))
+        population_table.draw(population, {'title': 'Population Forecast','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      population_button = document.getElementById('population_button')
+      population_button.onclick = function() {
+        if (population_state == plot) {
+          drawTable_population();
+          population_state = chart;
+        } else {
+          drawPlot_population();
+          population_state = plot;
+        }
+      }
+      // initilize with plot
+      var  population_plot = drawPlot_population()
+      
+      document.getElementById('population_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + population_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var e_price = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {type: 'string', role: 'annotation'}, {label: 'Electricity price ($/kwh)', type: 'number'}, {type: 'string', role: 'annotationText'}], [2016.0, null, 0.25, null], [2017.0, null, 0.26, null], [2018.0, null, 0.26, null], [2019.0, null, 0.26, null], [2020.0, null, 0.26, null], [2021.0, null, 0.26, null], [2022.0, null, 0.27, null], [2023.0, null, 0.27, null], [2024.0, null, 0.27, null], [2025.0, null, 0.27, null], [2026.0, null, 0.27, null], [2027.0, null, 0.27, null], [2028.0, null, 0.27, null], [2029.0, null, 0.27, null], [2030.0, null, 0.27, null], [2031.0, null, 0.27, null], [2032.0, null, 0.27, null], [2033.0, null, 0.27, null], [2034.0, null, 0.27, null], [2035.0, null, 0.27, null], [2036.0, null, 0.27, null], [2037.0, null, 0.27, null], [2038.0, null, 0.28, null], [2039.0, null, 0.28, null], [2040.0, null, 0.28, null]])
+            year_fmat.format(e_price,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: 'currency'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var e_price_options = {'title': 'Gulkana: Electricity price ($/kwh)',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var e_price_state = plot;
+        
+            // draw plot 
+            function drawPlot_e_price() {
+                
+                var e_price_plot = new google.visualization.LineChart(document.getElementById('e_price_chart'));
+                
+                
+                e_price_plot.draw(e_price, e_price_options);
+                return e_price_plot
+            }   
+            
+            // draw table
+            function drawTable_e_price() {
+                var e_price_table = new google.visualization.Table(document.getElementById('e_price_chart'))
+                e_price_table.draw(e_price, {'title': 'Electricity Price ($/kWh)','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_e_price() {
+        var e_price_table = new google.visualization.Table(document.getElementById('e_price_chart'))
+        e_price_table.draw(e_price, {'title': 'Electricity Price ($/kWh)','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      e_price_button = document.getElementById('e_price_button')
+      e_price_button.onclick = function() {
+        if (e_price_state == plot) {
+          drawTable_e_price();
+          e_price_state = chart;
+        } else {
+          drawPlot_e_price();
+          e_price_state = plot;
+        }
+      }
+      // initilize with plot
+      var  e_price_plot = drawPlot_e_price()
+      
+      document.getElementById('e_price_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + e_price_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var d_price = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {type: 'string', role: 'annotation'}, {label: 'Diesel price ($/gal)', type: 'number'}, {label: 'Heating fuel ($/gal)', type: 'number'}, {type: 'string', role: 'annotationText'}], [2000.0, null, null, 1.49, null], [2004.0, null, null, 2.08, null], [2005.0, null, null, 2.5, null], [2008.0, null, null, 3.81, null], [2009.0, null, null, 3.06, null], [2010.0, null, null, 3.19, null], [2011.0, null, null, 3.92, null], [2012.0, null, null, 3.87, null], [2013.0, null, null, 4.24, null], [2014.0, null, null, 3.88, null], [2016.0, null, 1.57, 2.52, null], [2017.0, null, 1.93, 2.88, null], [2018.0, null, 2.2, 3.15, null], [2019.0, null, 2.57, 3.52, null], [2020.0, null, 2.76, 3.71, null], [2021.0, null, 2.88, 3.83, null], [2022.0, null, 2.98, 3.93, null], [2023.0, null, 3.04, 3.99, null], [2024.0, null, 3.1, 4.05, null], [2025.0, null, 3.16, 4.11, null], [2026.0, null, 3.24, 4.19, null], [2027.0, null, 3.31, 4.26, null], [2028.0, null, 3.37, 4.32, null], [2029.0, null, 3.44, 4.39, null], [2030.0, null, 3.49, 4.44, null], [2031.0, null, 3.57, 4.52, null], [2032.0, null, 3.65, 4.6, null], [2033.0, null, 3.74, 4.69, null], [2034.0, null, 3.83, 4.78, null], [2035.0, null, 3.89, 4.84, null], [2036.0, null, 3.98, 4.93, null], [2037.0, null, 4.03, 4.98, null], [2038.0, null, 4.12, 5.07, null], [2039.0, null, 4.19, 5.14, null], [2040.0, null, 4.29, 5.24, null]])
+            year_fmat.format(d_price,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: 'currency'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var d_price_options = {'title': 'Gulkana: Fuel price',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var d_price_state = plot;
+        
+            // draw plot 
+            function drawPlot_d_price() {
+                
+                var d_price_plot = new google.visualization.LineChart(document.getElementById('d_price_chart'));
+                
+                
+                d_price_plot.draw(d_price, d_price_options);
+                return d_price_plot
+            }   
+            
+            // draw table
+            function drawTable_d_price() {
+                var d_price_table = new google.visualization.Table(document.getElementById('d_price_chart'))
+                d_price_table.draw(d_price, {'title': 'Fuel Price','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_d_price() {
+        var d_price_table = new google.visualization.Table(document.getElementById('d_price_chart'))
+        d_price_table.draw(d_price, {'title': 'Fuel Price','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      d_price_button = document.getElementById('d_price_button')
+      d_price_button.onclick = function() {
+        if (d_price_state == plot) {
+          drawTable_d_price();
+          d_price_state = chart;
+        } else {
+          drawPlot_d_price();
+          d_price_state = plot;
+        }
+      }
+      // initilize with plot
+      var  d_price_plot = drawPlot_d_price()
+      
+      document.getElementById('d_price_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + d_price_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([[{label: 'Year', type: 'number'}, {label: 'Water/wastewater heating fuel', type: 'number'}, {label: 'Non-residential heating fuel', type: 'number'}, {label: 'Residential heating fuel', type: 'number'}, {label: 'Water/wastewater electricity', type: 'number'}, {label: 'Non-residential electricity', type: 'number'}, {label: 'Residential electricity', type: 'number'}], [2017.0, 24864.82, 137944.45, 148084.39, 29207.34, 405151.1, 50583.22], [2018.0, 27194.68, 150865.26, 158225.33, 29493.73, 409100.37, 51076.29], [2019.0, 30385.58, 168571.55, 172122.18, 29882.48, 414512.34, 51751.98], [2020.0, 32025.2, 177663.97, 179258.4, 30083.99, 417291.46, 52098.95], [2021.0, 33060.55, 183406.55, 183765.48, 30210.87, 419046.7, 52318.09], [2022.0, 33923.81, 188192.03, 187521.38, 30317.36, 420509.39, 52500.71], [2023.0, 34441.11, 191063.32, 189774.93, 30380.17, 421387.01, 52610.28], [2024.0, 34958.8, 193934.61, 192028.47, 30443.63, 422264.63, 52719.85], [2025.0, 35476.36, 196805.9, 194282.01, 30506.87, 423142.24, 52829.42], [2026.0, 36166.94, 200634.29, 197286.73, 30591.96, 424312.4, 52975.52], [2027.0, 36771.74, 203984.13, 199915.87, 30667.22, 425336.28, 53103.35], [2028.0, 37290.12, 206855.42, 202169.41, 30731.66, 426213.9, 53212.92], [2029.0, 37891.48, 210205.25, 204798.54, 30801.76, 427237.79, 53340.75], [2030.0, 38319.96, 212598.0, 206676.49, 30850.34, 427969.13, 53432.06], [2031.0, 39008.78, 216426.38, 209681.22, 30932.91, 429139.29, 53578.16], [2032.0, 39699.68, 220254.77, 212685.94, 31018.49, 430309.45, 53724.25], [2033.0, 40477.07, 224561.7, 216066.25, 31114.92, 431625.87, 53888.61], [2034.0, 41253.72, 228868.64, 219446.57, 31210.26, 432942.3, 54052.96], [2035.0, 41772.2, 231739.93, 221700.11, 31274.79, 433819.91, 54162.53], [2036.0, 42548.2, 236046.86, 225080.42, 31369.23, 435136.34, 54326.89], [2037.0, 42978.41, 238439.61, 226958.37, 31420.51, 435867.69, 54418.2], [2038.0, 43754.09, 242746.54, 230338.69, 31514.57, 437184.11, 54582.55], [2039.0, 44358.32, 246096.38, 232967.82, 31588.94, 438208.0, 54710.39], [2040.0, 45220.78, 250881.86, 236723.72, 31694.24, 439670.69, 54893.01]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+             
+            dollar = {format: 'percent'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Gulkana: Costs by sector',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                             isStacked: 'relative', 
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.AreaChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Costs by Sector','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Costs by Sector','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script>
+
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     
+    <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Gulkana<span class="page-subtitle"> Financial and Demographic</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Gulkana/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Gulkana/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Gulkana/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Gulkana/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Gulkana/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Gulkana/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Gulkana/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Gulkana/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Gulkana/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Gulkana/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Gulkana/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Gulkana/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Gulkana/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Gulkana/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Gulkana/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Gulkana/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Gulkana/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Gulkana/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+    <div class = 'charts'>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Population forecast  <small class="hidy" data-toggle="collapse" data-target="#population_forecast"></small> </div>
+                <div id="population_forecast" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="population">
+                    
+                        
+                        <div id="population_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='population_button'>Plot/Table</button>
+            <div id='population_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Gulkana_population.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Electricity price ($/kwh)  <small class="hidy" data-toggle="collapse" data-target="#electricity_price_kwh"></small> </div>
+                <div id="electricity_price_kwh" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="e_price">
+                    
+                        
+                        <div id="e_price_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='e_price_button'>Plot/Table</button>
+            <div id='e_price_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Gulkana_e_price.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Fuel price  <small class="hidy" data-toggle="collapse" data-target="#fuel_price"></small> </div>
+                <div id="fuel_price" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="d_price">
+                    
+                        
+                        <div id="d_price_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='d_price_button'>Plot/Table</button>
+            <div id='d_price_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Gulkana_d_price.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Costs by sector  <small class="hidy" data-toggle="collapse" data-target="#costs_by_sector"></small> </div>
+                <div id="costs_by_sector" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="costs">
+                    
+                        
+                        <div id="costs_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+            <div id='costs_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Gulkana_costs.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+    </div>
+
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            
+
+
+          </div>
+          <div class="col-sm-9">
+            
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Generated from Model Version 0.24.6 and Data Version 0.24.0 on 2017-01-24</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+      </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Slana_intertie - Consumption summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+        
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // setup
+        google.charts.load('current', {'packages':['corechart','table']});
+        google.charts.setOnLoadCallback(drawCharts);
+    
+        // for the charts
+        function drawCharts() {
+            
+            // set up vars (data/options) for each chart
+            var state_plot = 'plot';
+            var state_chart = 'chart';
+            
+            var year_fmat = new google.visualization.NumberFormat({pattern:'####'});
+            
+            
+                 
+            
+                // ################ Start rb_consumptions_percents ####################
+                // data
+                var rb_consumptions_percents = google.visualization.arrayToDataTable(
+                    [['name', 'value'], ['Fuel Oil', 67.87383178], ['Electricity', 2.27803738], ['Utility Gas', 4.64369159], ['Propane', 2.92056075], ['Coal', 0.3796729], ['Wood', 21.29088785], ['Solar', 0.0], ['Other', 0.6133177599999999]]
+                );
+                year_fmat.format(rb_consumptions_percents,0);
+                
+                // plot options 
+                vertical_label = {title: 'pie' }; 
+                
+                width = 1000
+                height = 600
+    
+                var rb_consumptions_percents_options = {
+                    'title': 'Slana intertie: Residential building heating fuels consumption',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var rb_consumptions_percents_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_rb_consumptions_percents() {
+                    var rb_consumptions_percents_plot =
+                        new google.visualization.PieChart(
+                            document.getElementById('rb_consumptions_percents_chart')
+                        );
+                    
+                    rb_consumptions_percents_plot.draw(rb_consumptions_percents, rb_consumptions_percents_options);
+                    return rb_consumptions_percents_plot;
+                };
+                
+                // draw table
+                function drawTable_rb_consumptions_percents() {
+                    var rb_consumptions_percents_table = 
+                        new google.visualization.Table(
+                            document.getElementById('rb_consumptions_percents_chart')
+                        );
+                    rb_consumptions_percents_table.draw(
+                        rb_consumptions_percents,
+                        {
+                            'title': 'Residential building heating fuels consumption',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_rb_consumptions_percents() {
+                    var rb_consumptions_percents_table = new google.visualization.Table(
+                        document.getElementById('rb_consumptions_percents_chart')
+                    );
+                    rb_consumptions_percents_table.draw(
+                        rb_consumptions_percents, {'title': 'Residential building heating fuels consumption','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                rb_consumptions_percents_button = document.getElementById('rb_consumptions_percents_button');
+                rb_consumptions_percents_button.onclick = function() {
+                    if (rb_consumptions_percents_state == state_plot) {
+                        drawTable_rb_consumptions_percents();
+                        rb_consumptions_percents_state = state_chart;
+                    } else {
+                    drawPlot_rb_consumptions_percents();
+                    rb_consumptions_percents_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  rb_consumptions_percents_plot = drawPlot_rb_consumptions_percents();
+              
+                document.getElementById('rb_consumptions_percents_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + rb_consumptions_percents_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                // ################ Start non_residential_buildings ####################
+                // data
+                var non_residential_buildings = google.visualization.arrayToDataTable(
+                    [['name', 'value'], ['Office', 3.4734674788006332], ['Education - K - 12', 30.841428669042308], ['Public Safety', 1.0899441035718247], ['Other', 23.37089949943638], ['Public Assembly', 7.5554657916355934], ['Unknown', 27.139319269002932], ['Health Care - Hospitals', 3.6598964773755389], ['Residential - Multi-Family', 2.8695787111347917]]
+                );
+                year_fmat.format(non_residential_buildings,0);
+                
+                // plot options 
+                vertical_label = {title: 'pie' }; 
+                
+                width = 1000
+                height = 600
+    
+                var non_residential_buildings_options = {
+                    'title': 'Slana intertie: Non-residential building heating fuels consumption',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var non_residential_buildings_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_non_residential_buildings() {
+                    var non_residential_buildings_plot =
+                        new google.visualization.PieChart(
+                            document.getElementById('non_residential_buildings_chart')
+                        );
+                    
+                    non_residential_buildings_plot.draw(non_residential_buildings, non_residential_buildings_options);
+                    return non_residential_buildings_plot;
+                };
+                
+                // draw table
+                function drawTable_non_residential_buildings() {
+                    var non_residential_buildings_table = 
+                        new google.visualization.Table(
+                            document.getElementById('non_residential_buildings_chart')
+                        );
+                    non_residential_buildings_table.draw(
+                        non_residential_buildings,
+                        {
+                            'title': 'Non-residential building heating fuels consumption',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_non_residential_buildings() {
+                    var non_residential_buildings_table = new google.visualization.Table(
+                        document.getElementById('non_residential_buildings_chart')
+                    );
+                    non_residential_buildings_table.draw(
+                        non_residential_buildings, {'title': 'Non-residential building heating fuels consumption','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                non_residential_buildings_button = document.getElementById('non_residential_buildings_button');
+                non_residential_buildings_button.onclick = function() {
+                    if (non_residential_buildings_state == state_plot) {
+                        drawTable_non_residential_buildings();
+                        non_residential_buildings_state = state_chart;
+                    } else {
+                    drawPlot_non_residential_buildings();
+                    non_residential_buildings_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  non_residential_buildings_plot = drawPlot_non_residential_buildings();
+              
+                document.getElementById('non_residential_buildings_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + non_residential_buildings_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                // ################ Start consumption ####################
+                // data
+                var consumption = google.visualization.arrayToDataTable(
+                    [[{label: 'Year', type: 'number'}, {type: 'string', role: 'annotation'}, {label: 'Total', type: 'number'}, {label: 'Residential', type: 'number'}, {label: 'Non-residential', type: 'number'}, {type: 'string', role: 'annotationText'}], [2003, null, 595825.0, 264493.0, 331332.0, null], [2004, null, 629669.0, 274965.0, 354704.0, null], [2005, null, 818452.0, 314552.0, 503900.0, null], [2006, null, 882469.0, 347539.0, 534930.0, null], [2007, null, 937800.0, 409926.0, 527874.0, null], [2008, null, 991665.0, 445333.0, 546332.0, null], [2009, null, 1078107.0, 518289.0, 559818.0, null], [2010, null, 1161834.0, 573035.0, 588799.0, null], [2011, null, 1234117.0, 592789.0, 641328.0, null], [2012, null, 1225417.0, 641447.0, 583970.0, null], [2013, null, 1204353.0, 664485.0, 539868.0, null], [2014, null, 1059903.0, 598620.0, 461283.0, null], [2015, null, 1166928.0, 631836.0, 535092.0, null], [2016, 'start of forecast', 1044017.0, 531936.0, 512081.0, 'start of forecast'], [2017, null, 1053864.0, 541783.0, 512081.0, null], [2018, null, 1065705.0, 553624.0, 512081.0, null], [2019, null, 1078814.0, 566733.0, 512081.0, null], [2020, null, 1091918.0, 579837.0, 512081.0, null], [2021, null, 1104669.0, 592588.0, 512081.0, null], [2022, null, 1117341.0, 605260.0, 512081.0, null], [2023, null, 1131726.0, 619645.0, 512081.0, null], [2024, null, 1145211.0, 633130.0, 512081.0, null], [2025, null, 1158371.0, 646290.0, 512081.0, null], [2026, null, 1171655.0, 659574.0, 512081.0, null], [2027, null, 1184398.0, 672317.0, 512081.0, null], [2028, null, 1196256.0, 684175.0, 512081.0, null], [2029, null, 1211641.0, 699560.0, 512081.0, null], [2030, null, 1226104.0, 714023.0, 512081.0, null], [2031, null, 1238970.0, 726889.0, 512081.0, null], [2032, null, 1249370.0, 737289.0, 512081.0, null], [2033, null, 1258634.0, 746553.0, 512081.0, null], [2034, null, 1267854.0, 755773.0, 512081.0, null], [2035, null, 1277699.0, 765618.0, 512081.0, null], [2036, null, 1288674.0, 776593.0, 512081.0, null], [2037, null, 1299421.0, 787340.0, 512081.0, null], [2038, null, 1309238.0, 797157.0, 512081.0, null], [2039, null, 1318220.0, 806139.0, 512081.0, null], [2040, null, 1326156.0, 814075.0, 512081.0, null]]
+                );
+                year_fmat.format(consumption,0);
+                
+                // plot options 
+                vertical_label = {title: 'kWh' }; 
+                
+                width = 1000
+                height = 600
+    
+                var consumption_options = {
+                    'title': 'Slana intertie: Electricity consumed',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var consumption_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_consumption() {
+                    var consumption_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('consumption_chart')
+                        );
+                    
+                    consumption_plot.draw(consumption, consumption_options);
+                    return consumption_plot;
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = 
+                        new google.visualization.Table(
+                            document.getElementById('consumption_chart')
+                        );
+                    consumption_table.draw(
+                        consumption,
+                        {
+                            'title': 'Electricity consumed',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = new google.visualization.Table(
+                        document.getElementById('consumption_chart')
+                    );
+                    consumption_table.draw(
+                        consumption, {'title': 'Electricity consumed','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                consumption_button = document.getElementById('consumption_button');
+                consumption_button.onclick = function() {
+                    if (consumption_state == state_plot) {
+                        drawTable_consumption();
+                        consumption_state = state_chart;
+                    } else {
+                    drawPlot_consumption();
+                    consumption_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  consumption_plot = drawPlot_consumption();
+              
+                document.getElementById('consumption_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                 
+            
+                // ################ Start costs ####################
+                // data
+                var costs = google.visualization.arrayToDataTable(
+                    [['name', 'value'], ['Water/Wastewater Heating Fuel', nan], ['Non-residential Heating Fuel', 509544.9463555719], ['Residential Heating Fuel', 718198.7420890909], ['Water/Wastewater Electricity', nan], ['Non-residential Electricity', 372142.08959264157], ['Residential Electricity', 461766.3124836526]]
+                );
+                year_fmat.format(costs,0);
+                
+                // plot options 
+                vertical_label = {title: 'pie' }; 
+                
+                width = 1000
+                height = 600
+    
+                var costs_options = {
+                    'title': 'Slana intertie: Energy costs by sector',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var costs_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_costs() {
+                    var costs_plot =
+                        new google.visualization.PieChart(
+                            document.getElementById('costs_chart')
+                        );
+                    
+                    costs_plot.draw(costs, costs_options);
+                    return costs_plot;
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = 
+                        new google.visualization.Table(
+                            document.getElementById('costs_chart')
+                        );
+                    costs_table.draw(
+                        costs,
+                        {
+                            'title': 'Energy costs by sector',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = new google.visualization.Table(
+                        document.getElementById('costs_chart')
+                    );
+                    costs_table.draw(
+                        costs, {'title': 'Energy costs by sector','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                costs_button = document.getElementById('costs_button');
+                costs_button.onclick = function() {
+                    if (costs_state == state_plot) {
+                        drawTable_costs();
+                        costs_state = state_chart;
+                    } else {
+                    drawPlot_costs();
+                    costs_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  costs_plot = drawPlot_costs();
+              
+                document.getElementById('costs_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+      };
+    </script>
+    
+
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     
+    <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Slana intertie<span class="page-subtitle"> Consumption</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Slana_intertie/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Slana_intertie/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Slana_intertie/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Slana_intertie/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Slana_intertie/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Slana_intertie/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Slana_intertie/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Slana_intertie/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Slana_intertie/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Slana_intertie/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Slana_intertie/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Slana_intertie/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Slana_intertie/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Slana_intertie/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Slana_intertie/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Slana_intertie/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Slana_intertie/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Slana_intertie/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+    <div class = 'charts'>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Residential buildings <small class="hidy" data-toggle="collapse" data-target="#residential_buildings"></small> </div>
+                <div id="residential_buildings" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="residential_buildings">
+                    
+                        
+                        <table class="table table-striped table-condensed"  >
+                        <tbody>
+                            <tr>
+                                
+                                    <th>  </th>
+                                
+                                    <th> Number Houses </th>
+                                
+                                    <th> Household Avg. Square Feet </th>
+                                
+                                    <th> Average gallons/sf </th>
+                                
+                                    <th> Average gallons/household </th>
+                                
+                            </tr><tr>
+                                
+                                    <td> BEES </td>  
+                                
+                                    <td> 0 </td>  
+                                
+                                    <td> 0 </td>  
+                                
+                                    <td> 0.00 </td>  
+                                
+                                    <td> 0.00 </td>  
+                                
+                            </tr><tr>
+                                
+                                    <td> Post-Retrofit </td>  
+                                
+                                    <td> 5 </td>  
+                                
+                                    <td> 1,283 </td>  
+                                
+                                    <td> 1.04 </td>  
+                                
+                                    <td> 1,328.98 </td>  
+                                
+                            </tr><tr>
+                                
+                                    <td> Pre-Retrofit </td>  
+                                
+                                    <td> 135 </td>  
+                                
+                                    <td> 1,845 </td>  
+                                
+                                    <td> 1.12 </td>  
+                                
+                                    <td> 2,063.28 </td>  
+                                
+                            </tr>
+                        </tbody>
+                        </table>
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Residential building heating fuels consumption <small class="hidy" data-toggle="collapse" data-target="#residential_building_heating_fuels_consumption"></small> </div>
+                <div id="residential_building_heating_fuels_consumption" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="rb_consumptions_percents">
+                    
+                        
+                            <div style="float:left; width:30%"> <p>Percent of residential heating fuel consumption per type</p></div>
+                            <div style="float:right; width:70%"><div id="rb_consumptions_percents_chart"></div></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='rb_consumptions_percents_button'>Plot/Table</button>
+            <div id='rb_consumptions_percents_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Slana_intertie_rb_consumptions_percents.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Non-residential building heating fuels consumption <small class="hidy" data-toggle="collapse" data-target="#non-residential_building_heating_fuels_consumption"></small> </div>
+                <div id="non-residential_building_heating_fuels_consumption" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="non_residential_buildings">
+                    
+                        
+                            <div style="float:left; width:30%"> <p>There is a estimated total of 202,129 square feet for the 43 non-residential buildings in this community. <br><br>69.8% of the buildings have been identified. The others are assumed to exist.  <br><br> 27.0% of the assumed square footage is from measured sources. <br><br> The break down of heating fuel consumption by building type is presented in the pie chart</p></div>
+                            <div style="float:right; width:70%"><div id="non_residential_buildings_chart"></div></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='non_residential_buildings_button'>Plot/Table</button>
+            <div id='non_residential_buildings_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Slana_intertie_non_residential_buildings.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Electricity consumed <small class="hidy" data-toggle="collapse" data-target="#electricity_consumed"></small> </div>
+                <div id="electricity_consumed" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="consumption">
+                    
+                        
+                        <div id="consumption_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+            <div id='consumption_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Slana_intertie_consumption.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Energy consumption by sector <small class="hidy" data-toggle="collapse" data-target="#energy_consumption_by_sector"></small> </div>
+                <div id="energy_consumption_by_sector" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="diesel_consumption">
+                    
+                        <p>This chart could not be generated. Data not available</P>
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Energy costs by sector <small class="hidy" data-toggle="collapse" data-target="#energy_costs_by_sector"></small> </div>
+                <div id="energy_costs_by_sector" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="costs">
+                    
+                        
+                            <div style="float:left; width:30%"> <p></p></div>
+                            <div style="float:right; width:70%"><div id="costs_chart"></div></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+            <div id='costs_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Slana_intertie_costs.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+    </div>
+
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            
+
+
+          </div>
+          <div class="col-sm-9">
+            
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 1.0.0, Generated from Model Version 1.0.0 and Data Version 1.0.0 on 2017-06-30</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

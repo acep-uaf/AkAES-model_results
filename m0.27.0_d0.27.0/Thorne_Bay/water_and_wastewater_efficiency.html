@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Thorne_Bay - Water and Wastewater Efficiency summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Modeled water and wastewater efficiency', type: 'number'}], [2017.0, 29022.0, 39260.0], [2018.0, 30632.0, 39867.0], [2019.0, 32718.0, 40792.0], [2020.0, 33754.0, 41044.0], [2021.0, 34449.0, 41084.0], [2022.0, 34992.0, 41034.0], [2023.0, 35287.0, 40831.0], [2024.0, 35494.0, 40579.0], [2025.0, 35819.0, 40413.0], [2026.0, 36207.0, 40297.0], [2027.0, 36503.0, 40130.0], [2028.0, 36803.0, 39976.0], [2029.0, 36963.0, 39729.0], [2030.0, 36993.0, 39408.0], [2031.0, 37298.0, 39276.0]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: '$#,###'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Thorne Bay: Estimated heating fuel + electricity costs for water/wastewater sector',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.LineChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Estimated Heating Fuel + Electricity Costs for water/wastewater sector','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Estimated Heating Fuel + Electricity Costs for water/wastewater sector','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var E_consumption = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Modeled water and wastewater efficiency', type: 'number'}], [2017.0, 62236.0, 46677.0], [2018.0, 62324.0, 46743.0], [2019.0, 62313.0, 46735.0], [2020.0, 62295.0, 46721.0], [2021.0, 62292.0, 46719.0], [2022.0, 62223.0, 46667.0], [2023.0, 62127.0, 46595.0], [2024.0, 61981.0, 46486.0], [2025.0, 61841.0, 46381.0], [2026.0, 61714.0, 46285.0], [2027.0, 61628.0, 46221.0], [2028.0, 61553.0, 46165.0], [2029.0, 61144.0, 45858.0], [2030.0, 60812.0, 45609.0], [2031.0, 60565.0, 45424.0]])
+            year_fmat.format(E_consumption,0)
+            
+            
+            // plot options
+            
+            dollar=  {title: 'gallons'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var E_consumption_options = {'title': 'Thorne Bay: Electricity consumed by water/wastewater sector',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var E_consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_E_consumption() {
+                
+                var E_consumption_plot = new google.visualization.LineChart(document.getElementById('E_consumption_chart'));
+                
+                
+                E_consumption_plot.draw(E_consumption, E_consumption_options);
+                return E_consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_E_consumption() {
+                var E_consumption_table = new google.visualization.Table(document.getElementById('E_consumption_chart'))
+                E_consumption_table.draw(E_consumption, {'title': 'Electricity Consumed by water/wastewater sector','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_E_consumption() {
+        var E_consumption_table = new google.visualization.Table(document.getElementById('E_consumption_chart'))
+        E_consumption_table.draw(E_consumption, {'title': 'Electricity Consumed by water/wastewater sector','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      E_consumption_button = document.getElementById('E_consumption_button')
+      E_consumption_button.onclick = function() {
+        if (E_consumption_state == plot) {
+          drawTable_E_consumption();
+          E_consumption_state = chart;
+        } else {
+          drawPlot_E_consumption();
+          E_consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  E_consumption_plot = drawPlot_E_consumption()
+      
+      document.getElementById('E_consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + E_consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var H_consumption = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Modeled water and wastewater efficiency', type: 'number'}], [2017.0, 5803.0, 3772.0], [2018.0, 5811.0, 3777.0], [2019.0, 5810.0, 3776.0], [2020.0, 5808.0, 3775.0], [2021.0, 5808.0, 3775.0], [2022.0, 5801.0, 3771.0], [2023.0, 5793.0, 3765.0], [2024.0, 5780.0, 3757.0], [2025.0, 5767.0, 3749.0], [2026.0, 5755.0, 3741.0], [2027.0, 5748.0, 3736.0], [2028.0, 5741.0, 3732.0], [2029.0, 5704.0, 3708.0], [2030.0, 5674.0, 3688.0], [2031.0, 5652.0, 3674.0]])
+            year_fmat.format(H_consumption,0)
+            
+            
+            // plot options
+            
+            dollar=  {title: 'gallons'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var H_consumption_options = {'title': 'Thorne Bay: Heating oil consumed by water/wastewater sector',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var H_consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_H_consumption() {
+                
+                var H_consumption_plot = new google.visualization.LineChart(document.getElementById('H_consumption_chart'));
+                
+                
+                H_consumption_plot.draw(H_consumption, H_consumption_options);
+                return H_consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_H_consumption() {
+                var H_consumption_table = new google.visualization.Table(document.getElementById('H_consumption_chart'))
+                H_consumption_table.draw(H_consumption, {'title': 'Heating Oil Consumed by water/wastewater sector','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_H_consumption() {
+        var H_consumption_table = new google.visualization.Table(document.getElementById('H_consumption_chart'))
+        H_consumption_table.draw(H_consumption, {'title': 'Heating Oil Consumed by water/wastewater sector','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      H_consumption_button = document.getElementById('H_consumption_button')
+      H_consumption_button.onclick = function() {
+        if (H_consumption_state == plot) {
+          drawTable_H_consumption();
+          H_consumption_state = chart;
+        } else {
+          drawPlot_H_consumption();
+          H_consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  H_consumption_plot = drawPlot_H_consumption()
+      
+      document.getElementById('H_consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + H_consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script> 
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Thorne Bay<span class="page-subtitle"> Water and Wastewater Efficiency</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Thorne_Bay/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Thorne_Bay/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Thorne_Bay/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Thorne_Bay/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Thorne_Bay/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Thorne_Bay/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Thorne_Bay/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Thorne_Bay/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Thorne_Bay/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Thorne_Bay/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Thorne_Bay/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Thorne_Bay/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Thorne_Bay/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Thorne_Bay/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Thorne_Bay/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Thorne_Bay/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Thorne_Bay/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Thorne_Bay/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system<small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">System type: Pressure/Gravity </p>
+    </div><H3>Modeled efficiency project<small class = "hidy" data-toggle="collapse" data-target="#Modeled_Efficiency_Project"></small> </H3>
+    <div id="Modeled_Efficiency_Project" class="collapse in" >
+     <p class="stats">Capital cost: $188,304 </p> <p class="stats">Lifetime savings: $122,306 </p> <p class="stats">Net lifetime savings: $-65,998 </p> <p class="stats">Benefit-cost ratio: 0.6 </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential reduction in Electricty and Heating Oil by improving the efficiency of the water-wastewater system
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Thorne_Bay_Water_and_Wastewater_Efficiency_costs.csv'">Table as csv</button>
+  </div><div class="E_consumption">
+    <div id="E_consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='E_consumption_button'>Plot/Table</button>
+    <div id='E_consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Thorne_Bay_Water_and_Wastewater_Efficiency_E_consumption.csv'">Table as csv</button>
+  </div><div class="H_consumption">
+    <div id="H_consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='H_consumption_button'>Plot/Table</button>
+    <div id='H_consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Thorne_Bay_Water_and_Wastewater_Efficiency_H_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 0.27.0, Generated from Model Version 0.27.0 and Data Version 0.27.0 on 2017-06-12</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

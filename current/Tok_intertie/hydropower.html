@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Tok_intertie - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // setup
+        google.charts.load('current', {'packages':['corechart','table']});
+        google.charts.setOnLoadCallback(drawCharts);
+    
+        // for the charts
+        function drawCharts() {
+            
+            // set up vars (data/options) for each chart
+            var state_plot = 'plot';
+            var state_chart = 'chart';
+            
+            var year_fmat = new google.visualization.NumberFormat({pattern:'####'});
+            
+            
+                // ################ Start costs ####################
+                // data
+                var costs = google.visualization.arrayToDataTable(
+                    [[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Yerrick creek', type: 'number'}, {label: 'Yerrick creek hydropower project: construction', type: 'number'}, {label: 'Tetlin, last tetlin village (mice creek)', type: 'number'}, {label: 'Dot lake (bear creek)', type: 'number'}, {label: 'Cathedral rapids', type: 'number'}, {label: 'Tok (clearwater creek)', type: 'number'}], [2020.0, 1913344.0, null, 2564967.0, null, null, null, null], [2021.0, 2001762.0, 11720980.0, 2596218.0, 3478320.0, 3171512.0, 9325699.0, 3769356.0], [2022.0, 2069652.0, 11558430.0, 2614611.0, 3514099.0, 3202043.0, 9127901.0, 3793579.0], [2023.0, 2117027.0, 11387262.0, 2620145.0, 3530603.0, 3215370.0, 8935986.0, 3799793.0], [2024.0, 2150949.0, 11212076.0, 2617519.0, 3534704.0, 3217659.0, 8749617.0, 3794505.0], [2025.0, 2198292.0, 11050239.0, 2624198.0, 3552549.0, 3232245.0, 8566391.0, 3802420.0], [2026.0, 2252674.0, 10897609.0, 2636135.0, 3577919.0, 3253613.0, 8387117.0, 3817674.0], [2027.0, 2299980.0, 10744664.0, 2643899.0, 3597038.0, 3269395.0, 8212170.0, 3827205.0], [2028.0, 2333862.0, 10587300.0, 2643478.0, 3603717.0, 3274108.0, 8042398.0, 3825182.0], [2029.0, 2388456.0, 10447808.0, 2657251.0, 3631194.0, 3297471.0, 7875375.0, 3843040.0], [2030.0, 2422577.0, 10298999.0, 2658114.0, 3639331.0, 3303570.0, 7713588.0, 3842795.0], [2031.0, 2476913.0, 10167370.0, 2672649.0, 3667741.0, 3327797.0, 7553871.0, 3861899.0], [2032.0, 2537797.0, 10043858.0, 2691876.0, 3703097.0, 3358231.0, 7397058.0, 3887739.0], [2033.0, 2591834.0, 9919676.0, 2707087.0, 3732344.0, 3383227.0, 7244256.0, 3907977.0], [2034.0, 2652669.0, 9803677.0, 2727215.0, 3768759.0, 3414655.0, 7094437.0, 3935168.0], [2035.0, 2693024.0, 9677896.0, 2734369.0, 3785761.0, 3428749.0, 6949419.0, 3944164.0], [2036.0, 2754098.0, 9569350.0, 2755643.0, 3823472.0, 3461412.0, 6806557.0, 3972929.0], [2037.0, 2795000.0, 9451159.0, 2764230.0, 3842054.0, 3477025.0, 6668646.0, 3983776.0], [2038.0, 2856057.0, 9349474.0, 2786351.0, 3880757.0, 3510619.0, 6532174.0, 4013796.0], [2039.0, 2903470.0, 9242162.0, 2799943.0, 3906657.0, 3532789.0, 6399736.0, 4031860.0], [2040.0, 2977823.0, 9155635.0, 2831487.0, 3959264.0, 3578823.0, 6268082.0, 4075319.0], [2041.0, 2977203.0, 9023139.0, 2814294.0, 3939309.0, 3560009.0, 6144635.0, 4050291.0], [2042.0, 2976894.0, 8894044.0, 2797800.0, 3920117.0, 3541931.0, 6024376.0, 4026145.0], [2043.0, 2976584.0, 8767967.0, 2781685.0, 3901368.0, 3524269.0, 5906928.0, 4002558.0], [2044.0, 2976275.0, 8644838.0, 2765940.0, 3883050.0, 3507014.0, 5792226.0, 3979517.0], [2045.0, 2975965.0, 8524587.0, 2750557.0, 3865155.0, 3490156.0, 5680204.0, 3957008.0], [2046.0, 2975346.0, 8406838.0, 2735218.0, 3847362.0, 3473376.0, 5570492.0, 3934710.0], [2047.0, 2975036.0, 8292143.0, 2720534.0, 3830282.0, 3457285.0, 5463646.0, 3913229.0], [2048.0, 2974726.0, 8180130.0, 2706186.0, 3813594.0, 3441563.0, 5359296.0, 3892245.0], [2049.0, 2974107.0, 8070425.0, 2691858.0, 3796981.0, 3425893.0, 5257076.0, 3871436.0], [2050.0, 2973798.0, 7963586.0, 2678160.0, 3781052.0, 3410886.0, 5157546.0, 3851409.0], [2051.0, 2973798.0, 7859554.0, 2665086.0, 3765799.0, 3396532.0, 5060652.0, 3832154.0], [2052.0, 2973798.0, 7757960.0, 2652319.0, 3750903.0, 3382515.0, 4966029.0, 3813351.0], [2053.0, 2973798.0, 7658747.0, 2639850.0, 3736357.0, 3368827.0, 4873623.0, 3794988.0], [2054.0, 2973798.0, 7561859.0, 2627674.0, 3722151.0, 3355459.0, 4783383.0, 3777056.0], [2055.0, 2973798.0, 7467242.0, 2615784.0, 3708279.0, 3342405.0, 4695258.0, 3759544.0], [2056.0, 2973798.0, 7374843.0, 2604172.0, 3694731.0, 3329656.0, 4609198.0, 3742442.0], [2057.0, 2973798.0, 7284610.0, 2592832.0, 3681501.0, 3317207.0, 4525156.0, 3725741.0], [2058.0, 2973798.0, 7196491.0, 2581758.0, 3668581.0, 3305049.0, 4443083.0, 3709432.0], [2059.0, 2973798.0, 7110437.0, 2570943.0, 3655964.0, 3293176.0, 4362934.0, 3693505.0], [2060.0, 2973798.0, 7026401.0, 2560382.0, 3643643.0, 3281582.0, 4284663.0, 3677951.0], [2061.0, 2973798.0, 6944334.0, 2550069.0, 3631610.0, 3270259.0, 4208227.0, 3662762.0], [2062.0, 2973798.0, 6864190.0, 2539997.0, 3619860.0, 3259201.0, 4133582.0, 3647928.0], [2063.0, 2973798.0, 6785925.0, 2530161.0, 3608384.0, 3248403.0, 4060687.0, 3633443.0], [2064.0, 2973798.0, 6709494.0, 2520556.0, 3597178.0, 3237858.0, 3989500.0, 3619297.0], [2065.0, 2973798.0, 6634855.0, 2511176.0, 3586235.0, 3227560.0, 3919982.0, 3605482.0], [2066.0, 2973798.0, 6561964.0, 2502016.0, 3575547.0, 3217503.0, 3852093.0, 3591991.0], [2067.0, 2973798.0, 6490783.0, 2493070.0, 3565111.0, 3207682.0, 3785795.0, 3578816.0], [2068.0, 2973798.0, 6421269.0, 2484334.0, 3554919.0, 3198091.0, 3721051.0, 3565951.0], [2069.0, 2973798.0, 6353385.0, 2475803.0, 3544966.0, 3188725.0, 3657825.0, 3553386.0], [2070.0, 2973798.0, 6287092.0, null, 3535246.0, 3179579.0, 3596080.0, 3541117.0]]
+                );
+                year_fmat.format(costs,0);
+                
+                // plot options 
+                vertical_label = {format: '$#,###'}; 
+                
+                width = 1000
+                height = 600
+    
+                var costs_options = {
+                    'title': 'Tok intertie: Estimated electricity generation costs per year',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var costs_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_costs() {
+                    var costs_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('costs_chart')
+                        );
+                    
+                    costs_plot.draw(costs, costs_options);
+                    return costs_plot;
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = 
+                        new google.visualization.Table(
+                            document.getElementById('costs_chart')
+                        );
+                    costs_table.draw(
+                        costs,
+                        {
+                            'title': 'Estimated Electricity Generation Costs per Year',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = new google.visualization.Table(
+                        document.getElementById('costs_chart')
+                    );
+                    costs_table.draw(
+                        costs, {'title': 'Estimated Electricity Generation Costs per Year','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                costs_button = document.getElementById('costs_button');
+                costs_button.onclick = function() {
+                    if (costs_state == state_plot) {
+                        drawTable_costs();
+                        costs_state = state_chart;
+                    } else {
+                    drawPlot_costs();
+                    costs_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  costs_plot = drawPlot_costs();
+              
+                document.getElementById('costs_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                // ################ Start consumption ####################
+                // data
+                var consumption = google.visualization.arrayToDataTable(
+                    [[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Yerrick creek', type: 'number'}, {label: 'Yerrick creek hydropower project: construction', type: 'number'}, {label: 'Tetlin, last tetlin village (mice creek)', type: 'number'}, {label: 'Dot lake (bear creek)', type: 'number'}, {label: 'Cathedral rapids', type: 'number'}, {label: 'Tok (clearwater creek)', type: 'number'}], [2020.0, 683337.0, null, 423317.0, null, null, null, null], [2021.0, 683195.0, 423175.0, 423175.0, 663614.0, 585714.0, 0.0, 623815.0], [2022.0, 683054.0, 423033.0, 423033.0, 663473.0, 585573.0, 0.0, 623673.0], [2023.0, 682912.0, 422892.0, 422892.0, 663331.0, 585431.0, 0.0, 623532.0], [2024.0, 682841.0, 422821.0, 422821.0, 663260.0, 585360.0, 0.0, 623461.0], [2025.0, 682699.0, 422679.0, 422679.0, 663118.0, 585218.0, 0.0, 623319.0], [2026.0, 682628.0, 422608.0, 422608.0, 663047.0, 585147.0, 0.0, 623248.0], [2027.0, 682487.0, 422467.0, 422467.0, 662906.0, 585006.0, 0.0, 623107.0], [2028.0, 682416.0, 422396.0, 422396.0, 662835.0, 584935.0, 0.0, 623036.0], [2029.0, 682416.0, 422396.0, 422396.0, 662835.0, 584935.0, 0.0, 623036.0], [2030.0, 682416.0, 422396.0, 422396.0, 662835.0, 584935.0, 0.0, 623036.0], [2031.0, 682345.0, 422325.0, 422325.0, 662764.0, 584864.0, 0.0, 622965.0], [2032.0, 682203.0, 422183.0, 422183.0, 662622.0, 584722.0, 0.0, 622823.0], [2033.0, 682062.0, 422041.0, 422041.0, 662481.0, 584581.0, 0.0, 622682.0], [2034.0, 681920.0, 421900.0, 421900.0, 662339.0, 584439.0, 0.0, 622540.0], [2035.0, 681778.0, 421758.0, 421758.0, 662197.0, 584297.0, 0.0, 622398.0], [2036.0, 681707.0, 421687.0, 421687.0, 662126.0, 584226.0, 0.0, 622327.0], [2037.0, 681707.0, 421687.0, 421687.0, 662126.0, 584226.0, 0.0, 622327.0], [2038.0, 681637.0, 421616.0, 421616.0, 662055.0, 584155.0, 0.0, 622256.0], [2039.0, 681566.0, 421545.0, 421545.0, 661985.0, 584085.0, 0.0, 622186.0], [2040.0, 681424.0, 421404.0, 421404.0, 661843.0, 583943.0, 0.0, 622044.0], [2041.0, 681282.0, 421262.0, 421262.0, 661701.0, 583801.0, 0.0, 621902.0], [2042.0, 681211.0, 421191.0, 421191.0, 661630.0, 583730.0, 0.0, 621831.0], [2043.0, 681141.0, 421120.0, 421120.0, 661559.0, 583659.0, 0.0, 621760.0], [2044.0, 681070.0, 421049.0, 421049.0, 661489.0, 583589.0, 0.0, 621690.0], [2045.0, 680999.0, 420979.0, 420979.0, 661418.0, 583518.0, 0.0, 621619.0], [2046.0, 680857.0, 420837.0, 420837.0, 661276.0, 583376.0, 0.0, 621477.0], [2047.0, 680786.0, 420766.0, 420766.0, 661205.0, 583305.0, 0.0, 621406.0], [2048.0, 680715.0, 420695.0, 420695.0, 661134.0, 583234.0, 0.0, 621335.0], [2049.0, 680574.0, 420553.0, 420553.0, 660993.0, 583093.0, 0.0, 621194.0], [2050.0, 680503.0, 420483.0, 420483.0, 660922.0, 583022.0, 0.0, 621123.0], [2051.0, 680503.0, 420483.0, 420483.0, 660922.0, 583022.0, 0.0, 621123.0], [2052.0, 680503.0, 420483.0, 420483.0, 660922.0, 583022.0, 0.0, 621123.0], [2053.0, 680503.0, 420483.0, 420483.0, 660922.0, 583022.0, 0.0, 621123.0], [2054.0, 680503.0, 420483.0, 420483.0, 660922.0, 583022.0, 0.0, 621123.0], [2055.0, 680503.0, 420483.0, 420483.0, 660922.0, 583022.0, 0.0, 621123.0], [2056.0, 680503.0, 420483.0, 420483.0, 660922.0, 583022.0, 0.0, 621123.0], [2057.0, 680503.0, 420483.0, 420483.0, 660922.0, 583022.0, 0.0, 621123.0], [2058.0, 680503.0, 420483.0, 420483.0, 660922.0, 583022.0, 0.0, 621123.0], [2059.0, 680503.0, 420483.0, 420483.0, 660922.0, 583022.0, 0.0, 621123.0], [2060.0, 680503.0, 420483.0, 420483.0, 660922.0, 583022.0, 0.0, 621123.0], [2061.0, 680503.0, 420483.0, 420483.0, 660922.0, 583022.0, 0.0, 621123.0], [2062.0, 680503.0, 420483.0, 420483.0, 660922.0, 583022.0, 0.0, 621123.0], [2063.0, 680503.0, 420483.0, 420483.0, 660922.0, 583022.0, 0.0, 621123.0], [2064.0, 680503.0, 420483.0, 420483.0, 660922.0, 583022.0, 0.0, 621123.0], [2065.0, 680503.0, 420483.0, 420483.0, 660922.0, 583022.0, 0.0, 621123.0], [2066.0, 680503.0, 420483.0, 420483.0, 660922.0, 583022.0, 0.0, 621123.0], [2067.0, 680503.0, 420483.0, 420483.0, 660922.0, 583022.0, 0.0, 621123.0], [2068.0, 680503.0, 420483.0, 420483.0, 660922.0, 583022.0, 0.0, 621123.0], [2069.0, 680503.0, 420483.0, 420483.0, 660922.0, 583022.0, 0.0, 621123.0], [2070.0, 680503.0, 420483.0, null, 660922.0, 583022.0, 0.0, 621123.0]]
+                );
+                year_fmat.format(consumption,0);
+                
+                // plot options 
+                vertical_label=  {title: 'gallons'}; 
+                
+                width = 1000
+                height = 600
+    
+                var consumption_options = {
+                    'title': 'Tok intertie: Diesel consumed for electricity generation ',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var consumption_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_consumption() {
+                    var consumption_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('consumption_chart')
+                        );
+                    
+                    consumption_plot.draw(consumption, consumption_options);
+                    return consumption_plot;
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = 
+                        new google.visualization.Table(
+                            document.getElementById('consumption_chart')
+                        );
+                    consumption_table.draw(
+                        consumption,
+                        {
+                            'title': 'Diesel Consumed for Electricity Generation ',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = new google.visualization.Table(
+                        document.getElementById('consumption_chart')
+                    );
+                    consumption_table.draw(
+                        consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                consumption_button = document.getElementById('consumption_button');
+                consumption_button.onclick = function() {
+                    if (consumption_state == state_plot) {
+                        drawTable_consumption();
+                        consumption_state = state_chart;
+                    } else {
+                    drawPlot_consumption();
+                    consumption_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  consumption_plot = drawPlot_consumption();
+              
+                document.getElementById('consumption_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+      };
+    </script>
+     
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Tok intertie<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Tok_intertie/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Tok_intertie/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Tok_intertie/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Tok_intertie/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Tok_intertie/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Tok_intertie/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Tok_intertie/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Tok_intertie/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Tok_intertie/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Tok_intertie/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Tok_intertie/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Tok_intertie/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Tok_intertie/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Tok_intertie/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Tok_intertie/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Tok_intertie/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Tok_intertie/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Tok_intertie/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system<small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">See: <a href='./generation.html'>Generation </a> for more details of the current generation systems </p>
+    </div><H3>Yerrick creek<small class = "hidy" data-toggle="collapse" data-target="#Yerrick_Creek"></small> </H3>
+    <div id="Yerrick_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $158,334,882 </p> <p class="stats">Lifetime energy cost savings: $-17,541,215 </p> <p class="stats">Net lifetime savings: $-175,876,097 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 1,558 kW </p> <p class="stats">Expected yearly generation: 4,900,000 kWh/year </p> <p class="stats">Phase: Feasibility </p> <p class="stats">Upfront capital cost: $161,197,931 </p> <p class="stats">Estimated hydro penetration level: 52.93% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div><H3>Yerrick creek hydropower project: construction<small class = "hidy" data-toggle="collapse" data-target="#Yerrick_Creek_Hydropower_Project:_Construction"></small> </H3>
+    <div id="Yerrick_Creek_Hydropower_Project:_Construction" class="collapse in" >
+     <p class="stats">Present value of capital cost: $20,375,824 </p> <p class="stats">Lifetime energy cost savings: $19,398,091 </p> <p class="stats">Net lifetime savings: $-977,733 </p> <p class="stats">Benefit-cost ratio: 1.0 </p> <p class="stats">Proposed nameplate capacity: 1,500 kW </p> <p class="stats">Expected yearly generation: 4,900,000 kWh/year </p> <p class="stats">Phase: Design </p> <p class="stats">Upfront capital cost: $20,744,264 </p> <p class="stats">Estimated hydro penetration level: 52.93% </p> <p class="stats">source: <a href='http://akenergyinventory.org/catalog/entries/8336-yerrick-creek-hydro-assessment'> link </a> </p>
+    </div><H3>Tetlin, last tetlin village (mice creek)<small class = "hidy" data-toggle="collapse" data-target="#Tetlin_Last_Tetlin_Village_Mice_Creek"></small> </H3>
+    <div id="Tetlin_Last_Tetlin_Village_Mice_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $23,214,921 </p> <p class="stats">Lifetime energy cost savings: $-4,367,461 </p> <p class="stats">Net lifetime savings: $-27,582,382 </p> <p class="stats">Benefit-cost ratio: -0.2 </p> <p class="stats">Proposed nameplate capacity: 117 kW </p> <p class="stats">Expected yearly generation: 369,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $23,634,699 </p> <p class="stats">Estimated hydro penetration level: 3.99% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Dot lake (bear creek)<small class = "hidy" data-toggle="collapse" data-target="#Dot_Lake_Bear_Creek"></small> </H3>
+    <div id="Dot_Lake_Bear_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $21,845,575 </p> <p class="stats">Lifetime energy cost savings: $3,545,396 </p> <p class="stats">Net lifetime savings: $-18,300,180 </p> <p class="stats">Benefit-cost ratio: 0.2 </p> <p class="stats">Proposed nameplate capacity: 699 kW </p> <p class="stats">Expected yearly generation: 1,837,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $22,240,592 </p> <p class="stats">Estimated hydro penetration level: 19.84% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1982-0198.pdf'> link </a> </p>
+    </div><H3>Cathedral rapids<small class = "hidy" data-toggle="collapse" data-target="#Cathedral_Rapids"></small> </H3>
+    <div id="Cathedral_Rapids" class="collapse in" >
+     <p class="stats">Present value of capital cost: $147,471,185 </p> <p class="stats">Lifetime energy cost savings: $42,570,188 </p> <p class="stats">Net lifetime savings: $-104,900,997 </p> <p class="stats">Benefit-cost ratio: 0.3 </p> <p class="stats">Proposed nameplate capacity: 16,693 kW </p> <p class="stats">Expected yearly generation: 52,500,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $150,137,794 </p> <p class="stats">Estimated hydro penetration level: 567.09% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div><H3>Tok (clearwater creek)<small class = "hidy" data-toggle="collapse" data-target="#Tok_Clearwater_Creek"></small> </H3>
+    <div id="Tok_Clearwater_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $29,305,277 </p> <p class="stats">Lifetime energy cost savings: $-2,156,777 </p> <p class="stats">Net lifetime savings: $-31,462,054 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 412 kW </p> <p class="stats">Expected yearly generation: 1,119,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $29,835,182 </p> <p class="stats">Estimated hydro penetration level: 12.09% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential cost savings through changes in the amount of diesel fuel used for electricity generation from the installation of new hydropower infrastructure. Requires that at least a reconnaissance-level hydropower study has been completed for the community.
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Tok_intertie_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Tok_intertie_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 1.0.0, Generated from Model Version 1.0.0 and Data Version 1.0.0 on 2017-06-30</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

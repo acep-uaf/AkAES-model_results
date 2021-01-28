@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Shungnak_intertie - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // setup
+        google.charts.load('current', {'packages':['corechart','table']});
+        google.charts.setOnLoadCallback(drawCharts);
+    
+        // for the charts
+        function drawCharts() {
+            
+            // set up vars (data/options) for each chart
+            var state_plot = 'plot';
+            var state_chart = 'chart';
+            
+            var year_fmat = new google.visualization.NumberFormat({pattern:'####'});
+            
+            
+                // ################ Start costs ####################
+                // data
+                var costs = google.visualization.arrayToDataTable(
+                    [[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Shungnak river', type: 'number'}, {label: 'Cosmos creek', type: 'number'}, {label: 'Kogoluktuk river', type: 'number'}, {label: 'Cosmos hills hydroelectric design & permitting', type: 'number'}, {label: 'Dahl creek', type: 'number'}, {label: 'Wesley creek', type: 'number'}], [2020.0, 641014.0, null, null, null, 3312815.0, null, null], [2021.0, 661331.0, 4691346.0, 1391015.0, 2321714.0, 3248379.0, 960507.0, 1101383.0], [2022.0, 678392.0, 4587071.0, 1366186.0, 2271231.0, 3186811.0, 950129.0, 1083557.0], [2023.0, 691453.0, 4487644.0, 1342564.0, 2223471.0, 3127334.0, 939738.0, 1066614.0], [2024.0, 701705.0, 4390950.0, 1319039.0, 2176814.0, 3068803.0, 928707.0, 1049534.0], [2025.0, 714029.0, 4295319.0, 1295904.0, 2130554.0, 3011470.0, 918288.0, 1032786.0], [2026.0, 725883.0, 4199782.0, 1271745.0, 2083514.0, 2953908.0, 906837.0, 1014917.0], [2027.0, 736054.0, 4106322.0, 1247622.0, 2037235.0, 2897169.0, 894941.0, 996903.0], [2028.0, 743747.0, 4015720.0, 1223871.0, 1992290.0, 2841577.0, 882704.0, 979041.0], [2029.0, 756909.0, 3927750.0, 1202707.0, 1949647.0, 2789300.0, 873539.0, 963764.0], [2030.0, 763352.0, 3841549.0, 1179935.0, 1906829.0, 2736167.0, 861587.0, 946580.0], [2031.0, 776071.0, 3757068.0, 1159389.0, 1865684.0, 2685946.0, 852594.0, 931668.0], [2032.0, 788609.0, 3672679.0, 1138030.0, 1823904.0, 2635601.0, 842812.0, 915865.0], [2033.0, 801596.0, 3590593.0, 1117620.0, 1783489.0, 2586884.0, 833770.0, 900893.0], [2034.0, 813587.0, 3509319.0, 1096701.0, 1742969.0, 2538319.0, 824013.0, 885295.0], [2035.0, 822634.0, 3433367.0, 1077889.0, 1705940.0, 2492531.0, 815210.0, 871517.0], [2036.0, 835576.0, 3356537.0, 1058863.0, 1668096.0, 2447137.0, 806951.0, 857588.0], [2037.0, 844636.0, 3284009.0, 1040984.0, 1632764.0, 2403529.0, 798694.0, 844524.0], [2038.0, 858269.0, 3209577.0, 1022404.0, 1595864.0, 2359794.0, 790742.0, 830869.0], [2039.0, 866466.0, 3137813.0, 1003395.0, 1559883.0, 2316240.0, 781225.0, 816510.0], [2040.0, 880025.0, 3066483.0, 985597.0, 1524477.0, 2274450.0, 773696.0, 803433.0], [2041.0, 878428.0, 3001025.0, 966781.0, 1491359.0, 2232269.0, 762111.0, 788721.0], [2042.0, 877363.0, 2937596.0, 948900.0, 1459512.0, 2191572.0, 751293.0, 774848.0], [2043.0, 876299.0, 2875629.0, 931413.0, 1428387.0, 2151804.0, 740703.0, 761275.0], [2044.0, 874702.0, 2814557.0, 913779.0, 1397434.0, 2112411.0, 729804.0, 747463.0], [2045.0, 874702.0, 2756476.0, 898117.0, 1368765.0, 2075500.0, 720721.0, 735534.0], [2046.0, 872573.0, 2697626.0, 880694.0, 1338640.0, 2037325.0, 709721.0, 721755.0], [2047.0, 872040.0, 2641703.0, 865226.0, 1310768.0, 2001592.0, 700525.0, 709847.0], [2048.0, 870444.0, 2586014.0, 849043.0, 1282471.0, 1965620.0, 690469.0, 697140.0], [2049.0, 869911.0, 2532657.0, 834267.0, 1255865.0, 1931517.0, 681675.0, 685759.0], [2050.0, 867250.0, 2478409.0, 817695.0, 1227741.0, 1896072.0, 670945.0, 672502.0], [2051.0, 867250.0, 2428031.0, 804111.0, 1202876.0, 1864058.0, 663066.0, 662156.0], [2052.0, 867250.0, 2378835.0, 790845.0, 1178593.0, 1832793.0, 655372.0, 652052.0], [2053.0, 867250.0, 2330791.0, 777891.0, 1154879.0, 1802261.0, 647858.0, 642184.0], [2054.0, 867250.0, 2283873.0, 765239.0, 1131721.0, 1772445.0, 640520.0, 632548.0], [2055.0, 867250.0, 2238055.0, 752885.0, 1109106.0, 1743328.0, 633354.0, 623138.0], [2056.0, 867250.0, 2193311.0, 740820.0, 1087021.0, 1714893.0, 626356.0, 613948.0], [2057.0, 867250.0, 2149615.0, 729037.0, 1065453.0, 1687124.0, 619523.0, 604974.0], [2058.0, 867250.0, 2106944.0, 717531.0, 1044391.0, 1660007.0, 612849.0, 596210.0], [2059.0, 867250.0, 2065272.0, 706295.0, 1023822.0, 1633524.0, 606332.0, 587652.0], [2060.0, 867250.0, 2024578.0, 695322.0, 1003736.0, 1607663.0, 599967.0, 579294.0], [2061.0, 867250.0, 1984837.0, 684606.0, 984120.0, 1582408.0, 593752.0, 571132.0], [2062.0, 867250.0, 1946027.0, 674141.0, 964965.0, 1557744.0, 587682.0, 563161.0], [2063.0, 867250.0, 1908128.0, 663921.0, 946258.0, 1533659.0, 581755.0, 555377.0], [2064.0, 867250.0, 1871116.0, 653941.0, 927989.0, 1510138.0, 575966.0, 547775.0], [2065.0, 867250.0, 1834972.0, 644195.0, 910149.0, 1487169.0, 570313.0, 540352.0], [2066.0, 867250.0, 1799675.0, 634678.0, 892727.0, 1464737.0, 564793.0, 533103.0], [2067.0, 867250.0, 1765205.0, 625383.0, 875713.0, 1442832.0, 559402.0, 526023.0], [2068.0, 867250.0, 1731543.0, 616306.0, 859098.0, 1421440.0, 554137.0, 519110.0], [2069.0, 867250.0, 1698670.0, 607442.0, 842872.0, 1400549.0, 548996.0, 512358.0], [2070.0, 867250.0, 1666568.0, 598786.0, 827027.0, null, 543975.0, 505765.0]]
+                );
+                year_fmat.format(costs,0);
+                
+                // plot options 
+                vertical_label = {format: '$#,###'}; 
+                
+                width = 1000
+                height = 600
+    
+                var costs_options = {
+                    'title': 'Shungnak intertie: Estimated electricity generation costs per year',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var costs_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_costs() {
+                    var costs_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('costs_chart')
+                        );
+                    
+                    costs_plot.draw(costs, costs_options);
+                    return costs_plot;
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = 
+                        new google.visualization.Table(
+                            document.getElementById('costs_chart')
+                        );
+                    costs_table.draw(
+                        costs,
+                        {
+                            'title': 'Estimated Electricity Generation Costs per Year',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = new google.visualization.Table(
+                        document.getElementById('costs_chart')
+                    );
+                    costs_table.draw(
+                        costs, {'title': 'Estimated Electricity Generation Costs per Year','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                costs_button = document.getElementById('costs_button');
+                costs_button.onclick = function() {
+                    if (costs_state == state_plot) {
+                        drawTable_costs();
+                        costs_state = state_chart;
+                    } else {
+                    drawPlot_costs();
+                    costs_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  costs_plot = drawPlot_costs();
+              
+                document.getElementById('costs_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                // ################ Start consumption ####################
+                // data
+                var consumption = google.visualization.arrayToDataTable(
+                    [[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Shungnak river', type: 'number'}, {label: 'Cosmos creek', type: 'number'}, {label: 'Kogoluktuk river', type: 'number'}, {label: 'Cosmos hills hydroelectric design & permitting', type: 'number'}, {label: 'Dahl creek', type: 'number'}, {label: 'Wesley creek', type: 'number'}], [2020.0, 121866.0, null, null, null, 0.0, null, null], [2021.0, 121792.0, 0.0, 0.0, 0.0, 0.0, 21379.0, 0.0], [2022.0, 122013.0, 221.0, 221.0, 221.0, 147.0, 21600.0, 221.0], [2023.0, 122381.0, 589.0, 589.0, 589.0, 515.0, 21968.0, 589.0], [2024.0, 122676.0, 883.0, 883.0, 883.0, 810.0, 22263.0, 883.0], [2025.0, 122897.0, 1104.0, 1104.0, 1104.0, 1031.0, 22484.0, 1104.0], [2026.0, 122823.0, 1031.0, 1031.0, 1031.0, 957.0, 22410.0, 1031.0], [2027.0, 122676.0, 883.0, 883.0, 883.0, 810.0, 22263.0, 883.0], [2028.0, 122528.0, 736.0, 736.0, 736.0, 663.0, 22116.0, 736.0], [2029.0, 122676.0, 883.0, 883.0, 883.0, 810.0, 22263.0, 883.0], [2030.0, 122528.0, 736.0, 736.0, 736.0, 663.0, 22116.0, 736.0], [2031.0, 122602.0, 810.0, 810.0, 810.0, 736.0, 22189.0, 810.0], [2032.0, 122455.0, 663.0, 663.0, 663.0, 589.0, 22042.0, 663.0], [2033.0, 122381.0, 589.0, 589.0, 589.0, 515.0, 21968.0, 589.0], [2034.0, 122160.0, 368.0, 368.0, 368.0, 294.0, 21747.0, 368.0], [2035.0, 122234.0, 442.0, 442.0, 442.0, 368.0, 21821.0, 442.0], [2036.0, 122160.0, 368.0, 368.0, 368.0, 294.0, 21747.0, 368.0], [2037.0, 122234.0, 442.0, 442.0, 442.0, 368.0, 21821.0, 442.0], [2038.0, 122087.0, 294.0, 294.0, 294.0, 221.0, 21674.0, 294.0], [2039.0, 121866.0, 74.0, 74.0, 74.0, 0.0, 21453.0, 74.0], [2040.0, 121719.0, 0.0, 0.0, 0.0, 0.0, 21306.0, 0.0], [2041.0, 121498.0, 0.0, 0.0, 0.0, 0.0, 21085.0, 0.0], [2042.0, 121350.0, 0.0, 0.0, 0.0, 0.0, 20938.0, 0.0], [2043.0, 121203.0, 0.0, 0.0, 0.0, 0.0, 20790.0, 0.0], [2044.0, 120982.0, 0.0, 0.0, 0.0, 0.0, 20570.0, 0.0], [2045.0, 120982.0, 0.0, 0.0, 0.0, 0.0, 20570.0, 0.0], [2046.0, 120688.0, 0.0, 0.0, 0.0, 0.0, 20275.0, 0.0], [2047.0, 120614.0, 0.0, 0.0, 0.0, 0.0, 20201.0, 0.0], [2048.0, 120393.0, 0.0, 0.0, 0.0, 0.0, 19981.0, 0.0], [2049.0, 120320.0, 0.0, 0.0, 0.0, 0.0, 19907.0, 0.0], [2050.0, 119952.0, 0.0, 0.0, 0.0, 0.0, 19539.0, 0.0], [2051.0, 119952.0, 0.0, 0.0, 0.0, 0.0, 19539.0, 0.0], [2052.0, 119952.0, 0.0, 0.0, 0.0, 0.0, 19539.0, 0.0], [2053.0, 119952.0, 0.0, 0.0, 0.0, 0.0, 19539.0, 0.0], [2054.0, 119952.0, 0.0, 0.0, 0.0, 0.0, 19539.0, 0.0], [2055.0, 119952.0, 0.0, 0.0, 0.0, 0.0, 19539.0, 0.0], [2056.0, 119952.0, 0.0, 0.0, 0.0, 0.0, 19539.0, 0.0], [2057.0, 119952.0, 0.0, 0.0, 0.0, 0.0, 19539.0, 0.0], [2058.0, 119952.0, 0.0, 0.0, 0.0, 0.0, 19539.0, 0.0], [2059.0, 119952.0, 0.0, 0.0, 0.0, 0.0, 19539.0, 0.0], [2060.0, 119952.0, 0.0, 0.0, 0.0, 0.0, 19539.0, 0.0], [2061.0, 119952.0, 0.0, 0.0, 0.0, 0.0, 19539.0, 0.0], [2062.0, 119952.0, 0.0, 0.0, 0.0, 0.0, 19539.0, 0.0], [2063.0, 119952.0, 0.0, 0.0, 0.0, 0.0, 19539.0, 0.0], [2064.0, 119952.0, 0.0, 0.0, 0.0, 0.0, 19539.0, 0.0], [2065.0, 119952.0, 0.0, 0.0, 0.0, 0.0, 19539.0, 0.0], [2066.0, 119952.0, 0.0, 0.0, 0.0, 0.0, 19539.0, 0.0], [2067.0, 119952.0, 0.0, 0.0, 0.0, 0.0, 19539.0, 0.0], [2068.0, 119952.0, 0.0, 0.0, 0.0, 0.0, 19539.0, 0.0], [2069.0, 119952.0, 0.0, 0.0, 0.0, 0.0, 19539.0, 0.0], [2070.0, 119952.0, 0.0, 0.0, 0.0, null, 19539.0, 0.0]]
+                );
+                year_fmat.format(consumption,0);
+                
+                // plot options 
+                vertical_label=  {title: 'gallons'}; 
+                
+                width = 1000
+                height = 600
+    
+                var consumption_options = {
+                    'title': 'Shungnak intertie: Diesel consumed for electricity generation ',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var consumption_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_consumption() {
+                    var consumption_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('consumption_chart')
+                        );
+                    
+                    consumption_plot.draw(consumption, consumption_options);
+                    return consumption_plot;
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = 
+                        new google.visualization.Table(
+                            document.getElementById('consumption_chart')
+                        );
+                    consumption_table.draw(
+                        consumption,
+                        {
+                            'title': 'Diesel Consumed for Electricity Generation ',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = new google.visualization.Table(
+                        document.getElementById('consumption_chart')
+                    );
+                    consumption_table.draw(
+                        consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                consumption_button = document.getElementById('consumption_button');
+                consumption_button.onclick = function() {
+                    if (consumption_state == state_plot) {
+                        drawTable_consumption();
+                        consumption_state = state_chart;
+                    } else {
+                    drawPlot_consumption();
+                    consumption_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  consumption_plot = drawPlot_consumption();
+              
+                document.getElementById('consumption_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+      };
+    </script>
+     
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Shungnak intertie<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Shungnak_intertie/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Shungnak_intertie/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Shungnak_intertie/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Shungnak_intertie/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Shungnak_intertie/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Shungnak_intertie/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Shungnak_intertie/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Shungnak_intertie/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Shungnak_intertie/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Shungnak_intertie/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Shungnak_intertie/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Shungnak_intertie/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Shungnak_intertie/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Shungnak_intertie/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Shungnak_intertie/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Shungnak_intertie/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Shungnak_intertie/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Shungnak_intertie/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system<small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">See: <a href='./generation.html'>Generation </a> for more details of the current generation systems </p>
+    </div><H3>Shungnak river<small class = "hidy" data-toggle="collapse" data-target="#Shungnak_River"></small> </H3>
+    <div id="Shungnak_River" class="collapse in" >
+     <p class="stats">Present value of capital cost: $76,673,526 </p> <p class="stats">Lifetime energy cost savings: $11,772,185 </p> <p class="stats">Net lifetime savings: $-64,901,340 </p> <p class="stats">Benefit-cost ratio: 0.2 </p> <p class="stats">Proposed nameplate capacity: 5,587 kW </p> <p class="stats">Expected yearly generation: 19,900,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $78,059,954 </p> <p class="stats">Estimated hydro penetration level: 1,260.34% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div><H3>Cosmos creek<small class = "hidy" data-toggle="collapse" data-target="#Cosmos_Creek"></small> </H3>
+    <div id="Cosmos_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $20,674,679 </p> <p class="stats">Lifetime energy cost savings: $14,918,206 </p> <p class="stats">Net lifetime savings: $-5,756,473 </p> <p class="stats">Benefit-cost ratio: 0.7 </p> <p class="stats">Proposed nameplate capacity: 950 kW </p> <p class="stats">Expected yearly generation: 3,660,523 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $21,048,524 </p> <p class="stats">Estimated hydro penetration level: 231.83% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div><H3>Kogoluktuk river<small class = "hidy" data-toggle="collapse" data-target="#Kogoluktuk_River"></small> </H3>
+    <div id="Kogoluktuk_River" class="collapse in" >
+     <p class="stats">Present value of capital cost: $37,845,080 </p> <p class="stats">Lifetime energy cost savings: $16,428,832 </p> <p class="stats">Net lifetime savings: $-21,416,248 </p> <p class="stats">Benefit-cost ratio: 0.4 </p> <p class="stats">Proposed nameplate capacity: 3,369 kW </p> <p class="stats">Expected yearly generation: 12,000,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $38,529,403 </p> <p class="stats">Estimated hydro penetration level: 760.01% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div><H3>Cosmos hills hydroelectric design & permitting<small class = "hidy" data-toggle="collapse" data-target="#Cosmos_Hills_Hydroelectric_Design_&_Permitting"></small> </H3>
+    <div id="Cosmos_Hills_Hydroelectric_Design_&_Permitting" class="collapse in" >
+     <p class="stats">Present value of capital cost: $49,895,393 </p> <p class="stats">Lifetime energy cost savings: $6,996,039 </p> <p class="stats">Net lifetime savings: $-42,899,353 </p> <p class="stats">Benefit-cost ratio: 0.1 </p> <p class="stats">Proposed nameplate capacity: 690 kW </p> <p class="stats">Expected yearly generation: 3,831,730 kWh/year </p> <p class="stats">Phase: Design </p> <p class="stats">Upfront capital cost: $50,797,613 </p> <p class="stats">Estimated hydro penetration level: 242.68% </p> <p class="stats">source: <a href='nan'> link </a> </p>
+    </div><H3>Dahl creek<small class = "hidy" data-toggle="collapse" data-target="#Dahl_Creek"></small> </H3>
+    <div id="Dahl_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $11,991,541 </p> <p class="stats">Lifetime energy cost savings: $12,722,410 </p> <p class="stats">Net lifetime savings: $730,869 </p> <p class="stats">Benefit-cost ratio: 1.1 </p> <p class="stats">Proposed nameplate capacity: 430 kW </p> <p class="stats">Expected yearly generation: 1,741,048 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $12,208,374 </p> <p class="stats">Estimated hydro penetration level: 110.27% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div><H3>Wesley creek<small class = "hidy" data-toggle="collapse" data-target="#Wesley_Creek"></small> </H3>
+    <div id="Wesley_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $15,747,349 </p> <p class="stats">Lifetime energy cost savings: $15,171,735 </p> <p class="stats">Net lifetime savings: $-575,613 </p> <p class="stats">Benefit-cost ratio: 1.0 </p> <p class="stats">Proposed nameplate capacity: 480 kW </p> <p class="stats">Expected yearly generation: 2,200,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $16,032,096 </p> <p class="stats">Estimated hydro penetration level: 139.33% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential cost savings through changes in the amount of diesel fuel used for electricity generation from the installation of new hydropower infrastructure. Requires that at least a reconnaissance-level hydropower study has been completed for the community.
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Shungnak_intertie_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Shungnak_intertie_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 1.0.0, Generated from Model Version 1.0.0 and Data Version 1.0.0 on 2017-06-30</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

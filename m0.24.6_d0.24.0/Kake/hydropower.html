@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Kake - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Cathedral falls (kake)', type: 'number'}, {label: 'Gunnuk creek hydro rehabilitation - ipec kake', type: 'number'}, {label: 'Goemere creek (washington bay, unnamed stream)', type: 'number'}, {label: 'Gunnuk creek', type: 'number'}, {label: 'Ledge lake (ledge creek)', type: 'number'}, {label: 'Rowan bay (6415 road) -- 0', type: 'number'}, {label: 'Rowan bay (big lake) -- 1605 lake', type: 'number'}, {label: 'Rowan bay (stink creek/ erode creek) -- erode creek, stink creek', type: 'number'}, {label: 'Rowan bay (unnamed creeks)', type: 'number'}, {label: 'Towers creek', type: 'number'}], [2020.0, 479934.0, null, 538697.0, null, null, null, null, null, null, null, null], [2021.0, 500598.0, 1108523.0, 540588.0, 1245774.0, 812696.0, 1194106.0, 1092829.0, 1193500.0, 1094687.0, 1167707.0, 16773454.0], [2022.0, 522164.0, 1090408.0, 547278.0, 1250458.0, 819996.0, 1188802.0, 1094526.0, 1178126.0, 1092988.0, 1169635.0, 16431418.0], [2023.0, 542891.0, 1075699.0, 555153.0, 1254991.0, 827768.0, 1184885.0, 1096849.0, 1165573.0, 1092393.0, 1171983.0, 16102780.0], [2024.0, 567221.0, 1068824.0, 568650.0, 1263806.0, 840449.0, 1186787.0, 1104229.0, 1160269.0, 1097333.0, 1179184.0, 15791794.0], [2025.0, 595179.0, 1062386.0, 584046.0, 1276266.0, 855874.0, 1190953.0, 1114454.0, 1155982.0, 1104703.0, 1189468.0, 15485535.0], [2026.0, 623574.0, 1056888.0, 600022.0, 1289501.0, 871942.0, 1195968.0, 1125440.0, 1152632.0, 1112865.0, 1200532.0, 15187022.0], [2027.0, 645752.0, 1045664.0, 609918.0, 1296847.0, 881992.0, 1195167.0, 1130526.0, 1143552.0, 1115155.0, 1205712.0, 14889431.0], [2028.0, 663880.0, 1032720.0, 616833.0, 1300626.0, 888732.0, 1191601.0, 1132428.0, 1132460.0, 1114514.0, 1207612.0, 14597953.0], [2029.0, 762164.0, 1098548.0, 703101.0, 1384713.0, 975273.0, 1267682.0, 1214231.0, 1200429.0, 1193579.0, 1289540.0, 14390245.0], [2030.0, 856189.0, 1164279.0, 787109.0, 1465172.0, 1058831.0, 1341661.0, 1293184.0, 1267715.0, 1270268.0, 1368412.0, 14191313.0], [2031.0, 945163.0, 1219848.0, 863384.0, 1540391.0, 1135884.0, 1408280.0, 1365702.0, 1325711.0, 1339880.0, 1441198.0, 13984243.0], [2032.0, 952184.0, 1193900.0, 857827.0, 1533948.0, 1131160.0, 1393301.0, 1356548.0, 1302186.0, 1327846.0, 1432326.0, 13701559.0], [2033.0, 937283.0, 1144603.0, 829533.0, 1505706.0, 1104141.0, 1355857.0, 1325189.0, 1255602.0, 1293410.0, 1401375.0, 13399951.0], [2034.0, 925749.0, 1100940.0, 805657.0, 1481271.0, 1081204.0, 1323012.0, 1298023.0, 1214359.0, 1263414.0, 1374519.0, 13110950.0], [2035.0, 936266.0, 1083439.0, 805819.0, 1479486.0, 1081574.0, 1314335.0, 1294285.0, 1198694.0, 1257317.0, 1370882.0, 12856290.0], [2036.0, 993836.0, 1107831.0, 850337.0, 1524530.0, 1127522.0, 1350358.0, 1336183.0, 1225792.0, 1296211.0, 1413228.0, 12644871.0], [2037.0, 1080083.0, 1168694.0, 927383.0, 1599162.0, 1204486.0, 1418944.0, 1409237.0, 1288196.0, 1367177.0, 1486299.0, 12480531.0], [2038.0, 1174166.0, 1230364.0, 1008628.0, 1681231.0, 1287257.0, 1492107.0, 1488141.0, 1352567.0, 1443124.0, 1565678.0, 12316754.0], [2039.0, 1219881.0, 1247738.0, 1043481.0, 1715506.0, 1322902.0, 1518988.0, 1520031.0, 1372060.0, 1472524.0, 1597831.0, 12116365.0], [2040.0, 1237662.0, 1231983.0, 1047692.0, 1721599.0, 1329122.0, 1515554.0, 1522546.0, 1359294.0, 1471902.0, 1600957.0, 11883708.0], [2041.0, 1218905.0, 1198562.0, 1024823.0, 1693018.0, 1304404.0, 1484791.0, 1494326.0, 1325951.0, 1442797.0, 1572244.0, 11651563.0], [2042.0, 1220135.0, 1185473.0, 1022037.0, 1684655.0, 1299813.0, 1474296.0, 1486315.0, 1312937.0, 1433921.0, 1563752.0, 11444407.0], [2043.0, 1259494.0, 1210848.0, 1057475.0, 1714645.0, 1333487.0, 1502205.0, 1516650.0, 1338387.0, 1463412.0, 1593616.0, 11280264.0], [2044.0, 1316381.0, 1254078.0, 1110532.0, 1762383.0, 1384822.0, 1547910.0, 1564723.0, 1381689.0, 1510660.0, 1641231.0, 11138418.0], [2045.0, 1353280.0, 1277641.0, 1143691.0, 1790347.0, 1416300.0, 1573890.0, 1593015.0, 1405322.0, 1538148.0, 1669075.0, 10981243.0], [2046.0, 1362505.0, 1273842.0, 1149264.0, 1790847.0, 1420230.0, 1572451.0, 1593835.0, 1401592.0, 1538181.0, 1669458.0, 10800941.0], [2047.0, 1360660.0, 1259279.0, 1143852.0, 1780481.0, 1413215.0, 1560192.0, 1583783.0, 1387096.0, 1527361.0, 1658978.0, 10614012.0], [2048.0, 1360660.0, 1246858.0, 1140369.0, 1772160.0, 1408166.0, 1550023.0, 1575767.0, 1374742.0, 1518595.0, 1650545.0, 10433266.0], [2049.0, 1372344.0, 1246414.0, 1148652.0, 1775719.0, 1414920.0, 1551776.0, 1579624.0, 1374361.0, 1521720.0, 1653994.0, 10268441.0], [2050.0, 1387412.0, 1249636.0, 1160398.0, 1782851.0, 1425172.0, 1557145.0, 1587047.0, 1377646.0, 1528428.0, 1661019.0, 10111135.0], [2051.0, 1387412.0, 1238069.0, 1157154.0, 1775101.0, 1420470.0, 1547674.0, 1579582.0, 1366140.0, 1520265.0, 1653166.0, 9942803.0], [2052.0, 1387412.0, 1226772.0, 1153986.0, 1767533.0, 1415877.0, 1538425.0, 1572292.0, 1354904.0, 1512293.0, 1645496.0, 9778415.0], [2053.0, 1387412.0, 1215741.0, 1150892.0, 1760143.0, 1411393.0, 1529392.0, 1565173.0, 1343931.0, 1504507.0, 1638006.0, 9617880.0], [2054.0, 1387412.0, 1204968.0, 1147871.0, 1752925.0, 1407014.0, 1520571.0, 1558221.0, 1333215.0, 1496905.0, 1630692.0, 9461108.0], [2055.0, 1387412.0, 1194448.0, 1144921.0, 1745877.0, 1402737.0, 1511957.0, 1551431.0, 1322750.0, 1489480.0, 1623549.0, 9308010.0], [2056.0, 1387412.0, 1184174.0, 1142040.0, 1738994.0, 1398560.0, 1503545.0, 1544801.0, 1312530.0, 1482230.0, 1616574.0, 9158500.0], [2057.0, 1387412.0, 1174141.0, 1139226.0, 1732272.0, 1394482.0, 1495330.0, 1538326.0, 1302550.0, 1475149.0, 1609762.0, 9012495.0], [2058.0, 1387412.0, 1164343.0, 1136479.0, 1725708.0, 1390499.0, 1487308.0, 1532003.0, 1292804.0, 1468234.0, 1603109.0, 8869911.0], [2059.0, 1387412.0, 1154775.0, 1133795.0, 1719298.0, 1386609.0, 1479474.0, 1525828.0, 1283287.0, 1461482.0, 1596613.0, 8730669.0], [2060.0, 1387412.0, 1145431.0, 1131175.0, 1713038.0, 1382811.0, 1471823.0, 1519798.0, 1273992.0, 1454887.0, 1590269.0, 8594691.0], [2061.0, 1387412.0, 1136305.0, 1128616.0, 1706925.0, 1379101.0, 1464351.0, 1513909.0, 1264915.0, 1448448.0, 1584073.0, 8461900.0], [2062.0, 1387412.0, 1127394.0, 1126117.0, 1700954.0, 1375479.0, 1457055.0, 1508158.0, 1256051.0, 1442159.0, 1578023.0, 8332221.0], [2063.0, 1387412.0, 1118692.0, 1123677.0, 1695124.0, 1371941.0, 1449930.0, 1502542.0, 1247395.0, 1436017.0, 1572115.0, 8205581.0], [2064.0, 1387412.0, 1110194.0, 1121294.0, 1689431.0, 1368486.0, 1442971.0, 1497058.0, 1238942.0, 1430020.0, 1566345.0, 8081910.0], [2065.0, 1387412.0, 1101895.0, 1118966.0, 1683871.0, 1365112.0, 1436176.0, 1491702.0, 1230687.0, 1424163.0, 1560710.0, 7961137.0], [2066.0, 1387412.0, 1093790.0, 1116693.0, 1678441.0, 1361818.0, 1429540.0, 1486471.0, 1222625.0, 1418443.0, 1555207.0, 7843194.0], [2067.0, 1387412.0, 1085875.0, 1114474.0, 1673139.0, 1358600.0, 1423060.0, 1481364.0, 1214752.0, 1412858.0, 1549834.0, 7728016.0], [2068.0, 1387412.0, 1078146.0, 1112306.0, 1667960.0, 1355458.0, 1416731.0, 1476376.0, 1207064.0, 1407403.0, 1544586.0, 7615538.0], [2069.0, 1387412.0, 1070598.0, 1110190.0, 1662904.0, 1352390.0, 1410551.0, 1471505.0, 1199556.0, 1402076.0, 1539461.0, 7505695.0], [2070.0, 1387412.0, 1063227.0, null, 1657965.0, 1349393.0, 1404516.0, 1466748.0, 1192223.0, 1396874.0, 1534456.0, 7398427.0]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: '$#,###'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Kake: Estimated electricity generation fuel costs per year',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.LineChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Estimated Electricity Generation Fuel Costs per Year','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Estimated Electricity Generation Fuel Costs per Year','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var consumption = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Cathedral falls (kake)', type: 'number'}, {label: 'Gunnuk creek hydro rehabilitation - ipec kake', type: 'number'}, {label: 'Goemere creek (washington bay, unnamed stream)', type: 'number'}, {label: 'Gunnuk creek', type: 'number'}, {label: 'Ledge lake (ledge creek)', type: 'number'}, {label: 'Rowan bay (6415 road) -- 0', type: 'number'}, {label: 'Rowan bay (big lake) -- 1605 lake', type: 'number'}, {label: 'Rowan bay (stink creek/ erode creek) -- erode creek, stink creek', type: 'number'}, {label: 'Rowan bay (unnamed creeks)', type: 'number'}, {label: 'Towers creek', type: 'number'}], [2020.0, 176446.0, null, 87500.0, null, null, null, null, null, null, null, null], [2021.0, 175649.0, 0.0, 86702.0, 160175.0, 123782.0, 90862.0, 122657.0, 27272.0, 101460.0, 133255.0, 0.0], [2022.0, 177607.0, 1958.0, 88660.0, 162133.0, 125740.0, 92820.0, 124615.0, 29230.0, 103418.0, 135213.0, 1958.0], [2023.0, 180362.0, 4714.0, 91416.0, 164889.0, 128496.0, 95576.0, 127371.0, 31986.0, 106174.0, 137969.0, 4714.0], [2024.0, 185367.0, 9718.0, 96420.0, 169893.0, 133500.0, 100580.0, 132375.0, 36990.0, 111178.0, 142973.0, 9718.0], [2025.0, 190153.0, 14504.0, 101207.0, 174679.0, 138286.0, 105366.0, 137161.0, 41777.0, 115965.0, 147760.0, 14504.0], [2026.0, 194867.0, 19218.0, 105921.0, 179393.0, 143000.0, 110080.0, 141875.0, 46490.0, 120679.0, 152474.0, 19218.0], [2027.0, 197478.0, 21829.0, 108531.0, 182004.0, 145611.0, 112691.0, 144486.0, 49101.0, 123289.0, 155084.0, 21829.0], [2028.0, 199363.0, 23715.0, 110417.0, 183890.0, 147496.0, 114577.0, 146372.0, 50987.0, 125175.0, 156970.0, 23715.0], [2029.0, 224166.0, 48517.0, 135219.0, 208692.0, 172299.0, 139379.0, 171174.0, 75789.0, 149978.0, 181773.0, 48517.0], [2030.0, 248171.0, 72522.0, 159224.0, 232697.0, 196304.0, 163384.0, 195179.0, 99794.0, 173982.0, 205777.0, 72522.0], [2031.0, 267752.0, 92103.0, 178805.0, 252278.0, 215885.0, 182965.0, 214760.0, 119375.0, 193563.0, 225358.0, 92103.0], [2032.0, 263763.0, 88114.0, 174817.0, 248289.0, 211896.0, 178976.0, 210771.0, 115386.0, 189575.0, 221370.0, 88114.0], [2033.0, 253320.0, 77671.0, 164373.0, 237846.0, 201453.0, 168533.0, 200328.0, 104943.0, 179132.0, 210926.0, 77671.0], [2034.0, 244907.0, 69259.0, 155961.0, 229434.0, 193040.0, 160121.0, 191916.0, 96531.0, 170719.0, 202514.0, 69259.0], [2035.0, 243819.0, 68171.0, 154873.0, 228346.0, 191952.0, 159033.0, 190828.0, 95443.0, 169631.0, 201426.0, 68171.0], [2036.0, 252885.0, 77236.0, 163938.0, 237411.0, 201018.0, 168098.0, 199893.0, 104508.0, 178696.0, 210491.0, 77236.0], [2037.0, 271378.0, 95729.0, 182431.0, 255904.0, 219511.0, 186591.0, 218386.0, 123001.0, 197190.0, 228984.0, 95729.0], [2038.0, 288493.0, 112844.0, 199547.0, 273019.0, 236626.0, 203706.0, 235501.0, 140117.0, 214305.0, 246100.0, 112844.0], [2039.0, 294657.0, 119009.0, 205711.0, 279184.0, 242790.0, 209871.0, 241666.0, 146281.0, 220469.0, 252264.0, 119009.0], [2040.0, 291901.0, 116253.0, 202955.0, 276428.0, 240035.0, 207115.0, 238910.0, 143525.0, 217713.0, 249508.0, 116253.0], [2041.0, 287478.0, 111829.0, 198531.0, 272004.0, 235611.0, 202691.0, 234486.0, 139101.0, 213289.0, 245084.0, 111829.0], [2042.0, 287768.0, 112119.0, 198821.0, 272294.0, 235901.0, 202981.0, 234776.0, 139391.0, 213580.0, 245374.0, 112119.0], [2043.0, 297051.0, 121402.0, 208104.0, 281577.0, 245184.0, 212264.0, 244059.0, 148674.0, 222862.0, 254657.0, 121402.0], [2044.0, 310467.0, 134819.0, 221521.0, 294994.0, 258600.0, 225681.0, 257476.0, 162091.0, 236279.0, 268074.0, 134819.0], [2045.0, 319170.0, 143521.0, 230223.0, 303696.0, 267303.0, 234383.0, 266178.0, 170793.0, 244982.0, 276777.0, 143521.0], [2046.0, 321345.0, 145697.0, 232399.0, 305872.0, 269479.0, 236559.0, 268354.0, 172969.0, 247157.0, 278952.0, 145697.0], [2047.0, 320910.0, 145262.0, 231964.0, 305437.0, 269043.0, 236124.0, 267919.0, 172534.0, 246722.0, 278517.0, 145262.0], [2048.0, 320910.0, 145262.0, 231964.0, 305437.0, 269043.0, 236124.0, 267919.0, 172534.0, 246722.0, 278517.0, 145262.0], [2049.0, 323666.0, 148018.0, 234720.0, 308193.0, 271799.0, 238880.0, 270675.0, 175290.0, 249478.0, 281273.0, 148018.0], [2050.0, 327220.0, 151571.0, 238273.0, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0], [2051.0, 327220.0, 151571.0, 238273.0, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0], [2052.0, 327220.0, 151571.0, 238273.0, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0], [2053.0, 327220.0, 151571.0, 238273.0, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0], [2054.0, 327220.0, 151571.0, 238273.0, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0], [2055.0, 327220.0, 151571.0, 238273.0, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0], [2056.0, 327220.0, 151571.0, 238273.0, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0], [2057.0, 327220.0, 151571.0, 238273.0, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0], [2058.0, 327220.0, 151571.0, 238273.0, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0], [2059.0, 327220.0, 151571.0, 238273.0, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0], [2060.0, 327220.0, 151571.0, 238273.0, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0], [2061.0, 327220.0, 151571.0, 238273.0, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0], [2062.0, 327220.0, 151571.0, 238273.0, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0], [2063.0, 327220.0, 151571.0, 238273.0, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0], [2064.0, 327220.0, 151571.0, 238273.0, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0], [2065.0, 327220.0, 151571.0, 238273.0, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0], [2066.0, 327220.0, 151571.0, 238273.0, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0], [2067.0, 327220.0, 151571.0, 238273.0, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0], [2068.0, 327220.0, 151571.0, 238273.0, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0], [2069.0, 327220.0, 151571.0, 238273.0, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0], [2070.0, 327220.0, 151571.0, null, 311746.0, 275353.0, 242433.0, 274228.0, 178843.0, 253032.0, 284826.0, 151571.0]])
+            year_fmat.format(consumption,0)
+            
+            
+            // plot options
+            
+            dollar=  {title: 'gallons'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var consumption_options = {'title': 'Kake: Diesel consumed for electricity generation ',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_consumption() {
+                
+                var consumption_plot = new google.visualization.LineChart(document.getElementById('consumption_chart'));
+                
+                
+                consumption_plot.draw(consumption, consumption_options);
+                return consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_consumption() {
+                var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+                consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_consumption() {
+        var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+        consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      consumption_button = document.getElementById('consumption_button')
+      consumption_button.onclick = function() {
+        if (consumption_state == plot) {
+          drawTable_consumption();
+          consumption_state = chart;
+        } else {
+          drawPlot_consumption();
+          consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  consumption_plot = drawPlot_consumption()
+      
+      document.getElementById('consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script> 
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Kake<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Kake/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Kake/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Kake/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Kake/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Kake/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Kake/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Kake/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Kake/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Kake/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Kake/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Kake/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Kake/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Kake/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Kake/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Kake/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Kake/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Kake/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Kake/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system <small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">Average Community Load (kW)(2013): 354 </p> <p class="stats">Average kWh/year(2013): 3,101,990 </p> <p class="stats">Peak Load: Unknown </p> <p class="stats">Existing nameplate wind capacity (kW): 0 </p> <p class="stats">Existing wind generation (kWh/year)(2013): 0 </p> <p class="stats">Existing nameplate solar capacity (kW): 5.8 </p> <p class="stats">Existing solar generation (kWh/year)(2013): 0 </p> <p class="stats">Existing nameplate hydro capacity (kW): 0.0 </p> <p class="stats">Existing hydro generation (kWh/year)(2013): 0 </p>
+    </div><H3>Cathedral falls (kake) <small class = "hidy" data-toggle="collapse" data-target="#Cathedral_Falls_Kake"></small> </H3>
+    <div id="Cathedral_Falls_Kake" class="collapse in" >
+     <p class="stats">Capital Cost ($): $14,744,105 </p> <p class="stats">Lifetime Savings ($): $12,141,518 </p> <p class="stats">Net Lifetime Savings ($): $-2,602,586 </p> <p class="stats">Benefit Cost Ratio: 0.823 </p> <p class="stats">Proposed Nameplate Capacity(kW): 865 </p> <p class="stats">Expected Yearly Generation (kWh/year): 3,300,000 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $20,664,474 </p> <p class="stats">Estimated Hydro Penetration Level (%): 106.38% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div><H3>Gunnuk creek hydro rehabilitation - ipec kake <small class = "hidy" data-toggle="collapse" data-target="#Gunnuk_Creek_Hydro_Rehabilitation_-_IPEC_Kake"></small> </H3>
+    <div id="Gunnuk_Creek_Hydro_Rehabilitation_-_IPEC_Kake" class="collapse in" >
+     <p class="stats">Capital Cost ($): $4,360,986 </p> <p class="stats">Lifetime Savings ($): $7,285,932 </p> <p class="stats">Net Lifetime Savings ($): $2,924,947 </p> <p class="stats">Benefit Cost Ratio: 1.671 </p> <p class="stats">Proposed Nameplate Capacity(kW): 500 </p> <p class="stats">Expected Yearly Generation (kWh/year): 1,600,000 </p> <p class="stats">Phase: Design </p> <p class="stats">Total Capital Cost: $5,795,000 </p> <p class="stats">Estimated Hydro Penetration Level (%): 51.58% </p> <p class="stats">source: <a href='http://akenergyinventory.org/catalog/entries/8330-hydropower-reconaissance-report-for-kake-alaska'> link </a> </p>
+    </div><H3>Goemere creek (washington bay, unnamed stream) <small class = "hidy" data-toggle="collapse" data-target="#Goemere_Creek_Washington_Bay_unnamed_stream"></small> </H3>
+    <div id="Goemere_Creek_Washington_Bay_unnamed_stream" class="collapse in" >
+     <p class="stats">Capital Cost ($): $9,877,848 </p> <p class="stats">Lifetime Savings ($): $-1,602,419 </p> <p class="stats">Net Lifetime Savings ($): $-11,480,267 </p> <p class="stats">Benefit Cost Ratio: -0.162 </p> <p class="stats">Proposed Nameplate Capacity(kW): 73 </p> <p class="stats">Expected Yearly Generation (kWh/year): 278,344 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $13,844,214 </p> <p class="stats">Estimated Hydro Penetration Level (%): 8.97% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Gunnuk creek <small class = "hidy" data-toggle="collapse" data-target="#Gunnuk_Creek"></small> </H3>
+    <div id="Gunnuk_Creek" class="collapse in" >
+     <p class="stats">Capital Cost ($): $5,993,734 </p> <p class="stats">Lifetime Savings ($): $3,063,826 </p> <p class="stats">Net Lifetime Savings ($): $-2,929,908 </p> <p class="stats">Benefit Cost Ratio: 0.511 </p> <p class="stats">Proposed Nameplate Capacity(kW): 300 </p> <p class="stats">Expected Yearly Generation (kWh/year): 933,000 </p> <p class="stats">Phase: Feasibility </p> <p class="stats">Total Capital Cost: $8,400,467 </p> <p class="stats">Estimated Hydro Penetration Level (%): 30.08% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Ledge lake (ledge creek) <small class = "hidy" data-toggle="collapse" data-target="#Ledge_Lake_Ledge_Creek"></small> </H3>
+    <div id="Ledge_Lake_Ledge_Creek" class="collapse in" >
+     <p class="stats">Capital Cost ($): $12,072,285 </p> <p class="stats">Lifetime Savings ($): $4,300,947 </p> <p class="stats">Net Lifetime Savings ($): $-7,771,338 </p> <p class="stats">Benefit Cost Ratio: 0.356 </p> <p class="stats">Proposed Nameplate Capacity(kW): 400 </p> <p class="stats">Expected Yearly Generation (kWh/year): 1,525,172 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $16,919,807 </p> <p class="stats">Estimated Hydro Penetration Level (%): 49.17% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1983-0372.pdf'> link </a> </p>
+    </div><H3>Rowan bay (6415 road) -- 0 <small class = "hidy" data-toggle="collapse" data-target="#Rowan_Bay_6415_Road_--_0"></small> </H3>
+    <div id="Rowan_Bay_6415_Road_--_0" class="collapse in" >
+     <p class="stats">Capital Cost ($): $9,515,150 </p> <p class="stats">Lifetime Savings ($): $2,075,296 </p> <p class="stats">Net Lifetime Savings ($): $-7,439,854 </p> <p class="stats">Benefit Cost Ratio: 0.218 </p> <p class="stats">Proposed Nameplate Capacity(kW): 250 </p> <p class="stats">Expected Yearly Generation (kWh/year): 953,232 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $13,335,877 </p> <p class="stats">Estimated Hydro Penetration Level (%): 30.73% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Rowan bay (big lake) -- 1605 lake <small class = "hidy" data-toggle="collapse" data-target="#Rowan_Bay_Big_Lake_--_1605_Lake"></small> </H3>
+    <div id="Rowan_Bay_Big_Lake_--_1605_Lake" class="collapse in" >
+     <p class="stats">Capital Cost ($): $14,666,100 </p> <p class="stats">Lifetime Savings ($): $9,536,281 </p> <p class="stats">Net Lifetime Savings ($): $-5,129,818 </p> <p class="stats">Benefit Cost Ratio: 0.650 </p> <p class="stats">Proposed Nameplate Capacity(kW): 700 </p> <p class="stats">Expected Yearly Generation (kWh/year): 2,669,050 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $20,555,146 </p> <p class="stats">Estimated Hydro Penetration Level (%): 86.04% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Rowan bay (stink creek/ erode creek) -- erode creek, stink creek <small class = "hidy" data-toggle="collapse" data-target="#Rowan_Bay_Stink_Creek/_Erode_Creek_--_Erode_Creek_Stink_Creek"></small> </H3>
+    <div id="Rowan_Bay_Stink_Creek/_Erode_Creek_--_Erode_Creek_Stink_Creek" class="collapse in" >
+     <p class="stats">Capital Cost ($): $10,405,314 </p> <p class="stats">Lifetime Savings ($): $3,812,457 </p> <p class="stats">Net Lifetime Savings ($): $-6,592,857 </p> <p class="stats">Benefit Cost Ratio: 0.366 </p> <p class="stats">Proposed Nameplate Capacity(kW): 350 </p> <p class="stats">Expected Yearly Generation (kWh/year): 1,334,525 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $14,583,478 </p> <p class="stats">Estimated Hydro Penetration Level (%): 43.02% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Rowan bay (unnamed creeks) <small class = "hidy" data-toggle="collapse" data-target="#Rowan_Bay_Unnamed_Creeks"></small> </H3>
+    <div id="Rowan_Bay_Unnamed_Creeks" class="collapse in" >
+     <p class="stats">Capital Cost ($): $10,010,551 </p> <p class="stats">Lifetime Savings ($): $914,161 </p> <p class="stats">Net Lifetime Savings ($): $-9,096,389 </p> <p class="stats">Benefit Cost Ratio: 0.091 </p> <p class="stats">Proposed Nameplate Capacity(kW): 200 </p> <p class="stats">Expected Yearly Generation (kWh/year): 762,586 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $14,030,202 </p> <p class="stats">Estimated Hydro Penetration Level (%): 24.58% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div><H3>Towers creek <small class = "hidy" data-toggle="collapse" data-target="#Towers_Creek"></small> </H3>
+    <div id="Towers_Creek" class="collapse in" >
+     <p class="stats">Capital Cost ($): $214,562,690 </p> <p class="stats">Lifetime Savings ($): $-37,437,989 </p> <p class="stats">Net Lifetime Savings ($): $-252,000,679 </p> <p class="stats">Benefit Cost Ratio: -0.174 </p> <p class="stats">Proposed Nameplate Capacity(kW): 13,000 </p> <p class="stats">Expected Yearly Generation (kWh/year): 49,568,078 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $300,718,505 </p> <p class="stats">Estimated Hydro Penetration Level (%): 1,597.94% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/HYD-1980-0241.pdf'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential electricity generation from diesel that could be offset by installing new Hydropower generation infrastructure. This component only uses existing proposed projects to base its calculations on, and does not attempt to model values
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Kake_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Kake_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Generated from Model Version 0.24.6 and Data Version 0.24.0 on 2017-01-24</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+      </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Pedro_Bay - Consumption summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+        
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // setup
+        google.charts.load('current', {'packages':['corechart','table']});
+        google.charts.setOnLoadCallback(drawCharts);
+    
+        // for the charts
+        function drawCharts() {
+            
+            // set up vars (data/options) for each chart
+            var state_plot = 'plot';
+            var state_chart = 'chart';
+            
+            var year_fmat = new google.visualization.NumberFormat({pattern:'####'});
+            
+            
+                 
+            
+                // ################ Start rb_consumtions_percents ####################
+                // data
+                var rb_consumtions_percents = google.visualization.arrayToDataTable(
+                    [['name', 'value'], ['Fuel Oil', 86.61417323], ['Electricity', 1.18110236], ['Utility Gas', 0.0], ['Propane', 0.0], ['Coal', 0.0], ['Wood', 11.41732283], ['Solar', 0.0], ['Other', 0.78740157]]
+                );
+                year_fmat.format(rb_consumtions_percents,0);
+                
+                // plot options 
+                vertical_label = {title: 'pie' }; 
+                
+                width = 1000
+                height = 600
+    
+                var rb_consumtions_percents_options = {
+                    'title': 'Pedro Bay: Residential building heating fuels consumption',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var rb_consumtions_percents_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_rb_consumtions_percents() {
+                    var rb_consumtions_percents_plot =
+                        new google.visualization.PieChart(
+                            document.getElementById('rb_consumtions_percents_chart')
+                        );
+                    
+                    rb_consumtions_percents_plot.draw(rb_consumtions_percents, rb_consumtions_percents_options);
+                    return rb_consumtions_percents_plot;
+                };
+                
+                // draw table
+                function drawTable_rb_consumtions_percents() {
+                    var rb_consumtions_percents_table = 
+                        new google.visualization.Table(
+                            document.getElementById('rb_consumtions_percents_chart')
+                        );
+                    rb_consumtions_percents_table.draw(
+                        rb_consumtions_percents,
+                        {
+                            'title': 'Residential building heating fuels consumption',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_rb_consumtions_percents() {
+                    var rb_consumtions_percents_table = new google.visualization.Table(
+                        document.getElementById('rb_consumtions_percents_chart')
+                    );
+                    rb_consumtions_percents_table.draw(
+                        rb_consumtions_percents, {'title': 'Residential building heating fuels consumption','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                rb_consumtions_percents_button = document.getElementById('rb_consumtions_percents_button');
+                rb_consumtions_percents_button.onclick = function() {
+                    if (rb_consumtions_percents_state == state_plot) {
+                        drawTable_rb_consumtions_percents();
+                        rb_consumtions_percents_state = state_chart;
+                    } else {
+                    drawPlot_rb_consumtions_percents();
+                    rb_consumtions_percents_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  rb_consumtions_percents_plot = drawPlot_rb_consumtions_percents();
+              
+                document.getElementById('rb_consumtions_percents_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + rb_consumtions_percents_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                // ################ Start non_residential_buildings ####################
+                // data
+                var non_residential_buildings = google.visualization.arrayToDataTable(
+                    [['name', 'value'], ['Food Service and Drinking Places', 3.0487852733349521], ['Office', 8.8397928650900752], ['Warehousing', 2.5109494810778656], ['Education - K - 12', 34.191606672004511], ['Unknown', 22.757445465259835], ['Other', 15.561083089808347], ['Public Assembly', 11.969543055750709], ['Health Care - Hospitals', 1.1207940976737052]]
+                );
+                year_fmat.format(non_residential_buildings,0);
+                
+                // plot options 
+                vertical_label = {title: 'pie' }; 
+                
+                width = 1000
+                height = 600
+    
+                var non_residential_buildings_options = {
+                    'title': 'Pedro Bay: Non-residential building heating fuels consumption',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var non_residential_buildings_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_non_residential_buildings() {
+                    var non_residential_buildings_plot =
+                        new google.visualization.PieChart(
+                            document.getElementById('non_residential_buildings_chart')
+                        );
+                    
+                    non_residential_buildings_plot.draw(non_residential_buildings, non_residential_buildings_options);
+                    return non_residential_buildings_plot;
+                };
+                
+                // draw table
+                function drawTable_non_residential_buildings() {
+                    var non_residential_buildings_table = 
+                        new google.visualization.Table(
+                            document.getElementById('non_residential_buildings_chart')
+                        );
+                    non_residential_buildings_table.draw(
+                        non_residential_buildings,
+                        {
+                            'title': 'Non-residential building heating fuels consumption',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_non_residential_buildings() {
+                    var non_residential_buildings_table = new google.visualization.Table(
+                        document.getElementById('non_residential_buildings_chart')
+                    );
+                    non_residential_buildings_table.draw(
+                        non_residential_buildings, {'title': 'Non-residential building heating fuels consumption','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                non_residential_buildings_button = document.getElementById('non_residential_buildings_button');
+                non_residential_buildings_button.onclick = function() {
+                    if (non_residential_buildings_state == state_plot) {
+                        drawTable_non_residential_buildings();
+                        non_residential_buildings_state = state_chart;
+                    } else {
+                    drawPlot_non_residential_buildings();
+                    non_residential_buildings_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  non_residential_buildings_plot = drawPlot_non_residential_buildings();
+              
+                document.getElementById('non_residential_buildings_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + non_residential_buildings_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                // ################ Start consumption ####################
+                // data
+                var consumption = google.visualization.arrayToDataTable(
+                    [[{label: 'Year', type: 'number'}, {type: 'string', role: 'annotation'}, {label: 'Total', type: 'number'}, {label: 'Residential', type: 'number'}, {label: 'Non-residential', type: 'number'}, {type: 'string', role: 'annotationText'}], [2003, null, 165355.0, 65190.0, 100165.0, null], [2004, null, 212284.0, 82909.0, 129375.0, null], [2005, null, 246953.0, 82188.0, 164765.0, null], [2006, null, 237475.0, 86996.0, 150479.0, null], [2007, null, 232618.0, 76934.0, 155684.0, null], [2008, null, 231273.0, 70142.0, 161131.0, null], [2009, null, 233755.0, 71584.0, 162171.0, null], [2010, null, 236982.0, 66434.0, 170548.0, null], [2011, null, 200942.0, 65151.0, 135791.0, null], [2012, null, 174562.0, 59929.0, 114633.0, null], [2013, null, 153126.0, 56858.0, 96268.0, null], [2014, 'start of forecast', 179123.0, 63559.0, 115564.0, 'start of forecast'], [2015, null, 178789.0, 63225.0, 115564.0, null], [2016, null, 178605.0, 63041.0, 115564.0, null], [2017, null, 178436.0, 62872.0, 115564.0, null], [2018, null, 178332.0, 62768.0, 115564.0, null], [2019, null, 178293.0, 62729.0, 115564.0, null], [2020, null, 178265.0, 62701.0, 115564.0, null], [2021, null, 178219.0, 62655.0, 115564.0, null], [2022, null, 178124.0, 62560.0, 115564.0, null], [2023, null, 177966.0, 62402.0, 115564.0, null], [2024, null, 177857.0, 62293.0, 115564.0, null], [2025, null, 177794.0, 62230.0, 115564.0, null], [2026, null, 177795.0, 62231.0, 115564.0, null], [2027, null, 177762.0, 62198.0, 115564.0, null], [2028, null, 177701.0, 62137.0, 115564.0, null], [2029, null, 177941.0, 62377.0, 115564.0, null], [2030, null, 178099.0, 62535.0, 115564.0, null], [2031, null, 178172.0, 62608.0, 115564.0, null], [2032, null, 178029.0, 62465.0, 115564.0, null], [2033, null, 177829.0, 62265.0, 115564.0, null], [2034, null, 177646.0, 62082.0, 115564.0, null], [2035, null, 177534.0, 61970.0, 115564.0, null], [2036, null, 177527.0, 61963.0, 115564.0, null], [2037, null, 177606.0, 62042.0, 115564.0, null], [2038, null, 177667.0, 62103.0, 115564.0, null], [2039, null, 177645.0, 62081.0, 115564.0, null], [2040, null, 177570.0, 62006.0, 115564.0, null]]
+                );
+                year_fmat.format(consumption,0);
+                
+                // plot options 
+                vertical_label = {title: 'kWh' }; 
+                
+                width = 1000
+                height = 600
+    
+                var consumption_options = {
+                    'title': 'Pedro Bay: Electricity consumed',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var consumption_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_consumption() {
+                    var consumption_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('consumption_chart')
+                        );
+                    
+                    consumption_plot.draw(consumption, consumption_options);
+                    return consumption_plot;
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = 
+                        new google.visualization.Table(
+                            document.getElementById('consumption_chart')
+                        );
+                    consumption_table.draw(
+                        consumption,
+                        {
+                            'title': 'Electricity Consumed',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = new google.visualization.Table(
+                        document.getElementById('consumption_chart')
+                    );
+                    consumption_table.draw(
+                        consumption, {'title': 'Electricity Consumed','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                consumption_button = document.getElementById('consumption_button');
+                consumption_button.onclick = function() {
+                    if (consumption_state == state_plot) {
+                        drawTable_consumption();
+                        consumption_state = state_chart;
+                    } else {
+                    drawPlot_consumption();
+                    consumption_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  consumption_plot = drawPlot_consumption();
+              
+                document.getElementById('consumption_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                // ################ Start diesel_consumption ####################
+                // data
+                var diesel_consumption = google.visualization.arrayToDataTable(
+                    [['name', 'value'], ['Utility Diesel (gallons)', 19794.061024698847], ['Water/Wastewater Heating Oil (gallons)', 0.0], ['Non-residential Heating Oil (gallons)', 39540.80534339214], ['Residential Heating Oil (gallons)', 12717.429879125677]]
+                );
+                year_fmat.format(diesel_consumption,0);
+                
+                // plot options 
+                vertical_label = {title: 'pie' }; 
+                
+                width = 1000
+                height = 600
+    
+                var diesel_consumption_options = {
+                    'title': 'Pedro Bay: Energy consumption by sector',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var diesel_consumption_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_diesel_consumption() {
+                    var diesel_consumption_plot =
+                        new google.visualization.PieChart(
+                            document.getElementById('diesel_consumption_chart')
+                        );
+                    
+                    diesel_consumption_plot.draw(diesel_consumption, diesel_consumption_options);
+                    return diesel_consumption_plot;
+                };
+                
+                // draw table
+                function drawTable_diesel_consumption() {
+                    var diesel_consumption_table = 
+                        new google.visualization.Table(
+                            document.getElementById('diesel_consumption_chart')
+                        );
+                    diesel_consumption_table.draw(
+                        diesel_consumption,
+                        {
+                            'title': 'Energy Consumption by sector',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_diesel_consumption() {
+                    var diesel_consumption_table = new google.visualization.Table(
+                        document.getElementById('diesel_consumption_chart')
+                    );
+                    diesel_consumption_table.draw(
+                        diesel_consumption, {'title': 'Energy Consumption by sector','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                diesel_consumption_button = document.getElementById('diesel_consumption_button');
+                diesel_consumption_button.onclick = function() {
+                    if (diesel_consumption_state == state_plot) {
+                        drawTable_diesel_consumption();
+                        diesel_consumption_state = state_chart;
+                    } else {
+                    drawPlot_diesel_consumption();
+                    diesel_consumption_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  diesel_consumption_plot = drawPlot_diesel_consumption();
+              
+                document.getElementById('diesel_consumption_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + diesel_consumption_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                // ################ Start costs ####################
+                // data
+                var costs = google.visualization.arrayToDataTable(
+                    [['name', 'value'], ['Water/Wastewater Heating Fuel', 0.0], ['Non-residential Heating Fuel', 201082.91187714174], ['Residential Heating Fuel', 72626.26131745361], ['Water/Wastewater Electricity', 0.0], ['Non-residential Electricity', 66545.2781859274], ['Residential Electricity', 62189.69613443771]]
+                );
+                year_fmat.format(costs,0);
+                
+                // plot options 
+                vertical_label = {title: 'pie' }; 
+                
+                width = 1000
+                height = 600
+    
+                var costs_options = {
+                    'title': 'Pedro Bay: Energy costs by sector',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var costs_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_costs() {
+                    var costs_plot =
+                        new google.visualization.PieChart(
+                            document.getElementById('costs_chart')
+                        );
+                    
+                    costs_plot.draw(costs, costs_options);
+                    return costs_plot;
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = 
+                        new google.visualization.Table(
+                            document.getElementById('costs_chart')
+                        );
+                    costs_table.draw(
+                        costs,
+                        {
+                            'title': 'Energy costs by Sector',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = new google.visualization.Table(
+                        document.getElementById('costs_chart')
+                    );
+                    costs_table.draw(
+                        costs, {'title': 'Energy costs by Sector','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                costs_button = document.getElementById('costs_button');
+                costs_button.onclick = function() {
+                    if (costs_state == state_plot) {
+                        drawTable_costs();
+                        costs_state = state_chart;
+                    } else {
+                    drawPlot_costs();
+                    costs_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  costs_plot = drawPlot_costs();
+              
+                document.getElementById('costs_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+      };
+    </script>
+    
+
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     
+    <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Pedro Bay<span class="page-subtitle"> Consumption</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Pedro_Bay/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Pedro_Bay/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Pedro_Bay/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Pedro_Bay/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Pedro_Bay/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Pedro_Bay/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Pedro_Bay/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Pedro_Bay/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Pedro_Bay/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Pedro_Bay/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Pedro_Bay/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Pedro_Bay/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Pedro_Bay/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Pedro_Bay/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Pedro_Bay/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Pedro_Bay/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Pedro_Bay/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Pedro_Bay/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+    <div class = 'charts'>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Residential buildings  <small class="hidy" data-toggle="collapse" data-target="#residential_buildings"></small> </div>
+                <div id="residential_buildings" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="residential_buildings">
+                    
+                        
+                        <table class="table table-striped table-condensed"  >
+                        <tbody>
+                            <tr>
+                                
+                                    <th>  </th>
+                                
+                                    <th> Number Houses </th>
+                                
+                                    <th> Houshold Avg. Square Feet </th>
+                                
+                                    <th> Average gallons/sf </th>
+                                
+                                    <th> Average gallons/houshold </th>
+                                
+                            </tr><tr>
+                                
+                                    <td> BEES </td>  
+                                
+                                    <td> 0 </td>  
+                                
+                                    <td> 0 </td>  
+                                
+                                    <td> 0.00 </td>  
+                                
+                                    <td> 0.00 </td>  
+                                
+                            </tr><tr>
+                                
+                                    <td> Post-Retrofit </td>  
+                                
+                                    <td> 13 </td>  
+                                
+                                    <td> 1,078 </td>  
+                                
+                                    <td> 0.80 </td>  
+                                
+                                    <td> 857.90 </td>  
+                                
+                            </tr><tr>
+                                
+                                    <td> Pre-Retrofit </td>  
+                                
+                                    <td> 5 </td>  
+                                
+                                    <td> 1,254 </td>  
+                                
+                                    <td> 0.99 </td>  
+                                
+                                    <td> 1,240.09 </td>  
+                                
+                            </tr>
+                        </tbody>
+                        </table>
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Residential building heating fuels consumption  <small class="hidy" data-toggle="collapse" data-target="#residential_building_heating_fuels_consumption"></small> </div>
+                <div id="residential_building_heating_fuels_consumption" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="rb_consumtions_percents">
+                    
+                        
+                            <div style="float:left; width:30%"> <p>Percent of residential heating fuel consumption per type</p></div>
+                            <div style="float:right; width:70%"><div id="rb_consumtions_percents_chart"></div></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='rb_consumtions_percents_button'>Plot/Table</button>
+            <div id='rb_consumtions_percents_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Pedro_Bay_rb_consumtions_percents.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Non-residential building heating fuels consumption  <small class="hidy" data-toggle="collapse" data-target="#non-residential_building_heating_fuels_consumption"></small> </div>
+                <div id="non-residential_building_heating_fuels_consumption" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="non_residential_buildings">
+                    
+                        
+                            <div style="float:left; width:30%"> <p>There is a estimated total of 55,842 square feet for the 20 non-residential buildings in this community. <br><br>75.0% of the buildings have been identified. The others are assumed to exist.  <br><br> 18.3% of the assumed square footage is from measured sources. <br><br> The break down of heating fuel consumption by building type is pesented in the pie chart</p></div>
+                            <div style="float:right; width:70%"><div id="non_residential_buildings_chart"></div></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='non_residential_buildings_button'>Plot/Table</button>
+            <div id='non_residential_buildings_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Pedro_Bay_non_residential_buildings.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Electricity consumed  <small class="hidy" data-toggle="collapse" data-target="#electricity_consumed"></small> </div>
+                <div id="electricity_consumed" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="consumption">
+                    
+                        
+                        <div id="consumption_chart"></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+            <div id='consumption_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Pedro_Bay_consumption.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Energy consumption by sector  <small class="hidy" data-toggle="collapse" data-target="#energy_consumption_by_sector"></small> </div>
+                <div id="energy_consumption_by_sector" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="diesel_consumption">
+                    
+                        
+                            <div style="float:left; width:30%"> <p></p></div>
+                            <div style="float:right; width:70%"><div id="diesel_consumption_chart"></div></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='diesel_consumption_button'>Plot/Table</button>
+            <div id='diesel_consumption_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Pedro_Bay_diesel_consumption.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading"> Energy costs by sector  <small class="hidy" data-toggle="collapse" data-target="#energy_costs_by_sector"></small> </div>
+                <div id="energy_costs_by_sector" class="panel-collapse collapse in">
+                <div class="panel-body center-block">
+                    <div class="costs">
+                    
+                        
+                            <div style="float:left; width:30%"> <p></p></div>
+                            <div style="float:right; width:70%"><div id="costs_chart"></div></div>
+                        
+                    
+                    </div>
+                </div>
+        <div class="panel-footer">
+            
+            <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+            <div id='costs_png'></div>
+            <button class="btn btn-default" type='button' onclick="location.href='csv/Pedro_Bay_costs.csv'">Table as csv</button>
+            
+        </div>
+        </div>
+        </div>
+        
+    </div>
+
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            
+
+
+          </div>
+          <div class="col-sm-9">
+            
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 0.27.3, Generated from Model Version 0.27.5 and Data Version 0.27.0 on 2017-06-26</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

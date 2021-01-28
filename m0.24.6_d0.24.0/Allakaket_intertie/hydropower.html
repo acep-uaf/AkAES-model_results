@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Allakaket_intertie - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Allakaket (unnamed stream nw) -- unnamed creek', type: 'number'}, {label: 'Alatna/ allakaket (unnamed creek 2.5 mi s of) -- unnamed creek', type: 'number'}], [2021.0, 225317.0, 777888.0, 395451.0], [2022.0, 231640.0, 770134.0, 395864.0], [2023.0, 236015.0, 761325.0, 394903.0], [2024.0, 239571.0, 752231.0, 393423.0], [2025.0, 243917.0, 743950.0, 392639.0], [2026.0, 249181.0, 736564.0, 392646.0], [2027.0, 253542.0, 728815.0, 392062.0], [2028.0, 257183.0, 720824.0, 391024.0], [2029.0, 262080.0, 713941.0, 391026.0], [2030.0, 265086.0, 705999.0, 389682.0], [2031.0, 270477.0, 699930.0, 390231.0], [2032.0, 275854.0, 694081.0, 390851.0], [2033.0, 281315.0, 688514.0, 391617.0], [2034.0, 287489.0, 683780.0, 393098.0], [2035.0, 291050.0, 677340.0, 392582.0], [2036.0, 296816.0, 672624.0, 393812.0], [2037.0, 300377.0, 666596.0, 393444.0], [2038.0, 306199.0, 662321.0, 394862.0], [2039.0, 310679.0, 657318.0, 395333.0], [2040.0, 317025.0, 653786.0, 397286.0], [2041.0, 317025.0, 646077.0, 394496.0], [2042.0, 317025.0, 638548.0, 391772.0], [2043.0, 317025.0, 631196.0, 389112.0], [2044.0, 317025.0, 624016.0, 386514.0], [2045.0, 317025.0, 617004.0, 383977.0], [2046.0, 317025.0, 610157.0, 381499.0], [2047.0, 317025.0, 603470.0, 379079.0], [2048.0, 317025.0, 596940.0, 376717.0], [2049.0, 317025.0, 590563.0, 374409.0], [2050.0, 317025.0, 584336.0, 372156.0], [2051.0, 317025.0, 578254.0, 369955.0], [2052.0, 317025.0, 572315.0, 367806.0], [2053.0, 317025.0, 566515.0, 365707.0], [2054.0, 317025.0, 560851.0, 363658.0], [2055.0, 317025.0, 555320.0, 361656.0], [2056.0, 317025.0, 549919.0, 359702.0], [2057.0, 317025.0, 544644.0, 357793.0], [2058.0, 317025.0, 539493.0, 355929.0], [2059.0, 317025.0, 534462.0, 354109.0], [2060.0, 317025.0, 529549.0, 352331.0], [2061.0, 317025.0, 524752.0, 350595.0], [2062.0, 317025.0, 520067.0, 348900.0], [2063.0, 317025.0, 515491.0, 347245.0], [2064.0, 317025.0, 511023.0, 345628.0], [2065.0, 317025.0, 506660.0, 344049.0], [2066.0, 317025.0, 502399.0, 342507.0], [2067.0, 317025.0, 498238.0, 341001.0], [2068.0, 317025.0, 494174.0, 339531.0], [2069.0, 317025.0, 490206.0, 338095.0], [2070.0, 317025.0, 486330.0, 336693.0]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: '$#,###'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Allakaket intertie: Estimated electricity generation fuel costs per year',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.LineChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Estimated Electricity Generation Fuel Costs per Year','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Estimated Electricity Generation Fuel Costs per Year','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var consumption = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Allakaket (unnamed stream nw) -- unnamed creek', type: 'number'}, {label: 'Alatna/ allakaket (unnamed creek 2.5 mi s of) -- unnamed creek', type: 'number'}], [2021.0, 57861.0, 37671.0, 42225.0], [2022.0, 57861.0, 37671.0, 42225.0], [2023.0, 57861.0, 37671.0, 42225.0], [2024.0, 57861.0, 37671.0, 42225.0], [2025.0, 57861.0, 37671.0, 42225.0], [2026.0, 57861.0, 37671.0, 42225.0], [2027.0, 57861.0, 37671.0, 42225.0], [2028.0, 57861.0, 37671.0, 42225.0], [2029.0, 57861.0, 37671.0, 42225.0], [2030.0, 57861.0, 37671.0, 42225.0], [2031.0, 57861.0, 37671.0, 42225.0], [2032.0, 57861.0, 37671.0, 42225.0], [2033.0, 57861.0, 37671.0, 42225.0], [2034.0, 57941.0, 37752.0, 42306.0], [2035.0, 57941.0, 37752.0, 42306.0], [2036.0, 57941.0, 37752.0, 42306.0], [2037.0, 57941.0, 37752.0, 42306.0], [2038.0, 57941.0, 37752.0, 42306.0], [2039.0, 57941.0, 37752.0, 42306.0], [2040.0, 57941.0, 37752.0, 42306.0], [2041.0, 57941.0, 37752.0, 42306.0], [2042.0, 57941.0, 37752.0, 42306.0], [2043.0, 57941.0, 37752.0, 42306.0], [2044.0, 57941.0, 37752.0, 42306.0], [2045.0, 57941.0, 37752.0, 42306.0], [2046.0, 57941.0, 37752.0, 42306.0], [2047.0, 57941.0, 37752.0, 42306.0], [2048.0, 57941.0, 37752.0, 42306.0], [2049.0, 57941.0, 37752.0, 42306.0], [2050.0, 57941.0, 37752.0, 42306.0], [2051.0, 57941.0, 37752.0, 42306.0], [2052.0, 57941.0, 37752.0, 42306.0], [2053.0, 57941.0, 37752.0, 42306.0], [2054.0, 57941.0, 37752.0, 42306.0], [2055.0, 57941.0, 37752.0, 42306.0], [2056.0, 57941.0, 37752.0, 42306.0], [2057.0, 57941.0, 37752.0, 42306.0], [2058.0, 57941.0, 37752.0, 42306.0], [2059.0, 57941.0, 37752.0, 42306.0], [2060.0, 57941.0, 37752.0, 42306.0], [2061.0, 57941.0, 37752.0, 42306.0], [2062.0, 57941.0, 37752.0, 42306.0], [2063.0, 57941.0, 37752.0, 42306.0], [2064.0, 57941.0, 37752.0, 42306.0], [2065.0, 57941.0, 37752.0, 42306.0], [2066.0, 57941.0, 37752.0, 42306.0], [2067.0, 57941.0, 37752.0, 42306.0], [2068.0, 57941.0, 37752.0, 42306.0], [2069.0, 57941.0, 37752.0, 42306.0], [2070.0, 57941.0, 37752.0, 42306.0]])
+            year_fmat.format(consumption,0)
+            
+            
+            // plot options
+            
+            dollar=  {title: 'gallons'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var consumption_options = {'title': 'Allakaket intertie: Diesel consumed for electricity generation ',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_consumption() {
+                
+                var consumption_plot = new google.visualization.LineChart(document.getElementById('consumption_chart'));
+                
+                
+                consumption_plot.draw(consumption, consumption_options);
+                return consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_consumption() {
+                var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+                consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_consumption() {
+        var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+        consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      consumption_button = document.getElementById('consumption_button')
+      consumption_button.onclick = function() {
+        if (consumption_state == plot) {
+          drawTable_consumption();
+          consumption_state = chart;
+        } else {
+          drawPlot_consumption();
+          consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  consumption_plot = drawPlot_consumption()
+      
+      document.getElementById('consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script> 
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Allakaket intertie<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Allakaket_intertie/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Allakaket_intertie/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Allakaket_intertie/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Allakaket_intertie/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Allakaket_intertie/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Allakaket_intertie/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Allakaket_intertie/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Allakaket_intertie/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Allakaket_intertie/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Allakaket_intertie/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Allakaket_intertie/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Allakaket_intertie/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Allakaket_intertie/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Allakaket_intertie/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Allakaket_intertie/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Allakaket_intertie/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Allakaket_intertie/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Allakaket_intertie/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system <small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">Average Community Load (kW)(2013): 83 </p> <p class="stats">Average kWh/year(2013): 725,568 </p> <p class="stats">Peak Load: Unknown </p> <p class="stats">Existing nameplate wind capacity (kW): 0 </p> <p class="stats">Existing wind generation (kWh/year)(2013): 0 </p> <p class="stats">Existing nameplate solar capacity (kW): 0.0 </p> <p class="stats">Existing solar generation (kWh/year)(2013): 0 </p> <p class="stats">Existing nameplate hydro capacity (kW): 0.0 </p> <p class="stats">Existing hydro generation (kWh/year)(2013): 0 </p>
+    </div><H3>Allakaket (unnamed stream nw) -- unnamed creek <small class = "hidy" data-toggle="collapse" data-target="#Allakaket_unnamed_stream_NW_--_Unnamed_Creek"></small> </H3>
+    <div id="Allakaket_unnamed_stream_NW_--_Unnamed_Creek" class="collapse in" >
+     <p class="stats">Capital Cost ($): $7,751,784 </p> <p class="stats">Lifetime Savings ($): $-379,687 </p> <p class="stats">Net Lifetime Savings ($): $-8,131,472 </p> <p class="stats">Benefit Cost Ratio: -0.049 </p> <p class="stats">Proposed Nameplate Capacity(kW): 105 </p> <p class="stats">Expected Yearly Generation (kWh/year): 333,000 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $10,864,447 </p> <p class="stats">Estimated Hydro Penetration Level (%): 45.90% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1980-0226.pdf'> link </a> </p>
+    </div><H3>Alatna/ allakaket (unnamed creek 2.5 mi s of) -- unnamed creek <small class = "hidy" data-toggle="collapse" data-target="#Alatna/_Allakaket_unnamed_creek_2.5_mi_S_of_--_Unnamed_Creek"></small> </H3>
+    <div id="Alatna/_Allakaket_unnamed_creek_2.5_mi_S_of_--_Unnamed_Creek" class="collapse in" >
+     <p class="stats">Capital Cost ($): $2,804,963 </p> <p class="stats">Lifetime Savings ($): $700,846 </p> <p class="stats">Net Lifetime Savings ($): $-2,104,117 </p> <p class="stats">Benefit Cost Ratio: 0.250 </p> <p class="stats">Proposed Nameplate Capacity(kW): 82 </p> <p class="stats">Expected Yearly Generation (kWh/year): 257,887 </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total Capital Cost: $3,931,272 </p> <p class="stats">Estimated Hydro Penetration Level (%): 35.54% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1980-0226.pdf'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential electricity generation from diesel that could be offset by installing new Hydropower generation infrastructure. This component only uses existing proposed projects to base its calculations on, and does not attempt to model values
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Allakaket_intertie_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Allakaket_intertie_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Generated from Model Version 0.24.6 and Data Version 0.24.0 on 2017-01-24</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+      </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

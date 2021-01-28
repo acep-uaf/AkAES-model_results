@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Central - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    // setup
+    google.charts.load('current', {'packages':['corechart','table']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    // for the charts
+    function drawCharts() {
+        
+        // set up vars (data/options) for each chart
+        var plot = 'plot'
+        var chart = 'chart'
+        
+        var year_fmat = new google.visualization.NumberFormat({pattern:'####'})
+        //~ var cur_fmat = new google.visualization.NumberFormat({prefix:'$'})
+        // make each chart
+        
+            
+            // data
+            var costs = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Central (circle hot springs, boulder creek)', type: 'number'}, {label: 'Central(circle hot springs, crooked creek)', type: 'number'}, {label: 'Central (circle hot springs, ketchem creek) -- ketchum creek', type: 'number'}, {label: 'Central (circle hot springs, lower deadwood creek)', type: 'number'}, {label: 'Central (circle hot springs, portage creek)', type: 'number'}, {label: 'Central (circle hot springs, upper deadwood creek)', type: 'number'}], [2021.0, 123098.0, 808451.0, 761638.0, 527880.0, 549866.0, 504122.0, 643812.0], [2022.0, 127735.0, 796360.0, 750453.0, 521221.0, 542782.0, 497924.0, 634909.0], [2023.0, 130631.0, 783756.0, 738734.0, 513922.0, 535067.0, 491074.0, 625418.0], [2024.0, 133096.0, 771276.0, 727119.0, 506623.0, 527361.0, 484214.0, 615978.0], [2025.0, 136453.0, 759568.0, 716255.0, 499974.0, 520316.0, 477993.0, 607238.0], [2026.0, 140265.0, 748409.0, 705920.0, 493756.0, 513711.0, 472194.0, 598979.0], [2027.0, 142920.0, 736846.0, 695163.0, 487019.0, 506596.0, 465865.0, 590248.0], [2028.0, 145865.0, 725876.0, 684978.0, 480760.0, 499968.0, 460005.0, 582042.0], [2029.0, 149265.0, 715433.0, 675303.0, 474919.0, 493766.0, 454553.0, 574299.0], [2030.0, 151787.0, 704844.0, 665464.0, 468824.0, 487318.0, 448839.0, 566347.0], [2031.0, 155655.0, 695217.0, 656570.0, 463585.0, 481736.0, 443972.0, 559296.0], [2032.0, 159223.0, 685565.0, 647632.0, 458218.0, 476033.0, 438967.0, 552158.0], [2033.0, 163113.0, 676502.0, 639267.0, 453340.0, 470827.0, 434444.0, 545551.0], [2034.0, 167465.0, 667941.0, 631388.0, 448866.0, 466033.0, 430316.0, 539388.0], [2035.0, 170037.0, 658745.0, 622859.0, 443661.0, 460516.0, 425449.0, 532534.0], [2036.0, 174075.0, 650376.0, 615140.0, 439190.0, 455739.0, 421308.0, 526452.0], [2037.0, 177114.0, 641918.0, 607317.0, 434538.0, 450789.0, 416979.0, 520228.0], [2038.0, 181515.0, 634394.0, 600413.0, 430732.0, 446691.0, 413487.0, 514885.0], [2039.0, 184218.0, 626071.0, 592695.0, 426038.0, 441713.0, 409100.0, 508692.0], [2040.0, 189091.0, 619257.0, 586473.0, 422769.0, 438166.0, 406132.0, 503958.0], [2041.0, 189461.0, 610382.0, 578175.0, 417356.0, 432481.0, 401011.0, 497114.0], [2042.0, 189461.0, 601354.0, 569712.0, 411708.0, 426569.0, 395650.0, 490070.0], [2043.0, 189830.0, 592907.0, 561815.0, 406563.0, 421165.0, 390784.0, 483560.0], [2044.0, 189830.0, 584297.0, 553743.0, 401177.0, 415526.0, 385671.0, 476842.0], [2045.0, 190199.0, 576258.0, 546230.0, 396287.0, 410389.0, 381048.0, 470651.0], [2046.0, 190199.0, 568047.0, 538532.0, 391151.0, 405012.0, 376172.0, 464244.0], [2047.0, 190568.0, 560398.0, 531384.0, 386504.0, 400131.0, 371780.0, 458357.0], [2048.0, 190568.0, 552568.0, 524043.0, 381606.0, 395002.0, 367130.0, 452247.0], [2049.0, 190938.0, 545290.0, 517243.0, 377192.0, 390364.0, 362958.0, 446650.0], [2050.0, 190938.0, 537822.0, 510242.0, 372520.0, 385473.0, 358523.0, 440823.0]])
+            year_fmat.format(costs,0)
+            
+            
+            // plot options
+            
+            dollar =  {format: '$#,###'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var costs_options = {'title': 'Central: Estimated electricity generation costs per year',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var costs_state = plot;
+        
+            // draw plot 
+            function drawPlot_costs() {
+                
+                var costs_plot = new google.visualization.LineChart(document.getElementById('costs_chart'));
+                
+                
+                costs_plot.draw(costs, costs_options);
+                return costs_plot
+            }   
+            
+            // draw table
+            function drawTable_costs() {
+                var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+                costs_table.draw(costs, {'title': 'Estimated Electricity Generation Costs per Year','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_costs() {
+        var costs_table = new google.visualization.Table(document.getElementById('costs_chart'))
+        costs_table.draw(costs, {'title': 'Estimated Electricity Generation Costs per Year','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      costs_button = document.getElementById('costs_button')
+      costs_button.onclick = function() {
+        if (costs_state == plot) {
+          drawTable_costs();
+          costs_state = chart;
+        } else {
+          drawPlot_costs();
+          costs_state = plot;
+        }
+      }
+      // initilize with plot
+      var  costs_plot = drawPlot_costs()
+      
+      document.getElementById('costs_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+            
+            // data
+            var consumption = google.visualization.arrayToDataTable([[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Central (circle hot springs, boulder creek)', type: 'number'}, {label: 'Central(circle hot springs, crooked creek)', type: 'number'}, {label: 'Central (circle hot springs, ketchem creek) -- ketchum creek', type: 'number'}, {label: 'Central (circle hot springs, lower deadwood creek)', type: 'number'}, {label: 'Central (circle hot springs, portage creek)', type: 'number'}, {label: 'Central (circle hot springs, upper deadwood creek)', type: 'number'}], [2021.0, 43807.0, 18938.0, 18938.0, 18938.0, 18938.0, 18938.0, 18938.0], [2022.0, 43895.0, 19026.0, 19026.0, 19026.0, 19026.0, 19026.0, 19026.0], [2023.0, 43983.0, 19114.0, 19114.0, 19114.0, 19114.0, 19114.0, 19114.0], [2024.0, 44072.0, 19203.0, 19203.0, 19203.0, 19203.0, 19203.0, 19203.0], [2025.0, 44160.0, 19291.0, 19291.0, 19291.0, 19291.0, 19291.0, 19291.0], [2026.0, 44248.0, 19379.0, 19379.0, 19379.0, 19379.0, 19379.0, 19379.0], [2027.0, 44248.0, 19379.0, 19379.0, 19379.0, 19379.0, 19379.0, 19379.0], [2028.0, 44336.0, 19467.0, 19467.0, 19467.0, 19467.0, 19467.0, 19467.0], [2029.0, 44424.0, 19555.0, 19555.0, 19555.0, 19555.0, 19555.0, 19555.0], [2030.0, 44512.0, 19643.0, 19643.0, 19643.0, 19643.0, 19643.0, 19643.0], [2031.0, 44600.0, 19731.0, 19731.0, 19731.0, 19731.0, 19731.0, 19731.0], [2032.0, 44600.0, 19731.0, 19731.0, 19731.0, 19731.0, 19731.0, 19731.0], [2033.0, 44688.0, 19820.0, 19820.0, 19820.0, 19820.0, 19820.0, 19820.0], [2034.0, 44777.0, 19908.0, 19908.0, 19908.0, 19908.0, 19908.0, 19908.0], [2035.0, 44865.0, 19996.0, 19996.0, 19996.0, 19996.0, 19996.0, 19996.0], [2036.0, 44865.0, 19996.0, 19996.0, 19996.0, 19996.0, 19996.0, 19996.0], [2037.0, 44953.0, 20084.0, 20084.0, 20084.0, 20084.0, 20084.0, 20084.0], [2038.0, 45041.0, 20172.0, 20172.0, 20172.0, 20172.0, 20172.0, 20172.0], [2039.0, 45041.0, 20172.0, 20172.0, 20172.0, 20172.0, 20172.0, 20172.0], [2040.0, 45129.0, 20260.0, 20260.0, 20260.0, 20260.0, 20260.0, 20260.0], [2041.0, 45217.0, 20348.0, 20348.0, 20348.0, 20348.0, 20348.0, 20348.0], [2042.0, 45217.0, 20348.0, 20348.0, 20348.0, 20348.0, 20348.0, 20348.0], [2043.0, 45305.0, 20436.0, 20436.0, 20436.0, 20436.0, 20436.0, 20436.0], [2044.0, 45305.0, 20436.0, 20436.0, 20436.0, 20436.0, 20436.0, 20436.0], [2045.0, 45394.0, 20525.0, 20525.0, 20525.0, 20525.0, 20525.0, 20525.0], [2046.0, 45394.0, 20525.0, 20525.0, 20525.0, 20525.0, 20525.0, 20525.0], [2047.0, 45482.0, 20613.0, 20613.0, 20613.0, 20613.0, 20613.0, 20613.0], [2048.0, 45482.0, 20613.0, 20613.0, 20613.0, 20613.0, 20613.0, 20613.0], [2049.0, 45570.0, 20701.0, 20701.0, 20701.0, 20701.0, 20701.0, 20701.0], [2050.0, 45570.0, 20701.0, 20701.0, 20701.0, 20701.0, 20701.0, 20701.0]])
+            year_fmat.format(consumption,0)
+            
+            
+            // plot options
+            
+            dollar=  {title: 'gallons'}
+            
+            
+
+            width = 1000
+            height = 600
+
+            var consumption_options = {'title': 'Central: Diesel consumed for electricity generation ',
+                                            'height':height,
+                                            chartArea:{height:'85%', width:'100%', left:100, right:200},
+                                            hAxis: {format: '####',
+                                                    title: 'year'},
+                                            vAxis: dollar,
+                                            
+                                            
+                                            annotations:{style:'line'},
+                                            
+                                            };
+            
+                        
+          
+            // plot state plot or table
+            var consumption_state = plot;
+        
+            // draw plot 
+            function drawPlot_consumption() {
+                
+                var consumption_plot = new google.visualization.LineChart(document.getElementById('consumption_chart'));
+                
+                
+                consumption_plot.draw(consumption, consumption_options);
+                return consumption_plot
+            }   
+            
+            // draw table
+            function drawTable_consumption() {
+                var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+                consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':width, 'height':height,})
+            }
+            
+      // draw table
+      function drawTable_consumption() {
+        var consumption_table = new google.visualization.Table(document.getElementById('consumption_chart'))
+        consumption_table.draw(consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,})
+      }
+            
+      // set up toggle
+      consumption_button = document.getElementById('consumption_button')
+      consumption_button.onclick = function() {
+        if (consumption_state == plot) {
+          drawTable_consumption();
+          consumption_state = chart;
+        } else {
+          drawPlot_consumption();
+          consumption_state = plot;
+        }
+      }
+      // initilize with plot
+      var  consumption_plot = drawPlot_consumption()
+      
+      document.getElementById('consumption_png').outerHTML = '<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>'
+        
+     
+    
+  }
+</script> 
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model <small style="color:black">Beta</small></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Central<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Central/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Central/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Central/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Central/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Central/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Central/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Central/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Central/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Central/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Central/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Central/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Central/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Central/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Central/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Central/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Central/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Central/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Central/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system<small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">Average community load (2013): 61 kW </p> <p class="stats">Average generation (2013): 537,849 kWh/year </p> <p class="stats">Peak load: Unknown </p> <p class="stats">Existing nameplate wind capacity: 0 kW </p> <p class="stats">Existing wind generation (2013): 0 kWh/year </p> <p class="stats">Estimated proposed wind generation: 0 kWh/year </p> <p class="stats">Existing nameplate solar capacity: 4 kW </p> <p class="stats">Existing solar generation (2013): 0 kWh/year </p> <p class="stats">Estimated proposed solar generation: 3,843 kWh/year </p> <p class="stats">Existing nameplate hydro capacity : 0 kW </p> <p class="stats">Existing hydro generation (2013): 0 kWh/year </p> <p class="stats">Estimated proposed hydro generation: 0 kWh/year </p>
+    </div><H3>Central (circle hot springs, boulder creek)<small class = "hidy" data-toggle="collapse" data-target="#Central_Circle_Hot_Springs_Boulder_Creek"></small> </H3>
+    <div id="Central_Circle_Hot_Springs_Boulder_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $9,295,555 </p> <p class="stats">Lifetime savings: $-1,014,610 </p> <p class="stats">Net lifetime savings: $-10,310,166 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 125 kW </p> <p class="stats">Expected yearly generation: 393,121 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $13,028,106 </p> <p class="stats">Estimated hydro penetration level: 73.09% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1980-0226.pdf'> link </a> </p>
+    </div><H3>Central(circle hot springs, crooked creek)<small class = "hidy" data-toggle="collapse" data-target="#CentralCircle_Hot_Springs_Crooked_Creek"></small> </H3>
+    <div id="CentralCircle_Hot_Springs_Crooked_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $8,714,779 </p> <p class="stats">Lifetime savings: $-833,949 </p> <p class="stats">Net lifetime savings: $-9,548,728 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 125 kW </p> <p class="stats">Expected yearly generation: 393,121 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $12,214,124 </p> <p class="stats">Estimated hydro penetration level: 73.09% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1980-0226.pdf'> link </a> </p>
+    </div><H3>Central (circle hot springs, ketchem creek) -- Ketchum Creek<small class = "hidy" data-toggle="collapse" data-target="#Central_Circle_Hot_Springs_Ketchem_Creek_--_Ketchum_Creek"></small> </H3>
+    <div id="Central_Circle_Hot_Springs_Ketchem_Creek_--_Ketchum_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $5,814,712 </p> <p class="stats">Lifetime savings: $68,169 </p> <p class="stats">Net lifetime savings: $-5,746,543 </p> <p class="stats">Benefit-cost ratio: 0.0 </p> <p class="stats">Proposed nameplate capacity: 125 kW </p> <p class="stats">Expected yearly generation: 393,121 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $8,149,560 </p> <p class="stats">Estimated hydro penetration level: 73.09% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1980-0226.pdf'> link </a> </p>
+    </div><H3>Central (circle hot springs, lower deadwood creek)<small class = "hidy" data-toggle="collapse" data-target="#Central_Circle_Hot_Springs_Lower_Deadwood_Creek"></small> </H3>
+    <div id="Central_Circle_Hot_Springs_Lower_Deadwood_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $6,087,475 </p> <p class="stats">Lifetime savings: $-16,679 </p> <p class="stats">Net lifetime savings: $-6,104,153 </p> <p class="stats">Benefit-cost ratio: -0.0 </p> <p class="stats">Proposed nameplate capacity: 125 kW </p> <p class="stats">Expected yearly generation: 393,121 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $8,531,848 </p> <p class="stats">Estimated hydro penetration level: 73.09% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1982-0367.pdf'> link </a> </p>
+    </div><H3>Central (circle hot springs, portage creek)<small class = "hidy" data-toggle="collapse" data-target="#Central_Circle_Hot_Springs_Portage_Creek"></small> </H3>
+    <div id="Central_Circle_Hot_Springs_Portage_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $5,519,973 </p> <p class="stats">Lifetime savings: $159,853 </p> <p class="stats">Net lifetime savings: $-5,360,120 </p> <p class="stats">Benefit-cost ratio: 0.0 </p> <p class="stats">Proposed nameplate capacity: 125 kW </p> <p class="stats">Expected yearly generation: 393,121 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $7,736,471 </p> <p class="stats">Estimated hydro penetration level: 73.09% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1982-0367.pdf'> link </a> </p>
+    </div><H3>Central (circle hot springs, upper deadwood creek)<small class = "hidy" data-toggle="collapse" data-target="#Central_Circle_Hot_Springs_Upper_Deadwood_Creek"></small> </H3>
+    <div id="Central_Circle_Hot_Springs_Upper_Deadwood_Creek" class="collapse in" >
+     <p class="stats">Capital cost: $7,252,997 </p> <p class="stats">Lifetime savings: $-379,236 </p> <p class="stats">Net lifetime savings: $-7,632,232 </p> <p class="stats">Benefit-cost ratio: -0.1 </p> <p class="stats">Proposed nameplate capacity: 125 kW </p> <p class="stats">Expected yearly generation: 393,121 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Total capital cost: $10,165,376 </p> <p class="stats">Estimated hydro penetration level: 73.09% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1982-0367.pdf'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential electricity generation from diesel that could be offset by installing new Hydropower generation infrastructure. Requires that at least a reconnaissance-level heat recovery study has been completed for the community to be run. 
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Central_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Central_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 0.27.0, Generated from Model Version 0.27.0 and Data Version 0.27.0 on 2017-06-12</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>

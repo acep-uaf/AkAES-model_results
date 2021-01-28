@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; 
+                        any other head content must come *after* these tags -->
+    <title>Chitina - Hydropower summary</title>
+    
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    
+    
+<link href="../summary.css" rel="stylesheet"> 
+<link href="../footer.css" rel="stylesheet">
+<link href="../dropdown.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // setup
+        google.charts.load('current', {'packages':['corechart','table']});
+        google.charts.setOnLoadCallback(drawCharts);
+    
+        // for the charts
+        function drawCharts() {
+            
+            // set up vars (data/options) for each chart
+            var state_plot = 'plot';
+            var state_chart = 'chart';
+            
+            var year_fmat = new google.visualization.NumberFormat({pattern:'####'});
+            
+            
+                // ################ Start costs ####################
+                // data
+                var costs = google.visualization.arrayToDataTable(
+                    [[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Fivemile creek hydroelectric project', type: 'number'}, {label: 'Fivemile creek (chitina)', type: 'number'}, {label: 'Chitina (haley creek)', type: 'number'}], [2020.0, 130125.0, 440127.0, null, null], [2021.0, 136301.0, 432561.0, 639835.0, 753079.0], [2022.0, 140831.0, 424954.0, 627080.0, 744230.0], [2023.0, 143714.0, 417304.0, 614601.0, 734290.0], [2024.0, 146596.0, 409842.0, 602415.0, 724639.0], [2025.0, 149479.0, 402565.0, 590516.0, 715272.0], [2026.0, 153185.0, 395587.0, 578909.0, 706875.0], [2027.0, 156479.0, 388726.0, 567569.0, 698402.0], [2028.0, 159038.0, 381654.0, 556167.0, 689521.0], [2029.0, 162326.0, 375126.0, 545348.0, 681562.0], [2030.0, 164792.0, 368644.0, 534773.0, 673162.0], [2031.0, 168490.0, 362499.0, 524463.0, 666046.0], [2032.0, 172600.0, 356569.0, 514401.0, 659517.0], [2033.0, 176298.0, 350733.0, 504571.0, 652875.0], [2034.0, 180819.0, 345164.0, 494983.0, 647155.0], [2035.0, 182912.0, 339074.0, 485222.0, 639554.0], [2036.0, 187423.0, 333783.0, 476072.0, 634266.0], [2037.0, 189884.0, 328342.0, 467114.0, 627463.0], [2038.0, 193985.0, 323268.0, 458386.0, 622251.0], [2039.0, 197266.0, 318211.0, 449854.0, 616551.0], [2040.0, 202187.0, 313514.0, 441541.0, 612431.0], [2041.0, 202187.0, 308250.0, 433369.0, 604358.0], [2042.0, 202187.0, 303109.0, 425389.0, 596475.0], [2043.0, 201775.0, 297677.0, 417184.0, 588365.0], [2044.0, 201775.0, 292774.0, 409574.0, 580847.0], [2045.0, 201775.0, 287987.0, 402142.0, 573505.0], [2046.0, 201775.0, 283311.0, 394884.0, 566335.0], [2047.0, 201775.0, 278745.0, 387796.0, 559334.0], [2048.0, 201775.0, 274286.0, 380874.0, 552496.0], [2049.0, 201775.0, 269932.0, 374115.0, 545819.0], [2050.0, 201775.0, 265679.0, 367514.0, 539298.0], [2051.0, 201775.0, 261526.0, 361067.0, 532930.0], [2052.0, 201775.0, 257471.0, 354772.0, 526711.0], [2053.0, 201775.0, 253511.0, 348624.0, 520638.0], [2054.0, 201775.0, 249643.0, 342621.0, 514708.0], [2055.0, 201775.0, 245866.0, 336758.0, 508916.0], [2056.0, 201775.0, 242178.0, 331032.0, 503260.0], [2057.0, 201775.0, 238576.0, 325441.0, 497737.0], [2058.0, 201775.0, 235058.0, 319981.0, 492343.0], [2059.0, 201775.0, 231623.0, 314648.0, 487075.0], [2060.0, 201775.0, 228269.0, 309441.0, 481931.0], [2061.0, 201775.0, 224993.0, 304356.0, 476908.0], [2062.0, 201775.0, 221794.0, 299390.0, 472002.0], [2063.0, 201775.0, 218670.0, 294540.0, 467212.0], [2064.0, 201775.0, 215619.0, 289804.0, 462533.0], [2065.0, 201775.0, 212639.0, 285179.0, 457964.0], [2066.0, 201775.0, 209730.0, 280662.0, 453503.0], [2067.0, 201775.0, 206888.0, 276252.0, 449145.0], [2068.0, 201775.0, 204113.0, 271944.0, 444890.0], [2069.0, 201775.0, 201404.0, 267738.0, 440735.0], [2070.0, 201775.0, 201404.0, 263630.0, 436677.0]]
+                );
+                year_fmat.format(costs,0);
+                
+                // plot options 
+                vertical_label = {format: '$#,###'}; 
+                
+                width = 1000
+                height = 600
+    
+                var costs_options = {
+                    'title': 'Chitina: Estimated electricity generation costs per year',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var costs_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_costs() {
+                    var costs_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('costs_chart')
+                        );
+                    
+                    costs_plot.draw(costs, costs_options);
+                    return costs_plot;
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = 
+                        new google.visualization.Table(
+                            document.getElementById('costs_chart')
+                        );
+                    costs_table.draw(
+                        costs,
+                        {
+                            'title': 'Estimated Electricity Generation Costs per Year',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_costs() {
+                    var costs_table = new google.visualization.Table(
+                        document.getElementById('costs_chart')
+                    );
+                    costs_table.draw(
+                        costs, {'title': 'Estimated Electricity Generation Costs per Year','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                costs_button = document.getElementById('costs_button');
+                costs_button.onclick = function() {
+                    if (costs_state == state_plot) {
+                        drawTable_costs();
+                        costs_state = state_chart;
+                    } else {
+                    drawPlot_costs();
+                    costs_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  costs_plot = drawPlot_costs();
+              
+                document.getElementById('costs_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + costs_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+                // ################ Start consumption ####################
+                // data
+                var consumption = google.visualization.arrayToDataTable(
+                    [[{label: 'year', type: 'number'}, {label: 'Current projection', type: 'number'}, {label: 'Fivemile creek hydroelectric project', type: 'number'}, {label: 'Fivemile creek (chitina)', type: 'number'}, {label: 'Chitina (haley creek)', type: 'number'}], [2020.0, 41179.0, 1829.0, null, null], [2021.0, 41179.0, 1829.0, 0.0, 33964.0], [2022.0, 41179.0, 1829.0, 0.0, 33964.0], [2023.0, 41179.0, 1829.0, 0.0, 33964.0], [2024.0, 41179.0, 1829.0, 0.0, 33964.0], [2025.0, 41179.0, 1829.0, 0.0, 33964.0], [2026.0, 41179.0, 1829.0, 0.0, 33964.0], [2027.0, 41179.0, 1829.0, 0.0, 33964.0], [2028.0, 41095.0, 1746.0, 0.0, 33881.0], [2029.0, 41095.0, 1746.0, 0.0, 33881.0], [2030.0, 41095.0, 1746.0, 0.0, 33881.0], [2031.0, 41095.0, 1746.0, 0.0, 33881.0], [2032.0, 41095.0, 1746.0, 0.0, 33881.0], [2033.0, 41095.0, 1746.0, 0.0, 33881.0], [2034.0, 41095.0, 1746.0, 0.0, 33881.0], [2035.0, 41012.0, 1662.0, 0.0, 33797.0], [2036.0, 41012.0, 1662.0, 0.0, 33797.0], [2037.0, 41012.0, 1662.0, 0.0, 33797.0], [2038.0, 41012.0, 1662.0, 0.0, 33797.0], [2039.0, 41012.0, 1662.0, 0.0, 33797.0], [2040.0, 41012.0, 1662.0, 0.0, 33797.0], [2041.0, 41012.0, 1662.0, 0.0, 33797.0], [2042.0, 41012.0, 1662.0, 0.0, 33797.0], [2043.0, 40928.0, 1579.0, 0.0, 33714.0], [2044.0, 40928.0, 1579.0, 0.0, 33714.0], [2045.0, 40928.0, 1579.0, 0.0, 33714.0], [2046.0, 40928.0, 1579.0, 0.0, 33714.0], [2047.0, 40928.0, 1579.0, 0.0, 33714.0], [2048.0, 40928.0, 1579.0, 0.0, 33714.0], [2049.0, 40928.0, 1579.0, 0.0, 33714.0], [2050.0, 40928.0, 1579.0, 0.0, 33714.0], [2051.0, 40928.0, 1579.0, 0.0, 33714.0], [2052.0, 40928.0, 1579.0, 0.0, 33714.0], [2053.0, 40928.0, 1579.0, 0.0, 33714.0], [2054.0, 40928.0, 1579.0, 0.0, 33714.0], [2055.0, 40928.0, 1579.0, 0.0, 33714.0], [2056.0, 40928.0, 1579.0, 0.0, 33714.0], [2057.0, 40928.0, 1579.0, 0.0, 33714.0], [2058.0, 40928.0, 1579.0, 0.0, 33714.0], [2059.0, 40928.0, 1579.0, 0.0, 33714.0], [2060.0, 40928.0, 1579.0, 0.0, 33714.0], [2061.0, 40928.0, 1579.0, 0.0, 33714.0], [2062.0, 40928.0, 1579.0, 0.0, 33714.0], [2063.0, 40928.0, 1579.0, 0.0, 33714.0], [2064.0, 40928.0, 1579.0, 0.0, 33714.0], [2065.0, 40928.0, 1579.0, 0.0, 33714.0], [2066.0, 40928.0, 1579.0, 0.0, 33714.0], [2067.0, 40928.0, 1579.0, 0.0, 33714.0], [2068.0, 40928.0, 1579.0, 0.0, 33714.0], [2069.0, 40928.0, 1579.0, 0.0, 33714.0], [2070.0, 40928.0, 1579.0, 0.0, 33714.0]]
+                );
+                year_fmat.format(consumption,0);
+                
+                // plot options 
+                vertical_label=  {title: 'gallons'}; 
+                
+                width = 1000
+                height = 600
+    
+                var consumption_options = {
+                    'title': 'Chitina: Diesel consumed for electricity generation ',
+                    'height':height,
+                    chartArea:{height:'85%', width:'100%', left:100, right:200},
+                    hAxis: {format: '####', title: 'year'},
+                    vAxis: vertical_label,
+                    annotations:{style:'line'},  
+                };
+                // plot state plot or table
+                var consumption_state = state_plot;
+            
+                // draw plot 
+                function drawPlot_consumption() {
+                    var consumption_plot = 
+                        new google.visualization.LineChart(
+                            document.getElementById('consumption_chart')
+                        );
+                    
+                    consumption_plot.draw(consumption, consumption_options);
+                    return consumption_plot;
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = 
+                        new google.visualization.Table(
+                            document.getElementById('consumption_chart')
+                        );
+                    consumption_table.draw(
+                        consumption,
+                        {
+                            'title': 'Diesel Consumed for Electricity Generation ',
+                            'width':width,
+                            'height':height,
+                        }
+                    );
+                };
+                
+                // draw table
+                function drawTable_consumption() {
+                    var consumption_table = new google.visualization.Table(
+                        document.getElementById('consumption_chart')
+                    );
+                    consumption_table.draw(
+                        consumption, {'title': 'Diesel Consumed for Electricity Generation ','width':'100%', 'height':600,}
+                    );
+                  };
+                
+                // set up toggle
+                consumption_button = document.getElementById('consumption_button');
+                consumption_button.onclick = function() {
+                    if (consumption_state == state_plot) {
+                        drawTable_consumption();
+                        consumption_state = state_chart;
+                    } else {
+                    drawPlot_consumption();
+                    consumption_state = state_plot;
+                    };
+                };
+                // initilize with plot
+                var  consumption_plot = drawPlot_consumption();
+              
+                document.getElementById('consumption_png').outerHTML ='<button class="btn btn-default" onclick="location.href=\'' + consumption_plot.getImageURI() + '\' ">Printable Plot</button>';
+                 
+            
+      };
+    </script>
+     
+
+    <!-- added google analytics -->
+    <script type="text/javascript"  >
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-6824535-25', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+
+
+  </head>
+  <body >
+     
+<nav class="navbar navbar-default navbar-aaem ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-aaem" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Alaska Affordable Energy Model</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-aaem">
+      <ul class="nav navbar-nav ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Communities <span class="caret"></span></a>
+          <ul class="dropdown-menu short-menu" id="community_drop" >
+
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regions <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="region_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State Senate Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="senate_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">State House Districts <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="house_drop">
+              
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Technologies <span class="caret"></span></a>
+          <ul class="dropdown-menu " id="tech_drop">
+              
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+     <!-- community summary navigation -->
+<nav class="navbar navbar-default navbar-summary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-summaries" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <span class="page-title">Chitina<span class="page-subtitle"> Hydropower</span></span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-summaries">
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Summary <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Chitina/overview.html">
+          Overview 
+        </a></li><li>
+        <a href="../Chitina/financial_and_demographic.html">
+          Financial and Demographic 
+        </a></li><li>
+        <a href="../Chitina/consumption.html">
+          Consumption 
+        </a></li><li>
+        <a href="../Chitina/generation.html">
+          Generation 
+        </a></li><li>
+        <a href="../Chitina/potential_projects.html">
+          Potential Projects 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Efficiency Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Chitina/residential_energy_efficiency.html">
+          Residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Chitina/non-residential_energy_efficiency.html">
+          Non-residential Energy Efficiency 
+        </a></li><li>
+        <a href="../Chitina/water_and_wastewater_efficiency.html">
+          Water and Wastewater Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electricity Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Chitina/wind_power.html">
+          Wind Power 
+        </a></li><li>
+        <a href="../Chitina/solar_power.html">
+          Solar Power 
+        </a></li><li>
+        <a href="../Chitina/hydropower.html">
+          Hydropower 
+        </a></li><li>
+        <a href="../Chitina/transmission_and_interties.html">
+          Transmission and Interties 
+        </a></li><li>
+        <a href="../Chitina/diesel_efficiency.html">
+          Diesel Efficiency 
+        </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Heating Projects <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+        <a href="../Chitina/biomass_for_heat_cordwood.html">
+          Biomass for Heat (Cordwood) 
+        </a></li><li>
+        <a href="../Chitina/biomass_for_heat_pellet.html">
+          Biomass for Heat (Pellet) 
+        </a></li><li>
+        <a href="../Chitina/residential_ashp.html">
+          Residential ASHP 
+        </a></li><li>
+        <a href="../Chitina/non-residential_ashp.html">
+          Non-Residential ASHP 
+        </a></li><li>
+        <a href="../Chitina/heat_recovery.html">
+          Heat Recovery 
+        </a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+    <div class="content">
+    
+        
+        
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 infobar">
+            <div class="stats">
+    <H3>Current system<small class = "hidy" data-toggle="collapse" data-target="#Current_System"></small> </H3>
+    <div id="Current_System" class="collapse in" >
+     <p class="stats">See: <a href='./generation.html'>Generation </a> for more details of the current generation systems </p>
+    </div><H3>Fivemile creek hydroelectric project<small class = "hidy" data-toggle="collapse" data-target="#Fivemile_Creek_Hydroelectric_Project"></small> </H3>
+    <div id="Fivemile_Creek_Hydroelectric_Project" class="collapse in" >
+     <p class="stats">Present value of capital cost: $6,472,061 </p> <p class="stats">Lifetime energy cost savings: $2,458,938 </p> <p class="stats">Net lifetime savings: $-4,013,123 </p> <p class="stats">Benefit-cost ratio: 0.4 </p> <p class="stats">Proposed nameplate capacity: 300 kW </p> <p class="stats">Expected yearly generation: 654,505 kWh/year </p> <p class="stats">Phase: Design </p> <p class="stats">Upfront capital cost: $6,589,090 </p> <p class="stats">Estimated hydro penetration level: 139.62% </p> <p class="stats">source: <a href='http://akenergyinventory.org/catalog/entries/8320-fivemile-creek-hydroelectric-project'> link </a> </p>
+    </div><H3>Fivemile creek (chitina)<small class = "hidy" data-toggle="collapse" data-target="#Fivemile_Creek_Chitina"></small> </H3>
+    <div id="Fivemile_Creek_Chitina" class="collapse in" >
+     <p class="stats">Present value of capital cost: $9,811,189 </p> <p class="stats">Lifetime energy cost savings: $2,326,690 </p> <p class="stats">Net lifetime savings: $-7,484,499 </p> <p class="stats">Benefit-cost ratio: 0.2 </p> <p class="stats">Proposed nameplate capacity: 300 kW </p> <p class="stats">Expected yearly generation: 2,040,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $9,988,597 </p> <p class="stats">Estimated hydro penetration level: 435.19% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1984-0082.pdf'> link </a> </p>
+    </div><H3>Chitina (haley creek)<small class = "hidy" data-toggle="collapse" data-target="#Chitina_Haley_Creek"></small> </H3>
+    <div id="Chitina_Haley_Creek" class="collapse in" >
+     <p class="stats">Present value of capital cost: $9,691,935 </p> <p class="stats">Lifetime energy cost savings: $-1,835,187 </p> <p class="stats">Net lifetime savings: $-11,527,122 </p> <p class="stats">Benefit-cost ratio: -0.2 </p> <p class="stats">Proposed nameplate capacity: 100 kW </p> <p class="stats">Expected yearly generation: 120,000 kWh/year </p> <p class="stats">Phase: Reconnaissance </p> <p class="stats">Upfront capital cost: $9,867,187 </p> <p class="stats">Estimated hydro penetration level: 25.60% </p> <p class="stats">source: <a href='http://akenergyinventory.org/hyd/SSH-1981-0402.pdf'> link </a> </p>
+    </div>
+</div>
+          </div>
+          <div class="col-sm-9">
+            <div class = 'description'> 
+    
+    This component calculates the potential cost savings through changes in the amount of diesel fuel used for electricity generation from the installation of new hydropower infrastructure. Requires that at least a reconnaissance-level hydropower study has been completed for the community.
+
+</div>
+<div class = 'charts'>
+  <div class="costs">
+    <div id="costs_chart"></div>
+    <button class="btn btn-default" type='button' id='costs_button'>Plot/Table</button>
+    <div id='costs_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Chitina_Hydropower_costs.csv'">Table as csv</button>
+  </div><div class="consumption">
+    <div id="consumption_chart"></div>
+    <button class="btn btn-default" type='button' id='consumption_button'>Plot/Table</button>
+    <div id='consumption_png'></div>
+    <button class="btn btn-default" type='button' onclick="location.href='csv/Chitina_Hydropower_consumption.csv'">Table as csv</button>
+  </div>
+</div>
+          </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p style="margin-top:15px;"></p>
+        
+        <p class="text-muted">Copyright 2017, AEA, GINA. Summaries version 1.0.0, Generated from Model Version 1.0.0 and Data Version 1.0.0 on 2017-06-30</p>
+        
+        <p></p><!-- add a line-->
+        <p class="text-muted">
+        The Alaska Affordable Energy Model is a screening-level community 
+        energy evaluation and planning tool under development by the Alaska
+        Energy Authority (AEA).
+        Model data and results should not be used without consultation with AEA.
+        </P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">Please contact Neil McMahon (NMcMahon@aidea.org) at the Alaska Energy Authority if you find any errors or issues on these pages.</P>
+        <p></p><!-- add a line-->
+        <p class="text-muted">See the <a href="http://akenergyinventory.org/energymodel"> Model Website </a></a> 
+        for overview of the effort and the
+         <a href="http://model-docs.akenergyinventory.org"> Documentation </a> for how the models components work.</p>
+        </div>
+    </footer>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../navbar.js"></script>
+
+
+  </body>
+</html>
